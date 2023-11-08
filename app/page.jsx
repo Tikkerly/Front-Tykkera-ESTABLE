@@ -1,22 +1,10 @@
-import React from 'react';
-import App from 'next/app';
-import { wrapper } from '../store';
+import Navbar from '@/components/navbar'
 
-class MyApp extends App {
- static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
- }
-
- render() {
-    const { Component, pageProps } = this.props;
-    return <Component {...pageProps} />;
- }
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <Navbar />
+    </main>
+  )
 }
-
-export default wrapper.withRedux(MyApp);
