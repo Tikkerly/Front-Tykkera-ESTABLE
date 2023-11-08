@@ -1,17 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import miSliceReducer from './slices/miSlice';
+import authReducer from './authSlices/auth';
 
-const initialState = {
- // Tu estado inicial aquí
+const reducer = {
+  miSlice: miSliceReducer,
+  auth: authReducer,
 };
 
-const slice = createSlice({
- name: 'miSlice',
- initialState,
- reducers: {
-    // Tus reductores aquí
- },
-});
+const initState = {
+  // Aquí va tu estado inicial
+};
 
-export const { /* Tus acciones aquí */ } = slice.actions;
+const makeStore = () => configureStore({ reducer, preloadedState: initState });
+const wrapper = createWrapper(makeStore);
 
-export default slice.reducer;
+export default wrapper;
