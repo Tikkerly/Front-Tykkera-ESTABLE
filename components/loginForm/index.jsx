@@ -17,7 +17,7 @@ const LoginForm = () => {
         setErrors(validation('login', { ...formData, [e.target.name]: e.target.value }));
         setFormData({ ...formData, [name]: value });
         const props = Object.keys(validation('register', { ...formData, [e.target.name]: e.target.value }));
-        if ( !props.length) {
+        if (!props.length) {
             setIsDisabled(false);
         } else {
             setIsDisabled(true);
@@ -73,8 +73,15 @@ const LoginForm = () => {
                 <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
                     <label htmlFor="password"></label>
                     <div className="absolute left-2 top-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
-                            <path d="M16 10C16 8.897 15.103 8 14 8H13V5C13 2.243 10.757 0 8 0C5.243 0 3 2.243 3 5V8H2C0.897 8 0 8.897 0 10V18C0 19.103 0.897 20 2 20H14C15.103 20 16 19.103 16 18V10ZM5 5C5 3.346 6.346 2 8 2C9.654 2 11 3.346 11 5V8H5V5Z" fill="#333333" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <g clip-path="url(#clip0_168_11)">
+                                <path d="M18 8H17V6C17 3.24 14.76 1 12 1C9.24 1 7 3.24 7 6V8H6C4.9 8 4 8.9 4 10V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V10C20 8.9 19.1 8 18 8ZM9 6C9 4.34 10.34 3 12 3C13.66 3 15 4.34 15 6V8H9V6ZM18 20H6V10H18V20ZM12 17C13.1 17 14 16.1 14 15C14 13.9 13.1 13 12 13C10.9 13 10 13.9 10 15C10 16.1 10.9 17 12 17Z" fill="black" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_168_11">
+                                    <rect width="24" height="24" fill="white" />
+                                </clipPath>
+                            </defs>
                         </svg>
                     </div>
                     <input
@@ -111,7 +118,7 @@ const LoginForm = () => {
 
             <div className="mt-4">
                 <button className="mt-2 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-                <GoogleIcon/>
+                    <GoogleIcon />
                     <span className="ml-2">Iniciar sesión con Google</span>
                 </button>
             </div>
