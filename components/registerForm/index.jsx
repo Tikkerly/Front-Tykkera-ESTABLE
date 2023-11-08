@@ -51,6 +51,8 @@ const Registration = () => {
     };
 
     return (
+        <div >
+        <h1 className="text-2xl mb-4">Regístrate</h1>
         <form onSubmit={handleSubmit}>
             <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
                 <div className="absolute left-2 top-2">
@@ -64,14 +66,14 @@ const Registration = () => {
                     type="text"
                     autoComplete="username"
                     required
-                    className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 rounded-lg"
+                    className="bg-transparent  w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 rounded-lg text-black "
                     placeholder="Nombre de usuario"
                     value={formData.username}
                     onChange={handleChange}
-                /> {errors.username && <p className="text-red-500">{errors.username}</p>}
+                /> {errors.username && <p className="text-red-500 ">{errors.username}</p>}
             </div>
 
-            <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
+            <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
                 <div className="absolute left-2 top-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 5.25L2.25 4.5H21.75L22.5 5.25V18.75L21.75 19.5H2.25L1.5 18.75V5.25ZM3 6.8025V18H21V6.804L12.465 13.35H11.55L3 6.8025ZM19.545 6H4.455L12 11.8035L19.545 6Z" fill="#333333" />
@@ -83,7 +85,7 @@ const Registration = () => {
                     type="email"
                     autoComplete="email"
                     required
-                    className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 rounded-lg"
+                    className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
                     placeholder="Correo electrónico"
                     value={formData.email}
                     onChange={handleChange}
@@ -91,7 +93,7 @@ const Registration = () => {
             </div>
 
 
-            <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
+            <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
                 <div className="absolute left-2 top-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <g opacity="0.3">
@@ -105,14 +107,14 @@ const Registration = () => {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 rounded-lg"
+                    className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
                     placeholder="Contraseña"
                     value={formData.password}
                     onChange={handleChange}
                 /> {errors.password && <p className="text-red-500">{errors.password}</p>}
             </div>
 
-            <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
+            <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
                 <div className="absolute left-2 top-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <g opacity="0.3">
@@ -126,14 +128,14 @@ const Registration = () => {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 rounded-lg"
+                    className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg"
                     placeholder="Confirmar contraseña"
                     value={formData.confirmPassword}
                     onChange={handleChange}
                 /> {errors.confirmPassword && <p className="text-red-500">{errors.confirmPassword}</p>}
             </div>
 
-            <div className="mt-4">
+            <div className="mt-8">
                 <button
                     disabled={isDisabled}
                     type="submit"
@@ -144,6 +146,7 @@ const Registration = () => {
                 </button>
             </div>
         </form>
+        </div>
     );
 };
 
