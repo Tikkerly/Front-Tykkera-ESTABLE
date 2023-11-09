@@ -62,7 +62,7 @@ const Registration = () => {
             <div className="absolute left-2 top-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="18"
+                width="19"
                 height="19"
                 viewBox="0 0 18 19"
                 fill="none"
