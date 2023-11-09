@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <div className="bg-gradient-to-r from-1dbbee via-0091d2 to-00356f p-4 text-white flex flex-row items-center justify-between">
+    <div className="bg-gradient-to-r from-Az3 via-Az2 to-Az1 p-4 text-white flex flex-row items-center justify-between">
       <div>
         <Link href="/home">
           <Image src={logotipo} width={250} height={250} alt="Logotipo" />
