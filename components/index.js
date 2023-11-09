@@ -1,2 +1,4 @@
 export { default as RegisterForm } from './registerForm/index.jsx';
 export { default as LoginForm } from './loginForm/index.jsx';
+export { default as CarrouselServices } from './carrouselServices/index.jsx'
+export { default as CarrouselQuestions } from './carrouselQuestions/index.jsx'
