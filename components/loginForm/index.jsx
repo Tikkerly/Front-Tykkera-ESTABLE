@@ -4,11 +4,11 @@ import Link from 'next/link';
 import GoogleIcon from '@mui/icons-material/Google';
 import { validation } from '@/utils';
 
-
 const LoginForm = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState({});
     const [isDisabled, setIsDisabled] = useState(true);
+
 
     const handleChange = (event) => {
         setErrors(validation('login', { ...formData, [event.target.name]: event.target.value }));
@@ -20,7 +20,6 @@ const LoginForm = () => {
             setIsDisabled(true);
         }
     };
-
 
     const handleSubmit = async (values) => {
         setLoading(true);

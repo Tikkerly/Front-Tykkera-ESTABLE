@@ -3,7 +3,7 @@ import RegisterForm from '@/components/registerForm';
 
 const Register = () => {
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center bg-blue">
+        <div className="min-h-screen bg-gray-100 flex items-center justify-center bg-blue  bg-pattern">
             <RegisterForm />
         </div>
     );
