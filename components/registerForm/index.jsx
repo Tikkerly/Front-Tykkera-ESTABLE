@@ -10,6 +10,11 @@ const Registration = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    personType: '',
+    phone: '',
+    clientId: '',
+    img: '',
+    rol: 'CLIENTE'
   });
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
@@ -41,8 +46,24 @@ const Registration = () => {
       username: formData.username,
       email: formData.email,
       password: formData.password,
+      personType: formData.personType,
+      phone: formData.phone,
+      clientId: formData.clientId,
+      img: formData.img,
+      rol: formData.rol,
     };
 
+    setFormData({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        personType: '',
+        phone: '',
+        clientId: '',
+        img: '',
+    })
+    
     try {
       const response = await axios.post(USER_ROUTES.registerUser, user);
       alert("Registro exitoso");
@@ -261,24 +282,24 @@ const Registration = () => {
               </svg>
             </div>
             <input
-              id="identificationC"
-              name="identificationC"
+              id="clientId"
+              name="clientId"
               type="text"
               autoComplete="current-phone"
               required
               className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg"
               placeholder="Numero de identificacion"
-              value={formData.phone}
+              value={formData.clientId}
               onChange={handleChange}
             />{" "}
-            {errors.phone && <p className="text-red-500">{errors.phone}</p>}
+            {errors.clientId && <p className="text-red-500">{errors.clientId}</p>}
           </div>
         </div>
         <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
           <div className="absolute left-2 top-2"></div>
           <select
-            id="person-type"
-            name="person-type"
+            id="personType"
+            name="personType"
             required
             className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
             value={formData.personType}
