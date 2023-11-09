@@ -28,7 +28,7 @@ const CarrouselServices = () => {
   };
   return (
     <div>
-      <div className="w-full h-96 flex items-center justify-center text-white text-3xl font-semibold">
+      <div className="w-full h-20 flex items-center justify-center text-white text-3xl font-bold avant-garde-bold">
         Servicios ofrecidos para nuestras PYMES:
       </div>
       <div className="flex flex-row items-center justify-around">
@@ -93,7 +93,7 @@ const CarrouselServices = () => {
           </svg>
         </div>
 
-        <div className="w-full flex flex-col justify-center items-center text-white text-lg">
+        <div className="w-full flex flex-col justify-center items-center text-white text-lg font-normal avant-garde-regular text-center">
           {services[currentIndex]}
         </div>
 

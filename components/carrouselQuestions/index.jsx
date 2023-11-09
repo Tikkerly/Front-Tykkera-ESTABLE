@@ -18,21 +18,22 @@ const CarrouselQuestions = () => {
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === services.length - 1 ? 0 : prevIndex + 1
+      prevIndex === Questions.length - 1 ? 0 : prevIndex + 1
+      
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? services.length - 1 : prevIndex - 1
+      prevIndex === 0 ? Questions.length - 1 : prevIndex - 1
     );
   };
   return (
     <div>
-      <div className="w-full h-96 flex items-center justify-center text-white text-3xl font-semibold">
-        Servicios ofrecidos para nuestras PYMES:
+      <div className="w-full h-20 flex items-center justify-center text-white text-3xl font-bold avant-garde-bold">
+        Preguntas Frecuentes:
       </div>
-      <div className="flex flex-row items-center justify-around">
+      <div className="flex flex-row items-center justify-around font-normal avant-garde-regular">
         <div onClick={prevSlide} className="" style={{ cursor: "pointer" }}>
           <svg
             width="64px"
@@ -95,8 +96,9 @@ const CarrouselQuestions = () => {
         </div>
 
         <div className="w-full flex flex-col justify-center items-center text-white text-lg">
-          {Questions[currentIndex]}
-          {Answers[currentIndex]}
+          <div className="text-center font-bold mb-2">{Questions[currentIndex]}</div>
+          
+          <div className="text-center">{Answers[currentIndex]}</div> 
         </div>
 
         <div className="" onClick={nextSlide} style={{ cursor: "pointer" }}>
