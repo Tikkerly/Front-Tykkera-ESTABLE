@@ -15,6 +15,26 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+@font-face {
+  font-family: 'Avant Garde bold';
+  src: url('../public/avantgardebold/Avant\ Garde\ Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avant Garde Regular';
+  src: url('../public/avantgarderegular/Avant\ Garde\ Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.avant-garde-bold {
+  font-family: 'Avant Garde Bold', sans-serif;
+}
+.avant-garde-regular {
+  font-family: 'Avant Garde Regular', sans-serif;
+}
 
 body {
   color: rgb(var(--foreground-rgb));
