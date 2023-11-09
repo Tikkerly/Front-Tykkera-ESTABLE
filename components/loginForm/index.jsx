@@ -13,10 +13,10 @@ const LoginForm = () => {
     const [errors, setErrors] = useState({});
     const [isDisabled, setIsDisabled] = useState(true);
 
-    const handleChange = (e) => {
-        setErrors(validation('login', { ...formData, [e.target.name]: e.target.value }));
-        setFormData({ ...formData, [name]: value });
-        const props = Object.keys(validation('register', { ...formData, [e.target.name]: e.target.value }));
+    const handleChange = (event) => {
+        setErrors(validation('login', { ...formData, [event.target.name]: event.target.value }));
+        setFormData({ ...formData, [event.target.name]: event.target.value });
+        const props = Object.keys(validation('register', { ...formData, [event.target.name]: event.target.value }));
         if (!props.length) {
             setIsDisabled(false);
         } else {

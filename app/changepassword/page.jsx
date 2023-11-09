@@ -1,12 +1,12 @@
 import React from 'react';
-import { ForgetPassword } from '@/components';
+import { ChangePassword } from '@/components';
 
-const PasswordForget = () => {
+const PasswordChange = () => {
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center bg-blue bg-pattern">
-            <ForgetPassword />
+            <ChangePassword />
         </div>
     );
 };
 
-export default PasswordForget;
+export default PasswordChange;
