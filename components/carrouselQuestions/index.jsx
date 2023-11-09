@@ -1,16 +1,18 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 
-const Questions = ['¿Qué es una mesa de ayuda y por qué mi empresa necesita una?',
-'¿Cómo puedo registrarme en la plataforma de gestión de tickets?',
-'¿Qué beneficios obtendré al utilizar su plataforma?',
-'¿Cómo puedo crear y seguir un ticket de servicio?'
+const Questions = [
+  "¿Qué es una mesa de ayuda y por qué mi empresa necesita una?",
+  "¿Cómo puedo registrarme en la plataforma de gestión de tickets?",
+  "¿Qué beneficios obtendré al utilizar su plataforma?",
+  "¿Cómo puedo crear y seguir un ticket de servicio?",
 ];
 
-const Answers = ['Una mesa de ayuda es un sistema que ayuda a las empresas a gestionar y resolver las solicitudes de servicio de manera eficiente. Es esencial para mejorar la satisfacción del cliente y mantener un registro de problemas y soluciones.',
-'El proceso de registro es simple. Visita nuestra página de inicio, haz clic en "Registrarse" y sigue las instrucciones para crear una cuenta.',
-'Al usar nuestra plataforma, obtendrás una gestión más eficiente de las solicitudes de servicio, informes detallados sobre el rendimiento y la capacidad de mejorar la satisfacción del cliente.',
-'Después de iniciar sesión, simplemente haz clic en "Crear Ticket" y completa la información requerida. Puedes seguir el estado de tus tickets en tu panel de control.'
+const Answers = [
+  "Una mesa de ayuda es un sistema que ayuda a las empresas a gestionar y resolver las solicitudes de servicio de manera eficiente. Es esencial para mejorar la satisfacción del cliente y mantener un registro de problemas y soluciones.",
+  'El proceso de registro es simple. Visita nuestra página de inicio, haz clic en "Registrarse" y sigue las instrucciones para crear una cuenta.',
+  "Al usar nuestra plataforma, obtendrás una gestión más eficiente de las solicitudes de servicio, informes detallados sobre el rendimiento y la capacidad de mejorar la satisfacción del cliente.",
+  'Después de iniciar sesión, simplemente haz clic en "Crear Ticket" y completa la información requerida. Puedes seguir el estado de tus tickets en tu panel de control.',
 ];
 
 const CarrouselQuestions = () => {
@@ -19,7 +21,6 @@ const CarrouselQuestions = () => {
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === Questions.length - 1 ? 0 : prevIndex + 1
-      
     );
   };
 
@@ -47,20 +48,20 @@ const CarrouselQuestions = () => {
           >
             <g
               id="SVGRepo_bgCarrier"
-              stroke-width="0"
+              strokeWidth="0"
               transform="translate(0,0), scale(1)"
             >
               <path
                 transform="translate(-6, -6), scale(2)"
                 fill="#00356f"
                 d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z"
-                strokewidth="0"
+                strokeWidth="0"
               ></path>
             </g>
             <g
               id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></g>
             <g id="SVGRepo_iconCarrier">
               {" "}
@@ -69,9 +70,9 @@ const CarrouselQuestions = () => {
               <g
                 id="Page-1"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 {" "}
                 <g
@@ -96,9 +97,11 @@ const CarrouselQuestions = () => {
         </div>
 
         <div className="w-full flex flex-col justify-center items-center text-white text-lg">
-          <div className="text-center font-bold mb-2">{Questions[currentIndex]}</div>
-          
-          <div className="text-center">{Answers[currentIndex]}</div> 
+          <div className="text-center font-bold mb-2">
+            {Questions[currentIndex]}
+          </div>
+
+          <div className="text-center">{Answers[currentIndex]}</div>
         </div>
 
         <div className="" onClick={nextSlide} style={{ cursor: "pointer" }}>
@@ -114,20 +117,20 @@ const CarrouselQuestions = () => {
           >
             <g
               id="SVGRepo_bgCarrier"
-              stroke-width="0"
+              strokeWidth="0"
               transform="translate(0,0), scale(1)"
             >
               <path
                 transform="translate(-6, -6), scale(2)"
                 fill="#00356f"
                 d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z"
-                strokewidth="0"
+                strokeWidth="0"
               ></path>
             </g>
             <g
               id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></g>
             <g id="SVGRepo_iconCarrier">
               {" "}
@@ -136,9 +139,9 @@ const CarrouselQuestions = () => {
               <g
                 id="Page-1"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 {" "}
                 <g
