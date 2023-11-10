@@ -9,10 +9,19 @@ import { useDispatch } from "react-redux";
 import { login } from "@/redux/slices";
 import { USER_ROUTES } from "@/routes/routes";
 
+
+
+
+
+import { ModalForgetPassword } from '..';
+
+
 const LoginForm = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  const [errors, setErrors] = useState({});
-  const [isDisabled, setIsDisabled] = useState(true);
+    const [formData, setFormData] = useState({ email: '', password: '' });
+    const [errors, setErrors] = useState({});
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [showForgetPasswordModal, setShowForgetPasswordModal] = useState(false)
+
 
   const dispatch = useDispatch();
 
@@ -142,6 +151,11 @@ const LoginForm = () => {
           />
         </div>
 
+                <div className="mt-2 flex items-center">
+                    <button onClick={() => setShowForgetPasswordModal(true)}>Olvidaste tu contraseña?</button>
+                </div>
+            
+
         <div className="mt-2">
           <input
             type="checkbox"
@@ -155,15 +169,6 @@ const LoginForm = () => {
             Recordarme
           </label>
         </div>
-
-        <div className="mt-2 flex items-center">
-          <Link href="/forgetPassword" className="text-sm mt-1">
-            Olvidaste tu contraseña?
-          </Link>
-        </div>
-        <Link href="/register" className="text-sm mt-1">
-          Registrarme
-        </Link>
         <div className="mt-2 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           <button type="submit">Iniciar sesión</button>
         </div>
@@ -175,6 +180,7 @@ const LoginForm = () => {
           <span className="ml-2">Iniciar sesión con Google</span>
         </button>
       </div>
+      <ModalForgetPassword isVisible={showForgetPasswordModal} onClose={() => setShowForgetPasswordModal(false)}/>
     </div>
   );
 };

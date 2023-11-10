@@ -1,12 +1,15 @@
-'use client'
-import Navbar from '@/components/navbar'
-import { useSelector } from 'react-redux'
+"use client";
+import { CarrouselQuestions, CarrouselServices, Description } from "@/components";
+import React from "react";
 
-export default function Home() {
-  console.log(useSelector(state=>state))
+const Home = () => {
   return (
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <Navbar />
-      </main>
-  )
-}
+    <div className="relative w-4/5 mx-auto flex flex-col overflow-hidden h-screen justify-around">
+      <Description/>
+      <CarrouselServices/>
+      <CarrouselQuestions/>
+    </div>
+  );
+};
+
+export default Home;
