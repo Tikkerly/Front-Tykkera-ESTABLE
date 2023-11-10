@@ -1,13 +1,15 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
-import GoogleIcon from "@mui/icons-material/Google";
-import { validation } from "@/utils";
+'use client';
+import React, { useState } from 'react';
+import GoogleIcon from '@mui/icons-material/Google';
+import { validation } from '@/utils';
+import { ModalForgetPassword } from '..';
 
 const LoginForm = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  const [errors, setErrors] = useState({});
-  const [isDisabled, setIsDisabled] = useState(true);
+    const [formData, setFormData] = useState({ email: '', password: '' });
+    const [errors, setErrors] = useState({});
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [showForgetPasswordModal, setShowForgetPasswordModal] = useState(false)
+
 
   const handleChange = (event) => {
     setErrors(
@@ -117,6 +119,11 @@ const LoginForm = () => {
           />
         </div>
 
+                <div className="mt-2 flex items-center">
+                    <button onClick={() => setShowForgetPasswordModal(true)}>Olvidaste tu contraseña?</button>
+                </div>
+            
+
         <div className="mt-2">
           <input
             type="checkbox"
@@ -131,11 +138,6 @@ const LoginForm = () => {
           </label>
         </div>
 
-        <div className="mt-2 flex items-center">
-          <Link href="/forgetPassword" className="text-sm mt-1">
-            Olvidaste tu contraseña?
-          </Link>
-        </div>
         <Link href="/register" className="text-sm mt-1">
           Registrarme
         </Link>
@@ -150,6 +152,7 @@ const LoginForm = () => {
           <span className="ml-2">Iniciar sesión con Google</span>
         </button>
       </div>
+      <ModalForgetPassword isVisible={showForgetPasswordModal} onClose={() => setShowForgetPasswordModal(false)}/>
     </div>
   );
 };

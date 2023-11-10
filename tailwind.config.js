@@ -18,6 +18,7 @@ module.exports = {
       },
 
       colors: {
+
         //colores que pide la empresa
         'Az1': '#00356f',
         'Az2': '#0091d2',
