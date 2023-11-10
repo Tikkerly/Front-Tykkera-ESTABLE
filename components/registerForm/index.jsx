@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { USER_ROUTES } from "@/routes/routes";
 import { validation } from "@/utils";
+import Swal from 'sweetalert2';
 import axios from "axios";
 
 const Registration = () => {
@@ -10,9 +11,19 @@ const Registration = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    personType: '',
+    phone: '',
+    clientId: '',
+    img: null,
+    rol: 'CLIENTE'
   });
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, img: file });
+  };
 
   const handleChange = (e) => {
     setErrors(
@@ -41,15 +52,43 @@ const Registration = () => {
       username: formData.username,
       email: formData.email,
       password: formData.password,
+      personType: formData.personType,
+      phone: formData.phone,
+      clientId: formData.clientId,
+      img: formData.img,
+      rol: formData.rol,
     };
+
+    setFormData({
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      personType: '',
+      phone: '',
+      clientId: '',
+      img: null,
+    })
+
 
     try {
       const response = await axios.post(USER_ROUTES.registerUser, user);
-      alert("Registro exitoso");
-      console.log(response.data);
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: response.data.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
+
     } catch (error) {
-      alert("Error durante el registro");
-      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Error durante el registro",
+        text: error.response.data.errors[0].msg,
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
     }
   };
 
@@ -261,33 +300,61 @@ const Registration = () => {
               </svg>
             </div>
             <input
-              id="identificationC"
-              name="identificationC"
+              id="clientId"
+              name="clientId"
               type="text"
               autoComplete="current-phone"
               required
               className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg"
               placeholder="Numero de identificacion"
-              value={formData.phone}
+              value={formData.clientId}
               onChange={handleChange}
             />{" "}
-            {errors.phone && <p className="text-red-500">{errors.phone}</p>}
+            {errors.clientId && <p className="text-red-500">{errors.clientId}</p>}
           </div>
         </div>
         <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
           <div className="absolute left-2 top-2"></div>
           <select
-            id="person-type"
-            name="person-type"
+            id="personType"
+            name="personType"
             required
             className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
             value={formData.personType}
             onChange={handleChange}
           >
-            <option value="">Tipo de persona</option>
-            <option value="natural">Persona Natural</option>
-            <option value="juridica">Persona Juridica</option>
+            <option value="Tipodepersona">Tipo de persona</option>
+            <option value="Persona Natural">Persona Natural</option>
+            <option value="Persona Juridica">Persona Juridica</option>
           </select>
+        </div>
+        {errors.personType && <p className="text-red-500">{errors.personType}</p>}
+
+        <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
+          <div className="absolute left-2 top-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="23"
+              height="29"
+              viewBox="0 0 23 29"
+              fill="none"
+            >
+              <path
+                d="M18.5769 0H4.42308C1.98154 0 0 1.47636 0 3.29545V25.7045C0 27.5236 1.98154 29 4.42308 29H18.5769C21.0185 29 23 27.5236 23 25.7045V3.29545C23 1.47636 21.0185 0 18.5769 0ZM11.5 27.6818C10.0315 27.6818 8.84615 26.7986 8.84615 25.7045C8.84615 24.6105 10.0315 23.7273 11.5 23.7273C12.9685 23.7273 14.1538 24.6105 14.1538 25.7045C14.1538 26.7986 12.9685 27.6818 11.5 27.6818ZM19.4615 22.4091H3.53846V3.95455H19.4615V22.4091Z"
+                fill="black"
+              />
+            </svg>
+          </div>
+          <input
+            id="img"
+            name="img"
+            type="file"
+            accept="image/*" // Aceptar solo archivos de imagen
+            required
+            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg"
+            onChange={handleImageChange}
+          />
+          {errors.img && <p className="text-red-500">{errors.img}</p>}
         </div>
 
         <div className="mt-8">
