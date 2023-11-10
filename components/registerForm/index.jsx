@@ -93,8 +93,8 @@ const Registration = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl mb-4">Regístrate</h1>
+    <div className="bg-Az4 p-8 rounded-lg shadow-xl ">
+      <h1 className="text-2xl mb-5 bg-indigo-600 p-2 rounded-lg font-bold bg-opacity-32 avant-garde-bold shadow-xl ">Regístrate</h1>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2 gap-4">
           <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
@@ -118,17 +118,17 @@ const Registration = () => {
               type="text"
               autoComplete="username"
               required
-              className="bg-transparent  w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 rounded-lg text-black "
+              className="bg-transparent  w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 rounded-lg text-black font-regular avant-garde-regular text-sm "
               placeholder="Nombre de usuario"
               value={formData.username}
               onChange={handleChange}
             />{" "}
             {errors.username && (
-              <p className="text-red-500 ">{errors.username}</p>
+              <p className="text-red-500 font-regular avant-garde-regular">{errors.username}</p>
             )}
           </div>
 
-          <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
+          <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4 ">
             <div className="absolute left-2 top-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -156,12 +156,12 @@ const Registration = () => {
               type="email"
               autoComplete="email"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
+              className="text-sm bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
               placeholder="Correo electrónico"
               value={formData.email}
               onChange={handleChange}
             />{" "}
-            {errors.email && <p className="text-red-500">{errors.email}</p>}
+            {errors.email && <p className="text-red-500 font-regular avant-garde-regular">{errors.email}</p>}
           </div>
         </div>
 
@@ -194,13 +194,13 @@ const Registration = () => {
               type="password"
               autoComplete="current-password"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Contraseña"
               value={formData.password}
               onChange={handleChange}
             />{" "}
             {errors.password && (
-              <p className="text-red-500">{errors.password}</p>
+              <p className="text-red-500 font-regular avant-garde-regular">{errors.password}</p>
             )}
           </div>
 
@@ -232,13 +232,13 @@ const Registration = () => {
               type="password"
               autoComplete="current-password"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Confirmar contraseña"
               value={formData.confirmPassword}
               onChange={handleChange}
             />{" "}
             {errors.confirmPassword && (
-              <p className="text-red-500">{errors.confirmPassword}</p>
+              <p className="text-red-500 font-regular avant-garde-regular">{errors.confirmPassword}</p>
             )}
           </div>
         </div>
@@ -265,12 +265,12 @@ const Registration = () => {
               type="number"
               autoComplete="current-phone"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Numero de celular"
               value={formData.phone}
               onChange={handleChange}
             />{" "}
-            {errors.phone && <p className="text-red-500">{errors.phone}</p>}
+            {errors.phone && <p className="text-red-500 font-regular avant-garde-regular">{errors.phone}</p>}
           </div>
 
           <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
@@ -305,12 +305,12 @@ const Registration = () => {
               type="text"
               autoComplete="current-phone"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Numero de identificacion"
               value={formData.clientId}
               onChange={handleChange}
             />{" "}
-            {errors.clientId && <p className="text-red-500">{errors.clientId}</p>}
+            {errors.clientId && <p className="text-red-500 font-regular avant-garde-regular">{errors.clientId}</p>}
           </div>
         </div>
         <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
@@ -319,7 +319,7 @@ const Registration = () => {
             id="personType"
             name="personType"
             required
-            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
+            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
             value={formData.personType}
             onChange={handleChange}
           >
@@ -328,7 +328,7 @@ const Registration = () => {
             <option value="Persona Juridica">Persona Juridica</option>
           </select>
         </div>
-        {errors.personType && <p className="text-red-500">{errors.personType}</p>}
+        {errors.personType && <p className="text-red-500 font-regular avant-garde-regular">{errors.personType}</p>}
 
         <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
           <div className="absolute left-2 top-2">
@@ -351,17 +351,17 @@ const Registration = () => {
             type="file"
             accept="image/*" // Aceptar solo archivos de imagen
             required
-            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg"
+            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular"
             onChange={handleImageChange}
           />
-          {errors.img && <p className="text-red-500">{errors.img}</p>}
+          {errors.img && <p className="text-red-500 font-regular avant-garde-regular">{errors.img}</p>}
         </div>
 
         <div className="mt-8">
           <button
             disabled={isDisabled}
             type="submit"
-            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="group relative w-full flex justify-center py-2 px-4 border border-transparent font-regular avant-garde-regular text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             href="/register"
           >
             Registrarse
