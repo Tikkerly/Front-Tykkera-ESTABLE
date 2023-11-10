@@ -3,12 +3,18 @@ import React, { Fragment, useState } from "react";
 import logotipo from "../../public/logo.png";
 import Link from "next/link";
 import Image from "next/image";
-import { ModalLogin, ModalRegister } from "@/components";
+import { ModalRegister } from "@/components";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  const route = usePathname();
+  const isNotOnPageAuth = !(route === '/ingresar' || route === '/registrarse')
   const [showRegisterModal, setShowRegisterModal] = useState(false);
-
+  if (!isNotOnPageAuth) {
+    return (
+      <></>
+    )
+  }
   return (
     <Fragment>
       <div
@@ -27,12 +33,14 @@ const Navbar = () => {
           </Link>
         </div>
         <div>
-          <button
-            className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
-            onClick={() => setShowLoginModal(true)}
-          >
-            Ingresar
-          </button>
+          <Link href='/ingresar'>
+            <button
+              className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
+            >
+              Ingresar
+            </button>
+          </Link>
+
 
           <button
             className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
@@ -43,10 +51,6 @@ const Navbar = () => {
 
         </div>
       </div>
-      <ModalLogin
-        isVisible={showLoginModal}
-        onClose={() => setShowLoginModal(false)}
-      />
       <ModalRegister
         isVisible={showRegisterModal}
         onClose={() => setShowRegisterModal(false)}

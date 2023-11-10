@@ -31,13 +31,6 @@ const validation = (type, values) => {
                 errors.confirmPassword = 'Las contraseñas no coinciden';
             } 
             return errors
-
-    
-        case 'login':
-            if (!values.email) {
-                errors.email = 'El campo es obligatorio';
-            }
-            break;
     
     }
 }
