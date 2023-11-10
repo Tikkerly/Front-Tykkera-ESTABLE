@@ -5,7 +5,6 @@ export { default as CarrouselQuestions } from './carrouselQuestions/index.jsx'
 export { default as Description } from './description/index.jsx';
 export { default as ChangePassword } from './changePassword/index.jsx';
 export { default as UserActivation } from './userActivation/index.jsx';
-export { default as ModalRegister } from './modalRegister/index.jsx';
 export { default as Navbar } from './navBar/index.jsx'
 /// pendiente de Hacer los export correspondientes en el archivo de barril , todos estos no estaban en el archivo
 // export { default as TicketsView } from './ticketsView/index.jsx'
