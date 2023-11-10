@@ -5,7 +5,7 @@ import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
 import { validation } from "@/utils";
 import React, { useState } from "react";
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const RegisterForm = () => {
     personType: "",
     phone: "",
     clientId: "",
-    img: null,
+    img: "",
     rol: "CLIENTE",
   });
   const [errors, setErrors] = useState({});
@@ -50,7 +50,7 @@ const RegisterForm = () => {
     personType: formData.personType,
     phone: formData.phone,
     clientId: formData.clientId,
-    img: formData.img,
+    img: formData.img.name,
     rol: formData.rol,
   };
 
@@ -142,6 +142,25 @@ const RegisterForm = () => {
           </p>
         )}
       </div>
+      <div>
+        <select
+          id="personType"
+          name="personType"
+          required
+          className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
+          value={formData.personType}
+          onChange={handleChange}
+        >
+          <option value="Tipodepersona">Tipo de persona</option>
+          <option value="Persona Natural">Persona Natural</option>
+          <option value="Persona Juridica">Persona Juridica</option>
+        </select>
+      </div>
+      {errors.personType && (
+        <p className="text-red-500 font-regular avant-garde-regular">
+          {errors.personType}
+        </p>
+      )}
       <div className={styles.input}>
         <FormInputs
           placeholder={"Numero de identificacion"}
@@ -156,7 +175,7 @@ const RegisterForm = () => {
           </p>
         )}
       </div>
-      <SubmitButton text={'Registrarse'} type={'submit'}/>
+      <SubmitButton text={"Registrarse"} type={"submit"} />
     </form>
   );
 };
