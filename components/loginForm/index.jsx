@@ -11,10 +11,10 @@ import { ModalForgetPassword } from '..';
 
 
 const LoginForm = () => {
-    const [formData, setFormData] = useState({ email: '', password: '' });
-    const [errors, setErrors] = useState({});
-    const [isDisabled, setIsDisabled] = useState(true);
-    const [showForgetPasswordModal, setShowForgetPasswordModal] = useState(false)
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [errors, setErrors] = useState({});
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [showForgetPasswordModal, setShowForgetPasswordModal] = useState(false)
 
 
   const dispatch = useDispatch();
@@ -41,10 +41,7 @@ const LoginForm = () => {
     }
   };
 
-  useEffect(() => {
-  const token = 'Esto es un token';
-  Cookies.set('jwt-token', token, {expires: 7})
-  }, []);
+
 
 
   const handleSubmit = async (values) => {
@@ -54,11 +51,13 @@ const LoginForm = () => {
     }
     try {
       const response = await axios.post(USER_ROUTES.loginUser, body);
+      const token = response.data.token;
+      Cookies.set('jwt-token', token, { expires: 7 });
       if (response.data.errors) {
         setErrors(validation("login", formData, response.data.errors));
       } else {
         // Dispatch la acción login con la información del usuario
-        dispatch(login(response.data));
+        dispatch(login(response.data.user));
         alert("Inicio de sesión exitoso");
       }
     } catch (error) {
@@ -142,10 +141,10 @@ const LoginForm = () => {
           />
         </div>
 
-                <div className="mt-2 flex items-center">
-                    <button onClick={() => setShowForgetPasswordModal(true)}>Olvidaste tu contraseña?</button>
-                </div>
-            
+        <div className="mt-2 flex items-center">
+          <button onClick={() => setShowForgetPasswordModal(true)}>Olvidaste tu contraseña?</button>
+        </div>
+
 
         <div className="mt-2">
           <input
@@ -171,7 +170,7 @@ const LoginForm = () => {
           <span className="ml-2">Iniciar sesión con Google</span>
         </button>
       </div>
-      <ModalForgetPassword isVisible={showForgetPasswordModal} onClose={() => setShowForgetPasswordModal(false)}/>
+      <ModalForgetPassword isVisible={showForgetPasswordModal} onClose={() => setShowForgetPasswordModal(false)} />
     </div>
   );
 };
