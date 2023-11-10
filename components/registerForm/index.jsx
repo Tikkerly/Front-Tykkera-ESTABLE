@@ -87,7 +87,6 @@ const Registration = () => {
         icon: "error",
         title: "Error durante el registro",
         text: error.response.data.errors[0].msg,
-        footer: '<a href="#">Why do I have this issue?</a>'
       });
     }
   };
