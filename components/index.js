@@ -9,3 +9,4 @@ export { default as ChangePassword } from './changePassword/index.jsx';
 export { default as UserActivation } from './userActivation/index.jsx';
 export { default as ModalLogin } from './modalLogin/index.jsx';
 export { default as ModalRegister } from './modalRegister/index.jsx';
+export { default as ModalForgetPassword } from './modalForgetPassword/index.jsx';
