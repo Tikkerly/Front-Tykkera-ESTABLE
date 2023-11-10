@@ -1,6 +1,7 @@
 import React from "react";
 
 const Description = ()=>{
+
     return (
         <div className="mt-40">
           <h2 className="font-normal text-xl text-white  leading-7">
@@ -19,6 +20,7 @@ Nuestro sistema es perfecto para empresas de reparación y mantenimiento de equi
           </h2>
         </div>
       );
+
 }
 
 export default Description;

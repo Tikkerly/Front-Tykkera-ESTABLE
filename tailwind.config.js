@@ -18,13 +18,14 @@ module.exports = {
       },
 
       colors: {
+
         //colores que pide la empresa
-        '00356f': '#00356f',
-        '0091d2': '#0091d2',
-        '1dbbee': '#1dbbee',
-        '243244': '#243244',
-        '20b6ea': '#20b6ea',
-        'bcbcbc': '#bcbcbc',
+        'Az1': '#00356f',
+        'Az2': '#0091d2',
+        'Az3': '#1dbbee',
+        'Az4': '#243244',
+        'Az5': '#20b6ea',
+        'Be': '#bcbcbc',
 
         // light mode
         tremor: {
