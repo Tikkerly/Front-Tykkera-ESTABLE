@@ -8,6 +8,9 @@ import { useDispatch } from "react-redux";
 import { login } from "@/redux/slices";
 import { USER_ROUTES } from "@/routes/routes";
 import { ModalForgetPassword } from "..";
+import Swal from 'sweetalert2';
+import { useRouter } from 'next/navigation'
+
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -16,6 +19,7 @@ const LoginForm = () => {
   const [showForgetPasswordModal, setShowForgetPasswordModal] = useState(false);
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleChange = (event) => {
     setErrors(
@@ -38,6 +42,9 @@ const LoginForm = () => {
     }
   };
 
+ 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const body = {
@@ -54,10 +61,36 @@ const LoginForm = () => {
       } else {
         // Dispatch la acción login con la información del usuario
         dispatch(login(response.data.user));
-        alert("Inicio de sesión exitoso");
+        let timerInterval;
+        Swal.fire({
+          title: "Ingreso Exitoso!",
+          html: "I will close in <b></b> milliseconds.",
+          timer: 500,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+              timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+          }
+        });
       }
+      router.push('/user', { scroll: false });
     } catch (error) {
-      alert("Incorrect email or password");
+      Swal.fire({
+        icon: "error",
+        title: "No has podido Iniciar sesion",
+        text: error.response.data.msg,
+      });
     }
   };
 
