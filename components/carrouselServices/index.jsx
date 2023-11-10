@@ -91,12 +91,12 @@ const CarrouselServices = () => {
 
   return (
     <>
-      <div className="navigation-wrapper flex flex-col mt-4 w-6/12 h-1/2 mx-auto">
-        <div ref={sliderRef} className="keen-slider mt-4 align-center ">
+      <div className="navigation-wrapper flex flex-col mt-4 w-6/12 h-1/2 mx-auto ">
+        <div ref={sliderRef} className="keen-slider mt-4 align-center rounded-lg ">
           {features.map((feature, index) => (
             <div key={index} className="keen-slider__slide relative">
-              <h2 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/4 text-3xl font-bold avant-garde-bold  bg-white bg-opacity-75 text-black p-2 rounded-lg">{feature.title}</h2>
-              <p className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-3/4 font-regular avant-garde-regular text-lg bg-white bg-opacity-75 text-black text-center p-2 w-auto h-auto rounded-lg mt-4">{feature.description}</p>
+              <h2 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/4 text-3xl font-bold avant-garde-bold  bg-black bg-opacity-75 text-white p-2 rounded-lg">{feature.title}</h2>
+              <p className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-3/4 font-regular avant-garde-regular text-lg bg-black bg-opacity-75 text-white text-center p-2 w-auto h-auto rounded-lg mt-4">{feature.description}</p>
               <Image className="bg-cover bg-center" src={feature.backgroundImage} alt="Slide 1" width={1250} height={500} />
             </div>
           ))}
