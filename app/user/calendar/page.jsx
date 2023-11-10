@@ -1,13 +1,20 @@
-import React from 'react';
-import TicketsView from '@/components/ticketsView/index';
+'use client';
+import React, { useEffect, useRef } from 'react';
+import CalendarUser from '@/components/calendarUser/index';
 
+const UserTicketss = () => {
+  const calendarRef = useRef(null);
 
-const UserTickets = () => {
+  useEffect(() => {
+    const calendar = new CalendarUser(calendarRef.current);
+    calendar.render();
+  }, []);
+
   return (
     <div>
-      <TicketsView />
+      <div ref={calendarRef}></div>
     </div>
   );
 };
 
-export default  UserTickets;
+export default UserTicketss;

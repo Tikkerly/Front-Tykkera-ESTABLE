@@ -18,9 +18,9 @@ const Navbar = () => {
           </Link>
         </div>
         <div>
-          <button  className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg" onClick={() => setShowLoginModal(true)}>Ingresar</button>
+          <button  className="mr-2 py-1 px-1 p-8  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg" onClick={() => setShowLoginModal(true)}>Ingresar</button>
 
-          <button  className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg" onClick={() => setShowRegisterModal(true)}>Registrarse</button>
+          <button  className="mr-2 py-1 px-1 p-8 avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg" onClick={() => setShowRegisterModal(true)}>Registrarse</button>
         </div>
       </div>
       <ModalLogin isVisible={showLoginModal} onClose={() => setShowLoginModal(false)} />
