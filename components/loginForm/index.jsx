@@ -1,8 +1,15 @@
-'use client';
-import React, { useState } from 'react';
-import GoogleIcon from '@mui/icons-material/Google';
-import { validation } from '@/utils';
-import { ModalForgetPassword } from '..';
+"use client";
+import React, { useEffect, useState } from "react";
+import GoogleIcon from "@mui/icons-material/Google";
+import { validation } from "@/utils";
+import Cookies from "js-cookie";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { login } from "@/redux/slices";
+import { USER_ROUTES } from "@/routes/routes";
+import { ModalForgetPassword } from "..";
+import Swal from 'sweetalert2';
+import { useRouter } from 'next/navigation'
 
 const LoginForm = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -10,6 +17,8 @@ const LoginForm = () => {
     const [isDisabled, setIsDisabled] = useState(true);
     const [showForgetPasswordModal, setShowForgetPasswordModal] = useState(false)
 
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleChange = (event) => {
     setErrors(
@@ -32,14 +41,53 @@ const LoginForm = () => {
     }
   };
 
-  const handleSubmit = async (values) => {
-    setLoading(true);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const body = {
+      email: formData.email,
+      password: formData.password,
+    };
     try {
-      message.success("Logged in successfully");
+      const response = await axios.post(USER_ROUTES.loginUser, body);
+      console.log(response);
+      const token = response.data.token;
+      Cookies.set("jwt-token", token, { expires: 7 });
+      if (response.data.errors) {
+        setErrors(validation("login", formData, response.data.errors));
+      } else {
+        // Dispatch la acción login con la información del usuario
+        dispatch(login(response.data.user));
+        let timerInterval;
+        Swal.fire({
+          title: "Ingreso Exitoso!",
+          html: "I will close in <b></b> milliseconds.",
+          timer: 500,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+              timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+          }
+        });
+      }
+      router.push('/user', { scroll: false });
     } catch (error) {
-      message.error("Incorrect email or password");
-    } finally {
-      setLoading(false);
+      Swal.fire({
+        icon: "error",
+        title: "No has podido Iniciar sesion",
+        text: error.response.data.msg,
+      });
     }
   };
 
