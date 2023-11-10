@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { USER_ROUTES } from "@/routes/routes";
 import { validation } from "@/utils";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import axios from "axios";
 
 
@@ -12,11 +12,11 @@ const Registration = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    personType: '',
-    phone: '',
-    clientId: '',
+    personType: "",
+    phone: "",
+    clientId: "",
     img: null,
-    rol: 'CLIENTE'
+    rol: "CLIENTE",
   });
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
@@ -65,12 +65,11 @@ const Registration = () => {
       email: "",
       password: "",
       confirmPassword: "",
-      personType: '',
-      phone: '',
-      clientId: '',
+      personType: "",
+      phone: "",
+      clientId: "",
       img: null,
-    })
-
+    });
 
     try {
       const response = await axios.post(USER_ROUTES.registerUser, user);
@@ -80,9 +79,8 @@ const Registration = () => {
         icon: "success",
         title: response.data.message,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
-
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -94,7 +92,9 @@ const Registration = () => {
 
   return (
     <div className="bg-Az4 p-8 rounded-lg shadow-xl ">
-      <h1 className="text-2xl mb-5 bg-indigo-600 p-2 rounded-lg font-bold bg-opacity-32 avant-garde-bold shadow-xl ">Regístrate</h1>
+      <h1 className="text-2xl mb-5 bg-indigo-600 p-2 rounded-lg font-bold bg-opacity-32 avant-garde-bold shadow-xl ">
+        Regístrate
+      </h1>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2 gap-4">
           <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
@@ -124,7 +124,9 @@ const Registration = () => {
               onChange={handleChange}
             />{" "}
             {errors.username && (
-              <p className="text-red-500 font-regular avant-garde-regular">{errors.username}</p>
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.username}
+              </p>
             )}
           </div>
 
@@ -161,7 +163,11 @@ const Registration = () => {
               value={formData.email}
               onChange={handleChange}
             />{" "}
-            {errors.email && <p className="text-red-500 font-regular avant-garde-regular">{errors.email}</p>}
+            {errors.email && (
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.email}
+              </p>
+            )}
           </div>
         </div>
 
@@ -200,7 +206,9 @@ const Registration = () => {
               onChange={handleChange}
             />{" "}
             {errors.password && (
-              <p className="text-red-500 font-regular avant-garde-regular">{errors.password}</p>
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.password}
+              </p>
             )}
           </div>
 
@@ -238,7 +246,9 @@ const Registration = () => {
               onChange={handleChange}
             />{" "}
             {errors.confirmPassword && (
-              <p className="text-red-500 font-regular avant-garde-regular">{errors.confirmPassword}</p>
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.confirmPassword}
+              </p>
             )}
           </div>
         </div>
@@ -270,7 +280,11 @@ const Registration = () => {
               value={formData.phone}
               onChange={handleChange}
             />{" "}
-            {errors.phone && <p className="text-red-500 font-regular avant-garde-regular">{errors.phone}</p>}
+            {errors.phone && (
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.phone}
+              </p>
+            )}
           </div>
 
           <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
@@ -310,7 +324,11 @@ const Registration = () => {
               value={formData.clientId}
               onChange={handleChange}
             />{" "}
-            {errors.clientId && <p className="text-red-500 font-regular avant-garde-regular">{errors.clientId}</p>}
+            {errors.clientId && (
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.clientId}
+              </p>
+            )}
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -337,7 +355,6 @@ const Registration = () => {
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M20.7273 5.45455V18C20.7273 20.4109 16.8218 22.3636 12 22.3636C7.17818 22.3636 3.27273 20.4109 3.27273 18V4.36364C3.27273 2.85818 5.71636 1.63636 8.72727 1.63636C11.7382 1.63636 14.1818 2.85818 14.1818 4.36364V15.8182C14.1818 16.4182 13.2 16.9091 12 16.9091C10.8 16.9091 9.81818 16.4182 9.81818 15.8182V5.45455H6.54545V15.8182C6.54545 17.3236 8.98909 18.5455 12 18.5455C15.0109 18.5455 17.4545 17.3236 17.4545 15.8182V4.36364C17.4545 1.95273 13.5491 0 8.72727 0C3.90545 0 0 1.95273 0 4.36364V18C0 21.3164 5.36727 24 12 24C18.6327 24 24 21.3164 24 18V5.45455H20.7273Z" fill="black" />
               </svg>
-
 
 
             </div>
