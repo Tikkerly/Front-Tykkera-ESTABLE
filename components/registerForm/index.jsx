@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import { USER_ROUTES } from "@/routes/routes";
 import { validation } from "@/utils";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import axios from "axios";
-import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 
 const Registration = () => {
   const [formData, setFormData] = useState({
@@ -12,11 +12,11 @@ const Registration = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    personType: '',
-    phone: '',
-    clientId: '',
+    personType: "",
+    phone: "",
+    clientId: "",
     img: null,
-    rol: 'CLIENTE'
+    rol: "CLIENTE",
   });
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
@@ -65,12 +65,11 @@ const Registration = () => {
       email: "",
       password: "",
       confirmPassword: "",
-      personType: '',
-      phone: '',
-      clientId: '',
+      personType: "",
+      phone: "",
+      clientId: "",
       img: null,
-    })
-
+    });
 
     try {
       const response = await axios.post(USER_ROUTES.registerUser, user);
@@ -80,9 +79,8 @@ const Registration = () => {
         icon: "success",
         title: response.data.message,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
-
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -94,7 +92,9 @@ const Registration = () => {
 
   return (
     <div className="bg-Az4 p-8 rounded-lg shadow-xl ">
-      <h1 className="text-2xl mb-5 bg-indigo-600 p-2 rounded-lg font-bold bg-opacity-32 avant-garde-bold shadow-xl ">Regístrate</h1>
+      <h1 className="text-2xl mb-5 bg-indigo-600 p-2 rounded-lg font-bold bg-opacity-32 avant-garde-bold shadow-xl ">
+        Regístrate
+      </h1>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-2 gap-4">
           <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
@@ -124,7 +124,9 @@ const Registration = () => {
               onChange={handleChange}
             />{" "}
             {errors.username && (
-              <p className="text-red-500 font-regular avant-garde-regular">{errors.username}</p>
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.username}
+              </p>
             )}
           </div>
 
@@ -161,7 +163,11 @@ const Registration = () => {
               value={formData.email}
               onChange={handleChange}
             />{" "}
-            {errors.email && <p className="text-red-500 font-regular avant-garde-regular">{errors.email}</p>}
+            {errors.email && (
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.email}
+              </p>
+            )}
           </div>
         </div>
 
@@ -200,7 +206,9 @@ const Registration = () => {
               onChange={handleChange}
             />{" "}
             {errors.password && (
-              <p className="text-red-500 font-regular avant-garde-regular">{errors.password}</p>
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.password}
+              </p>
             )}
           </div>
 
@@ -238,7 +246,9 @@ const Registration = () => {
               onChange={handleChange}
             />{" "}
             {errors.confirmPassword && (
-              <p className="text-red-500 font-regular avant-garde-regular">{errors.confirmPassword}</p>
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.confirmPassword}
+              </p>
             )}
           </div>
         </div>
@@ -270,7 +280,11 @@ const Registration = () => {
               value={formData.phone}
               onChange={handleChange}
             />{" "}
-            {errors.phone && <p className="text-red-500 font-regular avant-garde-regular">{errors.phone}</p>}
+            {errors.phone && (
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.phone}
+              </p>
+            )}
           </div>
 
           <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
@@ -310,7 +324,11 @@ const Registration = () => {
               value={formData.clientId}
               onChange={handleChange}
             />{" "}
-            {errors.clientId && <p className="text-red-500 font-regular avant-garde-regular">{errors.clientId}</p>}
+            {errors.clientId && (
+              <p className="text-red-500 font-regular avant-garde-regular">
+                {errors.clientId}
+              </p>
+            )}
           </div>
         </div>
         <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
@@ -324,13 +342,17 @@ const Registration = () => {
             onChange={handleChange}
           >
             <option value="Tipodepersona">Tipo de persona</option>
-            <option value="Persona Natural">Persona Natural</option>
-            <option value="Persona Juridica">Persona Juridica</option>
+            <option value="Natural">Persona Natural</option>
+            <option value="Juridica">Persona Juridica</option>
           </select>
         </div>
-        {errors.personType && <p className="text-red-500 font-regular avant-garde-regular">{errors.personType}</p>}
+        {errors.personType && (
+          <p className="text-red-500 font-regular avant-garde-regular">
+            {errors.personType}
+          </p>
+        )}
 
-        <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
+        {/* <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
           <div className="absolute left-2 top-2">
             <InsertPhotoIcon fontSize="small" />
           </div>
@@ -344,7 +366,7 @@ const Registration = () => {
             onChange={handleImageChange}
           />
           {errors.img && <p className="text-red-500 font-regular avant-garde-regular">{errors.img}</p>}
-        </div>
+        </div> */}
 
         <div className="mt-8">
           <button
