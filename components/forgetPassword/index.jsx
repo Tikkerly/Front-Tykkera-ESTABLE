@@ -23,10 +23,10 @@ const ForgetPassword = () => {
 
     }
     return (
-        <div className="">
-            <h1 className="text-4xl mb-5">Recuperar contraseña</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
+        <div className="bg-Az4 p-8 rounded-lg shadow-xl flex flex-col items-center justify-center">
+            <h1 className="text-4xl mb-5 bg-indigo-600 p-2 rounded-lg font-bold bg-opacity-32 avant-garde-bold">Recuperar contraseña</h1>
+            <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
+                <div className=" relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
                     <label htmlFor="email"></label>
                     <div className="absolute left-2 top-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
@@ -39,22 +39,15 @@ const ForgetPassword = () => {
                         type="email"
                         autoComplete="email"
                         required
-                        className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
+                        className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regula"
                         placeholder="Correo electrónico"
                         value={formData.email}
                         onChange={handleChange}
                     />
                 </div>
 
-
-
-
-                <div className="mt-2 flex items-center">
-                    <Link href="/login" className="text-sm mt-1">Regresar a la pagina anterior</Link>
-                </div>
-
                 <div className="mt-2 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    <button type="submit">Recuperar contraseña</button>
+                    <button type="submit" className='font-bold avant-garde-bold'>Recuperar contraseña</button>
                 </div>
 
             </form>
