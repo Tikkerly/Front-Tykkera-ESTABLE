@@ -40,6 +40,7 @@ const Navbar = () => {
           >
             Registrarse
           </button>
+
         </div>
       </div>
       <ModalLogin

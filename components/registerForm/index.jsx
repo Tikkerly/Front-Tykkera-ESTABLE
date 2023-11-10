@@ -4,7 +4,7 @@ import { USER_ROUTES } from "@/routes/routes";
 import { validation } from "@/utils";
 import Swal from "sweetalert2";
 import axios from "axios";
-import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
+
 
 const Registration = () => {
   const [formData, setFormData] = useState({
@@ -331,42 +331,45 @@ const Registration = () => {
             )}
           </div>
         </div>
-        <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
-          <div className="absolute left-2 top-2"></div>
-          <select
-            id="personType"
-            name="personType"
-            required
-            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
-            value={formData.personType}
-            onChange={handleChange}
-          >
-            <option value="Tipodepersona">Tipo de persona</option>
-            <option value="Natural">Persona Natural</option>
-            <option value="Juridica">Persona Juridica</option>
-          </select>
-        </div>
-        {errors.personType && (
-          <p className="text-red-500 font-regular avant-garde-regular">
-            {errors.personType}
-          </p>
-        )}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
+            <div className="absolute left-2 top-2"></div>
+            <select
+              id="personType"
+              name="personType"
+              required
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
+              value={formData.personType}
+              onChange={handleChange}
+            >
 
-        {/* <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
-          <div className="absolute left-2 top-2">
-            <InsertPhotoIcon fontSize="small" />
+              <option value="Tipodepersona">Tipo de persona</option>
+              <option value="Persona Natural">Persona Natural</option>
+              <option value="Persona Juridica">Persona Juridica</option>
+            </select>
           </div>
-          <input
-            id="img"
-            name="img"
-            type="file"
-            accept="image/*" // Aceptar solo archivos de imagen
-            required
-            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular"
-            onChange={handleImageChange}
-          />
-          {errors.img && <p className="text-red-500 font-regular avant-garde-regular">{errors.img}</p>}
-        </div> */}
+          {errors.personType && <p className="text-red-500 font-regular avant-garde-regular">{errors.personType}</p>}
+
+          <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
+            <div className="absolute left-2 top-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M20.7273 5.45455V18C20.7273 20.4109 16.8218 22.3636 12 22.3636C7.17818 22.3636 3.27273 20.4109 3.27273 18V4.36364C3.27273 2.85818 5.71636 1.63636 8.72727 1.63636C11.7382 1.63636 14.1818 2.85818 14.1818 4.36364V15.8182C14.1818 16.4182 13.2 16.9091 12 16.9091C10.8 16.9091 9.81818 16.4182 9.81818 15.8182V5.45455H6.54545V15.8182C6.54545 17.3236 8.98909 18.5455 12 18.5455C15.0109 18.5455 17.4545 17.3236 17.4545 15.8182V4.36364C17.4545 1.95273 13.5491 0 8.72727 0C3.90545 0 0 1.95273 0 4.36364V18C0 21.3164 5.36727 24 12 24C18.6327 24 24 21.3164 24 18V5.45455H20.7273Z" fill="black" />
+              </svg>
+
+
+            </div>
+            <input
+              id="img"
+              name="img"
+              type="file"
+              accept="image/*" // Aceptar solo archivos de imagen
+              required
+              className="bg-transparent bg-cover w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
+              onChange={handleImageChange}
+            />
+            {errors.img && <p className="text-red-500 font-regular avant-garde-regular">{errors.img}</p>}
+          </div>
+        </div>
 
         <div className="mt-8">
           <button
