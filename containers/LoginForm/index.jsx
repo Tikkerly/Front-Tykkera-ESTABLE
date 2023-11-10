@@ -25,7 +25,6 @@ export default function LoginForm() {
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
-
     }
     return (
         <form onSubmit={handleSubmit} className={styles.container}>
