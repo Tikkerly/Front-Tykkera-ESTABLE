@@ -7,18 +7,15 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "@/redux/slices";
 import { USER_ROUTES } from "@/routes/routes";
-import { ModalForgetPassword } from '..';
-
+import { ModalForgetPassword } from "..";
 
 const LoginForm = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
-  const [showForgetPasswordModal, setShowForgetPasswordModal] = useState(false)
-
+  const [showForgetPasswordModal, setShowForgetPasswordModal] = useState(false);
 
   const dispatch = useDispatch();
-
 
   const handleChange = (event) => {
     setErrors(
@@ -41,18 +38,17 @@ const LoginForm = () => {
     }
   };
 
-
-
-
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const body = {
       email: formData.email,
       password: formData.password,
-    }
+    };
     try {
       const response = await axios.post(USER_ROUTES.loginUser, body);
+      console.log(response);
       const token = response.data.token;
-      Cookies.set('jwt-token', token, { expires: 7 });
+      Cookies.set("jwt-token", token, { expires: 7 });
       if (response.data.errors) {
         setErrors(validation("login", formData, response.data.errors));
       } else {
@@ -142,9 +138,10 @@ const LoginForm = () => {
         </div>
 
         <div className="mt-2 flex items-center">
-          <button onClick={() => setShowForgetPasswordModal(true)}>Olvidaste tu contraseña?</button>
+          <button onClick={() => setShowForgetPasswordModal(true)}>
+            Olvidaste tu contraseña?
+          </button>
         </div>
-
 
         <div className="mt-2">
           <input
@@ -170,7 +167,10 @@ const LoginForm = () => {
           <span className="ml-2">Iniciar sesión con Google</span>
         </button>
       </div>
-      <ModalForgetPassword isVisible={showForgetPasswordModal} onClose={() => setShowForgetPasswordModal(false)} />
+      <ModalForgetPassword
+        isVisible={showForgetPasswordModal}
+        onClose={() => setShowForgetPasswordModal(false)}
+      />
     </div>
   );
 };
