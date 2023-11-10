@@ -93,7 +93,7 @@ const CarrouselServices = () => {
           </svg>
         </div>
 
-        <div className="w-full flex flex-col justify-center items-center text-white text-lg font-normal avant-garde-regular text-center">
+        <div className="w-full flex flex-col justify-center items-center text-white text-lg font-regular avant-garde-regular text-center">
           {services[currentIndex]}
         </div>
 

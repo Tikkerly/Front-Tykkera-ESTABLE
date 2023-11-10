@@ -11,16 +11,16 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      <div className="bg-gradient-to-r from-1dbbee via-0091d2 to-00356f p-4 text-white flex flex-row items-center justify-between">
+      <div style={{ background: '#0576e6e3'}} className="p-4 text-white flex flex-row items-center justify-between shadow-lg">
         <div>
           <Link href="/">
-            <Image src={logotipo} width={250} height={250} alt="Logotipo" />
+            <Image src={logotipo} width={250} height={250} alt="Logotipo" className=" bg-white bg-opacity-75 shadow-lg rounded transition duration-300 ease-in-out hover:bg-white hover: bg-opacity-85" />
           </Link>
         </div>
         <div>
-          <button className="mr-2 font-bold avant-garde-bold" onClick={() => setShowLoginModal(true)}>Ingresar</button>
+          <button  className="mr-2 py-1 px-1 font-bold avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg" onClick={() => setShowLoginModal(true)}>Ingresar</button>
 
-          <button className="mr-2 font-bold avant-garde-bold" onClick={() => setShowRegisterModal(true)}>Registrarse</button>
+          <button  className="mr-2 py-1 px-1 font-bold avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg" onClick={() => setShowRegisterModal(true)}>Registrarse</button>
         </div>
       </div>
       <ModalLogin isVisible={showLoginModal} onClose={() => setShowLoginModal(false)} />

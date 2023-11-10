@@ -53,8 +53,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="">
-      <h1 className="text-4xl mb-5">Iniciar sesión</h1>
+    <div className="bg-Az4 p-8 rounded-lg shadow-xl ">
+      <h1 className="text-4xl mb-5 bg-indigo-600 p-2 rounded-lg font-bold bg-opacity-32 avant-garde-bold shadow-xl ">Iniciar sesión</h1>
       <form onSubmit={handleSubmit}>
         <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-4">
           <label htmlFor="email"></label>
@@ -78,7 +78,7 @@ const LoginForm = () => {
             type="email"
             autoComplete="email"
             required
-            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
+            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
             placeholder="Correo electrónico"
             value={formData.email}
             onChange={handleChange}
@@ -113,14 +113,14 @@ const LoginForm = () => {
             id="password"
             name="password"
             placeholder="Contraseña"
-            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
+            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
             value={formData.password}
             onChange={handleChange}
           />
         </div>
 
                 <div className="mt-2 flex items-center">
-                    <button onClick={() => setShowForgetPasswordModal(true)}>Olvidaste tu contraseña?</button>
+                    <button className=" text-xs font-regular avant-garde-regular hover:underline"onClick={() => setShowForgetPasswordModal(true)}>Olvidaste tu contraseña?</button>
                 </div>
             
 
@@ -129,23 +129,23 @@ const LoginForm = () => {
             type="checkbox"
             id="remember"
             name="remember"
-            className="mr-2 leading-tight"
+            className="mr-2 leading-tight appearance-none rounded-full w-3 h-3 border border-gray-300 checked:bg-green-500 checked:border-transparent"
             value={formData.remember}
             onChange={handleChange}
           />
-          <label htmlFor="remember" className="text-sm">
+          <label htmlFor="remember" className="text-sm font-regular avant-garde-regular">
             Recordarme
           </label>
         </div>
-        <div className="mt-2 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          <button type="submit">Iniciar sesión</button>
+        <div className=" mt-2 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button type="submit" className="font-bold avant-garde-bold">Iniciar sesión</button>
         </div>
       </form>
 
       <div className="mt-4">
-        <button className="mt-2 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+        <button className=" mt-2 group relative w-full flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
           <GoogleIcon />
-          <span className="ml-2">Iniciar sesión con Google</span>
+          <span className="font-bold avant-garde-bold ml-2">Iniciar sesión con Google</span>
         </button>
       </div>
       <ModalForgetPassword isVisible={showForgetPasswordModal} onClose={() => setShowForgetPasswordModal(false)}/>
