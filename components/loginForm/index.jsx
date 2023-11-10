@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import GoogleIcon from "@mui/icons-material/Google";
 import { validation } from "@/utils";
 import Cookies from "js-cookie";
@@ -8,11 +7,6 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "@/redux/slices";
 import { USER_ROUTES } from "@/routes/routes";
-
-
-
-
-
 import { ModalForgetPassword } from '..';
 
 
@@ -54,7 +48,6 @@ const LoginForm = () => {
 
 
   const handleSubmit = async (values) => {
-    setLoading(true);
     const body = {
       email: formData.email,
       password: formData.password,
@@ -66,12 +59,10 @@ const LoginForm = () => {
       } else {
         // Dispatch la acción login con la información del usuario
         dispatch(login(response.data));
-        message.success("Inicio de sesión exitoso");
+        alert("Inicio de sesión exitoso");
       }
     } catch (error) {
-      message.error("Incorrect email or password");
-    } finally {
-      setLoading(false);
+      alert("Incorrect email or password");
     }
   };
 
