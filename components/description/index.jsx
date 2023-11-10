@@ -4,7 +4,7 @@ const Description = ()=>{
 
     return (
         <div className="mt-40">
-          <h2 className="font-normal text-xl text-white  leading-7">
+          <h2 className="font-normal text-xl text-white text-center font-regular avant-garde-regular leading-7">
           En TechFixTickets, nos encargamos de administrar el registro, asignación y seguimiento de tickets de mesa de ayuda en empresas de reparación y mantenimiento de equipos tecnológicos. Nos especializamos en la creación de plataformas eficientes y estéticamente agradables que facilitan el acceso a la información y optimizan el tiempo de los empleados.
 
 Nuestro sistema de tickets se basa en una estructura simple y eficiente, lo que permite a las empresas enfocarse en brindar un excelente servicio a sus clientes. Los usuarios pueden crear tickets, asignarlos a los empleados encargados y actualizar su estado, lo que garantiza un flujo de trabajo eficiente y ordenado.
