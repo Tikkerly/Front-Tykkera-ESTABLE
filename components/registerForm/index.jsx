@@ -4,6 +4,7 @@ import { USER_ROUTES } from "@/routes/routes";
 import { validation } from "@/utils";
 import Swal from 'sweetalert2';
 import axios from "axios";
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 
 const Registration = () => {
   const [formData, setFormData] = useState({
@@ -331,18 +332,7 @@ const Registration = () => {
 
         <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
           <div className="absolute left-2 top-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="23"
-              height="29"
-              viewBox="0 0 23 29"
-              fill="none"
-            >
-              <path
-                d="M18.5769 0H4.42308C1.98154 0 0 1.47636 0 3.29545V25.7045C0 27.5236 1.98154 29 4.42308 29H18.5769C21.0185 29 23 27.5236 23 25.7045V3.29545C23 1.47636 21.0185 0 18.5769 0ZM11.5 27.6818C10.0315 27.6818 8.84615 26.7986 8.84615 25.7045C8.84615 24.6105 10.0315 23.7273 11.5 23.7273C12.9685 23.7273 14.1538 24.6105 14.1538 25.7045C14.1538 26.7986 12.9685 27.6818 11.5 27.6818ZM19.4615 22.4091H3.53846V3.95455H19.4615V22.4091Z"
-                fill="black"
-              />
-            </svg>
+            <InsertPhotoIcon fontSize="small" />
           </div>
           <input
             id="img"
