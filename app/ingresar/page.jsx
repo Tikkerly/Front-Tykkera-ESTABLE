@@ -12,7 +12,8 @@ export default function LoginPage() {
             <div className="mx-62 w-62 bg-gray-500 flex flex-col items-center justify-center text-gray gap-16">
                 <Image
                     src={logo}
-                    style={{ width: '100%', maxWidth: '75%' }} // Establece el ancho de la imagen
+                    style={{ width: '100%', maxWidth: '75%' }}
+                    className="transition-transform duration-300 transform hover:scale-103 filter hover:brightness-110"
                 />
                 <Link href='/' className="absolute left-5 top-5 flex items-center gap-4">
                     <HomeIcon fontSize='large'/>

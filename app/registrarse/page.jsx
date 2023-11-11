@@ -14,6 +14,7 @@ const RegisterPage = () => {
                 <Image
                     src={logo}
                     style={{ width: '100%', maxWidth: '75%' }}
+                    className="transition-transform duration-300 transform hover:scale-103 filter hover:brightness-110"
                 />
                 <Link href='/' className="absolute left-5 top-5 flex items-center gap-4">
                     <HomeIcon fontSize='large'/>
