@@ -57,8 +57,8 @@ const RegisterForm = () => {
   const handleSubmit = registerSubmit(USER_ROUTES.registerUser, user, router);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className={styles.input}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center w-80">
+      <div className="flex items-center gap-2 flex-col">
         <FormInputs
           placeholder={"Nombre de usuario"}
           name={"username"}
@@ -66,13 +66,16 @@ const RegisterForm = () => {
           onChange={handleChange}
           type={"text"}
         />
-        {errors.username && (
-          <p className="text-red-500 font-regular avant-garde-regular">
-            {errors.username}
-          </p>
-        )}
+        <div className="h-2">
+          {errors.username && (
+            <p className="text-red-500 font-regular avant-garde-regular text-sm">
+              {errors.username}
+            </p>
+          )}
+        </div>
+
       </div>
-      <div className={styles.input}>
+      <div className="flex items-center gap-2 flex-col">
         <FormInputs
           placeholder={"Correo electrónico"}
           name={"email"}
@@ -80,13 +83,16 @@ const RegisterForm = () => {
           onChange={handleChange}
           type={"email"}
         />
-        {errors.email && (
-          <p className="text-red-500 font-regular avant-garde-regular">
-            {errors.email}
-          </p>
-        )}
+        <div className="h-2">
+         {errors.email && (
+            <p className="text-red-500 font-regular avant-garde-regular text-sm">
+              {errors.email}
+            </p>
+         )}
+        </div>
+
       </div>
-      <div className={styles.input}>
+      <div className="flex items-center gap-2 flex-col">
         <FormInputs
           placeholder={"Contraseña"}
           name={"password"}
@@ -94,13 +100,16 @@ const RegisterForm = () => {
           onChange={handleChange}
           type={"password"}
         />
-        {errors.password && (
-          <p className="text-red-500 font-regular avant-garde-regular">
-            {errors.password}
-          </p>
-        )}
+        <div className="h-2">
+          {errors.password && (
+            <p className="text-red-500 font-regular avant-garde-regular text-sm">
+              {errors.password}
+            </p>
+          )}
+        </div>
+
       </div>
-      <div className={styles.input}>
+      <div className="flex items-center gap-2 flex-col">
         <FormInputs
           placeholder={"Confirmar contraseña"}
           name={"confirmPassword"}
@@ -108,13 +117,16 @@ const RegisterForm = () => {
           onChange={handleChange}
           type={"password"}
         />
-        {errors.confirmPassword && (
-          <p className="text-red-500 font-regular avant-garde-regular">
-            {errors.confirmPassword}
-          </p>
-        )}
+        <div className="h-2">
+         {errors.confirmPassword && (
+            <p className="text-red-500 font-regular avant-garde-regular text-sm ">
+              {errors.confirmPassword}
+            </p>
+          )}
+        </div>
+
       </div>
-      <div className={styles.input}>
+      <div className="flex items-center gap-2 flex-col">
         <FormInputs
           placeholder={"Numero de celular"}
           name={"phone"}
@@ -122,13 +134,16 @@ const RegisterForm = () => {
           onChange={handleChange}
           type={"number"}
         />
-        {errors.phone && (
-          <p className="text-red-500 font-regular avant-garde-regular">
-            {errors.phone}
-          </p>
-        )}
+        <div className="h-2">
+          {errors.phone && (
+            <p className="text-red-500 font-regular avant-garde-regular text-sm">
+              {errors.phone}
+            </p>
+          )}
+        </div>
+
       </div>
-      <div className={styles.input}>
+      <div className="flex items-center gap-2 flex-col">
         <FormInputs
           placeholder={"Numero de identificacion"}
           name={"clientId"}
@@ -136,18 +151,21 @@ const RegisterForm = () => {
           onChange={handleChange}
           type={"text"}
         />
-        {errors.clientId && (
-          <p className="text-red-500 font-regular avant-garde-regular">
-            {errors.clientId}
-          </p>
-        )}
+        <div className="h-2">
+         {errors.clientId && (
+            <p className="text-red-500 font-regular avant-garde-regular text-sm">
+              {errors.clientId}
+            </p>
+          )}
+        </div>
+
       </div>
       <div>
         <select
           id="personType"
           name="personType"
           required
-          className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
+          className="bg-Be w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-800 rounded-lg font-regular avant-garde-regular"
           value={formData.personType}
           onChange={handleChange}
         >
@@ -156,22 +174,27 @@ const RegisterForm = () => {
           <option value="Persona Juridica">Persona Juridica</option>
         </select>
       </div>
+      <div className="h-2">
       {errors.personType && (
-        <p className="text-red-500 font-regular avant-garde-regular">
+        <p className="text-red-500 font-regular avant-garde-regular text-sm">
           {errors.personType}
         </p>
       )}
-      <div className={styles.input}>
+      </div>
+      <div className="flex items-center gap-2 flex-col">
         <FormInputs
           name={"img"}
           onChange={handleImageChange}
           type={"file"}
         />
+        <div className="h-2">
         {errors.img && (
-          <p className="text-red-500 font-regular avant-garde-regular">
+          <p className="text-red-500 font-regular avant-garde-regular text-sm">
             {errors.img}
           </p>
         )}
+        </div>
+
       </div>
       <SubmitButton text={"Registrarse"} type={"submit"} />
     </form>

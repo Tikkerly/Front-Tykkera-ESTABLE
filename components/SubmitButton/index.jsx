@@ -1,7 +1,7 @@
-import styles from './styles.module.css'
+
 
 export default function SubmitButton ({text, type}) {
     return (
-        <button className={styles.button} type={type}>{text}</button>
+        <button className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md "  type={type}>{text}</button>
     )
 }
