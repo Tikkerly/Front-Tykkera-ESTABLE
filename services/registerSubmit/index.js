@@ -2,25 +2,26 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const registerSubmit = (route, payload, router) => {
+  console.log(payload)
     return async (event) => {
         
     event.preventDefault();
 
-    if (formData.password !== formData.confirmPassword) {
-      alert("Las contraseñas no coinciden");
-      return;
-    }
+    // if (formData.password !== formData.confirmPassword) {
+    //   alert("Las contraseñas no coinciden");
+    //   return;
+    // }
 
-    setFormData({
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      personType: "",
-      phone: "",
-      clientId: "",
-      img: null,
-    });
+    // setFormData({
+    //   username: "",
+    //   email: "",
+    //   password: "",
+    //   confirmPassword: "",
+    //   personType: "",
+    //   phone: "",
+    //   clientId: "",
+    //   img: null,
+    // });
 
     try {
       const response = await axios.post(route, payload);
@@ -34,10 +35,11 @@ const registerSubmit = (route, payload, router) => {
       });
       router.push('/')
     } catch (error) {
+      console.log(error)
       Swal.fire({
         icon: "error",
         title: "Error durante el registro",
-        text: error.response.data.errors[0].msg,
+        text: error.response.data.message,
       });
     }
   };

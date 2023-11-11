@@ -25,7 +25,7 @@ const RegisterForm = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setFormData({ ...formData, img: file });
+    setFormData({ ...formData, [e.target.name]: file.name });
   };
 
   const handleChange = (e) => {
@@ -50,7 +50,7 @@ const RegisterForm = () => {
     personType: formData.personType,
     phone: formData.phone,
     clientId: formData.clientId,
-    img: formData.img.name,
+    img: formData.img,
     rol: formData.rol,
   };
 
@@ -163,9 +163,7 @@ const RegisterForm = () => {
       )}
       <div className={styles.input}>
         <FormInputs
-          placeholder={"Numero de identificacion"}
           name={"img"}
-          value={formData.clientId}
           onChange={handleImageChange}
           type={"file"}
         />
