@@ -3,17 +3,13 @@ import React, { Fragment, useState } from "react";
 import logotipo from "../../public/logo.png";
 import Link from "next/link";
 import Image from "next/image";
-import { ModalRegister } from "@/components";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const route = usePathname();
-  const isNotOnPageAuth = !(route === '/ingresar' || route === '/registrarse')
-  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const isNotOnPageAuth = !(route === "/ingresar" || route === "/registrarse");
   if (!isNotOnPageAuth) {
-    return (
-      <></>
-    )
+    return <></>;
   }
   return (
     <Fragment>
@@ -33,28 +29,21 @@ const Navbar = () => {
           </Link>
         </div>
         <div>
-          <Link href='/ingresar'>
-            <button
-              className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
-            >
+          <Link href="/ingresar">
+            <button className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
               Ingresar
             </button>
           </Link>
 
-
-          <button
-            className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
-            onClick={() => setShowRegisterModal(true)}
-          >
-            Registrarse
-          </button>
-
+          <Link href="/registrarse">
+            <button
+              className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
+            >
+              Registrarse
+            </button>
+          </Link>
         </div>
       </div>
-      <ModalRegister
-        isVisible={showRegisterModal}
-        onClose={() => setShowRegisterModal(false)}
-      />
     </Fragment>
   );
 };
