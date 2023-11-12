@@ -5,7 +5,7 @@ import { USER_ROUTES } from "@/routes/routes";
 import { useDispatch } from "react-redux";
 import { closureHandleSubmit } from "@/services";
 import { login } from "@/redux/slices";
-import styles from './styles.module.css'
+
 import Link from "next/link";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useRouter } from "next/navigation";
@@ -27,9 +27,9 @@ export default function LoginForm() {
         setFormData({ ...formData, [name]: value });
     }
     return (
-        <form onSubmit={handleSubmit} className={styles.container}>
-            <div className={styles.input}>
-                <PersonIcon />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center w-80">
+            <div className="flex items-center gap-2">
+                <PersonIcon className="text-gray-500" />
                 <FormInputs
                     placeholder={'Ingrese su email.'}
                     name={'email'}
@@ -39,8 +39,8 @@ export default function LoginForm() {
                 />
             </div>
 
-            <div className={styles.input}>
-                <LockIcon />
+            <div className="flex items-center gap-2">
+                <LockIcon className="text-gray-500"/>
                 <FormInputs
                     placeholder={'Ingrese su contraseña.'}
                     label={'Contraseña:'}
@@ -50,20 +50,20 @@ export default function LoginForm() {
                     type={'password'}
                 />
             </div>
-            <div className={styles.submitContainer}>
-                <SubmitButton text={'Ingresar'} type={'submit'} />
+            <div className="flex flex-col items-center gap-4 text-center w-full">
+                <SubmitButton  text={'Ingresar'} type={'submit'} />
                 {loading && <h2>Cargando...</h2>}
-                {message && <h2 className = {styles.message}>{message}</h2>}
+                {message && <h2 className="avant-garde-regular font-regular text-red-500 text-sm">{message}</h2>}
 
-                <Link href='/recuperar-contraseña' className={styles.link}>
-                    <h2 className={styles.forgotPassword}>Olvidé mi contraseña</h2>
+                <Link href='/recuperar-contraseña ' className="hover:underline">
+                    <h2 className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md">Olvidé mi contraseña</h2>
                 </Link>
 
-                <div className={styles.divisor}>
+                <div className="h-0.5 w-full bg-gray-300">
                 </div>
-                <button className={styles.googleButton}>
+                <button className=" avant-garde-bold font-bold flex items-center justify-center w-64 bg-gray-400 px-10 py-4 rounded-full text-gray transition duration-300 hover:shadow-lg">
                     <GoogleIcon />
-                    <h2>Ingresar con Google</h2>
+                    <h2 className="pl-2 hover:underline">Ingresar con Google</h2>
                 </button>
             </div>
         </form>
