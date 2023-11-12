@@ -14,6 +14,7 @@ const RegisterPage = () => {
           src={logo}
           style={{ width: "100%", maxWidth: "75%" }}
           className="transition-transform duration-300 transform hover:scale-103 filter hover:brightness-110"
+          alt="tykerra registro"
         />
         <Link
           href="/"
