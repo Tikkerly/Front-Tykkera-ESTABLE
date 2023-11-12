@@ -2,9 +2,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const registerSubmit = (route, payload, router) => {
-  console.log(payload)
-    return async (event) => {
-        
+  return async (event) => {
     event.preventDefault();
 
     // if (formData.password !== formData.confirmPassword) {
@@ -33,9 +31,9 @@ const registerSubmit = (route, payload, router) => {
         showConfirmButton: false,
         timer: 1500,
       });
-      router.push('/')
+      router.push("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
       Swal.fire({
         icon: "error",
         title: "Error durante el registro",
@@ -43,7 +41,6 @@ const registerSubmit = (route, payload, router) => {
       });
     }
   };
-}
+};
 
-
-export default registerSubmit
+export default registerSubmit;

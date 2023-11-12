@@ -1,11 +1,11 @@
-'use client'
-import { configureStore } from '@reduxjs/toolkit';
-import auth from './slices/authSlices';
+"use client";
+import { configureStore } from "@reduxjs/toolkit";
+import auth from "./slices/authSlices";
 
 const store = configureStore({
-    reducer: {
-        auth
-    }
-})
+  reducer: {
+    auth,
+  },
+});
 
-export default store
+export default store;

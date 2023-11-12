@@ -3,11 +3,25 @@ import React, { Fragment, useState } from "react";
 import logotipo from "../../public/logo.png";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "@/redux/slices";
+import Cookies from "js-cookie";
 
 const Navbar = () => {
+  const auth = useSelector((state) => state.auth.isAuthenticated);
+  const router = useRouter();
+
+  const dispatch = useDispatch();
   const route = usePathname();
   const isNotOnPageAuth = !(route === "/ingresar" || route === "/registrarse");
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    Cookies.remove("token");
+    dispatch(logout());
+    router.push("/ingresar");
+  };
   if (!isNotOnPageAuth) {
     return <></>;
   }
@@ -22,27 +36,42 @@ const Navbar = () => {
             <Image
               src={logotipo}
               width={250}
-              height={250}
               alt="Logotipo"
               className=" bg-white bg-opacity-75 shadow-lg rounded transition duration-300 ease-in-out hover:bg-white hover: bg-opacity-85"
+              priority={true}
             />
           </Link>
         </div>
-        <div>
-          <Link href="/ingresar">
-            <button className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
-              Ingresar
-            </button>
-          </Link>
+        {auth ? (
+          <div>
+            <Link href="/user">
+              <button className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
+                Perfil
+              </button>
+            </Link>
 
-          <Link href="/registrarse">
             <button
+              onClick={handleClick}
               className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
             >
-              Registrarse
+              Logout
             </button>
-          </Link>
-        </div>
+          </div>
+        ) : (
+          <div>
+            <Link href="/ingresar">
+              <button className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
+                Ingresar
+              </button>
+            </Link>
+
+            <Link href="/registrarse">
+              <button className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
+                Registrarse
+              </button>
+            </Link>
+          </div>
+        )}
       </div>
     </Fragment>
   );
