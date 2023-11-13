@@ -55,8 +55,8 @@ const ChangeUser = () => {
                     </Link>
                 </div>
                 <Link href="/recuperar-contrasena" className="text-sm mt-1">
-                <div className="mt-2 avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md">
-                    <button type="submit">Continuar</button>
+                <div className="mt-8">
+                    <button className=" avant-garde-bold font-bold flex items-center justify-center w-64  bg-Az5 px-10 py-4 rounded-full text-gray transition duration-300 hover:shadow-lg" type="submit">Continuar</button>
                 </div>
                 </Link>
                 
