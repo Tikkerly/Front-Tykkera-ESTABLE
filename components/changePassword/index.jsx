@@ -101,14 +101,15 @@ const ChangePassword = () => {
         </div>
 
         <div className="mt-2 flex items-center">
-          <Link href="/login" className="text-sm mt-1">
+          <Link href="/" className="text-sm mt-1">
             Regresar a la pagina anterior
           </Link>
         </div>
-
-        <div className="mt-2 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+<Link href="/" className="text-sm mt-1">
+        <div  className="mt-2 avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md">
           <button type="submit">Cambiar contraseña</button>
         </div>
+        </Link>
       </form>
       {message && <p className="text-red-500">{message}</p>}
     </div>

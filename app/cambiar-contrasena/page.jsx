@@ -1,13 +1,12 @@
 import React from 'react';
-import { UserActivation } from '@/components';
+import { ChangeUser } from '@/components';
 
-const ActivationUser = () => {
+const PasswordChange = () => {
     return (
-       
         <div className="min-h-screen bg-gray-100 flex items-center justify-center bg-blue bg-pattern">
-            <UserActivation />
+            <ChangeUser />
         </div>
     );
 };
 
-export default ActivationUser;
+export default PasswordChange;

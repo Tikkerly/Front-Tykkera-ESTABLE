@@ -37,7 +37,7 @@ const Navbar = () => {
               src={logotipo}
               width={250}
               alt="Logotipo"
-              className=" bg-white bg-opacity-75 shadow-lg rounded transition duration-300 ease-in-out hover:bg-white hover: bg-opacity-85"
+              className=" cursor-pointer"
               priority={true}
             />
           </Link>

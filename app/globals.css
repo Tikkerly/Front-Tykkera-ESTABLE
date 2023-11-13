@@ -38,7 +38,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-image: url("../public/formTykkerli.png");
+  background-image: url("../public/backgroundcolor.png");
     background-size: cover;
   background-position: center;
 }
