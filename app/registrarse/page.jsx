@@ -26,7 +26,7 @@ const RegisterPage = () => {
       </div>
       <div className="h-screen bg-white flex flex-col items-center justify-center">
         <div className="mx-40 w-80 flex flex-col flex-wrap gap-8">
-          <div className="avant-garde-bold font-bold text-3xl font-bold text-gray-600">
+          <div className="avant-garde-bold font-bold text-3xl  text-gray-600">
             <h1>¡Hola!</h1>
             <h2 className="text-xl">Registrate y comienza</h2>
           </div>
