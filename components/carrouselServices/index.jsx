@@ -57,12 +57,11 @@ const CarrouselServices = () => {
   const [loaded, setLoaded] = useState(false)
   const [sliderRef] = useKeenSlider({
     loop: true,
-    infinite: true,
     renderMode: "performance",
     drag: true,
     created(slider) {
       let timeout
-      let mouseOver = true 
+      let mouseOver = false 
       function clearNextTimeout() {
         clearTimeout(timeout)
       }
@@ -71,7 +70,7 @@ const CarrouselServices = () => {
         if (mouseOver) return
         timeout = setTimeout(() => {
           slider.next()
-        }, 2000)
+        }, 10000)
       }
       slider.on("created", () => {
         slider.container.addEventListener("mouseover", () => {
@@ -79,7 +78,7 @@ const CarrouselServices = () => {
           clearNextTimeout()
         })
         slider.container.addEventListener("mouseout", () => {
-          mouseOver = true
+          mouseOver = false
           nextTimeout()
         })
         nextTimeout()
