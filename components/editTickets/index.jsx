@@ -66,7 +66,7 @@ const EditTickets = () => {
 
         <div className="flex items-center justify-center">
           <button
-            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline text-xl"
+            className="w-full bg-blue-500 hover:bg-blue-700 text-gray font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline text-xl"
             type="button"
           >
             Guardar cambios

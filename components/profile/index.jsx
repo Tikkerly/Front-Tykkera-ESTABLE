@@ -60,7 +60,7 @@ const Profile = () => {
 
           <div className="flex items-center justify-center">
             <button
-              className=" font-bold avant-garde-bold w-full bg-Az3 text-white py-3 px-6 rounded  text-xl transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
+              className=" font-bold avant-garde-bold w-full bg-Az3 text-gray py-3 px-6 rounded  text-xl transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
               type="submit"
             >
               Guardar cambios
