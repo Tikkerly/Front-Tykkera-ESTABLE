@@ -3,6 +3,7 @@ import {
   CarrouselQuestions,
   CarrouselServices,
   Description,
+  RegistrationForm,
 } from "@/components";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
       <CarrouselServices />
       <Description />
       <CarrouselQuestions />
+      <RegistrationForm/>
     </div>
   );
 };
