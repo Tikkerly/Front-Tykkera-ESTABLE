@@ -11,7 +11,6 @@ const UserActivation = ({ id }) => {
     );
     setData(data);
   };
-
   useEffect(() => {
     userData();
   }, []);

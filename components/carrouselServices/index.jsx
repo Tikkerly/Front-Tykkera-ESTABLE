@@ -97,8 +97,8 @@ const CarrouselServices = () => {
             <div key={index} className="keen-slider__slide relative ">
               <Image className="w-full h-full object-cover bg-cover bg-center " src={feature.backgroundImage}
                alt="Slide 1" width={1200} height={600} />
-              <h2 className="absolute top-1/4 left-1/2 w-auto h-auto transform -translate-x-1/2 -translate-y-1/4  avant-garde-bold  bg-gray-300 bg-opacity-75 p-2 rounded-lg avant-garde-bold font-bold text-3xl  text-gray-600">{feature.title}</h2>
-              <p className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-3/4 font-regular avant-garde-regular  avant-garde-bold font-bold text-3xl  text-gray-600 bg-gray-300 bg-opacity-75  text-center w-auto h-auto mt-4">{feature.description}</p>
+<h2 className="absolute top-1/4 left-1/2 w-auto h-auto transform -translate-x-1/2 -translate-y-1/4 avant-garde-bold bg-gray-300 bg-opacity-75 p-2 rounded-lg avant-garde-bold font-bold text-3xl text-gray-600" style={{ WebkitTextStroke: '0.3px #f0f0f0' }}>{feature.title}</h2>
+<p className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-3/4 font-regular avant-garde-regular text-3xl text-gray-600 bg-gray-300 bg-opacity-75 text-center w-auto h-auto mt-4" style={{ WebkitTextStroke: '0.1px #f0f0f0'}}>{feature.description}</p>
             </div>
           ))}
         </div>
