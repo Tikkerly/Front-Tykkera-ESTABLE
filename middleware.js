@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { USER_ROUTES } from "./routes/routes";
 
 // This function can be marked `async` if using `await` inside
@@ -7,9 +6,9 @@ export async function middleware(request) {
     const token = request.cookies.get("token");
     const uid = request.cookies.get("uid");
 
-    if (!token) {
-      return NextResponse.redirect(new URL("/ingresar", request.url));
-    }
+    // if (!token) {
+    //   return NextResponse.redirect(new URL("/ingresar", request.url));
+    // }
     const res = await fetch(USER_ROUTES.renew, {
       method: "POST",
       headers: {
@@ -24,7 +23,7 @@ export async function middleware(request) {
     await res.json();
   } catch (error) {
     console.log(error.message);
-    return NextResponse.redirect(new URL("/ingresar", request.url));
+    // return NextResponse.redirect(new URL("/ingresar", request.url));
   }
 }
 
