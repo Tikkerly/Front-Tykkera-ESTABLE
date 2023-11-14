@@ -1,5 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const renewToken = (
   route,
@@ -15,10 +14,6 @@ const renewToken = (
     try {
       setLoading(true);
       const { data } = await axios.get(route, payload);
-      //dispatch(action(data.user));
-      //   if (data.token) {
-      //     Cookies.set("token", data.token);
-      //   }
     } catch (error) {
       setLoading(false);
       router.push("/ingresar");

@@ -1,28 +1,25 @@
 import axios from "axios";
 import Swal from "sweetalert2";
+import { USER_ROUTES } from "@/routes/routes";
 
 const registerSubmit = (route, payload, router) => {
   return async (event) => {
     event.preventDefault();
 
-    // if (formData.password !== formData.confirmPassword) {
-    //   alert("Las contraseñas no coinciden");
-    //   return;
-    // }
+    const formData = new FormData();
 
-    // setFormData({
-    //   username: "",
-    //   email: "",
-    //   password: "",
-    //   confirmPassword: "",
-    //   personType: "",
-    //   phone: "",
-    //   clientId: "",
-    //   img: null,
-    // });
+    Object.keys(payload).forEach((key) => {
+      formData.append(key, payload[key]);
+    });
+
+    formData.append("img", payload.img);
 
     try {
-      const response = await axios.post(route, payload);
+      const response = await axios.post(route, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data", // Importante para enviar archivos
+        },
+      });
 
       Swal.fire({
         position: "top-end",
@@ -31,7 +28,7 @@ const registerSubmit = (route, payload, router) => {
         showConfirmButton: false,
         timer: 1500,
       });
-      router.push("/");
+      router.push("/useractivator");
     } catch (error) {
       console.log(error);
       Swal.fire({

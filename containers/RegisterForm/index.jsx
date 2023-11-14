@@ -1,14 +1,20 @@
-'use client';
+"use client";
 import React, { useState } from "react";
 import { validation } from "@/utils";
-import { AccountCircle, Email, Lock, Phone, AssignmentInd, Person, Business } from "@mui/icons-material";
+import {
+  AccountCircle,
+  Email,
+  Lock,
+  Phone,
+  AssignmentInd,
+  Person,
+  Business,
+} from "@mui/icons-material";
 import { FormInputs, SubmitButton } from "@/components";
 import { registerSubmit } from "@/services";
 import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
 import { TextField, InputAdornment } from "@mui/material";
-
-
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -20,7 +26,7 @@ const RegisterForm = () => {
     personType: "",
     phone: "",
     clientId: "",
-    img: "",
+    img: null,
     rol: "CLIENTE",
   });
   const [errors, setErrors] = useState({});
@@ -28,7 +34,8 @@ const RegisterForm = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setFormData({ ...formData, [e.target.name]: file.name });
+
+    setFormData({ ...formData, [e.target.name]: file });
   };
 
   const handleChange = (e) => {
@@ -60,16 +67,19 @@ const RegisterForm = () => {
   const handleSubmit = registerSubmit(USER_ROUTES.registerUser, user, router);
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center w-80">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 items-center w-80"
+    >
       <div className="flex items-center gap-2 flex-col">
         <TextField
-          label={'Nombre de usuario:'}
+          label={"Nombre de usuario:"}
           className="p-2"
-          placeholder={'Nombre de usuario'}
-          name={'username'}
+          placeholder={"Nombre de usuario"}
+          name={"username"}
           value={formData.username}
           onChange={handleChange}
-          type={'text'}
+          type={"text"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -88,13 +98,13 @@ const RegisterForm = () => {
       </div>
       <div className="flex items-center gap-2 flex-col">
         <TextField
-          label={'Email:'}
+          label={"Email:"}
           className="p-2"
-          placeholder={'Correo electrónico'}
-          name={'email'}
+          placeholder={"Correo electrónico"}
+          name={"email"}
           value={formData.email}
           onChange={handleChange}
-          type={'email'}
+          type={"email"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -114,13 +124,13 @@ const RegisterForm = () => {
 
       <div className="flex items-center gap-2 flex-col">
         <TextField
-          label={'Contraseña:'}
+          label={"Contraseña:"}
           className="p-2"
-          placeholder={'Contraseña'}
-          name={'password'}
+          placeholder={"Contraseña"}
+          name={"password"}
           value={formData.password}
           onChange={handleChange}
-          type={'password'}
+          type={"password"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -141,12 +151,12 @@ const RegisterForm = () => {
       <div className="flex items-center gap-2 flex-col">
         <TextField
           className="p-2"
-          label={'Confirmar contraseña:'}
-          placeholder={'Confirmar contraseña'}
-          name={'confirmPassword'}
+          label={"Confirmar contraseña:"}
+          placeholder={"Confirmar contraseña"}
+          name={"confirmPassword"}
           value={formData.confirmPassword}
           onChange={handleChange}
-          type={'password'}
+          type={"password"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -166,13 +176,13 @@ const RegisterForm = () => {
 
       <div className="flex items-center gap-2 flex-col">
         <TextField
-                label={'Telefono:'}
+          label={"Telefono:"}
           className="p-2"
-          placeholder={'Numero de celular'}
-          name={'phone'}
+          placeholder={"Numero de celular"}
+          name={"phone"}
           value={formData.phone}
           onChange={handleChange}
-          type={'number'}
+          type={"number"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -192,13 +202,13 @@ const RegisterForm = () => {
 
       <div className="flex items-center gap-2 flex-col">
         <TextField
-                label={'Identificación:'}
+          label={"Identificación:"}
           className="p-2"
-          placeholder={'Numero de identificacion'}
-          name={'clientId'}
+          placeholder={"Numero de identificacion"}
+          name={"clientId"}
           value={formData.clientId}
           onChange={handleChange}
-          type={'text'}
+          type={"text"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -214,12 +224,11 @@ const RegisterForm = () => {
             </p>
           )}
         </div>
-
       </div>
 
       <div className="flex items-center gap-2 flex-col w-auto h-auto">
         <select
-                label={'Tipo de persona:'}
+          label={"Tipo de persona:"}
           id="personType"
           name="personType"
           required
@@ -247,16 +256,16 @@ const RegisterForm = () => {
       </div>
       <div className="flex items-center gap-2 flex-col">
         <TextField
-                label={'Imagen:'}
+          label={"Imagen:"}
           className="p-2"
-          placeholder={'Imagen'}
-          name={'img'}
+          placeholder={"Imagen"}
+          name="img"
           onChange={handleImageChange}
-          type={'file'}
+          type="file"
           InputLabelProps={{ shrink: true }}
           InputProps={{
             classes: {
-              input: 'bg-Be outline-none',
+              input: "bg-Be outline-none",
             },
           }}
         />
@@ -270,8 +279,6 @@ const RegisterForm = () => {
       </div>
       <SubmitButton text={"Registrarse"} type={"submit"} />
     </form>
-
-
   );
 };
 

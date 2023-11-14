@@ -5,6 +5,8 @@ const USER_ROUTES = {
   registerUser: `${config.URL_BACK}/user/registeruser`,
   editUser: `${config.URL_BACK}/user/edituser`,
   renew: `${config.URL_BACK}/auth/renew`,
+  img: `${config.URL_BACK}/upload`,
+  forgetPassword: `${config.URL_BACK}/user/`,
 };
 
 export { USER_ROUTES };
