@@ -1,12 +1,15 @@
 "use client";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Cookies from "js-cookie";
+import { userDetails } from "@/redux/slices/authSlices";
 
 const Profile = () => {
-  const id = useSelector((state) => state.auth.user);
+  const id = useSelector((state) => state.auth.user._id);
   const user = useSelector((state) => state.auth.user);
-
-  console.log(id)
+  const token = Cookies.get("token");
+  const dispatch = useDispatch();
 
   const [editable, setEditable] = useState({
     username: user.username,
@@ -20,8 +23,19 @@ const Profile = () => {
     }));
   };
 
-  const handleSaveChanges = () => {
-    console.log("Changes saved:", editable);
+  const handleSaveChanges = async () => {
+    try {
+      const response = await axios.put(`http://localhost:3001/api/v1/user/edituser/${id}`, editable,  {
+          headers: {
+            "x-token":token,
+              }}
+          );
+      console.log(response.data)
+      dispatch(userDetails(response.data));
+      alert('Se han guardado los cambios');
+    } catch (error) {
+      console.error('Error editing user:', error);
+    }
   };
 
   return (
