@@ -61,6 +61,7 @@ const Profile = () => {
         </div>
 
         <div className="mb-4">
+        <label>Nombre de Usuario</label>
           <input
             className=" font-regular avant-garde-regular w-full px-4 py-3 text-xl text-gray-700 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
             id="username"
@@ -72,6 +73,7 @@ const Profile = () => {
         </div>
 
         <div className="mb-4">
+        <label>Correo</label>
           <input
             className=" font-regular avant-garde-regular w-full px-4 py-3 text-xl text-gray-700 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
             id="email"
@@ -82,6 +84,7 @@ const Profile = () => {
         </div>
 
         <div className="mb-4">
+          <label>Teléfono</label>
           <input
             className=" font-regular avant-garde-regular w-full px-4 py-3 text-xl text-gray-700 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
             id="number"
