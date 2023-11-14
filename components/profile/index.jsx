@@ -103,7 +103,6 @@ const Profile = () => {
               Guardar cambios
             </button>
           </div>
-        </form>
       </div>
     </div>
   );
