@@ -25,9 +25,9 @@ const RegisterForm = () => {
     confirmPassword: "",
     personType: "",
     phone: "",
-    clientId: "",
+    nit: "",
     img: null,
-    rol: "CLIENTE",
+    address: "",
   });
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
@@ -59,9 +59,9 @@ const RegisterForm = () => {
     password: formData.password,
     personType: formData.personType,
     phone: formData.phone,
-    clientId: formData.clientId,
+    nit: formData.nit,
     img: formData.img,
-    rol: formData.rol,
+    address: formData.address,
   };
 
   const handleSubmit = registerSubmit(USER_ROUTES.registerUser, user, router);
@@ -176,36 +176,10 @@ const RegisterForm = () => {
 
       <div className="flex items-center gap-2 flex-col">
         <TextField
-          label={"Telefono:"}
-          className="p-2"
-          placeholder={"Numero de celular"}
-          name={"phone"}
-          value={formData.phone}
-          onChange={handleChange}
-          type={"number"}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Phone className="text-gray-500" />
-              </InputAdornment>
-            ),
-          }}
-        />
-        <div className="h-2">
-          {errors.phone && (
-            <p className="text-red-500 font-regular avant-garde-regular text-sm">
-              {errors.phone}
-            </p>
-          )}
-        </div>
-      </div>
-
-      <div className="flex items-center gap-2 flex-col">
-        <TextField
           label={"Identificación:"}
           className="p-2"
           placeholder={"Numero de identificacion"}
-          name={"clientId"}
+          name={"nit"}
           value={formData.clientId}
           onChange={handleChange}
           type={"text"}
@@ -218,9 +192,59 @@ const RegisterForm = () => {
           }}
         />
         <div className="h-2">
-          {errors.clientId && (
+          {errors.nit && (
             <p className="text-red-500 font-regular avant-garde-regular text-sm">
-              {errors.clientId}
+              {errors.nit}
+            </p>
+          )}
+        </div>
+        <div className="flex items-center gap-2 flex-col">
+          <TextField
+            label={"Telefono:"}
+            className="p-2"
+            placeholder={"Numero de celular"}
+            name={"phone"}
+            value={formData.phone}
+            onChange={handleChange}
+            type={"number"}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Phone className="text-gray-500" />
+                </InputAdornment>
+              ),
+            }}
+          />
+          <div className="h-2">
+            {errors.phone && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.phone}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center gap-2 flex-col">
+        <TextField
+          label={"Dirección:"}
+          className="p-2"
+          placeholder={"Direccioón"}
+          name={"address"}
+          value={formData.clientId}
+          onChange={handleChange}
+          type={"text"}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AssignmentInd className="text-gray-500" />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <div className="h-2">
+          {errors.address && (
+            <p className="text-red-500 font-regular avant-garde-regular text-sm">
+              {errors.address}
             </p>
           )}
         </div>
@@ -239,10 +263,10 @@ const RegisterForm = () => {
           <option value="Tipodepersona">
             <Person /> Tipo de persona
           </option>
-          <option value="Persona Natural">
+          <option value="Natural">
             <AssignmentInd /> Persona Natural
           </option>
-          <option value="Persona Juridica">
+          <option value="Juridica">
             <Business /> Persona Juridica
           </option>
         </select>
