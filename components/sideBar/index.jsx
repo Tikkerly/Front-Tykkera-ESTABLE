@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 const SideBar = () => {
 
   const role = useSelector((state) => state.auth.user.rol);
+  console.log(role)
 
   return (
     <div
