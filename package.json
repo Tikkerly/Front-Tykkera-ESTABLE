@@ -19,6 +19,7 @@
     "@fullcalendar/resource-timeline": "^6.1.9",
     "@fullcalendar/timegrid": "^6.1.9",
     "@mui/icons-material": "^5.14.16",
+    "@react-oauth/google": "^0.11.1",
     "@reduxjs/toolkit": "^1.9.7",
     "@tremor/react": "^3.11.0",
     "axios": "^1.6.0",
