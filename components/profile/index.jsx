@@ -11,9 +11,13 @@ const Profile = () => {
   const token = Cookies.get("token");
   const dispatch = useDispatch();
 
+
+  console.log(user)
+
   const [editable, setEditable] = useState({
     username: user.username,
     phone: user.phone,
+    address: user.address,
   });
 
   const handleFieldChange = (edit, value) => {
@@ -50,13 +54,13 @@ const Profile = () => {
         </div>
         <div className="text-center mt-4">
           <h2 className="text-2xl mb-2 font-bold avant-garde-bold">
-            {user.rol}
+            {user.email}
           </h2>
           <h2 className="text-xl mb-2 font-regular avant-garde-regular">
             {user.personType}
           </h2>
           <h2 className="text-xl mb-2 font-regular avant-garde-regular">
-            NIT: {user.clientId}
+            NIT: {user.nit}
           </h2>
         </div>
 
@@ -73,13 +77,14 @@ const Profile = () => {
         </div>
 
         <div className="mb-4">
-        <label>Correo</label>
+        <label>Dirección</label>
           <input
             className=" font-regular avant-garde-regular w-full px-4 py-3 text-xl text-gray-700 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
-            id="email"
-            type="email"
-            defaultValue={user.email}
-            placeholder="Correo electrónico"
+            id="address"
+            type="text"
+            defaultValue={user.address}
+            onChange={(e) => handleFieldChange("address", e.target.value)}
+            placeholder="Dirección"
           />
         </div>
 
@@ -99,6 +104,7 @@ const Profile = () => {
             <button
               className=" font-bold avant-garde-bold w-full bg-Az3 text-gray py-3 px-6 rounded  text-xl transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
               type="submit"
+              onClick={handleSaveChanges}
             >
               Guardar cambios
             </button>
