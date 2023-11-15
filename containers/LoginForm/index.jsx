@@ -7,11 +7,11 @@ import { login } from "@/redux/slices";
 import Link from "next/link";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useRouter } from "next/navigation";
-import { TextField, InputAdornment } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
+// 906706593927-28g158gplg7fshf568027niditejuldo.apps.googleusercontent.com
 
 export default function LoginForm() {
   const router = useRouter();
@@ -36,12 +36,12 @@ export default function LoginForm() {
     setFormData({ ...formData, [name]: value });
   };
   return (
-    <GoogleOAuthProvider clientId="906706593927-28g158gplg7fshf568027niditejuldo.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_CLIENTID}>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 items-center w-80"
       >
-        <TextField
+        <FormInputs
           className=" p-2"
           placeholder={"Ingrese su email."}
           label={"Email:"}
@@ -49,16 +49,10 @@ export default function LoginForm() {
           value={formData.email}
           onChange={handleChange}
           type={"email"}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <PersonIcon className="text-gray-500" />
-              </InputAdornment>
-            ),
-          }}
+          
         />
 
-        <TextField
+        <FormInputs
           className=" p-2"
           placeholder={"Ingrese su contraseña."}
           label={"Contraseña:"}
@@ -66,13 +60,7 @@ export default function LoginForm() {
           value={formData.password}
           onChange={handleChange}
           type={"password"}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <LockIcon className="text-gray-500" />
-              </InputAdornment>
-            ),
-          }}
+          
         />
         <div className="flex flex-col items-center gap-4 text-center w-full">
           <SubmitButton text={"Ingresar"} type={"submit"} />
@@ -104,7 +92,6 @@ export default function LoginForm() {
               console.log("Login Failed");
             }}
           />
-          ;
         </div>
       </form>
     </GoogleOAuthProvider>
