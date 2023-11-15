@@ -36,6 +36,7 @@ export default function LoginForm() {
     setFormData({ ...formData, [name]: value });
   };
   return (
+
     <GoogleOAuthProvider clientId="906706593927-28g158gplg7fshf568027niditejuldo.apps.googleusercontent.com">
       <form
         onSubmit={handleSubmit}

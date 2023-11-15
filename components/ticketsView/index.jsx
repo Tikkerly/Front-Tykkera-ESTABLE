@@ -22,7 +22,7 @@ const TicketsView = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-white bg-opacity-60 p-8 text-black rounded-lg shadow-md ">
+    <div className="flex justify-center items-center bg-Be bg-opacity-90 p-8 text-black rounded-lg shadow-md ">
       <table className="table-auto">
         <thead>
           <tr className="bg-Az2">
