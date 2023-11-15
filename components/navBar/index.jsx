@@ -46,17 +46,19 @@ const Navbar = () => {
         {auth ? (
           <div>
             <Link href="/user">
-              <button className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-gray font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
+            <span className="mr-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az5 hover:underline cursor-pointer">
                 Perfil
-              </button>
+              </span>
             </Link>
 
-            <button
+            <span className="mx-1 avant-garde-bold text-base text-gray">/</span>
+
+            <span
               onClick={handleClick}
-              className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-gray font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
+              className="ml-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az5 hover:underline cursor-pointer"
             >
               Logout
-            </button>
+            </span>
           </div>
         ) : (
         <div className="flex items-center">

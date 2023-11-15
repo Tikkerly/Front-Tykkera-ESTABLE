@@ -9,7 +9,8 @@ const USER_ROUTES = {
   deleteUser: `${config.URL_BACK}/user/deleteuser`,
   renew: `${config.URL_BACK}/auth/renew`,
   img: `${config.URL_BACK}/upload`,
-  forgetPassword: `${config.URL_BACK}/user/`,
+  forgetPassword: `${config.URL_BACK}/user/forgotpassword`,
+  recoveryPassword: `${config.URL_BACK}/user/passwordrecovery`,
 };
 
 export { USER_ROUTES };

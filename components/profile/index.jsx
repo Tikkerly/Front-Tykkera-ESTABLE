@@ -44,13 +44,24 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="bg-white bg-opacity-60 p-8 text-black rounded-lg shadow-md w-full h-full max-w-screen-md mx-auto flex flex-col justify-between">
-        <div className="text-center mt-2">
+      <div className="bg-Be bg-opacity-90 p-8 text-gray-900 rounded-lg shadow-md w-full h-full max-w-screen-md mx-auto flex flex-col">
+        <div className="flex items-start mb-8">
           <img
             className="mx-auto h-32 w-32 rounded-full object-cover"
             src={user.img}
             alt="Profile Image"
           />
+          <div>
+            <h2 className="text-2xl mb-2 font-bold avant-garde-bold">
+              CLIENTE
+            </h2>
+            <h2 className="text-xl mb-2 font-regular avant-garde-regular">
+              Persona Natural
+            </h2>
+            <h2 className="text-xl mb-2 font-regular avant-garde-regular">
+              Nit: 08234561-2
+            </h2>
+          </div>
         </div>
         <div className="text-center mt-4">
           <h2 className="text-2xl mb-2 font-bold avant-garde-bold">
