@@ -34,7 +34,7 @@ export default function LoginForm() {
     setFormData({ ...formData, [name]: value });
   };
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center w-80">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center w-full h-auto">
       <TextField
       className=" p-2"
         placeholder={'Ingrese su email.'}
@@ -73,14 +73,14 @@ export default function LoginForm() {
         {loading && <h2>Cargando...</h2>}
         {message && <h2 className="avant-garde-regular font-regular text-red-500 text-sm">{message}</h2>}
 
-        <Link href='/cambiar-contrasena ' className="hover:underline">
-          <h2 className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md">Olvidé mi contraseña</h2>
+        <Link href='/cambiar-contrasena ' className="">
+          <h2 className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full ">Olvidé mi contraseña</h2>
         </Link>
 
-        <div className="h-0.5 w-full bg-gray-300"></div>
+        <div className="h-1 w-full bg-gray-300"></div>
         <button className="avant-garde-bold font-bold flex items-center justify-center w-64 bg-gray-400 px-10 py-4 rounded-full text-gray transition duration-300 hover:shadow-lg">
           <GoogleIcon />
-          <h2 className="pl-2 hover:underline">Ingresar con Google</h2>
+          <h2 className="pl-2 ">Ingresar con Google</h2>
         </button>
       </div>
     </form>
