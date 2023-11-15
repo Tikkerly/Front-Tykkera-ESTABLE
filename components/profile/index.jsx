@@ -25,16 +25,20 @@ const Profile = () => {
 
   const handleSaveChanges = async () => {
     try {
-      const response = await axios.put(`http://localhost:3001/api/v1/user/edituser/${id}`, editable,  {
+      const response = await axios.put(
+        `http://localhost:3001/api/v1/user/edituser/${id}`,
+        editable,
+        {
           headers: {
-            "x-token":token,
-              }}
-          );
-      console.log(response.data)
+            "x-token": token,
+          },
+        }
+      );
+      console.log(response.data);
       dispatch(userDetails(response.data));
-      alert('Se han guardado los cambios');
+      alert("Se han guardado los cambios");
     } catch (error) {
-      console.error('Error editing user:', error);
+      console.error("Error editing user:", error);
     }
   };
 
@@ -53,15 +57,15 @@ const Profile = () => {
             {user.rol}
           </h2>
           <h2 className="text-xl mb-2 font-regular avant-garde-regular">
-            {user.personType}
+            Persona {user.personType}
           </h2>
           <h2 className="text-xl mb-2 font-regular avant-garde-regular">
-            NIT: {user.clientId}
+            NIT: {user.nit}
           </h2>
         </div>
 
         <div className="mb-4">
-        <label>Nombre de Usuario</label>
+          <label>Nombre de Usuario</label>
           <input
             className=" font-regular avant-garde-regular w-full px-4 py-3 text-xl text-gray-700 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
             id="username"
@@ -73,7 +77,7 @@ const Profile = () => {
         </div>
 
         <div className="mb-4">
-        <label>Correo</label>
+          <label>Correo</label>
           <input
             className=" font-regular avant-garde-regular w-full px-4 py-3 text-xl text-gray-700 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
             id="email"
@@ -95,14 +99,14 @@ const Profile = () => {
           />
         </div>
 
-          <div className="flex items-center justify-center">
-            <button
-              className=" font-bold avant-garde-bold w-full bg-Az3 text-gray py-3 px-6 rounded  text-xl transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
-              type="submit"
-            >
-              Guardar cambios
-            </button>
-          </div>
+        <div className="flex items-center justify-center">
+          <button
+            className=" font-bold avant-garde-bold w-full bg-Az3 text-gray py-3 px-6 rounded  text-xl transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
+            type="submit"
+          >
+            Guardar cambios
+          </button>
+        </div>
       </div>
     </div>
   );
