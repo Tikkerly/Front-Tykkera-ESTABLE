@@ -28,16 +28,17 @@ const Navbar = () => {
   return (
     <Fragment>
       <div
-        style={{ background: "#0576e6e3" }}
-        className="p-4 text-white flex flex-row items-center justify-between shadow-lg"
+
+
+        className="p-4 text-gray flex flex-row items-center justify-between bg-gray-500 bg-opacity-80 "
       >
         <div>
           <Link href="/">
             <Image
               src={logotipo}
-              width={250}
+              width={290}
               alt="Logotipo"
-              className=" cursor-pointer"
+              className=" cursor-pointer shadow-xl"
               priority={true}
             />
           </Link>
@@ -45,32 +46,32 @@ const Navbar = () => {
         {auth ? (
           <div>
             <Link href="/user">
-              <button className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
+            <span className="mr-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az5 hover:underline cursor-pointer">
                 Perfil
-              </button>
+              </span>
             </Link>
 
-            <button
+            <span className="mx-1 avant-garde-bold text-base text-gray">/</span>
+
+            <span
               onClick={handleClick}
-              className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
+              className="ml-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az5 hover:underline cursor-pointer"
             >
               Logout
-            </button>
+            </span>
           </div>
         ) : (
-          <div>
-            <Link href="/ingresar">
-              <button className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
-                Ingresar
-              </button>
-            </Link>
+        <div className="flex items-center">
+          <Link href="/ingresar">
+            <span className="mr-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az5 hover:underline cursor-pointer">Ingresar</span>
+          </Link>
 
-            <Link href="/registrarse">
-              <button className="mr-2 py-1 px-1  avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
-                Registrarse
-              </button>
-            </Link>
-          </div>
+          <span className="mx-1 avant-garde-bold text-base text-gray">/</span>
+
+          <Link href="/registrarse">
+            <span className="ml-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az5 hover:underline cursor-pointer">Registrarse</span>
+          </Link>
+        </div>
         )}
       </div>
     </Fragment>

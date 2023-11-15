@@ -4,8 +4,8 @@ import { USER_ROUTES } from "@/routes/routes";
 import { useState } from "react";
 import Link from "next/link";
 
-const ChangePassword = () => {
-  const [formData, setFormData] = useState({ email: "" });
+const ChangePassword = ({ token }) => {
+  const [formData, setFormData] = useState({});
   const [message, setMessage] = useState("");
 
   const handleChange = (event) => {
@@ -14,10 +14,11 @@ const ChangePassword = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(USER_ROUTES.forgetPassword, {
-        email: formData.email,
+      const response = await axios.post(USER_ROUTES.recoveryPassword, {
+        token: token,
+        password: formData.password,
       });
-      setMessage("Email enviado");
+      setMessage("contraseña cambiada");
     } catch (error) {
       setMessage(
         "No se ha podido enviar el email de recuperacion, revise los campos o intentelo mas tarde"
@@ -27,7 +28,7 @@ const ChangePassword = () => {
   return (
     <div className="">
       <h1 className="text-4xl mb-5">Cambiar contraseña</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="grid grid-cols-2 gap-4">
           <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
             <div className="absolute left-2 top-2">
@@ -105,11 +106,10 @@ const ChangePassword = () => {
             Regresar a la pagina anterior
           </Link>
         </div>
-<Link href="/" className="text-sm mt-1">
-        <div  className="mt-2 avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md">
-          <button type="submit">Cambiar contraseña</button>
+
+        <div className="mt-2 avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md">
+          <button onClick={handleSubmit}>Cambiar contraseña</button>
         </div>
-        </Link>
       </form>
       {message && <p className="text-red-500">{message}</p>}
     </div>

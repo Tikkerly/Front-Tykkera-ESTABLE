@@ -1,14 +1,20 @@
-'use client';
+"use client";
 import React, { useState } from "react";
 import { validation } from "@/utils";
-import { AccountCircle, Email, Lock, Phone, AssignmentInd, Person, Business } from "@mui/icons-material";
+import {
+  AccountCircle,
+  Email,
+  Lock,
+  Phone,
+  AssignmentInd,
+  Person,
+  Business,
+} from "@mui/icons-material";
 import { FormInputs, SubmitButton } from "@/components";
 import { registerSubmit } from "@/services";
 import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
 import { TextField, InputAdornment } from "@mui/material";
-
-
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -19,16 +25,17 @@ const RegisterForm = () => {
     confirmPassword: "",
     personType: "",
     phone: "",
-    clientId: "",
-    img: "",
-    rol: "CLIENTE",
+    nit: "",
+    img: null,
+    address: "",
   });
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setFormData({ ...formData, [e.target.name]: file.name });
+
+    setFormData({ ...formData, [e.target.name]: file });
   };
 
   const handleChange = (e) => {
@@ -52,24 +59,27 @@ const RegisterForm = () => {
     password: formData.password,
     personType: formData.personType,
     phone: formData.phone,
-    clientId: formData.clientId,
+    nit: formData.nit,
     img: formData.img,
-    rol: formData.rol,
+    address: formData.address,
   };
 
   const handleSubmit = registerSubmit(USER_ROUTES.registerUser, user, router);
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center w-80">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 items-center w-80"
+    >
       <div className="flex items-center gap-2 flex-col">
         <TextField
-          label={'Nombre de usuario:'}
+          label={"Nombre de usuario:"}
           className="p-2"
-          placeholder={'Nombre de usuario'}
-          name={'username'}
+          placeholder={"Nombre de usuario"}
+          name={"username"}
           value={formData.username}
           onChange={handleChange}
-          type={'text'}
+          type={"text"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -88,13 +98,13 @@ const RegisterForm = () => {
       </div>
       <div className="flex items-center gap-2 flex-col">
         <TextField
-          label={'Email:'}
+          label={"Email:"}
           className="p-2"
-          placeholder={'Correo electrónico'}
-          name={'email'}
+          placeholder={"Correo electrónico"}
+          name={"email"}
           value={formData.email}
           onChange={handleChange}
-          type={'email'}
+          type={"email"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -114,13 +124,13 @@ const RegisterForm = () => {
 
       <div className="flex items-center gap-2 flex-col">
         <TextField
-          label={'Contraseña:'}
+          label={"Contraseña:"}
           className="p-2"
-          placeholder={'Contraseña'}
-          name={'password'}
+          placeholder={"Contraseña"}
+          name={"password"}
           value={formData.password}
           onChange={handleChange}
-          type={'password'}
+          type={"password"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -141,12 +151,12 @@ const RegisterForm = () => {
       <div className="flex items-center gap-2 flex-col">
         <TextField
           className="p-2"
-          label={'Confirmar contraseña:'}
-          placeholder={'Confirmar contraseña'}
-          name={'confirmPassword'}
+          label={"Confirmar contraseña:"}
+          placeholder={"Confirmar contraseña"}
+          name={"confirmPassword"}
           value={formData.confirmPassword}
           onChange={handleChange}
-          type={'password'}
+          type={"password"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -166,39 +176,13 @@ const RegisterForm = () => {
 
       <div className="flex items-center gap-2 flex-col">
         <TextField
-                label={'Telefono:'}
+          label={"Identificación:"}
           className="p-2"
-          placeholder={'Numero de celular'}
-          name={'phone'}
-          value={formData.phone}
-          onChange={handleChange}
-          type={'number'}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Phone className="text-gray-500" />
-              </InputAdornment>
-            ),
-          }}
-        />
-        <div className="h-2">
-          {errors.phone && (
-            <p className="text-red-500 font-regular avant-garde-regular text-sm">
-              {errors.phone}
-            </p>
-          )}
-        </div>
-      </div>
-
-      <div className="flex items-center gap-2 flex-col">
-        <TextField
-                label={'Identificación:'}
-          className="p-2"
-          placeholder={'Numero de identificacion'}
-          name={'clientId'}
+          placeholder={"Numero de identificacion"}
+          name={"nit"}
           value={formData.clientId}
           onChange={handleChange}
-          type={'text'}
+          type={"text"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -208,18 +192,67 @@ const RegisterForm = () => {
           }}
         />
         <div className="h-2">
-          {errors.clientId && (
+          {errors.nit && (
             <p className="text-red-500 font-regular avant-garde-regular text-sm">
-              {errors.clientId}
+              {errors.nit}
             </p>
           )}
         </div>
-
+        <div className="flex items-center gap-2 flex-col">
+          <TextField
+            label={"Telefono:"}
+            className="p-2"
+            placeholder={"Numero de celular"}
+            name={"phone"}
+            value={formData.phone}
+            onChange={handleChange}
+            type={"number"}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Phone className="text-gray-500" />
+                </InputAdornment>
+              ),
+            }}
+          />
+          <div className="h-2">
+            {errors.phone && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.phone}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center gap-2 flex-col">
+        <TextField
+          label={"Dirección:"}
+          className="p-2"
+          placeholder={"Direccioón"}
+          name={"address"}
+          value={formData.clientId}
+          onChange={handleChange}
+          type={"text"}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AssignmentInd className="text-gray-500" />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <div className="h-2">
+          {errors.address && (
+            <p className="text-red-500 font-regular avant-garde-regular text-sm">
+              {errors.address}
+            </p>
+          )}
+        </div>
       </div>
 
       <div className="flex items-center gap-2 flex-col w-auto h-auto">
         <select
-                label={'Tipo de persona:'}
+          label={"Tipo de persona:"}
           id="personType"
           name="personType"
           required
@@ -230,10 +263,10 @@ const RegisterForm = () => {
           <option value="Tipodepersona">
             <Person /> Tipo de persona
           </option>
-          <option value="Persona Natural">
+          <option value="Natural">
             <AssignmentInd /> Persona Natural
           </option>
-          <option value="Persona Juridica">
+          <option value="Juridica">
             <Business /> Persona Juridica
           </option>
         </select>
@@ -247,16 +280,16 @@ const RegisterForm = () => {
       </div>
       <div className="flex items-center gap-2 flex-col">
         <TextField
-                label={'Imagen:'}
+          label={"Imagen:"}
           className="p-2"
-          placeholder={'Imagen'}
-          name={'img'}
+          placeholder={"Imagen"}
+          name="img"
           onChange={handleImageChange}
-          type={'file'}
+          type="file"
           InputLabelProps={{ shrink: true }}
           InputProps={{
             classes: {
-              input: 'bg-Be outline-none',
+              input: "bg-Be outline-none",
             },
           }}
         />
@@ -270,8 +303,6 @@ const RegisterForm = () => {
       </div>
       <SubmitButton text={"Registrarse"} type={"submit"} />
     </form>
-
-
   );
 };
 
