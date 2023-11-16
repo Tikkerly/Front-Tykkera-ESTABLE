@@ -19,21 +19,21 @@ const FAQItem = ({ pregunta, respuesta }) => {
   return (
     <div className={styles.faqItemContainer}>
       <h1
-        className={`${styles.question} ${mostrarRespuesta ? styles.questionActive : ""}`}
+        className={` font-bold avant-garde-bold ${styles.question} ${mostrarRespuesta ? styles.questionActive : ""}`}
       >
         {pregunta}
         <span
-          className={`${styles.icon} ${mostrarRespuesta ? styles.iconActive : ""}`}
+          className={`font-bold avant-garde-bold ${styles.icon} ${mostrarRespuesta ? styles.iconActive : ""}`}
           onClick={toggleRespuesta}
         >
           {mostrarRespuesta ? "-" : "+"}
         </span>
       </h1>
       <div
-        className={`${styles.answer} ${mostrarRespuesta ? styles.answerVisible : ""}`}
+        className={`font-regular avant-garde-regular ${styles.answer} ${mostrarRespuesta ? styles.answerVisible : ""}`}
         ref={answerRef}
       >
-        <h2 className={styles.answerText}>{respuesta}</h2>
+        <span className={styles.answerText}>{respuesta}</span>
       </div>
     </div>
   );
@@ -44,7 +44,7 @@ const FAQSection = () => (
   <div className={styles.background}>
     <div className={styles.container}>
       <h2 className={styles.title}>
-        <span className={styles.titleText}>Preguntas frecuentes:</span>
+        <span className={`font-bold avant-garde-bold ${styles.titleText}`}>Preguntas frecuentes:</span>
       </h2>
       <div className={styles.faqContainer}>
         <div className={styles.faqItem}>
