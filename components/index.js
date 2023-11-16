@@ -14,7 +14,9 @@ export { default as ModalEdit } from "./modal/ModalEdit.jsx";
 // export { default as ModalChangePassword } from './modalChangePassword/index.jsx'
 // export { default as ModalUserActivation } from './modalUserActivation/index.jsx'
 // export { default as SideBar } from './sideBar/index.jsx'
-export { default as FormInputs } from "./FormInputs";
-export { default as SubmitButton } from "./SubmitButton";
-export { default as CalendarUser } from "./calendarUser/index.jsx";
-export { default as ChangeUser } from "./changeUser";
+export { default as CalendarUser } from './calendarUser/index.jsx'
+export { default as FormInputs } from './FormInputs'
+export { default as SubmitButton } from './SubmitButton'
+export { default as ChangeUser} from './changeUser'
+export { default as RegistrationForm } from './contactame/index.jsx'
+export { default as PaymentView } from './paymentPlans/index.jsx'

@@ -1,34 +1,79 @@
-"use client";
-import { Accordion, AccordionBody, AccordionHeader, AccordionList } from "@tremor/react";
+"use client"
+import React, { useState, useRef } from "react";
+import styles from "./Questions.module.css";
+
+const FAQItem = ({ pregunta, respuesta }) => {
+  const [mostrarRespuesta, setMostrarRespuesta] = useState(false);
+  const answerRef = useRef(null);
+
+  const toggleRespuesta = () => {
+    setMostrarRespuesta(!mostrarRespuesta);
+
+    if (!mostrarRespuesta && answerRef.current) {
+      const yOffset = answerRef.current.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: yOffset, behavior: 'smooth' });
+    }
+  };
+  
+
+  return (
+    <div className={styles.faqItemContainer}>
+      <h1
+        className={` font-bold avant-garde-bold ${styles.question} ${mostrarRespuesta ? styles.questionActive : ""}`}
+      >
+        {pregunta}
+        <span
+          className={`font-bold avant-garde-bold ${styles.icon} ${mostrarRespuesta ? styles.iconActive : ""}`}
+          onClick={toggleRespuesta}
+        >
+          {mostrarRespuesta ? "-" : "+"}
+        </span>
+      </h1>
+      <div
+        className={`font-regular avant-garde-regular ${styles.answer} ${mostrarRespuesta ? styles.answerVisible : ""}`}
+        ref={answerRef}
+      >
+        <span className={styles.answerText}>{respuesta}</span>
+      </div>
+    </div>
+  );
+};
 
 
-export default () => (
-
-  <AccordionList className="max-w-3x1 mx-100 mx-100 bg-gradient-to-b from-Az1 via-gray to-Az2 text-gray mb-20 w-4/5">
-    <h2 className="w-full h-20 flex items-center justify-center text-gray text-3xl font-bold avant-garde-bold">Preguntas frecuentes:</h2>
-    <Accordion>
-      <AccordionHeader className="font-bold avant-garde-regular text-xl bg-gradient-to-b from-Az4 via-Az1 to-Az2 text-gray" >¿Qué es una mesa de ayuda y por qué mi empresa necesita una?</AccordionHeader>
-      <AccordionBody className="  font-bold avant-garde-bold text-lg bg-gradient-to-b from-Az4 via-Az4 to-Az4  to-gray text-gray">
-        Una mesa de ayuda es un sistema que ayuda a las empresas a gestionar y resolver las solicitudes de servicio de manera eficiente. Es esencial para mejorar la satisfacción del cliente y mantener un registro de problemas y soluciones.
-      </AccordionBody>
-    </Accordion>
-    <Accordion>
-      <AccordionHeader className="font-bold avant-garde-regular text-xl  bg-gradient-to-b from-Az4 via-Az1 to-Az2 text-gray">¿Cómo puedo registrarme en la plataforma de gestión de tickets?</AccordionHeader>
-      <AccordionBody className=" font-bold shadow-2x1 avant-garde-bold text-lg bg-gradient-to-b from-Az4 via-Az4 to-Az4 text-gray">
-        El proceso de registro es simple. Visita nuestra página de inicio, haz clic en "Registrarse" y sigue las instrucciones para crear una cuenta.
-      </AccordionBody>
-    </Accordion>
-    <Accordion>
-      <AccordionHeader className="font-bold avant-garde-regular text-xl bg-gradient-to-b from-Az4 via-Az1 to-Az2 text-gray">¿Qué beneficios obtendré al utilizar su plataforma?</AccordionHeader>
-      <AccordionBody className="font-bold avant-garde-bold shadow-2x1 bg-gradient-to-b from-Az4 via-Az4 to-Az4 text-gray">
-        Al usar nuestra plataforma, obtendrás una gestión más eficiente de las solicitudes de servicio, informes detallados sobre el rendimiento y la capacidad de mejorar la satisfacción del cliente.
-      </AccordionBody>
-    </Accordion>
-    <Accordion>
-      <AccordionHeader className="font-bold avant-garde-regular text-xl  bg-gradient-to-b from-Az4 via-Az1 to-Az2 text-gray">¿Cómo puedo crear y seguir un ticket de servicio?</AccordionHeader>
-      <AccordionBody className="font-bold avant-garde-bold text-lg  bg-gradient-to-b from-Az4 via-Az4 to-Az4 text-gray">
-        Después de iniciar sesión, simplemente haz clic en "Crear Ticket" y completa la información requerida. Puedes seguir el estado de tus tickets en tu panel de control.
-      </AccordionBody>
-    </Accordion>
-  </AccordionList>
+const FAQSection = () => (
+  <div className={styles.background}>
+    <div className={styles.container}>
+      <h2 className={styles.title}>
+        <span className={`font-bold avant-garde-bold ${styles.titleText}`}>Preguntas frecuentes:</span>
+      </h2>
+      <div className={styles.faqContainer}>
+        <div className={styles.faqItem}>
+          <FAQItem
+            pregunta="¿Qué es una mesa de ayuda y por qué mi empresa necesita una?"
+            respuesta="Una mesa de ayuda es un sistema que ayuda a las empresas a gestionar y resolver las solicitudes de servicio de manera eficiente. Es esencial para mejorar la satisfacción del cliente y mantener un registro de problemas y soluciones."
+          />
+        </div>
+        <div className={styles.faqItem}>
+          <FAQItem
+            pregunta="¿Cómo puedo registrarme en la plataforma de gestión de tickets?"
+            respuesta="El proceso de registro es simple. Visita nuestra página de inicio, haz clic en 'Registrarse' y sigue las instrucciones para crear una cuenta."
+          />
+        </div>
+        <div className={styles.faqItem}>
+          <FAQItem
+            pregunta="¿Qué beneficios obtendré al utilizar su plataforma?"
+            respuesta="Al usar nuestra plataforma, obtendrás una gestión más eficiente de las solicitudes de servicio, informes detallados sobre el rendimiento y la capacidad de mejorar la satisfacción del cliente."
+          />
+        </div>
+        <div className={styles.faqItem}>
+          <FAQItem
+            pregunta="¿Cómo puedo crear y seguir un ticket de servicio?"
+            respuesta="Después de iniciar sesión, simplemente haz clic en 'Crear Ticket' y completa la información requerida. Puedes seguir el estado de tus tickets en tu panel de control."
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 );
+
+export default FAQSection;
