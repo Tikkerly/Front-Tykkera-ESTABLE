@@ -34,7 +34,7 @@ const Navbar = () => {
         style={{ zIndex: 1000}}
       >
         <div>
-          <Link href="/">
+          <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             <Image
               src={logotipo}
               width={290}
@@ -46,7 +46,7 @@ const Navbar = () => {
         </div>
         {auth ? (
           <div>
-            <Link href="/user">
+            <Link href="/user" style={{ textDecoration: 'none', color: 'inherit' }}>
             <span className="mr-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer">
                 Perfil
               </span>
@@ -63,13 +63,13 @@ const Navbar = () => {
           </div>
         ) : (
         <div className="flex items-center">
-          <Link href="/ingresar">
+          <Link href="/ingresar" style={{ textDecoration: 'none', color: 'inherit' }}>
             <span className="mr-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer">Ingresar</span>
           </Link>
 
           <span className="mx-1 avant-garde-bold text-base text-gray">/</span>
 
-          <Link href="/registrarse">
+          <Link href="/registrarse" style={{ textDecoration: 'none', color: 'inherit' }}>
             <span className="ml-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer">Registrarse</span>
           </Link>
         </div>

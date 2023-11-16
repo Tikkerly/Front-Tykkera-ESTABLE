@@ -70,10 +70,10 @@ export default function LoginForm() {
               {message}
             </h2>
           )}
-          <Link href="/cambiar-contrasena " className="hover:underline">
-            <h2 className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md">
+          <Link href="/cambiar-contrasena" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <button className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md hover:underline">
               Olvidé mi contraseña
-            </h2>
+            </button>
           </Link>
           <div className="h-0.5 w-full bg-gray-300"></div>
           <GoogleLogin

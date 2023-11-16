@@ -18,11 +18,13 @@ export default function LoginPage() {
           className="transition-transform duration-300 transform hover:scale-103 filter hover:brightness-110"
         />
         <Link
+
           href="/"
           className="absolute left-5 top-5 flex items-center gap-4"
+          style={{ textDecoration: 'none', color: 'inherit' }}
         >
           <HomeIcon fontSize="large" />
-          <h2 className={styles.back}>Volver a la página principal</h2>
+          <h2 className={` text-xl avant-garde-regular font-regular ${styles.back} `}>Volver a la página principal</h2>
         </Link>
       </div>
       <div className="lg:h-screen lg:w-2/6 lg:bg-white lg:grid lg:grid-cols-1 lg:gap-16 lg:items-center lg:justify-center w-screen h-screen bg-white grid grid-cols-1 gap-16 items-center justify-center">
