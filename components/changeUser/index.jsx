@@ -26,10 +26,10 @@ const ChangeUser = () => {
     }
   };
   return (
-    <div className="">
+    <div className="flex flex-col items-center justify-center">
       <h1 className="text-4xl text-gray-100 avant-garde-bold font-bold ">Coloque su Email</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center">
+        <div >
           <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
             <div className="absolute left-2 top-2"></div>
             <input

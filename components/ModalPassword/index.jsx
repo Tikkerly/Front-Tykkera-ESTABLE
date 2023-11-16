@@ -14,14 +14,14 @@ const ModalPassword = ({ isVisible, onClose }) => {
       id="wrapper"
       onClick={handleClose}
     >
-      <div className=" flex flex-col bg-Az4 p-4 rounded">
+      <div className=" flex flex-col bg-Az4 bg-opacity-90 p-4 rounded">
         <button
-          className=" font-bold avant-garde-bold text-lg text-gray-100 px-2 rounded bg-gray-600 self-start transition duration-300 hover:text-red-800 hover:shadow-md"
+          className=" font-bold avant-garde-bold text-lg text-gray-100 px-2 rounded bg-gray-600 self-end transition duration-300 hover:text-red-800 hover:shadow-md"
           onClick={() => onClose()}
         >
           X
         </button>
-        <div className="bg-243244 p-2 rounded">
+        <div className="bg-243244 p-2 rounded ">
             <ChangeUser/>
         </div>
       </div>
