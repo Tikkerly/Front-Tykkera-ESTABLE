@@ -26,35 +26,50 @@ const Profile = () => {
 
   const handleSaveChanges = async () => {
     try {
-      const response = await axios.put(`http://localhost:3001/api/v1/user/edituser/${id}`, editable,  {
+      const response = await axios.put(
+        `http://localhost:3001/api/v1/user/edituser/${id}`,
+        editable,
+        {
           headers: {
-            "x-token":token,
-              }}
-          );
-      console.log(response.data)
+            "x-token": token,
+          },
+        }
+      );
+      console.log(response.data);
       dispatch(userDetails(response.data));
-      alert('Se han guardado los cambios');
+      alert("Se han guardado los cambios");
     } catch (error) {
-      console.error('Error editing user:', error);
+      console.error("Error editing user:", error);
     }
   };
 
   return (
     <div>
-      <div className="bg-white bg-opacity-60 p-8 text-black rounded-lg shadow-md w-full h-full max-w-screen-md mx-auto flex flex-col justify-between">
-        <div className="text-center mt-2">
+      <div className="bg-Be bg-opacity-90 p-8 text-gray-900 rounded-lg shadow-md w-full h-full max-w-screen-md mx-auto flex flex-col">
+        <div className="flex items-start mb-8">
           <img
             className="mx-auto h-32 w-32 rounded-full object-cover"
             src={user.img}
             alt="Profile Image"
           />
+          <div>
+            <h2 className="text-2xl mb-2 font-bold avant-garde-bold">
+              CLIENTE
+            </h2>
+            <h2 className="text-xl mb-2 font-regular avant-garde-regular">
+              Persona Natural
+            </h2>
+            <h2 className="text-xl mb-2 font-regular avant-garde-regular">
+              Nit: 08234561-2
+            </h2>
+          </div>
         </div>
         <div className="text-center mt-4">
           <h2 className="text-2xl mb-2 font-bold avant-garde-bold">
             {user.email}
           </h2>
           <h2 className="text-xl mb-2 font-regular avant-garde-regular">
-            {user.personType}
+            Persona {user.personType}
           </h2>
           <h2 className="text-xl mb-2 font-regular avant-garde-regular">
             NIT: {user.nit}
@@ -62,7 +77,7 @@ const Profile = () => {
         </div>
 
         <div className="mb-4">
-        <label>Nombre de Usuario</label>
+          <label>Nombre de Usuario</label>
           <input
             className=" font-regular avant-garde-regular w-full px-4 py-3 text-xl text-gray-700 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
             id="username"
@@ -74,6 +89,7 @@ const Profile = () => {
         </div>
 
         <div className="mb-4">
+
         <label>Dirección</label>
           <input
             className=" font-regular avant-garde-regular w-full px-4 py-3 text-xl text-gray-700 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
@@ -97,6 +113,7 @@ const Profile = () => {
           />
         </div>
 
+
           <div className="flex items-center justify-center">
             <button
               className=" font-bold avant-garde-bold w-full bg-Az3 text-gray py-3 px-6 rounded  text-xl transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
@@ -106,6 +123,7 @@ const Profile = () => {
               Guardar cambios
             </button>
           </div>
+
       </div>
     </div>
   );

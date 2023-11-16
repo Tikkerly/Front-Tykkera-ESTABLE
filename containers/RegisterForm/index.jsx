@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { validation } from "@/utils";
 import {
   AccountCircle,
@@ -14,10 +14,12 @@ import { FormInputs, SubmitButton } from "@/components";
 import { registerSubmit } from "@/services";
 import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
-import { TextField, InputAdornment } from "@mui/material";
+import { load } from "@/public/load.gif";
+import Image from "next/image";
 
 const RegisterForm = () => {
   const router = useRouter();
+  const [disabled, setDisabled] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -25,9 +27,9 @@ const RegisterForm = () => {
     confirmPassword: "",
     personType: "",
     phone: "",
-    clientId: "",
+    nit: "",
     img: null,
-    rol: "CLIENTE",
+    address: "",
   });
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
@@ -39,10 +41,12 @@ const RegisterForm = () => {
   };
 
   const handleChange = (e) => {
+    console.log(errors)
     setErrors(
       validation("register", { ...formData, [e.target.name]: e.target.value })
     );
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
     const props = Object.keys(
       validation("register", { ...formData, [e.target.name]: e.target.value })
     );
@@ -59,20 +63,24 @@ const RegisterForm = () => {
     password: formData.password,
     personType: formData.personType,
     phone: formData.phone,
-    clientId: formData.clientId,
+    nit: formData.nit,
     img: formData.img,
-    rol: formData.rol,
+    address: formData.address,
   };
 
   const handleSubmit = registerSubmit(USER_ROUTES.registerUser, user, router);
 
+  const handleDisable = () => {
+    setDisabled(true);
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 items-center w-80"
+      className="container mx-auto p-5 grid grid-cols-1 gap-5 w-100 lg:grid-cols-2 "
     >
-      <div className="flex items-center gap-2 flex-col">
-        <TextField
+      <div className="flex items-center gap-2 flex-col ">
+        <FormInputs
           label={"Nombre de usuario:"}
           className="p-2"
           placeholder={"Nombre de usuario"}
@@ -80,13 +88,7 @@ const RegisterForm = () => {
           value={formData.username}
           onChange={handleChange}
           type={"text"}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircle className="text-gray-500" />
-              </InputAdornment>
-            ),
-          }}
+          
         />
         <div className="h-2">
           {errors.username && (
@@ -96,8 +98,8 @@ const RegisterForm = () => {
           )}
         </div>
       </div>
-      <div className="flex items-center gap-2 flex-col">
-        <TextField
+      <div className="flex items-center gap-2 flex-col ">
+        <FormInputs
           label={"Email:"}
           className="p-2"
           placeholder={"Correo electrónico"}
@@ -105,13 +107,7 @@ const RegisterForm = () => {
           value={formData.email}
           onChange={handleChange}
           type={"email"}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Email className="text-gray-500" />
-              </InputAdornment>
-            ),
-          }}
+          
         />
         <div className="h-2">
           {errors.email && (
@@ -122,8 +118,8 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 flex-col">
-        <TextField
+      <div className="flex items-center gap-2 flex-col ">
+        <FormInputs
           label={"Contraseña:"}
           className="p-2"
           placeholder={"Contraseña"}
@@ -131,13 +127,6 @@ const RegisterForm = () => {
           value={formData.password}
           onChange={handleChange}
           type={"password"}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Lock className="text-gray-500" />
-              </InputAdornment>
-            ),
-          }}
         />
         <div className="h-2">
           {errors.password && (
@@ -148,8 +137,8 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 flex-col">
-        <TextField
+      <div className="flex items-center gap-2 flex-col ">
+        <FormInputs
           className="p-2"
           label={"Confirmar contraseña:"}
           placeholder={"Confirmar contraseña"}
@@ -157,13 +146,7 @@ const RegisterForm = () => {
           value={formData.confirmPassword}
           onChange={handleChange}
           type={"password"}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Lock className="text-gray-500" />
-              </InputAdornment>
-            ),
-          }}
+          
         />
         <div className="h-2">
           {errors.confirmPassword && (
@@ -174,59 +157,67 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 flex-col">
-        <TextField
-          label={"Telefono:"}
-          className="p-2"
-          placeholder={"Numero de celular"}
-          name={"phone"}
-          value={formData.phone}
-          onChange={handleChange}
-          type={"number"}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Phone className="text-gray-500" />
-              </InputAdornment>
-            ),
-          }}
-        />
-        <div className="h-2">
-          {errors.phone && (
-            <p className="text-red-500 font-regular avant-garde-regular text-sm">
-              {errors.phone}
-            </p>
-          )}
-        </div>
-      </div>
-
-      <div className="flex items-center gap-2 flex-col">
-        <TextField
+      <div className="flex items-center gap-2 flex-col ">
+        <FormInputs
           label={"Identificación:"}
           className="p-2"
           placeholder={"Numero de identificacion"}
-          name={"clientId"}
+          name={"nit"}
+          value={formData.nit}
+          onChange={handleChange}
+          type={"text"}
+          
+        />
+        <div className="h-2">
+          {errors.nit && (
+            <p className="text-red-500 font-regular avant-garde-regular text-sm">
+              {errors.nit}
+            </p>
+          )}
+        </div>
+      </div>
+      <div>
+        <div className="flex items-center gap-2 flex-col ">
+          <FormInputs
+            label={"Telefono:"}
+            className="p-2"
+            placeholder={"Numero de celular"}
+            name={"phone"}
+            value={formData.phone}
+            onChange={handleChange}
+            type={"number"}
+            
+          />
+          <div className="h-2">
+            {errors.phone && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.phone}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center gap-2 flex-col ">
+        <FormInputs
+          label={"Dirección:"}
+          className="p-2"
+          placeholder={"Direccioón"}
+          name={"address"}
           value={formData.clientId}
           onChange={handleChange}
           type={"text"}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AssignmentInd className="text-gray-500" />
-              </InputAdornment>
-            ),
-          }}
+          
         />
         <div className="h-2">
-          {errors.clientId && (
+          {errors.address && (
             <p className="text-red-500 font-regular avant-garde-regular text-sm">
-              {errors.clientId}
+              {errors.address}
             </p>
           )}
         </div>
       </div>
 
-      <div className="flex items-center gap-2 flex-col w-auto h-auto">
+      <div className="flex items-center gap-2 flex-col w-auto h-auto ">
         <select
           label={"Tipo de persona:"}
           id="personType"
@@ -237,13 +228,13 @@ const RegisterForm = () => {
           onChange={handleChange}
         >
           <option value="Tipodepersona">
-            <Person /> Tipo de persona
+             Tipo de persona
           </option>
-          <option value="Persona Natural">
-            <AssignmentInd /> Persona Natural
+          <option value="Natural">
+             Persona Natural
           </option>
-          <option value="Persona Juridica">
-            <Business /> Persona Juridica
+          <option value="Juridica">
+             Persona Juridica
           </option>
         </select>
       </div>
@@ -254,8 +245,8 @@ const RegisterForm = () => {
           </p>
         )}
       </div>
-      <div className="flex items-center gap-2 flex-col">
-        <TextField
+      <div className="flex items-center gap-2 flex-col ">
+        <FormInputs
           label={"Imagen:"}
           className="p-2"
           placeholder={"Imagen"}
@@ -263,11 +254,7 @@ const RegisterForm = () => {
           onChange={handleImageChange}
           type="file"
           InputLabelProps={{ shrink: true }}
-          InputProps={{
-            classes: {
-              input: "bg-Be outline-none",
-            },
-          }}
+          
         />
         <div className="h-2">
           {errors.img && (
@@ -277,7 +264,18 @@ const RegisterForm = () => {
           )}
         </div>
       </div>
-      <SubmitButton text={"Registrarse"} type={"submit"} />
+      {disabled ? (
+        <div className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md">
+          <p>Cargando...</p>
+        </div>
+      ) : (
+        <SubmitButton
+          text={"Registrarse"}
+          type={"submit"}
+          onClick={handleDisable}
+          disabled={isDisabled}
+        />
+      )}
     </form>
   );
 };
