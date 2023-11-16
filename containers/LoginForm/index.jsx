@@ -1,3 +1,4 @@
+'use client'
 import { FormInputs, SubmitButton } from "@/components";
 import { useState } from "react";
 import { USER_ROUTES } from "@/routes/routes";
@@ -11,9 +12,11 @@ import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
-// 906706593927-28g158gplg7fshf568027niditejuldo.apps.googleusercontent.com
+import ModalPassword from "@/components/ModalPassword";
 
 export default function LoginForm() {
+  
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -49,7 +52,6 @@ export default function LoginForm() {
           value={formData.email}
           onChange={handleChange}
           type={"email"}
-          
         />
 
         <FormInputs
@@ -60,7 +62,6 @@ export default function LoginForm() {
           value={formData.password}
           onChange={handleChange}
           type={"password"}
-          
         />
         <div className="flex flex-col items-center gap-4 text-center w-full">
           <SubmitButton text={"Ingresar"} type={"submit"} />
@@ -70,11 +71,12 @@ export default function LoginForm() {
               {message}
             </h2>
           )}
-          <Link href="/cambiar-contrasena" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <button className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md hover:underline">
-              Olvidé mi contraseña
-            </button>
-          </Link>
+          <button
+            className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md hover:underline"
+            onClick={() => setShowPasswordModal(true)}
+          >
+            Olvidé mi contraseña
+          </button>
           <div className="h-0.5 w-full bg-gray-300"></div>
           <GoogleLogin
             onSuccess={(credentialResponse) => {
@@ -94,6 +96,10 @@ export default function LoginForm() {
           />
         </div>
       </form>
+      <ModalPassword
+        isVisible={showPasswordModal}
+        onClose={() => setShowPasswordModal(false)}
+      />
     </GoogleOAuthProvider>
   );
 }
