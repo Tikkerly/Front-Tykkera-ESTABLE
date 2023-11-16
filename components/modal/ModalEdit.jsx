@@ -88,7 +88,7 @@ export default function ModalEdit({ show, onClose, id }) {
                 <div className="w-full">
                   <label
                     htmlFor="clientId"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Nit
                   </label>
@@ -104,7 +104,7 @@ export default function ModalEdit({ show, onClose, id }) {
                 <div className="w-full">
                   <label
                     htmlFor="img"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Foto
                   </label>
@@ -122,7 +122,7 @@ export default function ModalEdit({ show, onClose, id }) {
                 <div className="w-full">
                   <label
                     htmlFor="username"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Username
                   </label>
@@ -138,7 +138,7 @@ export default function ModalEdit({ show, onClose, id }) {
                 <div className="w-full">
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Email
                   </label>
@@ -156,7 +156,7 @@ export default function ModalEdit({ show, onClose, id }) {
                 <div className="w-full">
                   <label
                     htmlFor="phone"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Teléfono
                   </label>
@@ -172,7 +172,7 @@ export default function ModalEdit({ show, onClose, id }) {
                 <div className="w-full">
                   <label
                     htmlFor="personType"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Tipo
                   </label>
@@ -192,7 +192,7 @@ export default function ModalEdit({ show, onClose, id }) {
                 <div className="w-full">
                   <label
                     htmlFor="status"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Estado
                   </label>
@@ -210,7 +210,7 @@ export default function ModalEdit({ show, onClose, id }) {
                 <div className="w-full">
                   <label
                     htmlFor="rol"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Rol
                   </label>

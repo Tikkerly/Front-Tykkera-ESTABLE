@@ -5,13 +5,14 @@ import {
   Description,
   RegistrationForm,
 } from "@/components";
+import ContactButton from "@/components/ContactButton";
 
 const Home = () => {
   return (
     <div className="relative mx-auto flex flex-col overflow-hidden h-full justify-around items-center">
       <Description />
       <CarrouselServices />
-      <RegistrationForm/>
+      <ContactButton/>
       <CarrouselQuestions />
     </div>
   );
