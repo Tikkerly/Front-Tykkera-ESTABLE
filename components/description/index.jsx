@@ -9,13 +9,13 @@ const Description = () => {
     <>
 
 
-<div className={` mb-40 p-40 bg-white opacity-90 w-screen h-full rounded-lg shadow-md flex flex-col items-center justify-center ${styles["bg-image"]}`}>
+<div className={` mb-40 p-40 w-screen h-full rounded-lg shadow-md flex flex-col items-center justify-center ${styles["bg-image"]}`}>
       
-      <div className="w-screen h-full ">
-      <div className="w-auto h-full p-20 bg-white bg-opacity-80 rounded-lg "> 
+      <div className="w-100% h-100% mt-20 p-20 bg-white flex items-center justify-center content-center bg-opacity-50 rounded-lg "> 
+      <div className=" ">
 
-      <div className="content ">
-        <h1 className="title mt-20 text-7xl font-bold leading-none text-Az3 bg-gradient-to-r from-Az1 to-Az3 bg-clip-text text-transparent">Tykkera</h1>
+      <div className="content">
+        <h1 className="title  text-7xl font-bold leading-none text-Az3 bg-gradient-to-r from-Az1 to-Az3 bg-clip-text text-transparent">Tykkera</h1>
         <div className="aurora">
           <div className="aurora__item"></div>
           <div className="aurora__item bg-blue-500"></div>
