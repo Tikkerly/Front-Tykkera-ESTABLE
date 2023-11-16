@@ -4,7 +4,7 @@ import SideBar from "@/components/sideBar";
 
 const UserLayout = ({ children }) => {
   return (
-    <div className="flex h-screen ">
+    <div className="flex h-screen mt-40">
       <div style={{ background: "#0576e6e3", width: "20.2%" }}>
         <SideBar />
       </div>
