@@ -1,50 +1,96 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Link from 'next/link';
-
+import Cookies from "js-cookie";
 import ClearIcon from '@mui/icons-material/Clear';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import { useSelector } from 'react-redux';
 
 const TicketsView = () => {
- 
-  const [ticketsData, setTicketsData] = useState([
-    // Aquí debes incluir tus datos de tickets, por ejemplo:
-    { id: 1, cliente: 'Patricia Rois', tecnico: 'Julian Roger', tipoServicio: 'Reparacion', fechaInicio: '2023-11-01', fechaFinalizacion: '2023-11-05', estado: 'En Proceso' },
-    { id: 2, cliente: 'Camilo Cruz', tecnico: 'Julian Roger', tipoServicio: 'Mantenimiento', fechaInicio: '2023-11-02', fechaFinalizacion: '2023-11-06', estado: 'Completado' },
-    { id: 3, cliente: 'Maluma', tecnico: 'Daddy Yankee', tipoServicio: 'Mantenimiento', fechaInicio: '2023-11-02', fechaFinalizacion: '2023-11-06', estado: 'Completado' },
-    // Agrega más objetos con tus datos de tickets aquí
-  ]);
-  const handleTicketDelete = (ticketId) => {
-    // Filtra los tickets y crea un nuevo arreglo sin el ticket correspondiente al ticketId
-    const updatedTicketsData = ticketsData.filter((ticket) => ticket.id !== ticketId);
-    // Actualiza el estado de los tickets con el nuevo arreglo sin el ticket eliminado
-    setTicketsData(updatedTicketsData);
+
+  const id = useSelector((state) => state.auth.user._id);
+  const token = Cookies.get("token");
+
+  const [ticketsData, setTicketsData] = useState([]);
+
+  useEffect(() => {
+    const getTickets = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/api/v1/tickets/company/${id}`, {
+          headers: {
+            "x-token": token,
+          },
+        });
+        console.log(response.data)
+        setTicketsData(response.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    getTickets();
+  }, []);
+  
+  const handleTicketDelete = async () => {
+   try {
+    const response = await axios.get(`http://localhost:3001/api/v1/tickets/deleteticket/${id}`, {
+          headers: {
+            "x-token": token,
+          },
+        });
+        console.log(response.data)
+        setTicketsData(response.data);
+   } catch (error) {
+    
+   }
   };
 
   return (
-    <div className="flex justify-center items-center bg-Be bg-opacity-90 p-8 text-black rounded-lg shadow-md ">
+
+    <div className="flex justify-center items-center bg-white bg-opacity-60 p-8 text-black rounded-lg shadow-md ">
+      <Link href={"/user/tickets/crear-ticket"}> <button>Crear Ticket</button></Link>
+
       <table className="table-auto">
         <thead>
           <tr className="bg-Az2">
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Id</th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Compañía</th>
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Cliente</th>
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Técnico</th>
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Tipo de Servicio</th>
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Fecha Inicio</th>
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Fecha Finalización</th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Descripción del Servicio</th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Fecha de Registro</th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Fecha de Inicio</th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Fecha de Finalización</th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Monto</th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Costo</th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Utilidad</th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Otros</th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">IVA</th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Método de pago</th>
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">Estado</th>
           </tr>
         </thead>
         <tbody>
-          {ticketsData.map((ticket) => (
-            <tr key={ticket.id}>
-              <td className="py-2 px-4 font-bold avant-garde-bold border bg-Az2">{ticket.id}</td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">{ticket.cliente}</td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">{ticket.tecnico}</td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">{ticket.tipoServicio}</td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">{ticket.fechaInicio}</td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">{ticket.fechaFinalizacion}</td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">{ticket.estado}</td>
+          {ticketsData.tickets?.map((tickets) => (
+            <tr key={tickets.internalConsecutive}>
+              <td className="py-2 px-4 font-bold avant-garde-bold border bg-Az2">{tickets.internalConsecutive}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.company_id}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.serviceClient_id}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.technician_id}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.serviceType}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.serviceDescription}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.registerDate}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.startDate}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.endDate}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.ammount}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.cost}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.utility}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.others}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.IVA}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.paymentMethod}</td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.estado}</td>
               <td className="py-2 px-4 font-regular avant-garde-regular ">
                 <Link href="/user/tickets/edit">
                   <EditNoteIcon className="text-blue-500 hover:text-blue-700" />

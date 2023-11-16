@@ -1,60 +1,99 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 
-const CreateTickects = () => {
+const CreateTickect = () => {
+
+  const [formData, setFormData] = useState({
+    startDate: '',
+    serviceDescription:'',
+    company_id: '',
+    finalClient_id: '',
+    serviceClient_id: '',
+    serviceType: '',
+    serviceDescription: '',
+    technician_id: '',
+    paymentMethod: '',
+    ammount: 0,
+    cost: 0,
+    others: 0,
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/tickets/registerticket', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+      } else {
+        alert('Error al registrar el ticket');
+      }
+    } catch (error) {
+      alert('Error al procesar la solicitud:', error);
+    }
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
-        <label>Consecutivo Interno:</label>
-        <input type="text" name="internid" value="X01" />
+        <label>Compañía:</label>
+        <input type="text" name="clientname" value={formData.finalClient_id} onChange={handleInputChange} />
       </div>
       <div>
-        <label>Fecha de Elaboración:</label>
-        <input type="date" name="date" value="10/11/2023" />
+        <label>Cliente Final:</label>
+        <input type="text" name="finalclientname" value={formData.finalClient_id} onChange={handleInputChange} />
       </div>
       <div>
-        <label>Número de OS:</label>
-        <input type="text" name="numberOS" value="AB000001" />
+        <label>Técnico:</label>
+        <input type="text" name="clientid" value={formData.technician_id} onChange={handleInputChange} />
       </div>
       <div>
-        <label>Nombre del Cliente:</label>
-        <input type="text" name="clientname" value="Thomas Araujo Perez" />
+        <label>Agente de Servicio:</label>
+        <input type="text" name="clientid" value={formData.serviceClient_id} onChange={handleInputChange} />
       </div>
       <div>
-        <label>Número de Identificación del Cliente:</label>
-        <input type="text" name="clientid" value="18764512" />
-      </div>
-      <div>
-        <label>Nombre del Cliente Final:</label>
-        <input type="text" name="finalclientname" value="Empresas varias" />
-      </div>
-      <div>
-        <label>Quien pidio el servicio:</label>
-        <input type="text" name="serviceprovider" value="Javier Tagairo" />
+        <label>Fecha de Inicio:</label>
+        <input type="date" name="date" value={formData.startDate} onChange={handleInputChange} />
       </div>
       <div>
         <label>Tipo de Servicio:</label>
-        <input type="text" name="servicetype" value="Reparacion de Celular" />
+        <input type="text" name="servicetype" value={formData.serviceType} onChange={handleInputChange} />
       </div>
       <div>
         <label>Descripción del Servicio:</label>
-        <input type="text" name="servicedescription" value="Reparacion de sony A11 con problemas de pantalla" />
+        <input type="text" name="servicedescription" value={formData.serviceDescription} onChange={handleInputChange} />
       </div>
       <div>
-        <label>Quién Realizó el Servicio:</label>
-        <input type="text" name="technician" value="Alejo Paternina" />
+        <label>Precio:</label>
+        <input type="number" name="amount" value={formData.ammount} onChange={handleInputChange} />
       </div>
       <div>
-        <label>Cantidad:</label>
-        <input type="number" name="amount" value="1" />
-      </div>
-      <div>
-        <label>Valor Costo por Servicio Contratado:</label>
-        <input type="number" name="cost" value="250000" />
+        <label>Costo:</label>
+        <input type="number" name="cost" value={formData.cost} onChange={handleInputChange} />
       </div>
       <div>
         <label>Otros Valores o Conceptos:</label>
-        <input type="number" name="anothervalues" value="150000" />
+        <input type="number" name="anothervalues" value={formData.others} onChange={handleInputChange} />
+      </div>
+      <div>
+        <label>Método de Pago:</label>
+        <input type="number" name="anothervalues" value={formData.paymentMethod} onChange={handleInputChange} />
       </div>
       <div>
         <button type="submit">Registrar Ticket</button>
@@ -63,4 +102,4 @@ const CreateTickects = () => {
   );
 }
 
-export default CreateTickects;
+export default CreateTickect;

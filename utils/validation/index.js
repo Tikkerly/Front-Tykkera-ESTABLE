@@ -15,8 +15,8 @@ const validation = (type, values) => {
             if (!values.phone) {
                 errors.phone = 'El campo es obligatorio';
             }
-            if (!values.clientId) {
-                errors.clientId = 'El campo es obligatorio';
+            if (!values.nit) {
+                errors.nit = 'El campo es obligatorio';
             }
             if (!values.personType) {
                 errors.personType = 'El campo es obligatorio';
