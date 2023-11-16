@@ -11,9 +11,6 @@ const Profile = () => {
   const token = Cookies.get("token");
   const dispatch = useDispatch();
 
-
-  console.log(user)
-
   const [editable, setEditable] = useState({
     username: user.username,
     phone: user.phone,

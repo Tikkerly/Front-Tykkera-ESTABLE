@@ -5,25 +5,25 @@ import Link from 'next/link';
 import Cookies from "js-cookie";
 import ClearIcon from '@mui/icons-material/Clear';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import { useSelector } from 'react-redux';
 
 const TicketsView = () => {
 
+  const id = useSelector((state) => state.auth.user._id);
   const token = Cookies.get("token");
 
-  const [ticketsData, setTicketsData] = useState({
-    total: 0,
-    tickets: [],
-  });
+  const [ticketsData, setTicketsData] = useState([]);
 
   useEffect(() => {
     const getTickets = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/api/v1/tickets/", {
+        const response = await axios.get(`http://localhost:3001/api/v1/tickets/company/${id}`, {
           headers: {
             "x-token": token,
           },
         });
-        setUserData(response.data);
+        console.log(response.data)
+        setTicketsData(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -32,13 +32,23 @@ const TicketsView = () => {
     getTickets();
   }, []);
   
-  const handleTicketDelete = (ticketId) => {
-    const updatedTicketsData = ticketsData.filter((ticket) => ticket.internalConsecutive !== ticketId);
-    setTicketsData(updatedTicketsData);
+  const handleTicketDelete = async () => {
+   try {
+    const response = await axios.get(`http://localhost:3001/api/v1/tickets/deleteticket/${id}`, {
+          headers: {
+            "x-token": token,
+          },
+        });
+        console.log(response.data)
+        setTicketsData(response.data);
+   } catch (error) {
+    
+   }
   };
 
   return (
     <div className="flex justify-center items-center bg-white bg-opacity-60 p-8 text-black rounded-lg shadow-md ">
+      <Link href={"/user/tickets/crear-ticket"}> <button>Crear Ticket</button></Link>
       <table className="table-auto">
         <thead>
           <tr className="bg-Az2">
@@ -61,7 +71,7 @@ const TicketsView = () => {
           </tr>
         </thead>
         <tbody>
-          {ticketsData.map((tickets) => (
+          {ticketsData.tickets?.map((tickets) => (
             <tr key={tickets.internalConsecutive}>
               <td className="py-2 px-4 font-bold avant-garde-bold border bg-Az2">{tickets.internalConsecutive}</td>
               <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.company_id}</td>
