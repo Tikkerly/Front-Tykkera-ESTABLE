@@ -46,7 +46,7 @@ const ChangeUser = () => {
         </div>
 
         <div className="mt-2 flex items-center">
-          <Link href="/" className="text-sm mt-1">
+          <Link href="/ingresar" className="text-sm mt-1">
             Regresar a la pagina anterior
           </Link>
         </div>
