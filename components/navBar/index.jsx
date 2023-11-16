@@ -30,7 +30,8 @@ const Navbar = () => {
       <div
 
 
-        className="p-4 text-gray flex flex-row items-center justify-between bg-gray-500 bg-opacity-80 "
+        className="p-4 text-gray flex flex-row items-center justify-between bg-gray-500 bg-opacity-80 fixed w-full top-0"
+        style={{ zIndex: 1000}}
       >
         <div>
           <Link href="/">
@@ -46,7 +47,7 @@ const Navbar = () => {
         {auth ? (
           <div>
             <Link href="/user">
-            <span className="mr-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az5 hover:underline cursor-pointer">
+            <span className="mr-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer">
                 Perfil
               </span>
             </Link>
@@ -55,7 +56,7 @@ const Navbar = () => {
 
             <span
               onClick={handleClick}
-              className="ml-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az5 hover:underline cursor-pointer"
+              className="ml-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer"
             >
               Logout
             </span>
@@ -63,13 +64,13 @@ const Navbar = () => {
         ) : (
         <div className="flex items-center">
           <Link href="/ingresar">
-            <span className="mr-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az5 hover:underline cursor-pointer">Ingresar</span>
+            <span className="mr-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer">Ingresar</span>
           </Link>
 
           <span className="mx-1 avant-garde-bold text-base text-gray">/</span>
 
           <Link href="/registrarse">
-            <span className="ml-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az5 hover:underline cursor-pointer">Registrarse</span>
+            <span className="ml-1 py-1 avant-garde-bold text-base text-gray transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer">Registrarse</span>
           </Link>
         </div>
         )}
