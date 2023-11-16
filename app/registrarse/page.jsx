@@ -9,7 +9,7 @@ import HomeIcon from "@mui/icons-material/Home";
 const RegisterPage = () => {
   return (
     <div className="h-screen w-screen flex">
-      <div className="lg:mx-62 lg:bg-gray-500 lg:flex lg:flex-col lg:items-center lg:justify-center lg:text-gray lg:gap-16 hidden">
+      <div className="lg:mx-62  lg:flex lg:flex-col lg:items-center lg:justify-center lg:text-gray lg:gap-16 hidden">
         <Image
           src={logo}
           style={{ width: "100%", maxWidth: "75%" }}
