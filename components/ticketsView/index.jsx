@@ -34,6 +34,8 @@ const TicketsView = () => {
     getTickets();
   }, []);
 
+  console.log(ticketsData);
+
   const handleTicketDelete = async () => {
     try {
       const response = await axios.get(
@@ -161,7 +163,7 @@ const TicketsView = () => {
                 {tickets.paymentMethod}
               </td>
               <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.estado}
+                {tickets.ticketStatus}
               </td>
               <td className="py-2 px-4 font-regular avant-garde-regular ">
                 <Link

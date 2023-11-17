@@ -1,4 +1,3 @@
-
 export default function SubmitButton({ text, type, onClick, disabled }) {
   return (
     <button
@@ -11,4 +10,3 @@ export default function SubmitButton({ text, type, onClick, disabled }) {
     </button>
   );
 }
-

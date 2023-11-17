@@ -39,6 +39,7 @@ const RegisterForm = () => {
 
     setFormData({ ...formData, [e.target.name]: file });
   };
+  console.log(formData);
 
   const handleChange = (e) => {
     console.log(errors);
@@ -255,16 +256,13 @@ const RegisterForm = () => {
             )}
           </div>
         </div>
-        {disabled ? (
-          <Image src={load} width={30} height={30} alt="Loading3" className="mx-auto my-auto mt-2"/>
-        ) : (
-          <SubmitButton
-            text={"Registrarse"}
-            type={"submit"}
-            onClick={handleDisable}
-            disabled={isDisabled}
-          />
-        )}
+
+        <SubmitButton
+          text={"Registrarse"}
+          type={"submit"}
+          onClick={handleDisable}
+          disabled={isDisabled}
+        />
       </div>
     </form>
   );
