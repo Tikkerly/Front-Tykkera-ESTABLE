@@ -1,5 +1,5 @@
 "use client";
-import { RegisterForm } from "@/containers";
+import { CreateFinalClient } from "@/components";
 import styles from "./styles.module.css";
 import logo from "../../../../public/LOGOTIPO-TYKKERA-PNG.png";
 import Image from "next/image";
@@ -30,7 +30,7 @@ const ClientRegister = () => {
           <div className="avant-garde-bold font-bold text-3xl  text-gray-600">
             <h2 className="text-xl">Agregar Cliente</h2>
           </div>
-          <RegisterForm />
+          <CreateFinalClient />
         </div>
       </div>
     </div>
