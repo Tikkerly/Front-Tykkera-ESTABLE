@@ -89,6 +89,7 @@ export default function LoginForm() {
                 setLoading,
                 router
               );
+              router.push("/user"); 
             }}
             onError={() => {
               console.log("Login Failed");
