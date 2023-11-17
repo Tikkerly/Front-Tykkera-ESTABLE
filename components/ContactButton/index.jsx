@@ -6,7 +6,7 @@ const ContactButton = () => {
   const [showContactModal, setShowContactModal] = useState(false);
 
   return (
-    <div className="text-center h-40 flex items-center bg-red">
+    <div className="text-center h-40 flex items-center bg-red m-10">
       <div>
         <h2 className="text-4xl relative mb-4 text-gray-100 text-2xl font-regular avant-garde-regular">
 
@@ -14,7 +14,7 @@ const ContactButton = () => {
   
         </h2>
         <button
-          className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md"
+          className="avant-garde-bold font-bold text-gray-900 px-6 py-3 rounded-full bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100  "
           onClick={() => setShowContactModal(true)}
         >
           Contáctanos aquí
