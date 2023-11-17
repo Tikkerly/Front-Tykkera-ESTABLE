@@ -2,9 +2,6 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 
 const SideBar = () => {
-  const role = useSelector((state) => state.auth.user.rol);
-  console.log(role);
-
   return (
     <div
       className="flex flex-col items-center mt-4 bg-gray-500 bg-opacity-80 "

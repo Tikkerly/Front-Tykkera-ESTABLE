@@ -48,6 +48,7 @@ const TicketsView = () => {
 
   return (
 
+
     <div className="flex justify-center items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md ">
       <Link href={"/user/tickets/crear-ticket"} style={{ textDecoration: 'none', color: 'inherit' }}> <button>Crear Ticket</button></Link>
 

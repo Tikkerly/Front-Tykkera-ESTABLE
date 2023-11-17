@@ -15,12 +15,9 @@ const TechnicianForm = () => {
     documentType: "",
     phone: "",
     img: "",
-    serviceTypes: "",
+    address: "",
     paymentMethods: "",
     accountNumber: "",
-    address: "",
-    company_id: "",
-    serviceClient_id: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -49,24 +46,16 @@ const TechnicianForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.password !== formData.confirmPassword) {
-      alert("Las contraseñas no coinciden");
-      return;
-    }
-
-    const user = {
+    const technician = {
       name: formData.name,
       email: formData.email,
       document: formData.document,
       documentType: formData.documentType,
       phone: formData.phone,
-      img: formData.img.name,
-      serviceTypes: formData.serviceTypes,
+      //img: formData.img.name,
       paymentMethods: formData.paymentMethods,
       accountNumber: formData.accountNumber,
       address: formData.address,
-      company_id: formData.company_id,
-      serviceClient_id: formData.serviceClient_id,
     };
    
 
@@ -81,8 +70,6 @@ const TechnicianForm = () => {
         paymentMethods: "",
         accountNumber: "",
         address: "",
-        company_id: "",
-        serviceClient_id: "",
     });
 
     try {
