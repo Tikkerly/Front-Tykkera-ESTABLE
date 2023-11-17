@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import ModalClient from "../modal/ModalCliente";
+import ModalClient from "../ModalCliente";
 
 const ContactButton = () => {
   const [showContactModal, setShowContactModal] = useState(false);

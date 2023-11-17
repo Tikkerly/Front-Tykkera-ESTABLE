@@ -26,10 +26,10 @@ const ChangeUser = () => {
     }
   };
   return (
-    <div className="">
-      <h1 className="text-4xl mb-4 text-gray-100 avant-garde-bold font-bold ">Coloque su Email</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-4">
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="text-4xl text-gray-100 avant-garde-bold font-bold ">Coloque su Email</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col items-center">
+        <div >
           <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
             <div className="absolute left-2 top-2"></div>
             <input
@@ -45,11 +45,6 @@ const ChangeUser = () => {
           </div>
         </div>
 
-        <div className="mt-2 flex items-center">
-          <Link href="/" className="text-sm mt-1">
-            Regresar a la pagina anterior
-          </Link>
-        </div>
         <Link href="/recuperar-contrasena" style={{ textDecoration: 'none', color: 'inherit' }}>
             <button
               className="mt-3 avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md"
