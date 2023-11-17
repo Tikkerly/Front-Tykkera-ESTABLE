@@ -54,7 +54,7 @@ const CarrouselServices = () => {
       <div className="min-h-screen  flex items-center justify-center  px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-1 ml-80 mr-80">
           {features.map((feature, index) => (
-            <div key={index} className="bg-gray-500 text-az5 rounded-lg shadow-lg overflow-hidden grid grid-cols-2">
+            <div key={index} className="bg-Az3 text-black rounded-lg shadow-xl gap-10 overflow-hidden grid grid-cols-2 bg-opacity-70 hover:bg-opacity-100">
               <div className={index % 2 === 0 ? "order-2 bg-cover" : ""}>
                 <Image src={feature.backgroundImage} alt={feature.title} width={150} height={600} className="w-full h-full object-cover" />
               </div>
