@@ -30,7 +30,7 @@ const FAQItem = ({ pregunta, respuesta }) => {
         </span>
       </h1>
       <div
-        className={`font-regular avant-garde-regular ${styles.answer} ${mostrarRespuesta ? styles.answerVisible : ""}`}
+        className={`font-regular avant-garde-regular mb-3 ${styles.answer} ${mostrarRespuesta ? styles.answerVisible : ""}`}
         ref={answerRef}
       >
         <span className={styles.answerText}>{respuesta}</span>

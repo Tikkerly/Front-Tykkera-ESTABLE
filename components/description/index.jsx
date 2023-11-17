@@ -11,7 +11,7 @@ const Description = () => {
 
 <div className={` mb-40 p-40 w-screen h-full rounded-lg shadow-md flex flex-col items-center justify-center ${styles["bg-image"]}`}>
       
-      <div className="w-100% h-100% mt-20 p-20 bg-white flex items-center justify-center content-center bg-opacity-50 rounded-lg "> 
+      <div className="w-100% h-100% mt-20 p-20 bg-gray-100 flex items-center justify-center content-center bg-opacity-50 rounded-lg "> 
       <div className=" ">
 
       <div className="content">

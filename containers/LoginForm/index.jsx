@@ -13,6 +13,8 @@ import LockIcon from "@mui/icons-material/Lock";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 import ModalPassword from "@/components/ModalPassword";
+import Image from "next/image";
+import load from "../../public/load.gif";
 
 export default function LoginForm() {
   
@@ -64,8 +66,12 @@ export default function LoginForm() {
           type={"password"}
         />
         <div className="flex flex-col items-center gap-4 text-center w-full">
-          <SubmitButton text={"Ingresar"} type={"submit"} />
-          {loading && <h2>Cargando...</h2>}
+                
+          {loading ? ( 
+          <Image src={load} width={30} height={30} alt="Loading2" />
+          ) : ( 
+          <SubmitButton text={"Ingresar"} type={"submit"} /> )}
+
           {message && (
             <h2 className="avant-garde-regular font-regular text-red-500 text-sm">
               {message}

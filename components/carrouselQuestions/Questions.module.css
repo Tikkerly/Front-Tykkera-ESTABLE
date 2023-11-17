@@ -2,20 +2,7 @@
 
 .faqItemContainer {
     margin-bottom: 1.5rem;
-    width: 100%;
     border-bottom: 1px solid #dddada;
-    @media (min-width: 768px) {
-      width: 50%;
-      height: auto;
-    }
-    @media (min-width: 1024px) {
-      width: 50%;
-      height: auto;
-    }
-    @media (min-width: 1280px) {
-      width: 50%;
-      height: auto;
-    }
   }
   
   .question {
@@ -36,6 +23,10 @@
     color: #00a2ff;
     cursor: pointer;
     margin-left: 200px;
+  }  
+  
+  .iconActive {
+    color: #dddada;
   }
   
   .answer {
@@ -43,13 +34,13 @@
     max-height: 0;
     overflow: hidden;
     color: #dddada;
-    transition: max-height 1s ease;
+    transition: max-height 1.5s ease;
     width: 450px;
   }
   
   .answerVisible {
     max-height: 200px; 
-    transition: max-height 1s ease;
+    transition: max-height 1.5s ease;
   }
   .background {
     background: rgba(0, 0, 0, 0.26);
@@ -95,7 +86,4 @@
     flex-direction: column;
     align-items: flex-start;
     
-  }
-  .iconActive {
-    color: #3949ab;
   }

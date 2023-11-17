@@ -24,7 +24,7 @@ const TechnicianRegister = () => {
           <h2 className={styles.back}>Volver a la página principal</h2>
         </Link>
       </div>
-      <div className="h-screen bg-white flex flex-col items-center justify-center">
+      <div className="h-screen bg-gray-100 flex flex-col items-center justify-center">
         <div className="mx-40 w-80 flex flex-col flex-wrap gap-8">
           <div className="avant-garde-bold font-bold text-3xl  text-gray-600">
             <h2 className="text-xl">Agregar Técnico</h2>

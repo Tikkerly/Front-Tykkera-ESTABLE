@@ -65,10 +65,10 @@ const UsersView = () => {
   },[])
 
   return (
-    <div className="flex flex-col justify-center items-center bg-white bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md ">
+    <div className="flex flex-col justify-center items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md ">
       <div className="w-full">
         <button
-          className="my-4 py-2 px-4 avant-garde-bold text-base rounded bg-Az3 text-white font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-gray-100 hover:shadow-Az3"
+          className="my-4 py-2 px-4 avant-garde-bold text-base rounded bg-Az3 text-gray-100 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-gray-100 hover:shadow-Az3"
           onClick={() => handleModal("register")}
         >
           <AddIcon />

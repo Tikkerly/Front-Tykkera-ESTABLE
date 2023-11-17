@@ -25,7 +25,7 @@ const RegisterPage = () => {
           <h2 className={` text-xl avant-garde-regular font-regular ${styles.back} `} >Volver a la página principal</h2>
         </Link>
       </div>
-      <div className="lg:h-screen lg:bg-white lg:grid lg:grid-cols-1 lg:gap-16 lg:items-center lg:justify-center lg:w-100 w-screen h-screen bg-white grid grid-cols-1 gap-16 items-center justify-center">
+      <div className="lg:h-screen lg:bg-gray-100 lg:grid lg:grid-cols-1 lg:gap-16 lg:items-center lg:justify-center lg:w-100 w-screen h-screen bg-gray-100 grid grid-cols-1 gap-16 items-center justify-center">
         <div className="mx-40 flex flex-col flex-wrap gap-8">
           <div className="avant-garde-bold font-bold text-3xl  text-gray-600">
             <h1>¡Hola!</h1>

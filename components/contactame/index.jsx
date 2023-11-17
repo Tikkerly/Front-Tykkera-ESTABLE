@@ -76,7 +76,7 @@ export default function  RegistrationForm() {
         onSubmit={handleSubmit}
         className="mt-40 mb-40 flex mx-4 h-full w-full bg-gray-900 flex-col bg-az4 text-gray-900 my-2 items-center bg-opacity-50 rounded-lg shadow-2xl p-8"
       >
-        <label className="mb-2 text-white">Email:</label>
+        <label className="mb-2 text-gray-100">Email:</label>
         <input
           type="email"
           name="email"
@@ -85,7 +85,7 @@ export default function  RegistrationForm() {
           className="mb-4 w-80 opacity-80 bg-gray-200 text-gray-900 p-2 rounded"
         />
 
-        <label className="mb-2 text-white">Nombre:</label>
+        <label className="mb-2 text-gray-100">Nombre:</label>
         <input
           type="text"
           name="nombre"
@@ -94,7 +94,7 @@ export default function  RegistrationForm() {
           className="mb-4 w-80 opacity-80 bg-gray-200 text-gray-900 p-2 rounded"
         />
 
-        <label className="mb-2 text-white">Descripción:</label>
+        <label className="mb-2 text-gray-100">Descripción:</label>
         <textarea
           name="descripcion"
           value={formData.descripcion}

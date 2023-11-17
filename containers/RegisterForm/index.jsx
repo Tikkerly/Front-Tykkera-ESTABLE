@@ -14,8 +14,8 @@ import { FormInputs, SubmitButton } from "@/components";
 import { registerSubmit } from "@/services";
 import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
-import { load } from "@/public/load.gif";
 import Image from "next/image";
+import load from "../../public/load.gif";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -256,9 +256,7 @@ const RegisterForm = () => {
           </div>
         </div>
         {disabled ? (
-          <div className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md w-8">
-            <p>Cargando...</p>
-          </div>
+          <Image src={load} width={30} height={30} alt="Loading3" className="mx-auto my-auto mt-2"/>
         ) : (
           <SubmitButton
             text={"Registrarse"}
