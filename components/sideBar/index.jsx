@@ -2,9 +2,6 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 
 const SideBar = () => {
-  const role = useSelector((state) => state.auth.user.rol);
-  console.log(role);
-
   return (
     <div
       style={{ background: "#0576e6e3" }}

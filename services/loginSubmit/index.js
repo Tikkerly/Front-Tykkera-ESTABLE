@@ -8,7 +8,8 @@ const closureHandleSubmit = (
   action,
   setMessage,
   setLoading,
-  router
+  router,
+  fetchUserData
 ) => {
   return async (event) => {
     event.preventDefault();
@@ -19,6 +20,7 @@ const closureHandleSubmit = (
       if (data.token) {
         Cookies.set("token", data.token);
         Cookies.set("uid", data.user._id);
+        fetchUserData(data.token);
       }
       router.push("/");
     } catch (error) {

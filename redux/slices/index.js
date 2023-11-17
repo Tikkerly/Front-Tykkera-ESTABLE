@@ -1,3 +1,5 @@
 import auth from './authSlices';
 import { login, logout } from './authSlices';
-export { login, logout, auth };
+import options from './optionSlices';
+import { serviceAgentDetails, technicianDetails, finalClientDetails, companyDetails  } from './optionSlices';
+export { login, logout, auth, serviceAgentDetails, technicianDetails, finalClientDetails, companyDetails , options };

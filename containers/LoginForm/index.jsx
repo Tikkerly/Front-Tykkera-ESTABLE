@@ -3,14 +3,18 @@ import { useState } from "react";
 import { USER_ROUTES } from "@/routes/routes";
 import { useDispatch } from "react-redux";
 import { closureHandleGoogleSubmit, closureHandleSubmit } from "@/services";
-import { login } from "@/redux/slices";
+import {
+  login,
+  serviceAgentDetails,
+  technicianDetails,
+  finalClientDetails,
+  companyDetails,
+} from "@/redux/slices";
 import Link from "next/link";
-import GoogleIcon from "@mui/icons-material/Google";
 import { useRouter } from "next/navigation";
-import PersonIcon from "@mui/icons-material/Person";
-import LockIcon from "@mui/icons-material/Lock";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 // 906706593927-28g158gplg7fshf568027niditejuldo.apps.googleusercontent.com
 
 export default function LoginForm() {
@@ -22,6 +26,41 @@ export default function LoginForm() {
   });
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const fetchUserData = async (token) => {
+    try {
+      const config = {
+        headers: {
+          "x-token": token,
+        },
+      };
+
+      const responseServiceAgent = await axios.get(
+        "http://localhost:3001/api/v1/serviceagent/",
+        config
+      );
+      const responseTechnician = await axios.get(
+        "http://localhost:3001/api/v1/technician",
+        config
+      );
+      const responseFinalClient = await axios.get(
+        "http://localhost:3001/api/v1/finalclient/",
+        config
+      );
+      const responseCompany = await axios.get(
+        "http://localhost:3001/api/v1/user",
+        config
+      );
+
+      dispatch(serviceAgentDetails(responseServiceAgent.data));
+      dispatch(technicianDetails(responseTechnician.data));
+      dispatch(finalClientDetails(responseFinalClient.data));
+      dispatch(companyDetails(responseCompany.data));
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
   const handleSubmit = closureHandleSubmit(
     USER_ROUTES.loginUser,
     formData,
@@ -29,7 +68,8 @@ export default function LoginForm() {
     login,
     setMessage,
     setLoading,
-    router
+    router,
+    fetchUserData
   );
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -49,7 +89,6 @@ export default function LoginForm() {
           value={formData.email}
           onChange={handleChange}
           type={"email"}
-          
         />
 
         <FormInputs
@@ -60,7 +99,6 @@ export default function LoginForm() {
           value={formData.password}
           onChange={handleChange}
           type={"password"}
-          
         />
         <div className="flex flex-col items-center gap-4 text-center w-full">
           <SubmitButton text={"Ingresar"} type={"submit"} />

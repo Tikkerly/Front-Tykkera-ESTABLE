@@ -49,7 +49,7 @@ const TicketsView = () => {
   return (
 
     <div className="flex justify-center items-center bg-white bg-opacity-60 p-8 text-black rounded-lg shadow-md ">
-      <Link href={"/user/tickets/crear-ticket"}> <button>Crear Ticket</button></Link>
+      <Link href={"/user/tickets/crear-ticket"}><button>Crear Ticket</button></Link>
 
       <table className="table-auto">
         <thead>

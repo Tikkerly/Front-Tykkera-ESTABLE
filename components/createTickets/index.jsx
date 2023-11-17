@@ -1,7 +1,18 @@
 'use client';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const CreateTickect = () => {
+
+  const serviceAgents = useSelector((state) => state.options.serviceAgent.serviceAgent);
+  const technicians = useSelector((state) => state.options.technician.technicians);
+  const finalClients = useSelector((state) => state.options.finalClient.finalClients);
+  const companies = useSelector((state) => state.options.company.users);
+
+  console.log(serviceAgents)
+  console.log(technicians)
+  console.log(finalClients)
+  console.log(companies)
 
   const [formData, setFormData] = useState({
     startDate: '',
@@ -52,21 +63,49 @@ const CreateTickect = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Compañía:</label>
-        <input type="text" name="clientname" value={formData.finalClient_id} onChange={handleInputChange} />
+      <label>Compañía:</label>
+        <select name="company_id" value={formData.company_id} onChange={handleInputChange}>
+          <option value="">Selecciona una compañía</option>
+          {companies.map((company) => (
+            <option key={company._id} value={company._id}>
+              {company.username}
+            </option>
+          ))}
+        </select>
       </div>
       <div>
-        <label>Cliente Final:</label>
-        <input type="text" name="finalclientname" value={formData.finalClient_id} onChange={handleInputChange} />
+      <label>Cliente Final:</label>
+        <select name="finalClient_id" value={formData.finalClient_id} onChange={handleInputChange}>
+          <option value="">Selecciona una Cliente Final</option>
+          {finalClients.map((finalClient) => (
+            <option key={finalClient._id} value={finalClient._id}>
+              {finalClient.username}
+            </option>
+          ))}
+        </select> 
       </div>
       <div>
-        <label>Técnico:</label>
-        <input type="text" name="clientid" value={formData.technician_id} onChange={handleInputChange} />
+      <label>Técnico:</label>
+        <select name="technician_id" value={formData.technician_id} onChange={handleInputChange}>
+          <option value="">Selecciona una Técnico</option>
+          {technicians.map((technician) => (
+            <option key={technician._id} value={technician._id}>
+              {technician.username}
+            </option>
+          ))}
+        </select> 
       </div>
       <div>
         <label>Agente de Servicio:</label>
-        <input type="text" name="clientid" value={formData.serviceClient_id} onChange={handleInputChange} />
-      </div>
+        <select name="serviceClient_id" value={formData.serviceClient_id} onChange={handleInputChange}>
+          <option value="">Selecciona una Técnico</option>
+          {serviceAgents.map((serviceAgent) => (
+            <option key={serviceAgent._id} value={serviceAgent._id}>
+              {serviceAgent.username}
+            </option>
+          ))}
+        </select>
+        </div>
       <div>
         <label>Fecha de Inicio:</label>
         <input type="date" name="date" value={formData.startDate} onChange={handleInputChange} />
