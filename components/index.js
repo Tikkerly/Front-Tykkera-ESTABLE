@@ -7,8 +7,9 @@ export { default as Navbar } from "./navBar/index.jsx";
 export { default as Profile } from "./profile/index.jsx";
 export { default as RegisterForm } from "./registerForm/index.jsx";
 export { default as UsersView } from "./usersView/index.jsx";
-export { default as ModalRegister } from "./modal/ModalRegister.jsx";
-export { default as ModalEdit } from "./modal/ModalEdit.jsx";
+export { default as ModalRegister } from "./ModalRegister.jsx/index.jsx";
+export { default as ModalEdit } from "./ModalEdit/index.jsx";
+export { default as ModalCliente } from "./ModalCliente/index.jsx"
 /// pendiente de Hacer los export correspondientes en el archivo de barril , todos estos no estaban en el archivo
 // export { default as TicketsView } from './ticketsView/index.jsx'
 // export { default as ModalChangePassword } from './modalChangePassword/index.jsx'
