@@ -70,7 +70,7 @@ export default function  RegistrationForm() {
   return (
     <div className="text-gray-900 flex items-center justify-center h-50 w-50 bg-opacity-50 font-bold avant-garde-bold w-100">
         {isSubmitted  ? (
-          <p className="mt-3 text-gray-100 avant-garde-regular font-regular">¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.</p>
+          <p className="mt-3 text-gray-100 avant-garde-regular font-regular bg-gray-900 bg-opacity-50  p-2 rounded">¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.</p>
         ) : ( 
       <form
         onSubmit={handleSubmit}

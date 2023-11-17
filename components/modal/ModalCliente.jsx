@@ -10,7 +10,7 @@ const ModalClient = ({ isVisible, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center z-10"
+      className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center z-10 mt-20"
       id="wrapper"
       onClick={handleClose}
     >
