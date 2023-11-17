@@ -1,5 +1,6 @@
 "use client";
-import "./styles.module.css";
+import { useEffect, useRef } from "react";
+import styles from "./styles.module.css";
 import Image from "next/image";
 
 const features = [
@@ -47,20 +48,49 @@ const features = [
   },
 ];
 
-
 const CarrouselServices = () => {
+  const cardsRef = useRef([]);
+
+  const handleScroll = () => {
+    const scrollPosition = window.pageYOffset;
+    const windowHeight = window.innerHeight;
+
+    cardsRef.current.forEach((card, index) => {
+      const cardPosition = card.offsetTop;
+      const offset = (scrollPosition - cardPosition + windowHeight) * 0.5;
+      card.style.transform = `translateY(-${offset}px)`;
+      card.style.opacity = 1 - offset / windowHeight; // Agrega esta línea para controlar la opacidad
+    });
+  };
+
+  useEffect(() => {
+    cardsRef.current = cardsRef.current.slice(0, features.length);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <div className="min-h-screen  flex items-center justify-center  px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-1 ml-80 mr-80">
+      <div className={`min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8`}>
+        <div className={`grid carousel-container grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-1 ml-80 mr-80`}>
           {features.map((feature, index) => (
-            <div key={index} className="bg-Az3 text-gray-900 rounded-lg shadow-xl gap-10 overflow-hidden grid grid-cols-2 bg-opacity-70 transition duration-300 hover:bg-opacity-100">
-              <div className={index % 2 === 0 ? "order-2 bg-cover" : ""}>
-                <Image src={feature.backgroundImage} alt={feature.title} width={150} height={600} className="w-full h-full object-cover" />
+
+            <div
+              key={index}
+              ref={(element) => (cardsRef.current[index] = element)}
+              className={`bg-Az3 text-black rounded-lg shadow-xl gap-10 overflow-hidden grid grid-cols-2 bg-opacity-70 hover:bg-opacity-100 ${styles.card} ${index % 2 === 0 ? styles.right : styles.left}`}
+              style={{  }} // Agrega esta línea para establecer la opacidad inicial
+            >
+              <div className={`${index % 2 === 0 ? styles.right : styles.left}`}>
+                <Image src={feature.backgroundImage} alt={feature.title} width={150} height={600} className={`w-full h-full object-cover`} />
+
               </div>
-              <div className="p-6  flex flex-col items-center justify-center">
-                <h1 className="text-3xl font-semibold text-center">{feature.title}</h1>
-                <p className="text-xl text-center">{feature.description}</p>
+              <div className={`p-6 flex flex-col items-center justify-center relative`}>
+                <h1 className={`text-3xl font-semibold text-center ${styles["card-h1"]}`}>{feature.title}</h1>
+                <p className={`text-xl text-center`}>{feature.description}</p>
+                <div className={styles["card-animation"]}></div>
               </div>
             </div>
           ))}
@@ -68,19 +98,6 @@ const CarrouselServices = () => {
       </div>
     </>
   );
-}
+};
 
 export default CarrouselServices;
-
-  
-//     <>
-//       <div className="navigation-wrapper w-full  mx-auto ">
-//         <div ref={sliderRef} className="keen-slider h-screen align-center rounded-lg ">
-//           {features.map((feature, index) => (
-//             <div key={index} className="keen-slider__slide relative ">
-//               <Image className="w-full h-full object-cover bg-cover bg-center " src={feature.backgroundImage}
-//                alt="Slide 1" width={1200} height={600} />
-//               <h2 className="absolute top-1/4 left-1/2 w-auto h-auto transform -translate-x-1/2 -translate-y-1/4  avant-garde-bold  bg-gray-300 bg-opacity-75 p-2 rounded-lg avant-garde-bold font-bold text-3xl  text-gray-600">{feature.title}</h2>
-//               <p className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-3/4 font-regular avant-garde-regular  avant-garde-bold font-bold text-3xl  text-gray-600 bg-gray-300 bg-opacity-75  text-center w-auto h-auto mt-4">{feature.description}</p>
-//             </div>
-//
