@@ -4,28 +4,21 @@ import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 
-const CreateTickect = () => {
+const CreateFinalClient = () => {
   const token = Cookies.get("token");
 
   const serviceAgents = useSelector((state) => state.options.serviceAgents);
-  const technicians = useSelector((state) => state.options.technicians);
-  const finalClients = useSelector((state) => state.options.finalClients);
   const company = useSelector((state) => state.auth.user);
 
   const [formData, setFormData] = useState({
-    serviceType: "",
-    serviceDescription: "",
-    startDate: "",
+    username: "",
+    email: "",
+    documentType: "",
+    document: "",
+    phone: "",
+    address: "",
     company_id: company._id,
-    technician_id: "",
-    finalClient_id: "",
     serviceClient_id: "",
-    paymentMethod: "Transferencia",
-    ammount: 0,
-    cost: 0,
-    others: 0,
-    registerDate: "11/10/2010",
-    ticketStatus: "Pendiente",
   });
 
   const handleInputChange = (e) => {
@@ -41,7 +34,7 @@ const CreateTickect = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3001/api/v1/tickets/registerticket",
+        "http://localhost:3001/api/v1/finalClient/registerfinalclient",
         {
           method: "POST",
 
@@ -63,22 +56,17 @@ const CreateTickect = () => {
           timer: 1500,
         });
         setFormData({
-          serviceType: "",
-          serviceDescription: "",
-          startDate: "",
-          company_id: "",
-          technician_id: "",
-          finalClient_id: "",
+          username: "",
+          email: "",
+          documentType: "",
+          document: "",
+          phone: "",
+          address: "",
+          company_id: company._id,
           serviceClient_id: "",
-          paymentMethod: "Transferencia",
-          ammount: 0,
-          cost: 0,
-          others: 0,
-          registerDate: "11/10/2010",
-          ticketStatus: "Pendiente",
         });
       } else {
-        alert("Error al registrar el ticket");
+        alert("Error al registrar el técnico");
       }
     } catch (error) {
       console.log(error);
@@ -88,17 +76,15 @@ const CreateTickect = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      
       <div className="grid grid-cols-1 gap-6">
-
         <div>
           <label className="block text-sm font-medium text-white">
-            Tipo de Servicio:
+            Nombre:
           </label>
           <input
             type="text"
-            name="serviceType"
-            value={formData.serviceType}
+            name="username"
+            value={formData.username}
             onChange={handleInputChange}
             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
@@ -106,12 +92,12 @@ const CreateTickect = () => {
 
         <div>
           <label className="block text-sm font-medium text-white">
-            Descripción del Servicio:
+            Correo:
           </label>
           <input
             type="text"
-            name="serviceDescription"
-            value={formData.serviceDescription}
+            name="email"
+            value={formData.email}
             onChange={handleInputChange}
             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
@@ -119,12 +105,25 @@ const CreateTickect = () => {
 
         <div>
           <label className="block text-sm font-medium text-white">
-            Fecha de Inicio:
+            Tipo de Documento:
           </label>
           <input
-            type="date"
-            name="startDate"
-            value={formData.startDate}
+            type="text"
+            name="documentType"
+            value={formData.documentType}
+            onChange={handleInputChange}
+            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-white">
+            Documento:
+          </label>
+          <input
+            type="text"
+            name="document"
+            value={formData.document}
             onChange={handleInputChange}
             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
@@ -133,40 +132,30 @@ const CreateTickect = () => {
 
       <div>
         <label className="block text-sm font-medium text-white">
-          Cliente Final:
+          Teléfono:
         </label>
-        <select
-          name="finalClient_id"
-          value={formData.finalClient_id}
+        <input
+          type="text"
+          name="phone"
+          value={formData.phone}
           onChange={handleInputChange}
           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        >
-          <option value="">Selecciona una Cliente Final</option>
-          {finalClients &&
-            finalClients.finalClients.map((finalClient) => (
-              <option key={finalClient._id} value={finalClient._id}>
-                {finalClient.username}
-              </option>
-            ))}
-        </select>
+        />
       </div>
-      
+
       <div>
-        <label className="block text-sm font-medium text-white">Técnico:</label>
-        <select
-          name="technician_id"
-          value={formData.technician_id}
+        <label className="block text-sm font-medium text-white">
+          Dirección:
+        </label>
+        <input
+          type="text"
+          name="address"
+          value={formData.address}
           onChange={handleInputChange}
           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        >
-          <option value="">Selecciona una Técnico</option>
-          {technicians.technicians.map((technician) => (
-            <option key={technician._id} value={technician._id}>
-              {technician.username}
-            </option>
-          ))}
-        </select>
+        />
       </div>
+
       <div>
         <label className="block text-sm font-medium text-white">
           Agente de Servicio:
@@ -185,48 +174,17 @@ const CreateTickect = () => {
           ))}
         </select>
       </div>
-      <div>
-        <label className="block text-sm font-medium text-white">Valor:</label>
-        <input
-          type="number"
-          name="ammount"
-          value={formData.ammount}
-          onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-white">Costo:</label>
-        <input
-          type="number"
-          name="cost"
-          value={formData.cost}
-          onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-white">
-          Otros costos:
-        </label>
-        <input
-          type="number"
-          name="others"
-          value={formData.others}
-          onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
-      </div>
+
       <div>
         <button
           type="submit"
           className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-          Registrar Servicio
+          Registrar Técnico
         </button>
       </div>
     </form>
   );
 };
 
-export default CreateTickect;
+export default CreateFinalClient;

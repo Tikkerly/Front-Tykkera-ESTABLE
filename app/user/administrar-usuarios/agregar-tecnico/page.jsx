@@ -1,5 +1,5 @@
 "use client";
-import { RegisterForm } from "@/containers";
+import { CreateTechnician } from "@/components";
 import styles from "./styles.module.css";
 import logo from "../../../../public/LOGOTIPO-TYKKERA-PNG.png";
 import Image from "next/image";
@@ -30,7 +30,7 @@ const TechnicianRegister = () => {
           <div className="avant-garde-bold font-bold text-3xl  text-gray-600">
             <h2 className="text-xl">Agregar Técnico</h2>
           </div>
-          <RegisterForm />
+          <CreateTechnician />
         </div>
       </div>
     </div>

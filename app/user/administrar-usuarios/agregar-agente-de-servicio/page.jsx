@@ -1,5 +1,5 @@
 "use client";
-import { RegisterForm } from "@/containers";
+import { CreateServiceAgent } from "@/components";
 import styles from "./styles.module.css";
 import logo from "../../../../public/LOGOTIPO-TYKKERA-PNG.png";
 import Image from "next/image";
@@ -29,7 +29,7 @@ const ServiceAgentRegister = () => {
           <div className="avant-garde-bold font-bold text-3xl  text-gray-600">
             <h2 className="text-xl">Agregar Agente de Servicio</h2>
           </div>
-          <RegisterForm />
+          <CreateServiceAgent />
         </div>
       </div>
     </div>
