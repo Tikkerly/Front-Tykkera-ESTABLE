@@ -49,7 +49,7 @@ const TicketsView = () => {
   return (
 
     <div className="flex justify-center items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md ">
-      <Link href={"/user/tickets/crear-ticket"}> <button>Crear Ticket</button></Link>
+      <Link href={"/user/tickets/crear-ticket"} style={{ textDecoration: 'none', color: 'inherit' }}> <button>Crear Ticket</button></Link>
 
       <table className="table-auto">
         <thead>
@@ -92,7 +92,7 @@ const TicketsView = () => {
               <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.paymentMethod}</td>
               <td className="py-2 px-4 font-regular avant-garde-regular border">{tickets.estado}</td>
               <td className="py-2 px-4 font-regular avant-garde-regular ">
-                <Link href="/user/tickets/edit">
+                <Link href="/user/tickets/edit" style={{ textDecoration: 'none', color: 'inherit' }}>
                   <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
                 </Link>
                 <ClearIcon className="text-red-500 hover:text-red-700"  onClick={() => handleTicketDelete(ticket.id)}/>

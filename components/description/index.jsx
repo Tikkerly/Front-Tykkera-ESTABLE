@@ -1,6 +1,7 @@
 import React from "react";
 import { SubmitButton } from "..";
 import styles from "./style.module.css";
+import Link from "next/link";
 
 
 
@@ -28,7 +29,13 @@ const Description = () => {
         Facilitamos la gestión de tickets de mesa de ayuda para empresas de reparación y 
         mantenimiento de equipos tecnológicos.
       </h2>
+      <Link
+      href="/registrarse"
+      style={{ textDecoration: 'none', color: 'inherit' }}>
       <SubmitButton text={"Empezar"} className="button"/>
+      </Link> 
+
+      
       </div>
       </div>
     </div>

@@ -19,6 +19,7 @@ const ClientRegister = () => {
         <Link
           href="/"
           className="absolute left-5 top-5 flex items-center gap-4"
+          style={{ textDecoration: 'none', color: 'inherit' }}
         >
           <HomeIcon fontSize="large" />
           <h2 className={styles.back}>Volver a la página principal</h2>
