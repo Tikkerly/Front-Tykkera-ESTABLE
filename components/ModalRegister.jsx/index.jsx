@@ -18,18 +18,18 @@ export default function ModalRegister({ show, onClose }) {
   if (!show) return null;
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center"
+      className="fixed inset-0 bg-gray-900 bg-opacity-25 backdrop-blur-sm flex justify-center items-center"
       id="wrapper"
       onClick={handleClose}
     >
       <div className="w-[800px] flex flex-col">
         <button
-          className="text-white text-xl place-self-end"
+          className="text-gray-100 text-xl place-self-end"
           onClick={() => onClose()}
         >
           X
         </button>
-        <div className="bg-white p-2 rounded">
+        <div className="bg-gray-100 p-2 rounded">
           <div className="py-6 px-6 lg:px-8 text-left">
             <h3 className="mb-4 text-xl font-medium text-gray-900">
               Crear Usuario
@@ -39,7 +39,7 @@ export default function ModalRegister({ show, onClose }) {
                 <div className="w-full">
                   <label
                     htmlFor="clientId"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Nit
                   </label>
@@ -60,7 +60,7 @@ export default function ModalRegister({ show, onClose }) {
                 <div className="w-full">
                   <label
                     htmlFor="img"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Foto
                   </label>
@@ -83,7 +83,7 @@ export default function ModalRegister({ show, onClose }) {
                 <div className="w-full">
                   <label
                     htmlFor="username"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Username
                   </label>
@@ -104,7 +104,7 @@ export default function ModalRegister({ show, onClose }) {
                 <div className="w-full">
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Email
                   </label>
@@ -127,7 +127,7 @@ export default function ModalRegister({ show, onClose }) {
                 <div className="w-full">
                   <label
                     htmlFor="phone"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Teléfono
                   </label>
@@ -148,7 +148,7 @@ export default function ModalRegister({ show, onClose }) {
                 <div className="w-full">
                   <label
                     htmlFor="personType"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Tipo
                   </label>
@@ -173,7 +173,7 @@ export default function ModalRegister({ show, onClose }) {
                 <div className="w-full">
                   <label
                     htmlFor="password"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Contraseña
                   </label>
@@ -194,7 +194,7 @@ export default function ModalRegister({ show, onClose }) {
                 <div className="w-full">
                   <label
                     htmlFor="rol"
-                    className="block mb-2 text-lg font-medium text-black"
+                    className="block mb-2 text-lg font-medium text-gray-900"
                   >
                     Rol
                   </label>
@@ -223,7 +223,7 @@ export default function ModalRegister({ show, onClose }) {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                  className="text-gray-100 bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                   Crear usuario
                 </button>

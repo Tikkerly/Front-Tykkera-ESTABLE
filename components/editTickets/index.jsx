@@ -4,7 +4,7 @@ import React from 'react';
 const EditTickets = () => {
   return (
     <div>
-      <div className="bg-white p-8 rounded-lg shadow-md w-full h-full max-w-screen-md mx-auto flex flex-col justify-between">
+      <div className="bg-gray-100 p-8 rounded-lg shadow-md w-full h-full max-w-screen-md mx-auto flex flex-col justify-between">
        
         <div className="mb-4 w-full">
           <input

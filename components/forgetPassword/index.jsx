@@ -39,7 +39,7 @@ const ForgetPassword = () => {
                         type="email"
                         autoComplete="email"
                         required
-                        className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regula"
+                        className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900 rounded-lg font-regular avant-garde-regula"
                         placeholder="Correo electrónico"
                         value={formData.email}
                         onChange={handleChange}

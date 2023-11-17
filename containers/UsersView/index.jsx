@@ -32,14 +32,14 @@ const UsersViews = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center bg-white bg-opacity-60 p-8 text-black rounded-lg shadow-md ">
-      <Link href="/user/administrar-usuarios/agregar-cliente">
+    <div className="flex justify-center items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md ">
+      <Link href="/user/administrar-usuarios/agregar-cliente" style={{ textDecoration: 'none', color: 'inherit' }}>
         <button>Agregar Cliente</button>
       </Link>
       <Link href="/user/administrar-usuarios/agregar-tecnico">
         <button>Agregar Técnico</button>
       </Link>
-      <Link href="/user/administrar-usuarios/agregar-agente-de-servicio">
+      <Link href="/user/administrar-usuarios/agregar-agente-de-servicio" style={{ textDecoration: 'none', color: 'inherit' }}>
         <button>Agregar Agente de Servicio</button>
       </Link>
 
@@ -88,7 +88,7 @@ const UsersViews = () => {
                 sus tickets
               </td>
               <td className="py-2 px-4 font-regular avant-garde-regular ">
-                <Link href="/user/edituser/:id">
+                <Link href="/user/edituser/:id" style={{ textDecoration: 'none', color: 'inherit' }}>
                   <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
                 </Link>
                 <ClearIcon

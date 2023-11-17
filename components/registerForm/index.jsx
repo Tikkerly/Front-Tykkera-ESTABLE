@@ -121,7 +121,7 @@ const Registration = () => {
               type="text"
               autoComplete="username"
               required
-              className="bg-transparent  w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 rounded-lg text-black font-regular avant-garde-regular text-sm "
+              className="bg-transparent  w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 rounded-lg text-gray-900 font-regular avant-garde-regular text-sm "
               placeholder="Nombre de usuario"
               value={formData.username}
               onChange={handleChange}
@@ -161,7 +161,7 @@ const Registration = () => {
               type="email"
               autoComplete="email"
               required
-              className="text-sm bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
+              className="text-sm bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900 rounded-lg font-regular avant-garde-regular"
               placeholder="Correo electrónico"
               value={formData.email}
               onChange={handleChange}
@@ -203,7 +203,7 @@ const Registration = () => {
               type="password"
               autoComplete="current-password"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular text-sm"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900 rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Contraseña"
               value={formData.password}
               onChange={handleChange}
@@ -243,7 +243,7 @@ const Registration = () => {
               type="password"
               autoComplete="current-password"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular text-sm"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900  rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Confirmar contraseña"
               value={formData.confirmPassword}
               onChange={handleChange}
@@ -278,7 +278,7 @@ const Registration = () => {
               type="number"
               autoComplete="current-phone"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular text-sm"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900  rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Numero de celular"
               value={formData.phone}
               onChange={handleChange}
@@ -322,7 +322,7 @@ const Registration = () => {
               type="text"
               autoComplete="current-phone"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular text-sm"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900  rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Numero de identificacion"
               value={formData.clientId}
               onChange={handleChange}
@@ -340,7 +340,7 @@ const Registration = () => {
             id="personType"
             name="personType"
             required
-            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
+            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900 rounded-lg font-regular avant-garde-regular"
             value={formData.personType}
             onChange={handleChange}
           >
@@ -365,7 +365,7 @@ const Registration = () => {
             type="file"
             accept="image/*" // Aceptar solo archivos de imagen
             required
-            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular"
+            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900  rounded-lg font-regular avant-garde-regular"
             onChange={handleImageChange}
           />
           {errors.img && <p className="text-red-500 font-regular avant-garde-regular">{errors.img}</p>}
