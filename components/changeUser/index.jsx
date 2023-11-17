@@ -44,7 +44,6 @@ const ChangeUser = () => {
             />
           </div>
         </div>
-
         <Link href="/recuperar-contrasena" style={{ textDecoration: 'none', color: 'inherit' }}>
             <button
               className="mt-3 avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md"

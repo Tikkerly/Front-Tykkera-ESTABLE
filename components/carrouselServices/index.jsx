@@ -51,19 +51,17 @@ const features = [
 const CarrouselServices = () => {
   return (
     <>
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-1 lg:grid-cols-1">
+      <div className="min-h-screen  flex items-center justify-center  px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-1 ml-80 mr-80">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden w-full h-full grid grid-cols-2">
-              <div className={index % 2 === 0 ? "order-2" : ""}>
-                <Image src={feature.backgroundImage} alt={feature.title} width={1200} height={600}  />
+            <div key={index} className="bg-gray-500 text-az5 rounded-lg shadow-lg overflow-hidden grid grid-cols-2">
+              <div className={index % 2 === 0 ? "order-2 bg-cover" : ""}>
+                <Image src={feature.backgroundImage} alt={feature.title} width={150} height={600} className="w-full h-full object-cover" />
               </div>
-              <div className="p-6">
-                <h1 className="text-2xl font-semibold text-gray-900">{feature.title}</h1>
-                <p>{feature.description}</p> {/* Added a paragraph for description */}
-                {/* You can add more content here if needed */}
+              <div className="p-6  flex flex-col items-center justify-center">
+                <h1 className="text-3xl font-semibold text-center">{feature.title}</h1>
+                <p className="text-xl text-center">{feature.description}</p>
               </div>
-
             </div>
           ))}
         </div>
