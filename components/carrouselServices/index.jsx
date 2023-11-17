@@ -76,6 +76,7 @@ const CarrouselServices = () => {
       <div className={`min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8`}>
         <div className={`grid carousel-container grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-1 ml-80 mr-80`}>
           {features.map((feature, index) => (
+
             <div
               key={index}
               ref={(element) => (cardsRef.current[index] = element)}
@@ -84,6 +85,7 @@ const CarrouselServices = () => {
             >
               <div className={`${index % 2 === 0 ? styles.right : styles.left}`}>
                 <Image src={feature.backgroundImage} alt={feature.title} width={150} height={600} className={`w-full h-full object-cover`} />
+
               </div>
               <div className={`p-6 flex flex-col items-center justify-center relative`}>
                 <h1 className={`text-3xl font-semibold text-center ${styles["card-h1"]}`}>{feature.title}</h1>

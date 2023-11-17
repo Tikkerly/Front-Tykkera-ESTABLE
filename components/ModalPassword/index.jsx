@@ -16,6 +16,7 @@ const ModalPassword = ({ isVisible, onClose }) => {
     >
       <div className=" flex flex-col bg-Az4 p-4 rounded">
         <button
+         onClick={() => onClose()}
           className=" font-bold avant-garde-bold text-lg text-gray-100 px-2 rounded bg-gray-600 self-start transition duration-300 hover:text-red-800 hover:shadow-md"
         >
           X

@@ -121,7 +121,7 @@ export default function LoginForm() {
             </h2>
           )}
           <button
-            className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md hover:underline"
+            className="avant-garde-bold font-bold text-gray px-6 py-3 rounded-full bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
             onClick={() => setShowPasswordModal(true)}
           >
             Olvidé mi contraseña
