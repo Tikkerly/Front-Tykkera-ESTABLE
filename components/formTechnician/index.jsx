@@ -15,12 +15,9 @@ const TechnicianForm = () => {
     documentType: "",
     phone: "",
     img: "",
-    serviceTypes: "",
+    address: "",
     paymentMethods: "",
     accountNumber: "",
-    address: "",
-    company_id: "",
-    serviceClient_id: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -49,24 +46,16 @@ const TechnicianForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.password !== formData.confirmPassword) {
-      alert("Las contraseñas no coinciden");
-      return;
-    }
-
-    const user = {
+    const technician = {
       name: formData.name,
       email: formData.email,
       document: formData.document,
       documentType: formData.documentType,
       phone: formData.phone,
-      img: formData.img.name,
-      serviceTypes: formData.serviceTypes,
+      //img: formData.img.name,
       paymentMethods: formData.paymentMethods,
       accountNumber: formData.accountNumber,
       address: formData.address,
-      company_id: formData.company_id,
-      serviceClient_id: formData.serviceClient_id,
     };
    
 
@@ -81,8 +70,6 @@ const TechnicianForm = () => {
         paymentMethods: "",
         accountNumber: "",
         address: "",
-        company_id: "",
-        serviceClient_id: "",
     });
 
     try {
@@ -129,7 +116,7 @@ const TechnicianForm = () => {
               type="text"
               autoComplete="name"
               required
-              className="bg-transparent  w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 rounded-lg text-black font-regular avant-garde-regular text-sm "
+              className="bg-transparent  w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 rounded-lg text-gray-900 font-regular avant-garde-regular text-sm "
               placeholder="Nombre de usuario"
               value={formData.name}
               onChange={handleChange}
@@ -169,7 +156,7 @@ const TechnicianForm = () => {
               type="email"
               autoComplete="email"
               required
-              className="text-sm bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
+              className="text-sm bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900 rounded-lg font-regular avant-garde-regular"
               placeholder="Correo electrónico"
               value={formData.email}
               onChange={handleChange}
@@ -211,7 +198,7 @@ const TechnicianForm = () => {
               type="text"
               autoComplete="document"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular text-sm"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900 rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Documento"
               value={formData.document}
               onChange={handleChange}
@@ -251,7 +238,7 @@ const TechnicianForm = () => {
               type="password"
               autoComplete="current-password"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular text-sm"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900  rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Confirmar contraseña"
               value={formData.confirmPassword}
               onChange={handleChange}
@@ -286,7 +273,7 @@ const TechnicianForm = () => {
               type="number"
               autoComplete="current-phone"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular text-sm"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900  rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Numero de celular"
               value={formData.phone}
               onChange={handleChange}
@@ -330,7 +317,7 @@ const TechnicianForm = () => {
               type="text"
               autoComplete="current-phone"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular text-sm"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900  rounded-lg font-regular avant-garde-regular text-sm"
               placeholder="Numero de identificacion"
               value={formData.clientId}
               onChange={handleChange}
@@ -348,7 +335,7 @@ const TechnicianForm = () => {
             id="personType"
             name="personType"
             required
-            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg font-regular avant-garde-regular"
+            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900 rounded-lg font-regular avant-garde-regular"
             value={formData.personType}
             onChange={handleChange}
           >
@@ -373,7 +360,7 @@ const TechnicianForm = () => {
             type="file"
             accept="image/*" // Aceptar solo archivos de imagen
             required
-            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg font-regular avant-garde-regular"
+            className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900  rounded-lg font-regular avant-garde-regular"
             onChange={handleImageChange}
           />
           {errors.img && <p className="text-red-500 font-regular avant-garde-regular">{errors.img}</p>}

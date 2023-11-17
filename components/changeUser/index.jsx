@@ -26,10 +26,10 @@ const ChangeUser = () => {
     }
   };
   return (
-    <div className="">
-      <h1 className="text-4xl mb-5">Coloque su Email</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-4">
+    <div className="flex flex-col items-center justify-center bg-gray-900 bg-opacity-50 p-3 rounded-lg">
+      <h1 className="text-4xl text-gray-100 avant-garde-bold font-bold mt-2 ">Coloque su Email</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col items-center">
+        <div >
           <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
             <div className="absolute left-2 top-2"></div>
             <input
@@ -37,29 +37,21 @@ const ChangeUser = () => {
               name="email"
               type="text"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-800 rounded-lg"
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
             />
           </div>
         </div>
-
-        <div className="mt-2 flex items-center">
-          <Link href="/" className="text-sm mt-1">
-            Regresar a la pagina anterior
-          </Link>
-        </div>
-        <Link href="/recuperar-contrasena" className="text-sm mt-1">
-          <div className="mt-8">
+        <Link href="/recuperar-contrasena" style={{ textDecoration: 'none', color: 'inherit' }}>
             <button
-              className=" avant-garde-bold font-bold flex items-center justify-center w-64  bg-Az5 px-10 py-4 rounded-full text-gray transition duration-300 hover:shadow-lg"
+              className="mt-3 avant-garde-bold font-bold text-gray px-6 py-2 rounded-full bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
               //type="submit"
               onClick={handleSubmit}
             >
               Enviar correo
             </button>
-          </div>
         </Link>
       </form>
       {message && <p className="text-red-500">{message}</p>}

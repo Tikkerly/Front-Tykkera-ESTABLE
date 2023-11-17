@@ -59,7 +59,7 @@ const ChangePassword = ({ token }) => {
               type="password"
               autoComplete="current-password"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black rounded-lg"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900 rounded-lg"
               placeholder="Nueva contraseña"
               value={formData.password}
               onChange={handleChange}
@@ -94,7 +94,7 @@ const ChangePassword = ({ token }) => {
               type="password"
               autoComplete="current-password"
               required
-              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-black  rounded-lg"
+              className="bg-transparent w-full h-full pl-10 outline-none focus:ring-2 focus:ring-blue-600 text-gray-900  rounded-lg"
               placeholder="Confirmar contraseña"
               value={formData.confirmPassword}
               onChange={handleChange}
