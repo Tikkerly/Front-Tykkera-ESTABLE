@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -15,13 +15,124 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+@font-face {
+  font-family: 'Avant Garde bold';
+  src: url('../public/avantgardebold/Avant\ Garde\ Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avant Garde Regular';
+  src: url('../public/avantgarderegular/Avant\ Garde\ Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.avant-garde-bold {
+  font-family: 'Avant Garde Bold', sans-serif;
+}
+.avant-garde-regular {
+  font-family: 'Avant Garde Regular', sans-serif;
+}
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-image: url("../public/backgroundcolor.png");
+    background-size: cover;
+  background-position: center;
+}
+::-webkit-scrollbar {
+  width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #022967; /* Color del pulgar de la barra de desplazamiento */
+  border-radius: 6px; /* Bordes redondeados del pulgar */
+}
+
+::-webkit-scrollbar-track {
+  background-color:#767a86; /* Color de fondo de la barra de desplazamiento */
+}
+
+:root {
+  --Blue: linear-gradient(180deg, #0575E6 0%, #02298A 84.79%, #021B79 100%);
+ }
+ 
+ .bg-pattern {
+  background: var(--Blue, linear-gradient(180deg, #0575E6 0%, #02298A 84.79%, #021B79 100%));
+ }
+
+ 
+ body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="number-slide"],
+[class*=" number-slide"] {
+  background: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  color: #fff;
+  font-weight: 500;
+  height: 300px;
+  max-height: 100vh;
+}
+
+.navigation-wrapper {
+  position: relative;
+}
+
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.dot {
+  border: none;
+  width: 10px;
+  height: 10px;
+  background: #c5c5c5;
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  background: #000;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: #fff;
+  cursor: pointer;
+}
+
+.arrow--left {
+  left: 5px;
+}
+
+.arrow--right {
+  left: auto;
+  right: 5px;
+}
+
+.arrow--disabled {
+  fill: rgba(255, 255, 255, 0.5);
 }
