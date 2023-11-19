@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import Profile from "@/components/profile";
 import UserLayout from "./layout";
+
 import { AlertBar } from "@/components";
 
 const UserProfile = () => {
