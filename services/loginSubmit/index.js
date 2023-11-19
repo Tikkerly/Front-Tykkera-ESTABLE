@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useSelector, useDispatch } from "react-redux";
 
 const closureHandleSubmit = (
   route,
@@ -16,10 +17,12 @@ const closureHandleSubmit = (
       setLoading(true);
       const { data } = await axios.post(route, payload);
       dispatch(action(data.user));
+      localStorage.setItem("reduxState", JSON.stringify(data));
       if (data.token) {
         Cookies.set("token", data.token);
         Cookies.set("uid", data.user._id);
       }
+
       router.push("/user");
     } catch (error) {
       setLoading(false);

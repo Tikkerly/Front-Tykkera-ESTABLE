@@ -34,8 +34,6 @@ const TicketsView = () => {
     getTickets();
   }, []);
 
-  console.log(ticketsData);
-
   const handleTicketDelete = async () => {
     try {
       const response = await axios.get(

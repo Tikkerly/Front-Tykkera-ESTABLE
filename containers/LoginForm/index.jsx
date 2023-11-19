@@ -5,13 +5,9 @@ import { USER_ROUTES } from "@/routes/routes";
 import { useDispatch } from "react-redux";
 import { closureHandleGoogleSubmit, closureHandleSubmit } from "@/services";
 import { login } from "@/redux/slices";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
-
-import axios from "axios";
-// 906706593927-28g158gplg7fshf568027niditejuldo.apps.googleusercontent.com
 
 import ModalPassword from "@/components/ModalPassword";
 import Image from "next/image";

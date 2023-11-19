@@ -10,6 +10,7 @@ const Profile = () => {
   const user = useSelector((state) => state.auth.user);
   const token = Cookies.get("token");
   const dispatch = useDispatch();
+  const [imageSrc, setImageSrc] = useState({});
 
   const [editable, setEditable] = useState({
     username: user.username,
@@ -35,7 +36,7 @@ const Profile = () => {
           },
         }
       );
-      console.log(response.data);
+
       dispatch(userDetails(response.data));
       alert("Se han guardado los cambios");
     } catch (error) {
@@ -43,13 +44,18 @@ const Profile = () => {
     }
   };
 
+  useEffect(() => {
+    // Cargar la imagen dinámicamente en el cliente
+    setImageSrc(user);
+  }, [user]);
+
   return (
     <div>
       <div className="bg-Be bg-opacity-90 p-8 text-gray-900 rounded-lg shadow-md w-full h-full max-w-screen-md mx-auto flex flex-col">
         <div className="flex items-start mb-8">
           <img
             className="mx-auto h-32 w-32 rounded-full object-cover"
-            src={user.img}
+            src={imageSrc.img}
             alt="Profile Image"
           />
           <div>
@@ -66,13 +72,13 @@ const Profile = () => {
         </div>
         <div className="text-center mt-4">
           <h2 className="text-2xl mb-2 font-bold avant-garde-bold">
-            {user.email}
+            {imageSrc.email}
           </h2>
           <h2 className="text-xl mb-2 font-regular avant-garde-regular">
-            Persona {user.personType}
+            Persona {imageSrc.personType}
           </h2>
           <h2 className="text-xl mb-2 font-regular avant-garde-regular">
-            NIT: {user.nit}
+            NIT: {imageSrc.nit}
           </h2>
         </div>
 
@@ -89,13 +95,12 @@ const Profile = () => {
         </div>
 
         <div className="mb-4">
-
-        <label>Dirección</label>
+          <label>Dirección</label>
           <input
             className=" font-regular avant-garde-regular w-full px-4 py-3 text-xl text-gray-700 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
             id="address"
             type="text"
-            defaultValue={user.address}
+            defaultValue={imageSrc.address}
             onChange={(e) => handleFieldChange("address", e.target.value)}
             placeholder="Dirección"
           />
@@ -113,17 +118,15 @@ const Profile = () => {
           />
         </div>
 
-
-          <div className="flex items-center justify-center">
-            <button
-              className=" font-bold avant-garde-bold w-full bg-Az3 text-gray py-3 px-6 rounded  text-xl transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
-              type="submit"
-              onClick={handleSaveChanges}
-            >
-              Guardar cambios
-            </button>
-          </div>
-
+        <div className="flex items-center justify-center">
+          <button
+            className=" font-bold avant-garde-bold w-full bg-Az3 text-gray py-3 px-6 rounded  text-xl transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
+            type="submit"
+            onClick={handleSaveChanges}
+          >
+            Guardar cambios
+          </button>
+        </div>
       </div>
     </div>
   );
