@@ -25,3 +25,4 @@ export { default as CreateServiceAgent } from "./createServiceAgent/index.jsx";
 export { default as CreateTechnician } from "./createTechnician/index.jsx";
 export { default as CreateFinalClient } from "./createFinalClient/index.jsx";
 export { default as PaymentView } from "./paymentPlans/index.jsx";
+export { default as AlertBar } from "./alertBar/index.jsx";
