@@ -11,7 +11,8 @@ const Suscripcion = () => {
       if (typeof window !== 'undefined') {
         const cardsContainer = document.querySelector(".cards");
         const cardsContainerInner = document.querySelector(".cards__inner");
-        const cards = Array.from(document.querySelectorAll(".card"));
+        const cards = Array.from(cardsContainerInner.querySelectorAll(".card"));
+        console.log(cards);
         const overlay = document.querySelector(".overlay");
   
         const applyOverlayMask = (e) => {
@@ -28,10 +29,11 @@ const Suscripcion = () => {
             const cardIndex = cards.indexOf(entry.target);
             let width = entry.borderBoxSize[0].inlineSize;
             let height = entry.borderBoxSize[0].blockSize;
-  
+
             if (cardIndex >= 0) {
               overlay.children[cardIndex].style.width = `${width}px`;
               overlay.children[cardIndex].style.height = `${height}px`;
+              
             }
           });
         });
@@ -39,7 +41,7 @@ const Suscripcion = () => {
         const initOverlayCard = (cardEl) => {
           const overlayCard = document.createElement("div");
           overlayCard.classList.add("card");
-        
+        console.log(overlayCard);
           overlay.append(overlayCard);
           observer.observe(cardEl);
         };
@@ -55,7 +57,7 @@ const Suscripcion = () => {
   
     return (
         <div className="maain">
-        <div className="main flow" style={{ width: '800px' }}>
+        <div className="main flow">
         <h1 className="main__heading"></h1>
         <div className="main__cards cards">
           <div className="cards__inner">

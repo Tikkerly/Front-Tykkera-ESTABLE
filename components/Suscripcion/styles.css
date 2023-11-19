@@ -42,17 +42,18 @@ ul {
 }
 
 .cards {
+    width: 100%;
   position: relative;
 }
 
 .cards__inner {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowwrap;
   gap: 2.5em;
 }
 
 .card {
-    width: 250px;
+    width: 400px;
   --flow-space: 0.5em;
   --hsl: var(--hue), var(--saturation), var(--lightness);
   flex: 1 1 14rem;
@@ -65,7 +66,7 @@ ul {
   background-color: #2b2b2b;
   border: 1px solid #eceff133;
   border-radius: 15px;
-  position: relative
+  position: relative;
 }
 
 .card:nth-child(1) {
@@ -107,9 +108,10 @@ ul {
   font-weight: 700;
 }
 
-.flow {
-  margin-top: var(--flow-space, 1.25em);
-}
+.flow > * + * {
+    margin-top: 1.25em
+  }
+  
 
 .cta {
   display: block;
@@ -149,7 +151,7 @@ ul {
 }
 
 .overlay .card {
-    width: 250px;
+    width: 400px;
   background-color: hsla(var(--hsl), 0.15);
   border-color: hsla(var(--hsl), 1);
   box-shadow: 0 0 0 1px inset hsl(var(--hsl));
