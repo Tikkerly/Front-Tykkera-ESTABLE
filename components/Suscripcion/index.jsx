@@ -22,13 +22,6 @@ const Suscripcion = () => {
           overlayEl.style = `--opacity: 1; --x: ${x}px; --y:${y}px;`;
         };
   
-        const createOverlayCta = (overlayCard, ctaEl) => {
-          const overlayCta = document.createElement("div");
-          overlayCta.classList.add("cta");
-          overlayCta.textContent = ctaEl.textContent;
-          overlayCta.setAttribute("aria-hidden", true);
-          overlayCard.append(overlayCta);
-        };
   
         const observer = new ResizeObserver((entries) => {
           entries.forEach((entry) => {
@@ -46,7 +39,7 @@ const Suscripcion = () => {
         const initOverlayCard = (cardEl) => {
           const overlayCard = document.createElement("div");
           overlayCard.classList.add("card");
-          createOverlayCta(overlayCard, cardEl.lastElementChild);
+        
           overlay.append(overlayCard);
           observer.observe(cardEl);
         };

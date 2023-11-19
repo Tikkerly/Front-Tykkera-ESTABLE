@@ -131,11 +131,13 @@ ul {
   inset: 0;
   pointer-events: none;
   user-select: none;
+  
   opacity: var(--opacity, 0);
   -webkit-mask: radial-gradient(
     25rem 25rem at var(--x) var(--y),
     #000 1%,
     transparent 50%
+    
   );
   mask: radial-gradient(
     25rem 25rem at var(--x) var(--y),
@@ -147,7 +149,6 @@ ul {
 }
 
 .overlay .card {
-
     width: 250px;
   background-color: hsla(var(--hsl), 0.15);
   border-color: hsla(var(--hsl), 1);
@@ -162,6 +163,7 @@ ul {
 }
 
 :not(.overlay) > .card:hover {
+    color: white;
   --lightness: 95%;
   background: hsla(var(--hsl), 0.1);
 }
