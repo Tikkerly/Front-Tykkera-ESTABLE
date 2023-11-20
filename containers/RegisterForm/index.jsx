@@ -1,21 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { validation } from "@/utils";
-import {
-  AccountCircle,
-  Email,
-  Lock,
-  Phone,
-  AssignmentInd,
-  Person,
-  Business,
-} from "@mui/icons-material";
 import { FormInputs, SubmitButton } from "@/components";
 import { registerSubmit } from "@/services";
 import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
-import { load } from "@/public/load.gif";
-import Image from "next/image";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -67,11 +56,7 @@ const RegisterForm = () => {
     address: formData.address,
   };
 
-  const handleSubmit = registerSubmit(USER_ROUTES.registerUser, user, router);
-
-  const handleDisable = () => {
-    setDisabled(true);
-  };
+  const handleSubmit = registerSubmit(USER_ROUTES.registerUser, user, router, setDisabled);
 
   return (
     <form
@@ -262,7 +247,6 @@ const RegisterForm = () => {
           <SubmitButton
             text={"Registrarse"}
             type={"submit"}
-            onClick={handleDisable}
             disabled={isDisabled}
           />
         )}

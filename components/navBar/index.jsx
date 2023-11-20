@@ -9,8 +9,10 @@ import { logout } from "@/redux/slices";
 import Cookies from "js-cookie";
 
 const Navbar = () => {
+  const user = useSelector((state) => state.auth.user);
   const auth = useSelector((state) => state.auth.isAuthenticated);
   const router = useRouter();
+  console.log(user);
 
   const dispatch = useDispatch();
   const route = usePathname();
@@ -28,13 +30,11 @@ const Navbar = () => {
   return (
     <Fragment>
       <div
-
-
         className="p-4 text-gray flex flex-row items-center justify-between bg-gray-500 bg-opacity-80 fixed w-full top-0 h-20"
-        style={{ zIndex: 1000}}
+        style={{ zIndex: 1000 }}
       >
         <div>
-          <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
             <Image
               src={logotipo}
               width={290}
@@ -45,34 +45,52 @@ const Navbar = () => {
           </Link>
         </div>
         {auth ? (
-          <div>
-            <Link href="/user" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <span className="mr-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
-                Perfil
+          <div className="flex flex-col items-center justify-center">
+            <h2 className="mr-1 py-1 avant-garde-bold text-base text-Az5">{user.username}</h2>
+            <div>
+              <Link
+                href="/user"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <span className="mr-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
+                  Perfil
+                </span>
+              </Link>
+
+              <span className="mx-1 avant-garde-bold text-base text-Az5">
+                /
+              </span>
+
+              <span
+                onClick={handleClick}
+                className="ml-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-text-Az1 hover:underline cursor-pointer"
+              >
+                Logout
+              </span>
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-center">
+            <Link
+              href="/ingresar"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <span className="mr-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
+                Ingresar
               </span>
             </Link>
 
             <span className="mx-1 avant-garde-bold text-base text-Az5">/</span>
 
-            <span
-              onClick={handleClick}
-              className="ml-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-text-Az1 hover:underline cursor-pointer"
+            <Link
+              href="/registrarse"
+              style={{ textDecoration: "none", color: "inherit" }}
             >
-              Logout
-            </span>
+              <span className="ml-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
+                Registrarse
+              </span>
+            </Link>
           </div>
-        ) : (
-        <div className="flex items-center">
-          <Link href="/ingresar" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <span className="mr-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">Ingresar</span>
-          </Link>
-
-          <span className="mx-1 avant-garde-bold text-base text-Az5">/</span>
-
-          <Link href="/registrarse" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <span className="ml-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">Registrarse</span>
-          </Link>
-        </div>
         )}
       </div>
     </Fragment>
