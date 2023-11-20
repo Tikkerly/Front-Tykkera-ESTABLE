@@ -1,21 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { validation } from "@/utils";
-import {
-  AccountCircle,
-  Email,
-  Lock,
-  Phone,
-  AssignmentInd,
-  Person,
-  Business,
-} from "@mui/icons-material";
 import { FormInputs, SubmitButton } from "@/components";
 import { registerSubmit } from "@/services";
 import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import load from "../../public/load.gif";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -42,7 +31,6 @@ const RegisterForm = () => {
   console.log(formData);
 
   const handleChange = (e) => {
-    console.log(errors);
     setErrors(
       validation("register", { ...formData, [e.target.name]: e.target.value })
     );
@@ -69,11 +57,7 @@ const RegisterForm = () => {
     address: formData.address,
   };
 
-  const handleSubmit = registerSubmit(USER_ROUTES.registerUser, user, router);
-
-  const handleDisable = () => {
-    setDisabled(true);
-  };
+  const handleSubmit = registerSubmit(USER_ROUTES.registerUser, user, router, setDisabled);
 
   return (
     <form
@@ -237,7 +221,7 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <div className="flex flex-col align-middle justify-center">
+      <div className="flex flex-col items-center justify-center">
         <div className="flex items-center gap-2 flex-col">
           <FormInputs
             label={"Imagen:"}
@@ -256,13 +240,18 @@ const RegisterForm = () => {
             )}
           </div>
         </div>
+        {disabled ? (
+          <div className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md w-8">
+            <p>Cargando...</p>
+          </div>
+        ) : (
+          <SubmitButton
+            text={"Registrarse"}
+            type={"submit"}
+            disabled={isDisabled}
+          />
+        )}
 
-        <SubmitButton
-          text={"Registrarse"}
-          type={"submit"}
-          onClick={handleDisable}
-          disabled={isDisabled}
-        />
       </div>
     </form>
   );

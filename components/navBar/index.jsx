@@ -11,8 +11,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faSignOutAlt   } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
+  const user = useSelector((state) => state.auth.user);
   const auth = useSelector((state) => state.auth.isAuthenticated);
   const router = useRouter();
+
   const [authPer, setAuthPer] = useState(false);
 
   useEffect(() => {
@@ -49,7 +51,9 @@ const Navbar = () => {
             />
           </Link>
         </div>
+
         {authPer ? (
+
          <div style={{ display: "grid", gridTemplateColumns: "auto auto", gap: "0.5rem", alignItems: "center" }}>
          <Link href="/user" style={{ textDecoration: "none", color: "inherit" }}>
            <div className="mr-1 py-1 avant-garde-bold text-lg text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
@@ -61,6 +65,7 @@ const Navbar = () => {
            <FontAwesomeIcon icon={faSignOutAlt} style={{ fontSize: "1.5rem" }} />
          </span>
        </div>
+
         ) : (
           <div className="flex items-center">
             <Link
