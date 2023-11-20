@@ -47,6 +47,72 @@ const UsersView = () => {
       });
     }
   };
+  const handleDeleteServiceAgent = async (id) => {
+    try {
+      const { data } = await axios.delete(`${USER_ROUTES.deleteUser}/${id}`, {
+        headers: {
+          "x-token": Cookies.get("token"),
+        },
+      });
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la eliminacion",
+        text: error.response.data.errors[0].msg,
+      });
+    }
+  };
+  const handleDeleteFinalClients = async (id) => {
+    try {
+      const { data } = await axios.delete(`${USER_ROUTES.deleteUser}/${id}`, {
+        headers: {
+          "x-token": Cookies.get("token"),
+        },
+      });
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la eliminacion",
+        text: error.response.data.errors[0].msg,
+      });
+    }
+  };
+  const handleDeleteTechnicians = async (id) => {
+    try {
+      const { data } = await axios.delete(`${USER_ROUTES.deleteUser}/${id}`, {
+        headers: {
+          "x-token": Cookies.get("token"),
+        },
+      });
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la eliminacion",
+        text: error.response.data.errors[0].msg,
+      });
+    }
+  };
 
   useEffect(() => {
     async function getAllUsers() {
@@ -115,9 +181,8 @@ const UsersView = () => {
                 <button onClick={() => handleModal("edit", user._id)}>
                   <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
                 </button>
-                <button type="button" onClick={() => handleDelete(user._id)}>
-                  <ClearIcon className="text-red-500 hover:text-red-700" />
-                </button>
+                  <ClearIcon className="text-red-500 hover:text-red-700"
+                             onClick={() => handleDelete(user._id)}/>
               </td>
             </tr>
           ))}
