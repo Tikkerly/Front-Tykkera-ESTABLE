@@ -81,46 +81,44 @@ const CreateTechnician = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-white">
-            Nombre:
-          </label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
-        </div>
+    <form onSubmit={handleSubmit} className="grid grid-cols-2 w-full gap-6">
+      <div>
+        <label className="block text-sm font-medium text-white">
+          Nombre:
+        </label>
+        <input
+          type="text"
+          name="username"
+          value={formData.username}
+          onChange={handleInputChange}
+          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+      </div>
 
-        <div>
-          <label className="block text-sm font-medium text-white">
-            Correo:
-          </label>
-          <input
-            type="text"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
-        </div>
+      <div>
+        <label className="block text-sm font-medium text-white">
+          Correo:
+        </label>
+        <input
+          type="text"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+      </div>
 
-        <div>
-          <label className="block text-sm font-medium text-white">
-            Documento:
-          </label>
-          <input
-            type="text"
-            name="document"
-            value={formData.document}
-            onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
-        </div>
+      <div>
+        <label className="block text-sm font-medium text-white">
+          Documento:
+        </label>
+        <input
+          type="text"
+          name="document"
+          value={formData.document}
+          onChange={handleInputChange}
+          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
       </div>
 
       <div>
@@ -161,6 +159,7 @@ const CreateTechnician = () => {
           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
+
       <div>
         <label className="block text-sm font-medium text-white">
           Método de pago:
@@ -173,6 +172,7 @@ const CreateTechnician = () => {
           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
+
       <div>
         <label className="block text-sm font-medium text-white">
           Número de cuenta:
@@ -218,7 +218,7 @@ const CreateTechnician = () => {
         </select>
       </div>
 
-      <div>
+      <div className="col-span-2">
         <button
           type="submit"
           className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
