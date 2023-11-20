@@ -21,8 +21,8 @@ const UserLayout = ({ children }) => {
   //   }
   // }, []);
   return (
-    <div className="flex h-screen mt-40">
-      <div style={{ background: "#0576e6e3", width: "20.2%" }}>
+    <div className="flex h-screen mt-40 bg-white">
+      <div style={{ background: "gray", width: "5%", position: "fixed", height: "100vh" }} className="flex items-start justify-center">
         <SideBar />
       </div>
       <div className="flex-1 p-4">{children}</div>
