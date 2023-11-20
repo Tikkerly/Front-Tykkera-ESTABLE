@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import ClearIcon from "@mui/icons-material/Clear";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import { useSelector } from "react-redux";
+import { USER_ROUTES } from "@/routes/routes";
 
 const TicketsView = () => {
   const id = useSelector((state) => state.auth.user._id);
@@ -17,14 +18,14 @@ const TicketsView = () => {
     const getTickets = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/v1/tickets/company/${id}`,
+          `${USER_ROUTES.init}/tickets/company/${id}`,
           {
             headers: {
               "x-token": token,
             },
           }
         );
-        //console.log(response.data)
+
         setTicketsData(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -37,7 +38,7 @@ const TicketsView = () => {
   const handleTicketDelete = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/v1/tickets/deleteticket/${id}`,
+        `${USER_ROUTES.init}/tickets/deleteticket/${id}`,
         {
           headers: {
             "x-token": token,

@@ -39,7 +39,6 @@ const RegisterForm = () => {
 
     setFormData({ ...formData, [e.target.name]: file });
   };
-  console.log(formData);
 
   const handleChange = (e) => {
     console.log(errors);

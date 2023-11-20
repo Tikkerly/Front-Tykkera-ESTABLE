@@ -5,6 +5,7 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 import ClearIcon from "@mui/icons-material/Clear";
 import EditNoteIcon from "@mui/icons-material/EditNote";
+import { USER_ROUTES } from "@/routes/routes";
 
 const UsersViews = () => {
   const token = Cookies.get("token");
@@ -17,7 +18,7 @@ const UsersViews = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/api/v1/user", {
+        const response = await axios.get(`${USER_ROUTES.init}/user`, {
           headers: {
             "x-token": token,
           },
