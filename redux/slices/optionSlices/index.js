@@ -3,31 +3,32 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  serviceAgent: {},
-  technician: {},
-  finalClient: {},
-  company: {},
+  serviceAgents: [],
+  technicians: [],
+  finalClients: [],
+  companys: [],
 };
 
 const optionsSlice = createSlice({
   name: "options",
   initialState,
   reducers: {
-    serviceAgentDetails: (state, action) => {
-      state.serviceAgent = action.payload;
+    serviceAgents: (state, action) => {
+      state.serviceAgents = action.payload;
     },
-    technicianDetails: (state, action) => {
-      state.technician = action.payload;
+    technicians: (state, action) => {
+      state.technicians = action.payload;
     },
-    finalClientDetails: (state, action) => {
-      state.finalClient = action.payload;
+    finalClients: (state, action) => {
+      state.finalClients = action.payload;
     },
-    companyDetails: (state, action) => {
-      state.company = action.payload;
+    companys: (state, action) => {
+      state.companys = action.payload;
     },
   },
 });
 
-export const { serviceAgentDetails, technicianDetails, finalClientDetails, companyDetails } = optionsSlice.actions;
+export const { serviceAgents, technicians, finalClients, companys } =
+  optionsSlice.actions;
 
 export default optionsSlice.reducer;

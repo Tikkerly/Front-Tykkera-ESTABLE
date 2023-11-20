@@ -26,8 +26,8 @@ const ChangeUser = () => {
     }
   };
   return (
-    <div className="flex flex-col items-center justify-center">
-      <h1 className="text-4xl text-gray-100 avant-garde-bold font-bold ">Coloque su Email</h1>
+    <div className="flex flex-col items-center justify-center bg-gray-900 bg-opacity-50 p-3 rounded-lg">
+      <h1 className="text-4xl text-gray-100 avant-garde-bold font-bold mt-2 ">Coloque su Email</h1>
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <div >
           <div className="relative w-64 h-10 bg-gray-200 rounded-lg mt-8">
@@ -46,7 +46,7 @@ const ChangeUser = () => {
         </div>
         <Link href="/recuperar-contrasena" style={{ textDecoration: 'none', color: 'inherit' }}>
             <button
-              className="mt-3 avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md"
+              className="mt-3 avant-garde-bold font-bold text-gray px-6 py-2 rounded-full bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
               //type="submit"
               onClick={handleSubmit}
             >

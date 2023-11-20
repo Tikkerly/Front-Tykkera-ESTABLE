@@ -2,34 +2,30 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 
 const SideBar = () => {
-  const role = useSelector((state) => state.auth.user.rol);
-  console.log(role);
-
   return (
     <div
-      style={{ background: "#0576e6e3" }}
-      className="flex flex-col items-center mt-4"
+      className="flex flex-col items-center mt-4 bg-gray-500 bg-opacity-80 "
     >
       <button className="w-full mr-2 py-1 px-1 mt-4 avant-garde-bold text-base rounded bg-Az3 text-gray font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
-        <Link href="/user">
+        <Link href="/user" style={{ textDecoration: 'none', color: 'inherit' }}>
           <h2 className="px-4">Perfil</h2>
         </Link>
       </button>
 
       <button className=" w-full mr-2 py-1 px-1 mt-4 avant-garde-bold text-base rounded bg-Az3 text-gray font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
-        <Link href="/user/tickets">
+        <Link href="/user/tickets" style={{ textDecoration: 'none', color: 'inherit' }}>
           <h2 className="px-4">Tickets</h2>
         </Link>
       </button>
 
-      <button className=" w-full mr-2 py-1 px-1 p-2 mt-4 avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
-        <Link href="/user/calendar">
+      <button className=" w-full mr-2 py-1 px-1 p-2 mt-4 avant-garde-bold text-base rounded bg-Az3 text-gray-100-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
+        <Link href="/user/calendar" style={{ textDecoration: 'none', color: 'inherit' }}>
           <h2 className="px-4">Calendario</h2>
         </Link>
       </button>
 
-      <button className="w-full mr-2 py-1 px-1 p-2 mt-4 avant-garde-bold text-base rounded bg-Az3 text-white-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
-        <Link href="/user/administrar-usuarios">
+      <button className="w-full mr-2 py-1 px-1 p-2 mt-4 avant-garde-bold text-base rounded bg-Az3 text-gray-100-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
+        <Link href="/user/administrar-usuarios" style={{ textDecoration: 'none', color: 'inherit' }}>
           <h2 className="px-4">Administrar Terceros</h2>
         </Link>
       </button>
