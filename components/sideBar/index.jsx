@@ -23,11 +23,6 @@ const SideBar = () => {
           <h2 className="px-4">Calendario</h2>
         </Link>
       </button>
-      <button className=" w-full mr-2 py-1 px-1 p-2 mt-4 avant-garde-bold text-base rounded bg-Az3 text-gray-100-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
-        <Link href="/user/manage" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <h2 className="px-4">Users</h2>
-        </Link>
-      </button>
 
       <button className="w-full mr-2 py-1 px-1 p-2 mt-4 avant-garde-bold text-base rounded bg-Az3 text-gray-100-800 font-bold avant-garde-bold transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg">
         <Link href="/user/administrar-usuarios" style={{ textDecoration: 'none', color: 'inherit' }}>
