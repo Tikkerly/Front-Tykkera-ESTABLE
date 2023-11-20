@@ -41,7 +41,6 @@ const RegisterForm = () => {
   };
 
   const handleChange = (e) => {
-    console.log(errors);
     setErrors(
       validation("register", { ...formData, [e.target.name]: e.target.value })
     );
@@ -236,7 +235,7 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <div className="flex flex-col align-middle justify-center">
+      <div className="flex flex-col items-center justify-center">
         <div className="flex items-center gap-2 flex-col">
           <FormInputs
             label={"Imagen:"}

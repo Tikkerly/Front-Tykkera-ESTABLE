@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { FormInputs, SubmitButton } from "@/components";
 import { useState } from "react";
 import { USER_ROUTES } from "@/routes/routes";
@@ -15,7 +15,6 @@ import { GoogleLogin } from "@react-oauth/google";
 import ModalPassword from "@/components/ModalPassword";
 
 export default function LoginForm() {
-  
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -40,62 +39,69 @@ export default function LoginForm() {
   };
   return (
     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_CLIENTID}>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4 items-center w-80"
-      >
-        <FormInputs
-          className=" p-2"
-          placeholder={"Ingrese su email."}
-          label={"Email:"}
-          name={"email"}
-          value={formData.email}
-          onChange={handleChange}
-          type={"email"}
-        />
-
-        <FormInputs
-          className=" p-2"
-          placeholder={"Ingrese su contraseña."}
-          label={"Contraseña:"}
-          name={"password"}
-          value={formData.password}
-          onChange={handleChange}
-          type={"password"}
-        />
-        <div className="flex flex-col items-center gap-4 text-center w-full">
-          <SubmitButton text={"Ingresar"} type={"submit"} />
-          {loading && <h2>Cargando...</h2>}
-          {message && (
-            <h2 className="avant-garde-regular font-regular text-red-500 text-sm">
-              {message}
-            </h2>
-          )}
-          <button
-            className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md hover:underline"
-            onClick={() => setShowPasswordModal(true)}
-          >
-            Olvidé mi contraseña
-          </button>
-          <div className="h-0.5 w-full bg-gray-300"></div>
-          <GoogleLogin
-            onSuccess={(credentialResponse) => {
-              closureHandleGoogleSubmit(
-                USER_ROUTES.loginGoogleUser,
-                credentialResponse.credential,
-                dispatch,
-                login,
-                setMessage,
-                setLoading,
-                router
-              );
-            }}
-            onError={() => {
-              console.log("Login Failed");
-            }}
+      <div>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4 items-center w-80"
+        >
+          <FormInputs
+            className=" p-2"
+            placeholder={"Ingrese su email."}
+            label={"Email:"}
+            name={"email"}
+            value={formData.email}
+            onChange={handleChange}
+            type={"email"}
           />
-        </div>
-      </form>
+
+          <FormInputs
+            className=" p-2"
+            placeholder={"Ingrese su contraseña."}
+            label={"Contraseña:"}
+            name={"password"}
+            value={formData.password}
+            onChange={handleChange}
+            type={"password"}
+          />
+          <div className="flex flex-col items-center gap-4 text-center w-full">
+            <SubmitButton text={"Ingresar"} type={"submit"} />
+            {loading && <h2>Cargando...</h2>}
+            {message && (
+              <h2 className="avant-garde-regular font-regular text-red-500 text-sm">
+                {message}
+              </h2>
+            )}
+          </div>
+        </form>
+      </div>
+      <div className="flex items-center justify-center">
+        <button
+          className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md hover:underline"
+          onClick={() => setShowPasswordModal(true)}
+        >
+          Olvidé mi contraseña
+        </button>
+      </div>
+
+      <div className="flex flex-col justify-center items-center gap-4">
+        <div className="h-0.5 w-full bg-gray-300"></div>
+        <GoogleLogin
+          onSuccess={(credentialResponse) => {
+            closureHandleGoogleSubmit(
+              USER_ROUTES.loginGoogleUser,
+              credentialResponse.credential,
+              dispatch,
+              login,
+              setMessage,
+              setLoading,
+              router
+            );
+          }}
+          onError={() => {
+            console.log("Login Failed");
+          }}
+        />
+      </div>
       <ModalPassword
         isVisible={showPasswordModal}
         onClose={() => setShowPasswordModal(false)}
