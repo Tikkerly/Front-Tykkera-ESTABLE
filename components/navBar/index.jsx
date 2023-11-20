@@ -51,31 +51,32 @@ const Navbar = () => {
         </div>
 
         {authPer ? (
-         <div className="flex flex-col items-center justify-center">
-            <h2 className="mr-1 py-1 avant-garde-bold text-base text-Az5">{user.username}</h2>
-          <div>
-            <Link
-              href="/user"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <span className="mr-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
-                Perfil
+          <div className="flex flex-col items-center justify-center">
+            <h2 className="mr-1 py-1 avant-garde-bold text-base text-Az5">
+              {user.username}
+            </h2>
+            <div>
+              <Link
+                href="/user"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <span className="mr-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
+                  Perfil
+                </span>
+              </Link>
 
+              <span className="mx-1 avant-garde-bold text-base text-Az5">
+                /
               </span>
-            </Link>
 
-            <span className="mx-1 avant-garde-bold text-base text-Az5">/</span>
-
-            <Link
-              href="/registrarse"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <span className="ml-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
-                Registrarse
+              <span
+                onClick={handleClick}
+                className="ml-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-text-Az1 hover:underline cursor-pointer"
+              >
+                Logout
               </span>
-            </Link>
+            </div>
           </div>
-        </div>
         ) : (
           <div className="flex items-center">
             <Link
