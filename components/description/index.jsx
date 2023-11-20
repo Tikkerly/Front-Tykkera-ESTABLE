@@ -3,12 +3,9 @@ import { SubmitButton } from "..";
 import styles from "./style.module.css";
 import Link from "next/link";
 
-
-
 const Description = () => {
   return (
     <>
-
 
 <div className={` mb-40 p-40 w-screen h-full rounded-lg shadow-md flex flex-col items-center justify-center ${styles["bg-image"]}`}>
       
@@ -38,10 +35,8 @@ const Description = () => {
       
       </div>
       </div>
-    </div>
-   
-      </>
+    </>
   );
-}
+};
 
-export default Description; 
+export default Description;

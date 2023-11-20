@@ -9,8 +9,10 @@ import { logout } from "@/redux/slices";
 import Cookies from "js-cookie";
 
 const Navbar = () => {
+  const user = useSelector((state) => state.auth.user);
   const auth = useSelector((state) => state.auth.isAuthenticated);
   const router = useRouter();
+
   const [authPer, setAuthPer] = useState(false);
 
   useEffect(() => {
@@ -47,7 +49,10 @@ const Navbar = () => {
             />
           </Link>
         </div>
+
         {authPer ? (
+         <div className="flex flex-col items-center justify-center">
+            <h2 className="mr-1 py-1 avant-garde-bold text-base text-Az5">{user.username}</h2>
           <div>
             <Link
               href="/user"
@@ -55,18 +60,22 @@ const Navbar = () => {
             >
               <span className="mr-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
                 Perfil
+
               </span>
             </Link>
 
             <span className="mx-1 avant-garde-bold text-base text-Az5">/</span>
 
-            <span
-              onClick={handleClick}
-              className="ml-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-text-Az1 hover:underline cursor-pointer"
+            <Link
+              href="/registrarse"
+              style={{ textDecoration: "none", color: "inherit" }}
             >
-              Logout
-            </span>
+              <span className="ml-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
+                Registrarse
+              </span>
+            </Link>
           </div>
+        </div>
         ) : (
           <div className="flex items-center">
             <Link
