@@ -11,7 +11,7 @@ const UserTicketss = () => {
   }, []);
 
   return (
-    <div>
+    <div className='h-screen ml-8 '>
       <div ref={calendarRef}></div>
     </div>
   );

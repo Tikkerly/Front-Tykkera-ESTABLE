@@ -3,7 +3,7 @@ import CreateTickect from '@/components/createTickets/index';
 
 const CreateTicket = () => {
   return (
-    <div>
+    <div className='h-screen w-screen p-8 ml-10'>
       <CreateTickect />
     </div>
   );
