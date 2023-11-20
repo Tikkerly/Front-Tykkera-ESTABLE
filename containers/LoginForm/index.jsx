@@ -54,54 +54,22 @@ export default function LoginForm() {
             type={"email"}
           />
 
-        <FormInputs
-          className=" p-2"
-          placeholder={"Ingrese su contraseña."}
-          label={"Contraseña:"}
-          name={"password"}
-          value={formData.password}
-          onChange={handleChange}
-          type={"password"}
-        />
-        <div className="flex flex-col items-center gap-4 text-center w-full">
-          {loading ? (
-            <Image src={load} width={30} height={30} alt="Loading2" />
-          ) : (
-            <SubmitButton text={"Ingresar"} type={"submit"} />
-          )}
-
-          {message && (
-            <h2 className="avant-garde-regular font-regular text-red-500 text-sm">
-              {message}
-            </h2>
-          )}
-          <button
-            className="avant-garde-bold font-bold text-gray px-6 py-3 rounded-full bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
-            onClick={() => setShowPasswordModal(true)}
-          >
-            Olvidé mi contraseña
-          </button>
-          <div className="h-0.5 w-full bg-gray-300"></div>
-          <GoogleLogin
-            onSuccess={(credentialResponse) => {
-              closureHandleGoogleSubmit(
-                USER_ROUTES.loginGoogleUser,
-                credentialResponse.credential,
-                dispatch,
-                login,
-                setMessage,
-                setLoading,
-                router
-              );
-              router.push("/user");
-            }}
-            onError={() => {
-              console.log("Login Failed");
-            }}
+          <FormInputs
+            className=" p-2"
+            placeholder={"Ingrese su contraseña."}
+            label={"Contraseña:"}
+            name={"password"}
+            value={formData.password}
+            onChange={handleChange}
+            type={"password"}
           />
           <div className="flex flex-col items-center gap-4 text-center w-full">
-            <SubmitButton text={"Ingresar"} type={"submit"} />
-            {loading && <h2>Cargando...</h2>}
+            {loading ? (
+              <Image src={load} width={30} height={30} alt="Loading2" />
+            ) : (
+              <SubmitButton text={"Ingresar"} type={"submit"} />
+            )}
+
             {message && (
               <h2 className="avant-garde-regular font-regular text-red-500 text-sm">
                 {message}
