@@ -4,7 +4,7 @@ import TicketsView from '@/components/ticketsView/index';
 
 const UserTickets = () => {
   return (
-    <div>
+    <div className='h-screen w-screen p-8 ml-8'>
       <TicketsView />
     </div>
   );

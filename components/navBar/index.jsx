@@ -7,6 +7,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/redux/slices";
 import Cookies from "js-cookie";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faSignOutAlt   } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const user = useSelector((state) => state.auth.user);
@@ -51,32 +53,19 @@ const Navbar = () => {
         </div>
 
         {authPer ? (
-          <div className="flex flex-col items-center justify-center">
-            <h2 className="mr-1 py-1 avant-garde-bold text-base text-Az5">
-              {user.username}
-            </h2>
-            <div>
-              <Link
-                href="/user"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <span className="mr-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
-                  Perfil
-                </span>
-              </Link>
 
-              <span className="mx-1 avant-garde-bold text-base text-Az5">
-                /
-              </span>
+         <div style={{ display: "grid", gridTemplateColumns: "auto auto", gap: "0.5rem", alignItems: "center" }}>
+         <Link href="/user" style={{ textDecoration: "none", color: "inherit" }}>
+           <div className="mr-1 py-1 avant-garde-bold text-lg text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
+             <FontAwesomeIcon icon={faUser} style={{ fontSize: "1.5rem" }} />
+           </div>
+         </Link>
+       
+         <span onClick={handleClick} className="ml-1 py-1 avant-garde-bold text-lg text-Az5 transition duration-300 ease-in-out hover:text-Az1 hover:underline cursor-pointer">
+           <FontAwesomeIcon icon={faSignOutAlt} style={{ fontSize: "1.5rem" }} />
+         </span>
+       </div>
 
-              <span
-                onClick={handleClick}
-                className="ml-1 py-1 avant-garde-bold text-base text-Az5 transition duration-300 ease-in-out hover:text-text-Az1 hover:underline cursor-pointer"
-              >
-                Logout
-              </span>
-            </div>
-          </div>
         ) : (
           <div className="flex items-center">
             <Link
