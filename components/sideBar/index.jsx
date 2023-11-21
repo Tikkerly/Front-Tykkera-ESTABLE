@@ -1,7 +1,15 @@
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { usePathname, useRouter } from "next/navigation";
 
 const SideBar = () => {
+  const route = usePathname();
+  const isNotOnPageAuth = !(route === "/tickets/id" );
+
+  if (!isNotOnPageAuth) {
+    return <></>;
+  }
+
   return (
     <div
       className="flex flex-col items-center mt-4 bg-gray-500 bg-opacity-80 "
