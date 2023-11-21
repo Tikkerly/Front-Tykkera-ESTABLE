@@ -39,7 +39,7 @@ const UsersViews = () => {
   const handleUsersDelete = async (userId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3001/api/v1/user/deleteuser/${userId}`,
+        `${USER_ROUTES.init}/user/deleteuser/${userId}`,
         {
           headers: {
             "x-token": token,
