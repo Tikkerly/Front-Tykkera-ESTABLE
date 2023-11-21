@@ -55,7 +55,7 @@ const TicketsView = () => {
         href={"/user/tickets/crear-ticket"}
         style={{ textDecoration: "none", color: "inherit" }}
       >
-        {" "}
+        {" "}  
         <button>Crear Ticket</button>
       </Link>
 
