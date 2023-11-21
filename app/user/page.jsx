@@ -1,51 +1,36 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Profile from "@/components/profile";
 import UserLayout from "./layout";
+import { AlertBar } from "@/components";
+import { useSelector, useDispatch } from "react-redux";
+import { userDetails } from "@/redux/slices/authSlices";
 import axios from "axios";
-import Cookies from "js-cookie";
-import { useDispatch } from "react-redux";
-import { serviceAgents, technicians, finalClients } from "@/redux/slices";
+import { USER_ROUTES } from "@/routes/routes";
 
 const UserProfile = () => {
-  const dispatch = useDispatch();
-  
-  const token = Cookies.get("token");
+  const [user, setUser] = useState({});
+  const oldUser = useSelector((state) => state.auth.user);
 
-  const servAgents = async () => {
-    const { data } = await axios("http://localhost:3001/api/v1/serviceagent", {
-      headers: {
-        "x-token": token,
-      },
-    });
-    dispatch(serviceAgents(data));
-  };
-  const techs = async () => {
-    const { data } = await axios("http://localhost:3001/api/v1/technician", {
-      headers: {
-        "x-token": token,
-      },
-    });
-    dispatch(technicians(data));
-  };
-  const finalCli = async () => {
-    const { data } = await axios("http://localhost:3001/api/v1/finalclient", {
-      headers: {
-        "x-token": token,
-      },
-    });
-    dispatch(finalClients(data));
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    servAgents();
-    techs();
-    finalCli();
+    const userUpdate = async () => {
+      const { data } = await axios.post(
+        `${USER_ROUTES.getUser}/${oldUser._id}`
+      );
+
+      dispatch(userDetails(data));
+      setUser(data);
+    };
+    userUpdate();
   }, []);
 
   return (
     <div>
+      {user.isPaid === false ? <AlertBar /> : null}
+
       <Profile />
     </div>
   );

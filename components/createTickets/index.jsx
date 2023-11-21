@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import { USER_ROUTES } from "@/routes/routes";
 
 const CreateTickect = () => {
   const token = Cookies.get("token");
@@ -12,11 +13,23 @@ const CreateTickect = () => {
   const finalClients = useSelector((state) => state.options.finalClients);
   const company = useSelector((state) => state.auth.user);
 
+  const [sa, setSa] = useState(serviceAgents);
+  const [tec, setTec] = useState(technicians);
+  const [fc, setFc] = useState(finalClients);
+  const [comp, setComp] = useState(company);
+
+  useEffect(() => {
+    setSa(serviceAgents);
+    setTec(technicians);
+    setFc(finalClients);
+    setComp(comp);
+  }, []);
+
   const [formData, setFormData] = useState({
     serviceType: "",
     serviceDescription: "",
     startDate: "",
-    company_id: company._id,
+    company_id: comp._id,
     technician_id: "",
     finalClient_id: "",
     serviceClient_id: "",
@@ -41,7 +54,7 @@ const CreateTickect = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3001/api/v1/tickets/registerticket",
+        `${USER_ROUTES.init}/tickets/registerticket`,
         {
           method: "POST",
 
@@ -88,9 +101,7 @@ const CreateTickect = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      
       <div className="grid grid-cols-1 gap-6">
-
         <div>
           <label className="block text-sm font-medium text-white">
             Tipo de Servicio:
@@ -142,15 +153,15 @@ const CreateTickect = () => {
           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         >
           <option value="">Selecciona una Cliente Final</option>
-          {finalClients &&
-            finalClients.finalClients.map((finalClient) => (
+          {fc.finalClients &&
+            fc.finalClients.map((finalClient) => (
               <option key={finalClient._id} value={finalClient._id}>
                 {finalClient.username}
               </option>
             ))}
         </select>
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-white">Técnico:</label>
         <select
@@ -160,11 +171,12 @@ const CreateTickect = () => {
           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         >
           <option value="">Selecciona una Técnico</option>
-          {technicians.technicians.map((technician) => (
-            <option key={technician._id} value={technician._id}>
-              {technician.username}
-            </option>
-          ))}
+          {tec.technicians &&
+            tec.technicians.map((technician) => (
+              <option key={technician._id} value={technician._id}>
+                {technician.username}
+              </option>
+            ))}
         </select>
       </div>
       <div>
@@ -178,12 +190,45 @@ const CreateTickect = () => {
           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         >
           <option value="">Selecciona un Agente de Servicio</option>
-          {serviceAgents.serviceAgent.map((serviceClient) => (
-            <option key={serviceClient._id} value={serviceClient._id}>
-              {serviceClient.username}
-            </option>
-          ))}
+          {sa.serviceAgent &&
+            sa.serviceAgent.map((serviceClient) => (
+              <option key={serviceClient._id} value={serviceClient._id}>
+                {serviceClient.username}
+              </option>
+            ))}
         </select>
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-white">Valor:</label>
+        <input
+          type="number"
+          name="ammount"
+          value={formData.ammount}
+          onChange={handleInputChange}
+          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-white">Costo:</label>
+        <input
+          type="number"
+          name="cost"
+          value={formData.cost}
+          onChange={handleInputChange}
+          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-white">
+          Otros costos:
+        </label>
+        <input
+          type="number"
+          name="others"
+          value={formData.others}
+          onChange={handleInputChange}
+          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
       </div>
       <div>
         <button

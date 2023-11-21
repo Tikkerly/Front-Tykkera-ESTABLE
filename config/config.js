@@ -1,5 +1,5 @@
 const config = {
-  URL_BACK: "http://localhost:3001/api/v1",
+  URL_BACK: "https://back-tikkerly.vercel.app/api/v1",
 };
 
 export default config;

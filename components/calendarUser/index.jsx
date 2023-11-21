@@ -65,6 +65,7 @@ export default class CalendarUser {
                 { title: 'Mantenimiento', start: new Date(), resourceId: 'c' }
             ],
             contentHeight: 600,
+    
             container: container,
             eventClick: (eventInfo) => {
                 console.log('Click en un evento');
@@ -73,7 +74,15 @@ export default class CalendarUser {
                 console.log("Rango de fechas seleccionado en el calendario");
             }
         });
-        container.style.background = '#bcbcbc'; 
+        container.style.background = '#f5f5f5'; 
+            container.style.width = '80%';
+            container.style.height = '80%';
+            container.style.margin = '0 auto';
+            container.style.padding = '20px';
+            container.style.borderRadius = '10px';
+            container.style.overflow = 'auto';
+            container.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+
     }
 
     render() {
