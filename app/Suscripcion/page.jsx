@@ -1,7 +1,8 @@
 import { Suscripcion } from "@/components"
 
-export default ()=>{
+const SuscripcionPage = () => {
     return (
         <Suscripcion/>
     )
 }
+export default SuscripcionPage;

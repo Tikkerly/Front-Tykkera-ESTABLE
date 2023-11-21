@@ -34,8 +34,10 @@ const RegisterForm = () => {
   const handleChange = (e) => {
     setErrors(
       validation("register", { ...formData, [e.target.name]: e.target.value })
-    );
+      
+    ); console.log(errors.address)
     setFormData({ ...formData, [e.target.name]: e.target.value });
+      
 
     const props = Object.keys(
       validation("register", { ...formData, [e.target.name]: e.target.value })
@@ -65,7 +67,7 @@ const RegisterForm = () => {
       onSubmit={handleSubmit}
       className="container mx-auto flex flex-col justify-center w-100"
     >
-      <div className="container mx-auto grid grid-cols-1 gap-1 w-100 lg:grid-cols-2 ">
+      <div className="container mx-auto grid grid-cols-1 gap-4 w-100 lg:grid-cols-2 ">
         <div className="flex items-center gap-2 flex-col ">
           <FormInputs
             label={"Nombre de usuario:"}
@@ -183,7 +185,7 @@ const RegisterForm = () => {
           <FormInputs
             label={"Dirección:"}
             className="p-2"
-            placeholder={"Direccioón"}
+            placeholder={"Dirección"}
             name={"address"}
             value={formData.clientId}
             onChange={handleChange}
@@ -211,18 +213,19 @@ const RegisterForm = () => {
             <option value="Tipodepersona">Tipo de persona</option>
             <option value="Natural">Persona Natural</option>
             <option value="Juridica">Persona Juridica</option>
-          </select>
-        </div>
-        <div className="h-2">
+          </select>        
+          <div className="h-2">
           {errors.personType && (
             <p className="text-red-500 font-regular avant-garde-regular text-sm">
               {errors.personType}
             </p>
           )}
         </div>
+        </div>
+
       </div>
 
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center mt-4 gap-3">
         <div className="flex items-center gap-2 flex-col">
           <FormInputs
             label={"Imagen:"}
