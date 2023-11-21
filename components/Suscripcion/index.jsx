@@ -1,21 +1,23 @@
-"use client"
+"use client";
 import React from "react";
-import style from "./styles.module.css"
+import style from "./styles.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { faPlaneUp } from "@fortawesome/free-solid-svg-icons";  
+import { faPlaneUp } from "@fortawesome/free-solid-svg-icons";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import { SubmitButton } from "..";
 import Link from "next/link";
 
 const Suscripcion = () => {
+
   
   
     return (
   <div className={style.containerr}>
     <div>
     <div className={style.columnn}>
+
       <div className={style.titlee}>
       <FontAwesomeIcon icon={faPaperPlane}   className={style.icon}/>
         <h2 className={style.h2x}>Mensual</h2>
@@ -69,7 +71,9 @@ const Suscripcion = () => {
         </ul>
       </div>
       <a href="">Obtener</a>
+    </div> */}
     </div>
+
     </div>
 
     <Link href="/user" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -82,3 +86,4 @@ const Suscripcion = () => {
   };
   
   export default Suscripcion;
+

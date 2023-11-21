@@ -1,8 +1,11 @@
-import { Suscripcion } from "@/components"
+import { Suscripcion } from "@/components";
 
-const SuscripcionPage = () => {
-    return (
-        <Suscripcion/>
-    )
-}
+
 export default SuscripcionPage;
+
+const Suscription = () => {
+  return <Suscripcion />;
+};
+
+export default Suscription;
+
