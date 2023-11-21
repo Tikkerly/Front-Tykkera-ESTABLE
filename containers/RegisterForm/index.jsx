@@ -22,6 +22,7 @@ const RegisterForm = () => {
     img: null,
     address: "",
   });
+
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -34,10 +35,9 @@ const RegisterForm = () => {
   const handleChange = (e) => {
     setErrors(
       validation("register", { ...formData, [e.target.name]: e.target.value })
-      
-    ); console.log(errors.address)
+    );
+    console.log(errors.address);
     setFormData({ ...formData, [e.target.name]: e.target.value });
-      
 
     const props = Object.keys(
       validation("register", { ...formData, [e.target.name]: e.target.value })
@@ -60,7 +60,12 @@ const RegisterForm = () => {
     address: formData.address,
   };
 
-  const handleSubmit = registerSubmit(USER_ROUTES.registerUser, user, router, setDisabled);
+  const handleSubmit = registerSubmit(
+    USER_ROUTES.registerUser,
+    user,
+    router,
+    setDisabled
+  );
 
   return (
     <form
@@ -213,16 +218,15 @@ const RegisterForm = () => {
             <option value="Tipodepersona">Tipo de persona</option>
             <option value="Natural">Persona Natural</option>
             <option value="Juridica">Persona Juridica</option>
-          </select>        
+          </select>
           <div className="h-2">
-          {errors.personType && (
-            <p className="text-red-500 font-regular avant-garde-regular text-sm">
-              {errors.personType}
-            </p>
-          )}
+            {errors.personType && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.personType}
+              </p>
+            )}
+          </div>
         </div>
-        </div>
-
       </div>
 
       <div className="flex flex-col items-center justify-center mt-4 gap-3">
@@ -244,16 +248,15 @@ const RegisterForm = () => {
             )}
           </div>
         </div>
-        {disabled ? ( 
-            <Image src={load} width={30} height={30} alt="Loading2" />
-            ) : ( 
-      
-            <SubmitButton
+        {disabled ? (
+          <Image src={load} width={30} height={30} alt="Loading2" />
+        ) : (
+          <SubmitButton
             text={"Registrarse"}
             type={"submit"}
             disabled={isDisabled}
           />
-            )}
+        )}
       </div>
     </form>
   );
