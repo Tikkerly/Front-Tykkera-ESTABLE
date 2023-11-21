@@ -6,12 +6,15 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faPlaneUp } from "@fortawesome/free-solid-svg-icons";  
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
+import { SubmitButton } from "..";
+import Link from "next/link";
 
 const Suscripcion = () => {
   
+  
     return (
   <div className={style.containerr}>
-    
+    <div>
     <div className={style.columnn}>
       <div className={style.titlee}>
       <FontAwesomeIcon icon={faPaperPlane}   className={style.icon}/>
@@ -67,6 +70,13 @@ const Suscripcion = () => {
       </div>
       <a href="">Obtener</a>
     </div>
+    </div>
+
+    <Link href="/user" style={{ textDecoration: 'none', color: 'inherit' }}>
+      <SubmitButton text={"Omitir Proceso de pago"} />
+      </Link>
+    
+    
   </div>
     )
   };
