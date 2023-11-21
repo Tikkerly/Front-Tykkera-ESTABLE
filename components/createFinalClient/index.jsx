@@ -76,10 +76,10 @@ const CreateFinalClient = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className='h-screen w-screen p-8 ml-8'>
       <div className="grid grid-cols-1 gap-6">
         <div>
-          <label className="block text-sm font-medium text-white">
+          <label className="block text-sm font-medium text-gray-800">
             Nombre:
           </label>
           <input
@@ -87,12 +87,12 @@ const CreateFinalClient = () => {
             name="username"
             value={formData.username}
             onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-white">
+          <label className="block text-sm font-medium text-gray-800">
             Correo:
           </label>
           <input
@@ -100,12 +100,12 @@ const CreateFinalClient = () => {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-white">
+          <label className="block text-sm font-medium text-gray-800">
             Tipo de Documento:
           </label>
           <input
@@ -113,12 +113,12 @@ const CreateFinalClient = () => {
             name="documentType"
             value={formData.documentType}
             onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-white">
+          <label className="block text-sm font-medium text-gray-800">
             Documento:
           </label>
           <input
@@ -126,13 +126,12 @@ const CreateFinalClient = () => {
             name="document"
             value={formData.document}
             onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
+            className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"          />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-white">
+        <label className="block text-sm font-medium text-gray-800">
           Teléfono:
         </label>
         <input
@@ -140,12 +139,11 @@ const CreateFinalClient = () => {
           name="phone"
           value={formData.phone}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
+          className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"        />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-white">
+        <label className="block text-sm font-medium text-gray-800">
           Dirección:
         </label>
         <input
@@ -153,20 +151,18 @@ const CreateFinalClient = () => {
           name="address"
           value={formData.address}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
+          className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"        />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-white">
+        <label className="block text-sm font-medium text-gray-800">
           Agente de Servicio:
         </label>
         <select
           name="serviceClient_id"
           value={formData.serviceClient_id}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        >
+          className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"        >
           <option value="">Selecciona un Agente de Servicio</option>
           {serviceAgents.serviceAgent.map((serviceClient) => (
             <option key={serviceClient._id} value={serviceClient._id}>
@@ -179,8 +175,7 @@ const CreateFinalClient = () => {
       <div>
         <button
           type="submit"
-          className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
+          className=" mt-4 avant-garde-bold font-bold text-gray px-6 py-3 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"        >
           Crear Cliente Final
         </button>
       </div>

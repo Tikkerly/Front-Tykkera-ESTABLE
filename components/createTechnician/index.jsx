@@ -82,7 +82,7 @@ const CreateTechnician = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-2 w-full gap-6">
+    <form onSubmit={handleSubmit}  className='h-screen w-screen p-8 ml-8'>
       <div>
         <label className="block text-sm font-medium text-white">
           Nombre:
@@ -92,7 +92,7 @@ const CreateTechnician = () => {
           name="username"
           value={formData.username}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-4 block w-50% py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
 
@@ -105,7 +105,7 @@ const CreateTechnician = () => {
           name="email"
           value={formData.email}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-4 block w-50% py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
 
@@ -118,7 +118,7 @@ const CreateTechnician = () => {
           name="document"
           value={formData.document}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-4 block w-50% py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
 
@@ -131,7 +131,7 @@ const CreateTechnician = () => {
           name="documentType"
           value={formData.documentType}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-4 block w-50% py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
 
@@ -144,7 +144,7 @@ const CreateTechnician = () => {
           name="phone"
           value={formData.phone}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-4 block w-50% py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
 
@@ -157,7 +157,7 @@ const CreateTechnician = () => {
           name="address"
           value={formData.address}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-4 block w-50% py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
 
@@ -170,7 +170,7 @@ const CreateTechnician = () => {
           name="paymentMethods"
           value={formData.paymentMethods}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-4 block w-50% py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
 
@@ -183,7 +183,7 @@ const CreateTechnician = () => {
           name="accountNumber"
           value={formData.accountNumber}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-4 block w-50% py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
 
@@ -196,7 +196,7 @@ const CreateTechnician = () => {
           name="serviceTypes"
           value={formData.serviceTypes}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-4 block w-50% py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
 
@@ -208,7 +208,7 @@ const CreateTechnician = () => {
           name="serviceClient_id"
           value={formData.serviceClient_id}
           onChange={handleInputChange}
-          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-4 block w-50% py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         >
           <option value="">Selecciona un Agente de Servicio</option>
           {serviceAgents.serviceAgent.map((serviceClient) => (
@@ -222,8 +222,7 @@ const CreateTechnician = () => {
       <div className="col-span-2">
         <button
           type="submit"
-          className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
+          className="mt-4 avant-ga50%bold font-bold text-gray px-6 py-3 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"        >
           Crear Técnico
         </button>
       </div>
