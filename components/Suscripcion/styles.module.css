@@ -38,7 +38,7 @@
   font-size: 60px;
 }
 
-.titlee h2 {
+.h2x {
   margin: 0;
   padding: 0;
   font-size: 24px;
@@ -51,7 +51,7 @@
   padding: 10px;
 }
 
-.pricee h4 {
+.priceh4 {
   margin: 0;
   padding: 0;
   color: #fff;
@@ -59,24 +59,24 @@
   font-size: 30px;
 }
 
-.pricee h4 span {
+.priceSpan {
   font-weight: 700;
   font-size: 60px;
 }
 
-.optionn ul {
+.ulx {
   margin: 0;
   padding: 0;
 }
 
-.optionn ul li {
+.lix {
   list-style: none;
   padding: 15px 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   font-weight: 300;
 }
 
-.optionn ul li:last-child {
+.lix:last-child {
   border-bottom: none;
 }
 
