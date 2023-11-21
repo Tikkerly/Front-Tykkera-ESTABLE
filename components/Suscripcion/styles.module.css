@@ -17,12 +17,12 @@
   overflow: hidden;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   transition: .5s;
-  background-color: rgba(240, 248, 255, 0.89);
+  background-color: #767a8694;
   font-family: 'Avant Garde regular', sans-serif;
 
 }
   .containerr .columnn:hover {
-    background-color: whitesmoke;  
+    background-color: #767a86ad;  
     transform: scale(1.05);    
   }
 
@@ -54,7 +54,7 @@
 .pricee h4 {
   margin: 0;
   padding: 0;
-  color: #009688;
+  color: #fff;
   font-weight: 400;
   font-size: 30px;
 }

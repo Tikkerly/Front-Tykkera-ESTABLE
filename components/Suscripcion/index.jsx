@@ -6,7 +6,6 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faPlaneUp } from "@fortawesome/free-solid-svg-icons";  
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
-import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 const Suscripcion = () => {
   
@@ -27,7 +26,7 @@ const Suscripcion = () => {
           <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Lorem ipsum dolor</li>
           <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Ullam ducimus consequatur</li>
           <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Reprehenderit deserunt magni repellat eos</li>
-          <li><FontAwesomeIcon icon={faCircleXmark} style={{color: "#c92c2c",}} /> Dolore natus tempora illum</li>
+          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Dolore natus tempora illum</li>
         </ul>
       </div>
       <a href="">Obtener</a>
@@ -45,7 +44,7 @@ const Suscripcion = () => {
           <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Lorem ipsum dolor</li>
           <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Ullam ducimus consequatur</li>
           <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Reprehenderit deserunt magni repellat eos</li>
-          <li><FontAwesomeIcon icon={faCircleXmark} style={{color: "#c92c2c",}} /> Dolore natus tempora illum</li>
+          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Dolore natus tempora illum</li>
         </ul>
       </div>
       <a href="">Obtener</a>
