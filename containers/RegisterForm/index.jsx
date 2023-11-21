@@ -7,6 +7,7 @@ import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import load from "../../public/load.gif";
+import Link from "next/link";
 
 const RegisterForm = () => {
   const router = useRouter();

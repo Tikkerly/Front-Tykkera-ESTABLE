@@ -32,7 +32,7 @@ const registerSubmit = (route, payload, router, disabled) => {
         timer: 1500,
         
       });
-      router.push("/useractivator");
+      router.push("/Suscripcion");
     } catch (error) {
       disabled(false)
       Swal.fire({
