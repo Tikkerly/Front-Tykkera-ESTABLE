@@ -36,7 +36,7 @@ const TicketDetail = ({ token }) => {
     const getTickets = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/v1/tickets/${id}`
+          `http://localhost:3001/api/v1/tickets/ticket/${id}`
         );
         setTicketData(response.data); 
       } catch (error) {
@@ -51,6 +51,24 @@ const TicketDetail = ({ token }) => {
       ...prev,
       [edit]: value,
     }));
+  };
+
+  const handleSaveChanges = async () => {
+    try {
+      await axios.put(
+        `http://localhost:3001/api/v1/tickets/updateticket/${id}`,
+        ticketData,
+        {
+          headers: {
+            "x-token": token,
+          },
+        }
+      );
+
+      alert("Se han guardado los cambios");
+    } catch (error) {
+      console.error("Error editing user:", error);
+    }
   };
 
   return (
@@ -231,6 +249,16 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
+
+      <div className="flex items-center justify-center">
+          <button
+            className=" font-bold avant-garde-bold w-full bg-Az3 text-gray py-3 px-6 rounded  text-xl transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
+            type="submit"
+            onClick={handleSaveChanges}
+          >
+            Guardar cambios
+          </button>
+        </div>
     </div>
   );
 };
