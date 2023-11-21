@@ -15,18 +15,18 @@ const Suscripcion = () => {
     <div className={style.columnn}>
       <div className={style.titlee}>
       <FontAwesomeIcon icon={faPaperPlane}   className={style.icon}/>
-        <h2>Mensual</h2>
+        <h2 className={style.h2x}>Mensual</h2>
       </div>
       <div className={style.pricee}>
-        <h4>$<span>25</span></h4>
+        <h4  className={style.priceh4}>$<span className={style.priceSpan}>25</span></h4>
       </div>
       <div className={style.optionn}>
-        <ul>
+        <ul className={style.ulx}>
        
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Lorem ipsum dolor</li>
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Ullam ducimus consequatur</li>
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Reprehenderit deserunt magni repellat eos</li>
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Dolore natus tempora illum</li>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Lorem ipsum dolor</li>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Ullam ducimus consequatur</li>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Reprehenderit deserunt magni repellat eos</li>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Dolore natus tempora illum</li>
         </ul>
       </div>
       <a href="">Obtener</a>
@@ -34,17 +34,17 @@ const Suscripcion = () => {
     <div className={style.columnn}>
       <div className={style.titlee}>
       <FontAwesomeIcon icon={faPlaneUp}   className={style.icon} style={{ transform: 'rotate(45deg)' }} />
-        <h2>Semestral</h2>
+        <h2 className={style.h2x}>Semestral</h2>
       </div>
       <div className={style.pricee}>
-        <h4>$<span>50</span></h4>
+      <h4  className={style.priceh4}>$<span className={style.priceSpan}>50</span></h4>
       </div>
       <div className={style.optionn}>
-        <ul>
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Lorem ipsum dolor</li>
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Ullam ducimus consequatur</li>
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Reprehenderit deserunt magni repellat eos</li>
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Dolore natus tempora illum</li>
+        <ul className={style.ulx}>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Lorem ipsum dolor</li>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Ullam ducimus consequatur</li>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Reprehenderit deserunt magni repellat eos</li>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Dolore natus tempora illum</li>
         </ul>
       </div>
       <a href="">Obtener</a>
@@ -52,17 +52,17 @@ const Suscripcion = () => {
     <div className={style.columnn}>
       <div className={style.titlee}>
       <FontAwesomeIcon icon={faRocket}  className={style.icon}/>
-        <h2>Anual</h2>
+        <h2 className={style.h2x}>Anual</h2>
       </div>
       <div className={style.pricee}>
-        <h4>$<span>100</span></h4>
+      <h4  className={style.priceh4}>$<span className={style.priceSpan}>100</span></h4>
       </div>
       <div className={style.optionn}>
-        <ul>
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Lorem ipsum dolor</li>
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Ullam ducimus consequatur</li>
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Reprehenderit deserunt magni repellat eos</li>
-          <li><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Dolore natus tempora illum</li>
+        <ul className={style.ulx}>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Lorem ipsum dolor</li>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}} /> Ullam ducimus consequatur</li>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Reprehenderit deserunt magni repellat eos</li>
+          <li className={style.lix}><FontAwesomeIcon icon={faCircleCheck} style={{color: "#2d712e",}}/> Dolore natus tempora illum</li>
         </ul>
       </div>
       <a href="">Obtener</a>
