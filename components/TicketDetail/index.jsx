@@ -29,7 +29,6 @@ const TicketDetail = ({ token }) => {
     technician_id: "",
     internalConsecutive: "",
   });
-  console.log(ticketData);
   const { id } = token;
 
   useEffect(() => {
