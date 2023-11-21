@@ -4,7 +4,7 @@ import UsersViews from '@/containers/UsersView';
 
 const adminUsers = () => {
   return (
-    <div>
+    <div className='h-screen w-screen p-8 ml-8'>
       <UsersViews />
     </div>
   );

@@ -21,11 +21,11 @@ const closureHandleGoogleSubmit = async (
       Cookies.set("token", data.token);
       Cookies.set("uid", data.user._id);
     }
-    router.push("/");
+    router.push("/user");
   } catch (error) {
     setLoading(false);
     setMessage(
-      "No se ha podido iniciar sesión. Revise si ha ingresado bien los campos o intente más tarde."
+      "No se ha podido iniciar sesión, Revise si ha ingresado bien los campos o intente más tarde."
     );
   }
 };
