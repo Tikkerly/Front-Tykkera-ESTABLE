@@ -5,7 +5,9 @@ import axios from "axios";
 import Link from "next/link";
 import { boolean } from "yup";
 
-const styles = "font-regular avant-garde-regular w-full px-4 py-3 text-xl text-gray-700 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
+const styles = "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
+const styles2= "font-black avant-garde-regular text-Az1 text-lg"
+const styles3= "flex flex-col"
 
 const TicketDetail = ({ token }) => {
   const [ticketData, setTicketData] = useState({
@@ -72,9 +74,10 @@ const TicketDetail = ({ token }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md gap-4">
-      <div >
-        <label>Ticket ID</label>
+    <div className="grid gap-4 w-5/6">
+      <div className="grid grid-cols-2 gap-4 ">
+      <div className={styles3}>
+        <label className={styles2}>Ticket ID:</label>
         <input
           className={styles}
           id="_id"
@@ -84,8 +87,8 @@ const TicketDetail = ({ token }) => {
           disabled
         />
       </div>
-      <div >
-        <label>Compañia</label>
+      <div className={styles3}>
+        <label className={styles2}>Compañia:</label>
         <input
           className={styles}
           id="company_id"
@@ -95,8 +98,8 @@ const TicketDetail = ({ token }) => {
           disabled
         />
       </div>
-      <div >
-        <label>Cliente</label>
+      <div className={styles3}>
+        <label className={styles2}>Cliente:</label>
         <input
           className={styles}
           id="serviceClient_id"
@@ -106,8 +109,8 @@ const TicketDetail = ({ token }) => {
           disabled
         />
       </div>
-      <div >
-        <label>Técnico</label>
+      <div className={styles3}>
+        <label className={styles2}>Técnico:</label>
         <input
           className={styles}
           id="technician_id"
@@ -117,8 +120,8 @@ const TicketDetail = ({ token }) => {
           disabled
         />
       </div>
-      <div >
-        <label>Tipo de Servicio</label>
+      <div className={styles3}>
+        <label className={styles2}>Tipo de Servicio:</label>
         <input
           className={styles}
           id="serviceType"
@@ -128,8 +131,8 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
-      <div >
-        <label>Descripción del Servicio</label>
+      <div className={styles3}>
+        <label className={styles2}>Descripción del Servicio:</label>
         <input
           className={styles}
           id="serviceDescription"
@@ -139,8 +142,8 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
-      <div >
-        <label>Fecha de Registro</label>
+      <div className={styles3}>
+        <label className={styles2}>Fecha de Registro:</label>
         <input
           className={styles}
           id="registerDate"
@@ -150,8 +153,8 @@ const TicketDetail = ({ token }) => {
           disabled
         />
       </div>
-      <div >
-        <label>Fecha de Inicio</label>
+      <div className={styles3}>
+        <label className={styles2}>Fecha de Inicio:</label>
         <input
           className={styles}
           id="startDate"
@@ -161,8 +164,8 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
-      <div >
-        <label>Fecha de Finalización</label>
+      <div className={styles3}>
+        <label className={styles2}>Fecha de Finalización:</label>
         <input
           className={styles}
           id="endDate"
@@ -172,8 +175,8 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
-      <div >
-        <label>Monto</label>
+      <div className={styles3}>
+        <label className={styles2}>Monto:</label>
         <input
           className={styles}
           id="ammount"
@@ -183,8 +186,8 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
-      <div >
-        <label>Costo</label>
+      <div className={styles3}>
+        <label className={styles2}>Costo:</label>
         <input
           className={styles}
           id="cost"
@@ -194,8 +197,8 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
-      <div >
-        <label>Utilidad</label>
+      <div className={styles3}>
+        <label className={styles2}>Utilidad:</label>
         <input
           className={styles}
           id="utility"
@@ -205,8 +208,8 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
-      <div >
-        <label>Otros</label>
+      <div className={styles3}>
+        <label className={styles2}>Otros:</label>
         <input
           className={styles}
           id="others"
@@ -216,8 +219,8 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
-      <div >
-        <label>IVA</label>
+      <div className={styles3}>
+        <label className={styles2}>IVA:</label>
         <input
           className={styles}
           id="IVA"
@@ -227,8 +230,8 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
-      <div >
-        <label>Método de pago</label>
+      <div className={styles3}>
+        <label className={styles2}>Método de pago:</label>
         <input
           className={styles}
           id="paymentMethod"
@@ -238,8 +241,8 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
-      <div >
-        <label>Estado</label>
+      <div className={styles3}>
+        <label className={styles2}>Estado:</label>
         <input
           className={styles}
           id="status"
@@ -249,11 +252,10 @@ const TicketDetail = ({ token }) => {
           placeholder="No definido"
         />
       </div>
-
+      </div>
       <div className="flex items-center justify-center">
           <button
-            className=" font-bold avant-garde-bold w-full bg-Az3 text-gray py-3 px-6 rounded  text-xl transition duration-300 ease-in-out hover:bg-Az3 hover:text-Az4 hover:shadow-lg"
-            type="submit"
+          className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"            type="submit"
             onClick={handleSaveChanges}
           >
             Guardar cambios
