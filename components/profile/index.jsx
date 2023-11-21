@@ -16,6 +16,7 @@ const Profile = () => {
     username: user.username,
     phone: user.phone,
     address: user.address,
+    nit: user.nit,
   });
 
   const handleFieldChange = (edit, value) => {
@@ -110,7 +111,7 @@ const Profile = () => {
       <label className="font-bold avant-garde-bold">NIT</label>
       <input
         className="w-full px-4 py-3 text-xl text-gray-700 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
-        id="username"
+        id="number"
         type="text"
         value={editable.nit}
         onChange={(e) => handleFieldChange("nit", e.target.value)}
