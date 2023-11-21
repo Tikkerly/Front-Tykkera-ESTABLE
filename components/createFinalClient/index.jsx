@@ -163,7 +163,7 @@ const CreateFinalClient = () => {
         />
       </div>
 
-      <div>
+      {/* <div>
         <label className="block text-sm font-medium text-white">
           Agente de Servicio:
         </label>
@@ -181,7 +181,7 @@ const CreateFinalClient = () => {
               </option>
             ))}
         </select>
-      </div>
+      </div> */}
 
       <div>
         <button

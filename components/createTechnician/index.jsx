@@ -84,9 +84,7 @@ const CreateTechnician = () => {
   return (
     <form onSubmit={handleSubmit} className="grid grid-cols-2 w-full gap-6">
       <div>
-        <label className="block text-sm font-medium text-white">
-          Nombre:
-        </label>
+        <label className="block text-sm font-medium text-white">Nombre:</label>
         <input
           type="text"
           name="username"
@@ -97,9 +95,7 @@ const CreateTechnician = () => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-white">
-          Correo:
-        </label>
+        <label className="block text-sm font-medium text-white">Correo:</label>
         <input
           type="text"
           name="email"
@@ -200,7 +196,7 @@ const CreateTechnician = () => {
         />
       </div>
 
-      <div>
+      {/* <div>
         <label className="block text-sm font-medium text-white">
           Agente de Servicio:
         </label>
@@ -217,7 +213,7 @@ const CreateTechnician = () => {
             </option>
           ))}
         </select>
-      </div>
+      </div> */}
 
       <div className="col-span-2">
         <button
