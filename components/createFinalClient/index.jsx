@@ -4,12 +4,18 @@ import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { USER_ROUTES } from "@/routes/routes";
+import { useEffect } from "react";
 
 const CreateFinalClient = () => {
   const token = Cookies.get("token");
+  const [agentes, setAgentes] = useState([]);
 
   const serviceAgents = useSelector((state) => state.options.serviceAgents);
   const company = useSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    setAgentes(serviceAgents);
+  }, []);
 
   const [formData, setFormData] = useState({
     username: "",
@@ -154,8 +160,9 @@ const CreateFinalClient = () => {
           className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"        />
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-800">
+
+      {/* <div>
+        <label className="block text-sm font-medium text-white">
           Agente de Servicio:
         </label>
         <select
@@ -164,13 +171,14 @@ const CreateFinalClient = () => {
           onChange={handleInputChange}
           className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"        >
           <option value="">Selecciona un Agente de Servicio</option>
-          {serviceAgents.serviceAgent.map((serviceClient) => (
-            <option key={serviceClient._id} value={serviceClient._id}>
-              {serviceClient.username}
-            </option>
-          ))}
+          {agentes &&
+            agentes.serviceAgent.map((serviceClient) => (
+              <option key={serviceClient._id} value={serviceClient._id}>
+                {serviceClient.username}
+              </option>
+            ))}
         </select>
-      </div>
+      </div> */}
 
       <div>
         <button

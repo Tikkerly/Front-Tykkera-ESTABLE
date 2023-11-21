@@ -60,7 +60,7 @@ const UsersViews = () => {
 
   return (
     <div className="flex flex-col items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md">
-      <div className="mb-4 space-x-4">
+      {/* <div className="mb-4 space-x-4">
         <Link
           href="/user/administrar-usuarios/agregar-cliente"
           style={{ textDecoration: "none", color: "inherit" }}
@@ -324,7 +324,7 @@ const UsersViews = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 };
