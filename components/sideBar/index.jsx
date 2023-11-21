@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const SideBar = () => {
   const route = usePathname();
