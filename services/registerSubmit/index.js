@@ -22,6 +22,7 @@ const registerSubmit = (route, payload, router, disabled) => {
           "Content-Type": "multipart/form-data", // Importante para enviar archivos
         },
       });
+      console.log(error.response);
 
       Swal.fire({
         position: "top-end",
@@ -36,7 +37,7 @@ const registerSubmit = (route, payload, router, disabled) => {
       Swal.fire({
         icon: "error",
         title: "Error durante el registro",
-        text: error.response.data.message,
+        text: error.message,
       });
     }
   };
