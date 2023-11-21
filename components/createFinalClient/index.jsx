@@ -4,12 +4,18 @@ import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { USER_ROUTES } from "@/routes/routes";
+import { useEffect } from "react";
 
 const CreateFinalClient = () => {
   const token = Cookies.get("token");
+  const [AGENTES, setAgentes] = useState([]);
 
   const serviceAgents = useSelector((state) => state.options.serviceAgents);
   const company = useSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    setAgentes(serviceAgents);
+  }, [third]);
 
   const [formData, setFormData] = useState({
     username: "",
