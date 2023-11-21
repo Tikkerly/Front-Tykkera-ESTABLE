@@ -57,11 +57,13 @@ const TicketsView = () => {
   };
 
   return (
+
     <div className="flex flex-col items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md">
       <Link href={"/user/tickets/crear-ticket"}>
         <div className="mb-4 bg-blue-500 text-white py-2 px-4 rounded-md">
           Crear Ticket
         </div>
+
       </Link>
 
       <table className="table-auto w-full">
