@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 const CreateFinalClient = () => {
   const token = Cookies.get("token");
-  const [AGENTES, setAgentes] = useState([]);
+  const [agentes, setAgentes] = useState([]);
 
   const serviceAgents = useSelector((state) => state.options.serviceAgents);
   const company = useSelector((state) => state.auth.user);
@@ -174,8 +174,8 @@ const CreateFinalClient = () => {
           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         >
           <option value="">Selecciona un Agente de Servicio</option>
-          {serviceAgents &&
-            serviceAgents.serviceAgent.map((serviceClient) => (
+          {agentes &&
+            agentes.serviceAgent.map((serviceClient) => (
               <option key={serviceClient._id} value={serviceClient._id}>
                 {serviceClient.username}
               </option>
