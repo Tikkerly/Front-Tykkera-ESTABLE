@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { USER_ROUTES } from "@/routes/routes";
 import { useEffect } from "react";
+import { validation } from "@/utils";
 
 const CreateFinalClient = () => {
   const token = Cookies.get("token");
@@ -29,6 +30,7 @@ const CreateFinalClient = () => {
     company_id: company._id,
     serviceClient_id: "",
   });
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,6 +38,9 @@ const CreateFinalClient = () => {
       ...prevData,
       [name]: value,
     }));
+    setErrors(
+      validation("finalClient", { ...formData, [name]:value })
+    );
   };
 
   const handleSubmit = async (e) => {
@@ -101,6 +106,13 @@ const CreateFinalClient = () => {
               onChange={handleInputChange}
               className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
+            <div className="h-2">
+            {errors.username && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.username}
+              </p>
+            )}
+          </div>
           </div>
 
           <div>
@@ -114,19 +126,37 @@ const CreateFinalClient = () => {
               onChange={handleInputChange}
               className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
+             <div className="h-2">
+            {errors.email && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.email}
+              </p>
+            )}
+          </div>
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-800">
               Tipo de Documento:
             </label>
-            <input
-              type="text"
-              name="documentType"
-              value={formData.documentType}
-              onChange={handleInputChange}
-              className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
+            <select
+            name="documentType"
+            value={formData.documentType}
+            onChange={handleInputChange}
+            className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          >
+            <option value="">Tipo de Documento</option>
+            <option value="NIT">NIT</option>
+            <option value="DNI">DNI</option>
+            <option value="PASAPORTE">PASAPORTE</option>
+            </select>
+            <div className="h-2">
+            {errors.documentType && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.documentType}
+              </p>
+            )}
+          </div>
           </div>
 
           <div>
@@ -140,6 +170,13 @@ const CreateFinalClient = () => {
               onChange={handleInputChange}
               className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
+            <div className="h-2">
+            {errors.document && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.document}
+              </p>
+            )}
+          </div>
           </div>
         </div>
 
@@ -154,6 +191,13 @@ const CreateFinalClient = () => {
             onChange={handleInputChange}
             className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
+          <div className="h-2">
+            {errors.phone && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.phone}
+              </p>
+            )}
+          </div>
         </div>
 
         <div>
@@ -167,6 +211,13 @@ const CreateFinalClient = () => {
             onChange={handleInputChange}
             className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
+          <div className="h-2">
+            {errors.address && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.address}
+              </p>
+            )}
+          </div>
         </div>
 
         <div>
@@ -187,6 +238,13 @@ const CreateFinalClient = () => {
                 </option>
               ))}
           </select>
+          <div className="h-2">
+            {errors.serviceClient_id && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.serviceClient_id}
+              </p>
+            )}
+          </div>
         </div>
 
         <div>
