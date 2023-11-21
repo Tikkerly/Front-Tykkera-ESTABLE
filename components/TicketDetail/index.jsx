@@ -75,6 +75,7 @@ const TicketDetail = ({ token }) => {
 
   return (
     <div className="grid gap-4 w-5/6">
+      <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0 pb-8 ">DETALLE DEL TICKET</h1>
       <div className="grid grid-cols-2 gap-4 ">
       <div className={styles3}>
         <label className={styles2}>Ticket ID:</label>
