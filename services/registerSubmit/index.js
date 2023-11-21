@@ -2,9 +2,11 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { USER_ROUTES } from "@/routes/routes";
 
-const registerSubmit = (route, payload, router) => {
+const registerSubmit = (route, payload, router, disabled) => {
   return async (event) => {
     event.preventDefault();
+    
+    disabled(true)
 
     const formData = new FormData();
 
@@ -30,7 +32,7 @@ const registerSubmit = (route, payload, router) => {
       });
       router.push("/useractivator");
     } catch (error) {
-      console.log(error);
+      disabled(false)
       Swal.fire({
         icon: "error",
         title: "Error durante el registro",

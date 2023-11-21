@@ -24,7 +24,7 @@ const TicketsView = () => {
             },
           }
         );
-        //console.log(response.data)
+        console.log(response.data);
         setTicketsData(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -34,10 +34,10 @@ const TicketsView = () => {
     getTickets();
   }, []);
 
-  const handleTicketDelete = async () => {
+  const handleTicketDelete = async (ticketId) => {
     try {
-      const response = await axios.get(
-        `http://localhost:3001/api/v1/tickets/deleteticket/${id}`,
+      const response = await axios.delete(
+        `http://localhost:3001/api/v1/tickets/deleteticket/${ticketId}`,
         {
           headers: {
             "x-token": token,
@@ -45,34 +45,40 @@ const TicketsView = () => {
         }
       );
       console.log(response.data);
-      setTicketsData(response.data);
+      setTicketsData((prevTickets) => {
+        return {
+          ...prevTickets,
+          tickets: prevTickets.tickets.filter(ticket => ticket._id !== ticketId)
+        };
+      });
+
     } catch (error) {}
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md ">
-      <Link
-        href={"/user/tickets/crear-ticket"}
-        style={{ textDecoration: "none", color: "inherit" }}
-      >
-        {" "}  
-        <button>Crear Ticket</button>
+
+    <div className="flex flex-col items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md">
+      <Link href={"/user/tickets/crear-ticket"}>
+        <div className="mb-4 bg-blue-500 text-white py-2 px-4 rounded-md">
+          Crear Ticket
+        </div>
+
       </Link>
 
-      <table className="table-auto">
+      <table className="table-auto w-full">
         <thead>
-          <tr className="bg-Az2">
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              Id
-            </th>
+          <tr className="bg-blue-500 text-white">
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
               Compañía
             </th>
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              Cliente
+              Agente de Servicio
             </th>
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
               Técnico
+            </th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
+              Cliente Final
             </th>
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
               Tipo de Servicio
@@ -80,52 +86,31 @@ const TicketsView = () => {
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
               Descripción del Servicio
             </th>
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              Fecha de Registro
-            </th>
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              Fecha de Inicio
-            </th>
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              Fecha de Finalización
-            </th>
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              Monto
-            </th>
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              Costo
-            </th>
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              Utilidad
-            </th>
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              Otros
-            </th>
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              IVA
-            </th>
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              Método de pago
-            </th>
+
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
               Estado
+            </th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
+              Acciones
             </th>
           </tr>
         </thead>
         <tbody>
-          {ticketsData.tickets?.map((tickets) => (
+          {ticketsData.tickets
+            ?.filter((ticket) => ticket.status === true) // Filtrar por status true
+            .map((tickets) => (
             <tr key={tickets.internalConsecutive}>
-              <td className="py-2 px-4 font-bold avant-garde-bold border bg-Az2">
-                {tickets.internalConsecutive}
+              <td className="py-2 px-4 font-regular avant-garde-regular border">
+                {tickets.company_id.username}
               </td>
               <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.company_id}
+                {tickets.serviceClient_id.username}
               </td>
               <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.serviceClient_id}
+                {tickets.technician_id.username}
               </td>
               <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.technician_id}
+                {tickets.finalClient_id.username}
               </td>
               <td className="py-2 px-4 font-regular avant-garde-regular border">
                 {tickets.serviceType}
@@ -134,45 +119,18 @@ const TicketsView = () => {
                 {tickets.serviceDescription}
               </td>
               <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.registerDate}
-              </td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.startDate}
-              </td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.endDate}
-              </td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.ammount}
-              </td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.cost}
-              </td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.utility}
-              </td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.others}
-              </td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.IVA}
-              </td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">
-                {tickets.paymentMethod}
-              </td>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">
                 {tickets.ticketStatus}
               </td>
               <td className="py-2 px-4 font-regular avant-garde-regular ">
                 <Link
-                  href="/user/tickets/edit"
+                  href="/user/tickets/editar"
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
                 </Link>
                 <ClearIcon
                   className="text-red-500 hover:text-red-700"
-                  onClick={() => handleTicketDelete(ticket.id)}
+                  onClick={() => handleTicketDelete(tickets._id)}
                 />
               </td>
             </tr>
