@@ -15,7 +15,7 @@ const CreateFinalClient = () => {
 
   useEffect(() => {
     setAgentes(serviceAgents);
-  }, [third]);
+  }, []);
 
   const [formData, setFormData] = useState({
     username: "",
