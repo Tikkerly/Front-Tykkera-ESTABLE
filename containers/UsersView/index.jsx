@@ -210,7 +210,7 @@ const UsersViews = () => {
 
       <h1 className="text-3xl font-bold mb-4">TÉCNICOS</h1>
 
-      <div className="overflow-x-auto w-full">
+      {/* <div className="overflow-x-auto w-full">
         <table className="table-auto w-full mb-4">
           <thead>
             <tr className="bg-Az2">
@@ -265,7 +265,7 @@ const UsersViews = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> */}
 
       <h1 className="text-3xl font-bold mb-4">CLIENTE FINAL</h1>
 
