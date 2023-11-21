@@ -1,7 +1,7 @@
-import { Suscripcion } from "@/components"
+import { Suscripcion } from "@/components";
 
-export default ()=>{
-    return (
-        <Suscripcion/>
-    )
-}
+const Suscription = () => {
+  return <Suscripcion />;
+};
+
+export default Suscription;
