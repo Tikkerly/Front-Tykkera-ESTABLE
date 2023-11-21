@@ -28,8 +28,9 @@ const registerSubmit = (route, payload, router, disabled) => {
         position: "top-end",
         icon: "success",
         title: response.data.message,
-        showConfirmButton: false,
+        showConfirmButton: false,  
         timer: 1500,
+        
       });
       router.push("/useractivator");
     } catch (error) {
@@ -37,6 +38,8 @@ const registerSubmit = (route, payload, router, disabled) => {
       Swal.fire({
         icon: "error",
         title: "Error durante el registro",
+        confirmButtonColor: '#00356f',
+        confirmButtonText: 'Cerrar',
         text: error.message,
       });
     }
