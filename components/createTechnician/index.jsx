@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const CreateTechnician = () => {
   const token = Cookies.get("token");
@@ -86,9 +89,25 @@ const CreateTechnician = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center">
-        <h2 className="text-3xl font-bold text-center">Crear Tecnico</h2>
+
+        <div>
+        <Link href="/user/administrar-usuarios"
+             style={{ textDecoration: 'none', color: 'inherit' }}
+         >
+          <button className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
+            <FontAwesomeIcon
+             icon={faPersonWalkingArrowLoopLeft}
+             className="mr-2"
+             size="lg"
+              />
+              Volver  
+          </button>
+          </Link>
+          <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0 pb-8 ">
+          Agregar Técnico
+        </h1>
       </div>
+      
       <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
         <div>
           <label className="block text-sm font-medium text-black">

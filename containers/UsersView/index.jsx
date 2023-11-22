@@ -78,7 +78,7 @@ const UsersViews = () => {
         <div className="overflow-x-auto w-full">
           <table className="table-auto w-full mb-4">
             <thead>
-              <tr className="bg-Az3 text-Az4">
+              <tr className="bg-Az3 text-Az4 bg-opacity-70">
                 <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
                   Compañía
                 </th>
@@ -162,7 +162,7 @@ const UsersViews = () => {
         <div className="overflow-x-auto w-full">
           <table className="table-auto w-full mb-4">
             <thead>
-              <tr className="bg-Az3 text-Az4">
+              <tr className="bg-Az3 text-Az4 bg-opacity-70">
                 <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
                   Agente
                 </th>
@@ -241,7 +241,7 @@ const UsersViews = () => {
         <div className="overflow-x-auto w-full">
           <table className="table-auto w-full mb-4">
             <thead>
-              <tr className="bg-Az3 text-Az4">
+              <tr className="bg-Az3 text-Az4 bg-opacity-70">
                 <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
                   Técnico
                 </th>
@@ -320,7 +320,7 @@ const UsersViews = () => {
         <div className="overflow-x-auto w-full">
           <table className="table-auto w-full mb-4">
             <thead>
-              <tr className="bg-Az3 text-Az4">
+              <tr className="bg-Az3 text-Az4 bg-opacity-70">
                 <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
                   Cliente Final
                 </th>

@@ -110,7 +110,7 @@ const CreateTickect = () => {
     <>
       <div className="grid gap-4 w-5/6 ">
         <div>
-      <Link href="/user/tickets"
+        <Link href="/user/tickets"
              style={{ textDecoration: 'none', color: 'inherit' }}
          >
           <button className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">

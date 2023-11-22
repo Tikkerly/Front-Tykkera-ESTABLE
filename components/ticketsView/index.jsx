@@ -81,7 +81,7 @@ const TicketsView = () => {
 
       <table className="table-auto w-full">
         <thead>
-          <tr className="bg-Az3 text-Az4">
+          <tr className="bg-Az3 text-Az4 bg-opacity-70">
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
               Compañía
             </th>
