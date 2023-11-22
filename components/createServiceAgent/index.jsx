@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
+import { validation } from "@/utils";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
@@ -25,8 +26,11 @@ const CreateServiceAgent = () => {
     // confirmPassword: "",
     company_id: company._id,
     document: "",
+    documentType: "",
     phone: "",
   });
+
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,6 +38,9 @@ const CreateServiceAgent = () => {
       ...prevData,
       [name]: value,
     }));
+    setErrors(
+      validation("serviceAgent", { ...formData, [name]:value })
+    );
   };
 
   const handleSubmit = async (e) => {
@@ -72,6 +79,7 @@ const CreateServiceAgent = () => {
           // confirmPassword: "",
           company_id: company._id,
           document: "",
+          documentType: "",
           phone: "",
         });
       } else {
@@ -119,6 +127,13 @@ const CreateServiceAgent = () => {
               onChange={handleInputChange}
               className={styles} 
             />
+            <div className="h-2">
+            {errors.username && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.username}
+              </p>
+            )}
+          </div>
           </div>
 
           <div className={styles3}>
@@ -132,6 +147,13 @@ const CreateServiceAgent = () => {
               onChange={handleInputChange}
               className={styles} 
             />
+            <div className="h-2">
+            {errors.email && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.email}
+              </p>
+            )}
+          </div>
           </div>
         
 
@@ -150,6 +172,13 @@ const CreateServiceAgent = () => {
             onChange={handleInputChange}
             className={styles} 
           />
+          <div className="h-2">
+            {errors.password && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.password}
+              </p>
+            )}
+          </div>
         </div>
 
         {/* <div>
@@ -167,8 +196,36 @@ const CreateServiceAgent = () => {
             />
       </div> */}
 
+          <div>
+            <label className="block text-sm font-medium text-gray-800">
+              Tipo de Documento:
+            </label>
+            <select
+            name="documentType"
+            value={formData.documentType}
+            onChange={handleInputChange}
+            className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          >
+            <option value="">Tipo de Documento</option>
+            <option value="NIT">NIT</option>
+            <option value="DNI">DNI</option>
+            <option value="PASAPORTE">PASAPORTE</option>
+            </select>
+            <div className="h-2">
+            {errors.documentType && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.documentType}
+              </p>
+            )}
+          </div>
+          </div>
+
+        <div>
+          <label className="block text-sm font-medium text-black">
+
         <div className={styles3}>
           <label className={styles2}>
+
             Documento:
           </label>
           <input
@@ -178,6 +235,13 @@ const CreateServiceAgent = () => {
             onChange={handleInputChange}
             className={styles} 
           />
+          <div className="h-2">
+            {errors.document && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.document}
+              </p>
+            )}
+          </div>
         </div>
 
         <div className={styles3}>
@@ -191,6 +255,13 @@ const CreateServiceAgent = () => {
             onChange={handleInputChange}
             className={styles} 
           />
+          <div className="h-2">
+            {errors.phone && (
+              <p className="text-red-500 font-regular avant-garde-regular text-sm">
+                {errors.phone}
+              </p>
+            )}
+          </div>
         </div>
       
         <div className="flex justify-center">
