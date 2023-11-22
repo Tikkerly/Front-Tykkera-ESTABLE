@@ -126,8 +126,8 @@ const CreateTickect = () => {
         <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0 pb-8 ">Crear Ticket</h1>          
         </div>
 
-      </div>
-      <form onSubmit={handleSubmit} className="grid gap-4 space-y-6 w-5/6">
+        </div>
+       <form onSubmit={handleSubmit} className="grid gap-4 space-y-6 w-5/6">
         <div className="grid grid-cols-2 gap-8 ">
          
           <div className={styles3}>
@@ -254,7 +254,7 @@ const CreateTickect = () => {
             onChange={handleInputChange}
             className={styles}          />
         </div>
-        </div>
+      </div>
 
         
         

@@ -5,8 +5,14 @@ import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { USER_ROUTES } from "@/routes/routes";
 import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const CreateFinalClient = () => {
+  const styles = "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
+  const styles2= "font-black avant-garde-regular text-Az1 text-lg"
+  const styles3= "flex flex-col"
   const token = Cookies.get("token");
   const [agentes, setAgentes] = useState([]);
 
@@ -85,13 +91,29 @@ const CreateFinalClient = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center">
-        <h2 className="text-3xl font-bold text-center">Crear Cliente</h2>
-      </div>
-      <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
-        <div className="grid grid-cols-1 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-800">
+    <div className="grid gap-4 w-5/6 bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md gap-4 ">
+        <div>
+          <Link
+            href="/user/administrar-usuarios"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <button className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
+              <FontAwesomeIcon
+                icon={faPersonWalkingArrowLoopLeft}
+                className="mr-2"
+                size="lg"
+              />
+              Volver
+            </button>
+          </Link>
+          <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0 pb-8 ">
+            Agregar Cliente Final
+          </h1>
+        </div>
+      <form onSubmit={handleSubmit} className="grid gap-4 space-y-6">
+        <div className="grid grid-cols-2 gap-8 ">
+          <div className={styles3}>
+            <label className={styles2}>
               Nombre:
             </label>
             <input
@@ -99,12 +121,12 @@ const CreateFinalClient = () => {
               name="username"
               value={formData.username}
               onChange={handleInputChange}
-              className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className={styles}
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-800">
+          <div className={styles3}>
+            <label className={styles2}>
               Correo:
             </label>
             <input
@@ -112,12 +134,12 @@ const CreateFinalClient = () => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className={styles}
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-800">
+          <div className={styles3}>
+            <label className={styles2}>
               Tipo de Documento:
             </label>
             <input
@@ -125,12 +147,12 @@ const CreateFinalClient = () => {
               name="documentType"
               value={formData.documentType}
               onChange={handleInputChange}
-              className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className={styles}
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-800">
+          <div className={styles3}>
+            <label className={styles2}>
               Documento:
             </label>
             <input
@@ -138,13 +160,13 @@ const CreateFinalClient = () => {
               name="document"
               value={formData.document}
               onChange={handleInputChange}
-              className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className={styles}
             />
           </div>
-        </div>
+        
 
-        <div>
-          <label className="block text-sm font-medium text-gray-800">
+        <div className={styles3}>
+          <label className={styles2}>
             Teléfono:
           </label>
           <input
@@ -152,12 +174,12 @@ const CreateFinalClient = () => {
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
-            className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className={styles}
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-800">
+        <div className={styles3}>
+          <label className={styles2}>
             Dirección:
           </label>
           <input
@@ -165,19 +187,19 @@ const CreateFinalClient = () => {
             name="address"
             value={formData.address}
             onChange={handleInputChange}
-            className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className={styles}
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-white">
+        <div className={styles3}>
+          <label className={styles2}>
             Agente de Servicio:
           </label>
           <select
             name="serviceClient_id"
             value={formData.serviceClient_id}
             onChange={handleInputChange}
-            className="mt-4 text-white block w-full py-2 px-3 border border-gray-300 bg-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className={styles}
           >
             <option value="">Selecciona un Agente de Servicio</option>
             {agentes.serviceAgent &&
@@ -188,16 +210,18 @@ const CreateFinalClient = () => {
               ))}
           </select>
         </div>
-
-        <div>
+        
+        <div className="flex justify-center">
           <button
             type="submit"
-            className=" mt-4 avant-garde-bold font-bold text-gray px-6 py-3 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
+            className=" items-center avant-garde-bold font-bold text-gray px-3 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
           >
-            Crear Cliente Final
+            Agregar Cliente Final
           </button>
         </div>
+        </div>
       </form>
+      </div>
     </>
   );
 };

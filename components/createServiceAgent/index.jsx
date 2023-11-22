@@ -198,7 +198,7 @@ const CreateServiceAgent = () => {
             type="submit"
             className=" items-center avant-garde-bold font-bold text-gray px-3 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
           >
-            Crear Agente de Servicio
+            Agregar Agente de Servicio
           </button>
         </div>
         </div>
