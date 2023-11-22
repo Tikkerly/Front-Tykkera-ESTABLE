@@ -235,8 +235,6 @@ const CreateTechnician = () => {
               </select>
             </div>
           </div>
-
-        </form>          
         <div className="flex justify-center ">
             <button
               type="submit"
@@ -245,6 +243,8 @@ const CreateTechnician = () => {
               Agregar Técnico
             </button>
           </div>
+        </form>          
+
       </div>
     </>
   );
