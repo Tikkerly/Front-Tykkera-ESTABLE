@@ -69,9 +69,9 @@ const UsersViews = () => {
   };
 
   return (
-    <div className="flex flex-col items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md">
-      <div>
-        <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0 pb-2 w-full ">
+    <div className="flex flex-col items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md gap-4">
+      <div className="flex flex-col items-center bg-Be bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md w-full">
+        <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-dotted border-b-8 border-t-0 pb-2 w-full ">
           COMPAÑÍAS
         </h1>
 
@@ -139,8 +139,8 @@ const UsersViews = () => {
           </table>
         </div>
       </div>
-      <div>
-        <div className="flex flex-row-reverse justify-between w-full border-b border-dotted border-b-8 border-t-0 mb-2">
+      <div className="flex flex-col items-center bg-Be bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md w-full">
+        <div className="flex flex-row-reverse justify-between w-full border-dotted border-b-8 border-t-0 mb-2">
           <div className="w-full"></div>
           <div className="w-full">
             <h1 className="text-center font-black avant-garde-regular text-Az1 ">
@@ -152,7 +152,7 @@ const UsersViews = () => {
               href="/user/administrar-usuarios/agregar-agente-de-servicio"
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
+              <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
                 Agregar
               </button>
             </Link>
@@ -217,8 +217,8 @@ const UsersViews = () => {
           </table>
         </div>
       </div>
-      <div>
-        <div className="flex flex-row-reverse justify-between w-full border-b border-dotted border-b-8 border-t-0 mb-2">
+      <div className="flex flex-col items-center bg-Be bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md w-full">
+        <div className="flex flex-row-reverse justify-between w-full border-dotted border-b-8 border-t-0 mb-2">
           <div className="w-full"></div>
           <div className="">
             <h1 className="self-center font-black avant-garde-regular text-Az1 ">
@@ -231,7 +231,7 @@ const UsersViews = () => {
               href="/user/administrar-usuarios/agregar-tecnico"
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
+              <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
                 Agregar
               </button>
             </Link>
@@ -296,8 +296,8 @@ const UsersViews = () => {
           </table>
         </div>
       </div>
-      <div>
-        <div className="flex flex-row-reverse justify-between w-full border-b border-dotted border-b-8 border-t-0 mb-2">
+      <div className="flex flex-col items-center bg-Be bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md w-full">
+        <div className="flex flex-row-reverse justify-between w-full border-dotted border-b-8 border-t-0 mb-2">
           <div className="w-full"></div>
           <div className="w-full">
             <h1 className="self-center font-black avant-garde-regular text-Az1">
@@ -310,7 +310,7 @@ const UsersViews = () => {
               href="/user/administrar-usuarios/agregar-cliente"
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
+              <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
                 Agregar
               </button>
             </Link>
