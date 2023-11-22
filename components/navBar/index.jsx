@@ -83,7 +83,7 @@ const Navbar = () => {
                   />
                 </div>
               </Link>
-
+              <span className="mx-1 avant-garde-bold text-base text-Az2">/</span>
               <span
                 onClick={handleClick}
                 className="text-Az2 transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer"
