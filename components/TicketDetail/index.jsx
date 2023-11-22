@@ -4,6 +4,8 @@ import { USER_ROUTES } from "@/routes/routes";
 import axios from "axios";
 import Link from "next/link";
 import { boolean } from "yup";
+import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const styles =
   "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline";
@@ -75,10 +77,18 @@ const TicketDetail = ({ token }) => {
   return (
     <div className="grid gap-4 w-5/6">
       <div>
-        <Link href="/user/tickets">
-          <button>
-            Volver
+        <Link href="/user/tickets"
+             style={{ textDecoration: 'none', color: 'inherit' }}
+         >
+          <button className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
+            <FontAwesomeIcon
+             icon={faPersonWalkingArrowLoopLeft}
+             className="mr-2"
+             size="lg"
+              />
+              Volver  
           </button>
+          
         </Link>
         <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0 pb-8 ">
           DETALLE DEL TICKET

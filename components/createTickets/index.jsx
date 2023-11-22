@@ -4,8 +4,15 @@ import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { USER_ROUTES } from "@/routes/routes";
+import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 const CreateTickect = () => {
+  const styles = "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline"
+  const styles2= "font-black avant-garde-regular text-Az1 text-lg"
+  const styles3= "flex flex-col"
+
   const token = Cookies.get("token");
 
   const serviceAgents = useSelector((state) => state.options.serviceAgents);
@@ -101,13 +108,30 @@ const CreateTickect = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center">
-        <h2 className="text-3xl font-bold text-center">Crear Ticket</h2>
+      <div className="grid gap-4 w-5/6 ">
+        <div>
+      <Link href="/user/tickets"
+             style={{ textDecoration: 'none', color: 'inherit' }}
+         >
+          <button className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
+            <FontAwesomeIcon
+             icon={faPersonWalkingArrowLoopLeft}
+             className="mr-2"
+             size="lg"
+              />
+              Volver  
+          </button>
+          
+        </Link>
+        <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0 pb-8 ">Crear Ticket</h1>          
+        </div>
+
       </div>
-      <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
-        <div className="grid grid-cols-1 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-black">
+      <form onSubmit={handleSubmit} className="grid gap-4 space-y-6 w-5/6">
+        <div className="grid grid-cols-2 gap-8 ">
+         
+          <div className={styles3}>
+            <label className={styles2}>
               Tipo de Servicio:
             </label>
             <input
@@ -115,12 +139,11 @@ const CreateTickect = () => {
               name="serviceType"
               value={formData.serviceType}
               onChange={handleInputChange}
-              className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
+              className={styles}            />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-black">
+          <div className={styles3}>
+            <label className={styles2}>
               Descripción del Servicio:
             </label>
             <input
@@ -128,12 +151,11 @@ const CreateTickect = () => {
               name="serviceDescription"
               value={formData.serviceDescription}
               onChange={handleInputChange}
-              className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
+              className={styles}            />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-black">
+          <div className={styles3}>
+            <label className={styles2}>
               Fecha de Inicio:
             </label>
             <input
@@ -141,22 +163,21 @@ const CreateTickect = () => {
               name="startDate"
               value={formData.startDate}
               onChange={handleInputChange}
-              className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            />
+              className={styles}            />
           </div>
-        </div>
+        
 
-        <div>
-          <label className="block text-sm font-medium text-black">
+        <div className={styles3}>
+          <label className={styles2}>
             Cliente Final:
           </label>
           <select
+          
             name="finalClient_id"
             value={formData.finalClient_id}
             onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          >
-            <option value="">Selecciona una Cliente Final</option>
+            className={styles}          >
+            <option value="" disabled selected>Selecciona un Cliente Final</option>
             {fc.finalClients &&
               fc.finalClients.map((finalClient) => (
                 <option key={finalClient._id} value={finalClient._id}>
@@ -166,17 +187,16 @@ const CreateTickect = () => {
           </select>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-black">
+        <div className={styles3}>
+          <label className={styles2}>
             Técnico:
           </label>
           <select
             name="technician_id"
             value={formData.technician_id}
             onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          >
-            <option value="">Selecciona una Técnico</option>
+            className={styles}          >
+            <option value="" disabled selected>Selecciona un Técnico</option>
             {tec.technicians &&
               tec.technicians.map((technician) => (
                 <option key={technician._id} value={technician._id}>
@@ -185,17 +205,16 @@ const CreateTickect = () => {
               ))}
           </select>
         </div>
-        <div>
-          <label className="block text-sm font-medium text-black">
+        <div className={styles3}>
+          <label className={styles2}>
             Agente de Servicio:
           </label>
           <select
             name="serviceClient_id"
             value={formData.serviceClient_id}
             onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          >
-            <option value="">Selecciona un Agente de Servicio</option>
+            className={styles}          >
+            <option value="" disabled selected>Selecciona un Agente de Servicio</option>
             {sa.serviceAgent &&
               sa.serviceAgent.map((serviceClient) => (
                 <option key={serviceClient._id} value={serviceClient._id}>
@@ -204,28 +223,28 @@ const CreateTickect = () => {
               ))}
           </select>
         </div>
-        <div>
-          <label className="block text-sm font-medium text-black">Valor:</label>
+        <div className={styles3}>
+          <label className={styles2}>Valor:</label>
           <input
             type="number"
             name="ammount"
             value={formData.ammount}
             onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
+            className={styles}          />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-black">Costo:</label>
+        <div className={styles3}>
+          <label className={styles2}>Costo:</label>
           <input
             type="number"
             name="cost"
             value={formData.cost}
             onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
+            className={styles}          />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-black">
+        </div>
+        <div className=" flex aling-center justify-center">
+          <div className="w-2/4 flex flex-col" >
+          <label className={styles2}>
             Otros costos:
           </label>
           <input
@@ -233,14 +252,17 @@ const CreateTickect = () => {
             name="others"
             value={formData.others}
             onChange={handleInputChange}
-            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          />
+            className={styles}          />
         </div>
-        <div>
+        </div>
+
+        
+        
+        <div className="flex items-center justify-center">
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
+            className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
+            >
             Registrar Servicio
           </button>
         </div>
