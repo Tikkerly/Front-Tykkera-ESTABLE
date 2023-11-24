@@ -59,25 +59,21 @@ const TicketsView = () => {
   };
 
   return (
-
     <div className="grid gap-4 w-7/8 ">
-        <div>
-      <Link href="/user/tickets/crear-ticket"
-            style={{ textDecoration: 'none', color: 'inherit' }}
+      <div>
+        <Link
+          href="/user/tickets/crear-ticket"
+          style={{ textDecoration: "none", color: "inherit" }}
         >
           <button className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
-          <FontAwesomeIcon
-             icon={faTicket}
-             className="mr-2"
-             size="lg"
-              />
-              Crear Ticket  
+            <FontAwesomeIcon icon={faTicket} className="mr-2" size="lg" />
+            Crear Ticket
           </button>
-          
         </Link>
-        <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0 pb-8 ">Tickets</h1>          
-        </div>
-
+        <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0 pb-8 ">
+          Tickets
+        </h1>
+      </div>
 
       <table className="table-auto w-full">
         <thead>
@@ -137,7 +133,7 @@ const TicketsView = () => {
                 </td>
                 <td className="py-2 px-4 font-regular avant-garde-regular ">
                   <Link
-                    href="/user/tickets/editar"
+                    href={`/user/tickets/${tickets._id}`}
                     style={{ textDecoration: "none", color: "inherit" }}
                   >
                     <EditNoteIcon className="text-blue-500 hover:text-blue-700" />

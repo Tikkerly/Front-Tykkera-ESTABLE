@@ -70,6 +70,7 @@ const RegisterForm = () => {
     router,
     setDisabled
   );
+  console.log(formData);
 
   return (
     <form
@@ -151,7 +152,6 @@ const RegisterForm = () => {
             )}
           </div>
         </div>
-
 
         <div className="flex items-center gap-2 flex-col ">
           <select
@@ -256,23 +256,23 @@ const RegisterForm = () => {
       </div>
 
       <div className="flex items-center gap-2 flex-col ">
-          <FormInputs
-            label={"Agregar empresas:"}
-            className="p-2"
-            placeholder={"Agregar empresas"}
-            name={"company"}
-            value={formData.company}
-            onChange={handleChange}
-            type={"text"}
-          />
-          <div className="h-2">
-            {errors.company && (
-              <p className="text-red-500 font-regular avant-garde-regular text-sm">
-                {errors.company}
-              </p>
-            )}
-          </div>
+        <FormInputs
+          label={"Agregar empresas:"}
+          className="p-2"
+          placeholder={"Agregar empresas"}
+          name={"company"}
+          value={formData.company}
+          onChange={handleChange}
+          type={"text"}
+        />
+        <div className="h-2">
+          {errors.company && (
+            <p className="text-red-500 font-regular avant-garde-regular text-sm">
+              {errors.company}
+            </p>
+          )}
         </div>
+      </div>
 
       <div className="flex flex-col items-center justify-center mt-4 gap-3">
         <div className="flex items-center gap-2 flex-col">
