@@ -32,9 +32,6 @@ const validation = (type, values) => {
       if (!values.confirmPassword) {
         errors.confirmPassword = "El campo es obligatorio";
       }
-      if (!values.company) {
-        errors.company = "El campo es obligatorio";
-      }
       if (values.password !== values.confirmPassword) {
         errors.confirmPassword = "Las contraseñas no coinciden";
       }
