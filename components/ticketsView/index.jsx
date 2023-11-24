@@ -46,7 +46,6 @@ const TicketsView = () => {
           },
         }
       );
-      console.log(response.data);
       setTicketsData((prevTickets) => {
         return {
           ...prevTickets,

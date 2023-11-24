@@ -25,8 +25,6 @@ const CreateFinalClient = () => {
     setAgentes(serviceAgents);
   }, []);
 
-  console.log(agentes);
-
   const [formData, setFormData] = useState({
     username: "",
     email: "",

@@ -22,7 +22,6 @@ const RegisterForm = () => {
     documentType: "",
     img: null,
     address: "",
-    company: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -38,7 +37,6 @@ const RegisterForm = () => {
     setErrors(
       validation("register", { ...formData, [e.target.name]: e.target.value })
     );
-    console.log(errors.address);
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const props = Object.keys(
@@ -61,7 +59,6 @@ const RegisterForm = () => {
     documentType: formData.documentType,
     img: formData.img,
     address: formData.address,
-    company: formData.company,
   };
 
   const handleSubmit = registerSubmit(
@@ -252,25 +249,6 @@ const RegisterForm = () => {
               </p>
             )}
           </div>
-        </div>
-      </div>
-
-      <div className="flex items-center gap-2 flex-col ">
-        <FormInputs
-          label={"Agregar empresas:"}
-          className="p-2"
-          placeholder={"Agregar empresas"}
-          name={"company"}
-          value={formData.company}
-          onChange={handleChange}
-          type={"text"}
-        />
-        <div className="h-2">
-          {errors.company && (
-            <p className="text-red-500 font-regular avant-garde-regular text-sm">
-              {errors.company}
-            </p>
-          )}
         </div>
       </div>
 

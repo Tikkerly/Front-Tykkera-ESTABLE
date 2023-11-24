@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import { validation } from "@/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
-
 import Link from "next/link";
 
 const CreateTechnician = () => {

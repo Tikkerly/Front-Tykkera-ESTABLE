@@ -16,7 +16,6 @@ const Navbar = () => {
   const user = useSelector((state) => state.auth.user);
   const auth = useSelector((state) => state.auth.isAuthenticated);
   const router = useRouter();
-  console.log(user);
   const [authPer, setAuthPer] = useState(false);
 
   useEffect(() => {
@@ -83,7 +82,7 @@ const Navbar = () => {
                   />
                 </div>
               </Link>
-
+              <span className="mx-1 avant-garde-bold text-base text-Az2">/</span>
               <span
                 onClick={handleClick}
                 className="text-Az2 transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer"
