@@ -16,7 +16,6 @@ const Navbar = () => {
   const user = useSelector((state) => state.auth.user);
   const auth = useSelector((state) => state.auth.isAuthenticated);
   const router = useRouter();
-  console.log(user);
   const [authPer, setAuthPer] = useState(false);
 
   useEffect(() => {

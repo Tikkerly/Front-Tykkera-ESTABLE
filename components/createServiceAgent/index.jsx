@@ -47,7 +47,6 @@ const CreateServiceAgent = () => {
     e.preventDefault();
 
     try {
-      console.log(formData);
       const response = await fetch(
         `${USER_ROUTES.init}/serviceagent/registerserviceagent`,
         {
