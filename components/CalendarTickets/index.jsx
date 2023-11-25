@@ -20,7 +20,16 @@ export default function CalendarTickets({ events, handleEventClick }) {
         year: 'numeric',
     };
 
-    
+    const eventMouseEnter = (info) => {
+        info.el.style.cursor = 'pointer'; // Cambia el cursor al pasar el ratón por encima
+        info.el.style.filter = 'brightness(1.2)'; // Cambia el fondo del evento al pasar el ratón por encima
+    };
+
+    const eventMouseLeave = (info) => {
+        info.el.style.cursor = ''; // Restaura el cursor al salir del evento
+        info.el.style.filter = ''; // Restaura el fondo del evento al salir del evento
+    };
+
 
     return (
         <FullCalendar
@@ -34,6 +43,8 @@ export default function CalendarTickets({ events, handleEventClick }) {
             themeSystem='bootstrap5'
             events={events}
             eventClick={handleEventClick}
+            eventMouseEnter={eventMouseEnter}
+            eventMouseLeave={eventMouseLeave}
         />
     )
 }
