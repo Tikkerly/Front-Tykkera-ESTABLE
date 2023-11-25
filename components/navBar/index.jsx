@@ -42,15 +42,12 @@ const Navbar = () => {
         style={{ zIndex: 1000 }}
       >
         <div>
-          <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
             <Image
               src={logotipo}
               width={290}
               alt="Logotipo"
-              className=" cursor-pointer"
               priority={true}
             />
-          </Link>
         </div>
 
         {authPer ? (
