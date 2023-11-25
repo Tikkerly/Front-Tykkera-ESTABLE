@@ -30,3 +30,4 @@ export { default as Suscripcion } from "./Suscripcion/index.jsx";
 export { default as TechnicianSelect } from './TechnicianSelect/index.jsx'
 export { default as CalendarTickets } from './CalendarTickets/index.jsx'
 export { default as TicketDetailCalendar } from './TicketDetailCalendar'
+export { default as UserDetail} from './userDetail'

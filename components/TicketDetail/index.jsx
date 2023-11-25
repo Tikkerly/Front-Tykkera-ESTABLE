@@ -1,12 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { USER_ROUTES } from "@/routes/routes";
 import axios from "axios";
 import Link from "next/link";
-import { boolean } from "yup";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { format } from "date-fns";
 
 const styles =
   "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline";
