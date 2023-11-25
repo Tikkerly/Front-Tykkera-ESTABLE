@@ -1,7 +1,7 @@
 export default function TicketDetailCalendar({ infoTicket }) {
     return (
         <div>
-            <h1>{infoTicket.company.name}</h1>
+            <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0 pb-4 ">{infoTicket.company.name}</h1>
             <h2>Información del ticket seleccionado:</h2>
             <h3>Nombre del cliente: {infoTicket.client.name}</h3>
             <h3>Nombre del técnico: {infoTicket.technician.name}</h3>

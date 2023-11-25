@@ -3,7 +3,7 @@ import axios from "axios";
 import { format, parseISO } from 'date-fns'
 import esLocal from 'date-fns/locale/es';
 
-const getInfoTicketCalendar = (setInfoTicket) => {
+const getInfoTicketCalendar = (setInfoTicket, setShowEventModal ) => {
     return async (info) => {
         const _id = info.event._def.publicId
         const { data } = await axios.get(`${USER_ROUTES.ticket}/${_id}`);
@@ -30,7 +30,9 @@ const getInfoTicketCalendar = (setInfoTicket) => {
             }
         }
         setInfoTicket(modelInfoTicket)
+        setShowEventModal(true)
     }
+
 }
 
 export default getInfoTicketCalendar
