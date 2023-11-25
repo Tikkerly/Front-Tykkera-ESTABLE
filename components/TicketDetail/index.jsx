@@ -4,6 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { USER_ROUTES } from "@/routes/routes";
 
 const styles =
   "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline";
@@ -37,7 +38,7 @@ const TicketDetail = ({ token }) => {
     const getTickets = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/v1/tickets/${id}`
+          `${USER_ROUTES.ticket}/${id}`
         );
         setTicketData(response.data);
       } catch (error) {
@@ -58,7 +59,7 @@ const TicketDetail = ({ token }) => {
   const handleSaveChanges = async () => {
     try {
       await axios.put(
-        `http://localhost:3001/api/v1/tickets/updateticket/${id}`,
+        `${USER_ROUTES.ticket}/updateticket/${id}`,
         ticketData,
         {
           headers: {

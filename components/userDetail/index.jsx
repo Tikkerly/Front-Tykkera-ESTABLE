@@ -5,6 +5,7 @@ import Link from "next/link";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { USER_ROUTES } from "@/routes/routes";
+import { useRouter } from "next/navigation";
 
 const styles =
   "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline";
@@ -12,6 +13,7 @@ const styles2 = "font-black avant-garde-regular text-Az1 text-lg";
 const styles3 = "flex flex-col";
 
 const UserDetail = ({ token }) => {
+  const router = useRouter();
   const [userData, setUserData] = useState({
     img: "",
     _id: "",
@@ -31,14 +33,10 @@ const UserDetail = ({ token }) => {
     status: null,
   });
   const { id } = token;
-
   useEffect(() => {
-    console.log("a");
     const getUser = async () => {
       try {
-        const response = await axios.get(
-          `${USER_ROUTES.getUser}/${id}`
-        );
+        const response = await axios.post(`${USER_ROUTES.getUser}/${id}`);
         setUserData(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -47,32 +45,28 @@ const UserDetail = ({ token }) => {
     getUser();
   }, []);
 
-  const handleFieldChange = (edit, value) => {
-    console.log(edit, value);
-    setUserData((prev) => ({
-      ...prev,
-      [edit]: value,
-    }));
+  const handleBanUser = () => {
+    setUserData({
+      status: false,
+    });
+
+    handleSaveChanges()
   };
 
   const handleSaveChanges = async () => {
     try {
-      await axios.put(
-        `${USER_ROUTES.editUser}/${id}`,
-        userData,
-        {
-          headers: {
-            "x-token": token,
-          },
-        }
-      );
+      await axios.put(`${USER_ROUTES.editUser}/${id}`, userData, {
+        headers: {
+          "x-token": token,
+        },
+      });
 
       alert("Se han guardado los cambios");
+      router.push("/administrador");
     } catch (error) {
       console.error("Error editing user:", error);
     }
   };
-
   return (
     <div className="grid gap-4 w-5/6">
       <div>
@@ -140,7 +134,6 @@ const UserDetail = ({ token }) => {
             className={styles}
             value={userData.personType === null ? "" : userData.personType}
             placeholder="No definido"
-            onChange={(e) => handleFieldChange("personType", e.target.value)}
             id="personType"
             disabled
           >
@@ -187,7 +180,7 @@ const UserDetail = ({ token }) => {
             className={styles}
             id="isPaid"
             type="text"
-            value={userData.isPaid === null ? "" : userData.isPaid}
+            value={userData.isPaid ? "Pago" : "No Pago"}
             placeholder="No definido"
             disabled
           />
@@ -198,13 +191,24 @@ const UserDetail = ({ token }) => {
             className={styles}
             id="trialPeriod"
             type="text"
-            value={userData.trialPeriod === null ? "" : userData.trialPeriod}
+            value={userData.trialPeriod ? "Activo" : "Inactivo"}
+            placeholder="No definido"
+            disabled
+          />
+        </div>
+        <div className={styles3}>
+          <label className={styles2}>Estado del Cliente</label>
+          <input
+            className={styles}
+            id="status"
+            type="text"
+            value={userData.status ? "Activo" : "Inactivo"}
             placeholder="No definido"
             disabled
           />
         </div>
         {userData.trialPeriod ? (
-          <div>
+          <div className={styles3}>
             <div className={styles3}>
               <label className={styles2}>Comienzo del Periodo de Prueba</label>
               <input
@@ -239,25 +243,14 @@ const UserDetail = ({ token }) => {
         ) : (
           ""
         )}
-        <div className={styles3}>
-          <label className={styles2}>Estado del Cliente</label>
-          <input
-            className={styles}
-            id="status"
-            type="text"
-            value={userData.status === null ? "" : userData.status}
-            placeholder="No definido"
-            disabled
-          />
-        </div>
       </div>
       <div className="flex items-center justify-center">
         <button
           className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
           type="submit"
-          onClick={handleSaveChanges}
+          onClick={handleBanUser}
         >
-          Guardar cambios
+          Desactivar Usuario
         </button>
       </div>
     </div>
