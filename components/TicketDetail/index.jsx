@@ -6,6 +6,7 @@ import Link from "next/link";
 import { boolean } from "yup";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { format } from "date-fns";
 
 const styles =
   "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline";
@@ -26,7 +27,7 @@ const TicketDetail = ({ token }) => {
     others: "",
     IVA: "",
     paymentMethod: "",
-    status: "",
+    ticketStatus: "",
     ispaid: "",
     ticketStatus: "",
     company_id: "",
@@ -50,6 +51,7 @@ const TicketDetail = ({ token }) => {
   }, []);
 
   const handleFieldChange = (edit, value) => {
+    console.log(edit, value);
     setTicketData((prev) => ({
       ...prev,
       [edit]: value,
@@ -77,18 +79,18 @@ const TicketDetail = ({ token }) => {
   return (
     <div className="grid gap-4 w-5/6">
       <div>
-        <Link href="/user/tickets"
-             style={{ textDecoration: 'none', color: 'inherit' }}
-         >
+        <Link
+          href="/user/tickets"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
           <button className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
             <FontAwesomeIcon
-             icon={faPersonWalkingArrowLoopLeft}
-             className="mr-2"
-             size="lg"
-              />
-              Volver  
+              icon={faPersonWalkingArrowLoopLeft}
+              className="mr-2"
+              size="lg"
+            />
+            Volver
           </button>
-          
         </Link>
         <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0 pb-8 ">
           DETALLE DEL TICKET
@@ -182,6 +184,18 @@ const TicketDetail = ({ token }) => {
           />
         </div>
         <div className={styles3}>
+          <label className={styles2}>Monto:</label>
+          <input
+            className={styles}
+            id="ammount"
+            type="text"
+            value={ticketData.ammount === null ? "" : ticketData.ammount}
+            onChange={(e) => handleFieldChange("ammount", e.target.value)}
+            placeholder="No definido"
+          />
+        </div>
+
+        <div className={styles3}>
           <label className={styles2}>Fecha de Registro:</label>
           <input
             className={styles}
@@ -194,39 +208,7 @@ const TicketDetail = ({ token }) => {
             disabled
           />
         </div>
-        <div className={styles3}>
-          <label className={styles2}>Fecha de Inicio:</label>
-          <input
-            className={styles}
-            id="startDate"
-            type="date"
-            value={ticketData.startDate === null ? "" : ticketData.startDate}
-            onChange={(e) => handleFieldChange("startDate", e.target.value)}
-            placeholder="No definido"
-          />
-        </div>
-        <div className={styles3}>
-          <label className={styles2}>Fecha de Finalización:</label>
-          <input
-            className={styles}
-            id="endDate"
-            type="date"
-            value={ticketData.endDate === null ? "" : ticketData.endDate}
-            onChange={(e) => handleFieldChange("endDate", e.target.value)}
-            placeholder="No definido"
-          />
-        </div>
-        <div className={styles3}>
-          <label className={styles2}>Monto:</label>
-          <input
-            className={styles}
-            id="ammount"
-            type="text"
-            value={ticketData.ammount === null ? "" : ticketData.ammount}
-            onChange={(e) => handleFieldChange("ammount", e.target.value)}
-            placeholder="No definido"
-          />
-        </div>
+
         <div className={styles3}>
           <label className={styles2}>Costo:</label>
           <input
@@ -239,13 +221,13 @@ const TicketDetail = ({ token }) => {
           />
         </div>
         <div className={styles3}>
-          <label className={styles2}>Utilidad:</label>
+          <label className={styles2}>Fecha de Inicio:</label>
           <input
             className={styles}
-            id="utility"
-            type="text"
-            value={ticketData.utility === null ? "" : ticketData.utility}
-            onChange={(e) => handleFieldChange("utility", e.target.value)}
+            id="startDate"
+            type="date"
+            value={ticketData.startDate === null ? "" : ticketData.startDate}
+            onChange={(e) => handleFieldChange("startDate", e.target.value)}
             placeholder="No definido"
           />
         </div>
@@ -261,6 +243,18 @@ const TicketDetail = ({ token }) => {
           />
         </div>
         <div className={styles3}>
+          <label className={styles2}>Fecha de Finalización:</label>
+          <input
+            className={styles}
+            id="endDate"
+            type="date"
+            value={ticketData.endDate === null ? "" : ticketData.endDate}
+            onChange={(e) => handleFieldChange("endDate", e.target.value)}
+            placeholder="No definido"
+          />
+        </div>
+
+        <div className={styles3}>
           <label className={styles2}>IVA:</label>
           <input
             className={styles}
@@ -269,6 +263,39 @@ const TicketDetail = ({ token }) => {
             value={ticketData.IVA === null ? "" : ticketData.IVA}
             onChange={(e) => handleFieldChange("IVA", e.target.value)}
             placeholder="No definido"
+          />
+        </div>
+        <div className={styles3}>
+          <label className={styles2}>Estado:</label>
+          <select
+            className={styles}
+            value={
+              ticketData.ticketStatus === null ? "" : ticketData.ticketStatus
+            }
+            placeholder="No definido"
+            onChange={(e) => handleFieldChange("ticketStatus", e.target.value)}
+            id="ticketStatus"
+          >
+            <option value="Pendiente">Pendiente</option>
+            <option value="Aprobado">Aprobado</option>
+            <option value="Cancelado">Cancelado</option>
+            <option value="En proceso">En proceso</option>
+            <option value="Completado">Completado</option>
+            <option value="Cerrado">Cerrado</option>
+            <option value="Rechazado">Rechazado</option>
+          </select>
+        </div>
+
+        <div className={styles3}>
+          <label className={styles2}>Utilidad:</label>
+          <input
+            className={styles}
+            id="utility"
+            type="text"
+            value={ticketData.utility === null ? "" : ticketData.utility}
+            onChange={(e) => handleFieldChange("utility", e.target.value)}
+            placeholder="No definido"
+            disabled
           />
         </div>
         <div className={styles3}>
@@ -286,24 +313,6 @@ const TicketDetail = ({ token }) => {
             <option value="Debito">Debito</option>
             <option value="Credito">Credito</option>
             <option value="Transferencia">Transferencia</option>
-          </select>
-        </div>
-        <div className={styles3}>
-          <label className={styles2}>Estado:</label>
-          <select
-            className={styles}
-            value={ticketData.status === null ? "" : ticketData.status}
-            placeholder="No definido"
-            onChange={(e) => handleFieldChange("status", e.target.value)}
-            id="status"
-          >
-            <option value="Pendiente">Pendiente</option>
-            <option value="Aprobado">Aprobado</option>
-            <option value="Cancelado">Cancelado</option>
-            <option value="En proceso">En proceso</option>
-            <option value="Completado">Completado</option>
-            <option value="Cerrado">Cerrado</option>
-            <option value="Rechazado">Rechazado</option>
           </select>
         </div>
       </div>

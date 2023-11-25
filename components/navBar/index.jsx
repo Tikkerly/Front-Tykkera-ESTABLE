@@ -57,7 +57,7 @@ const Navbar = () => {
             </h4>
             <div className="flex flex-row gap-1">
               <Link
-                href="/user"
+                href={(user.rol === "Admin") ? ("/administrador") : ("/user")}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <div className=" text-Az2 transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer mt-1 mb-1">
