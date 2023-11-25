@@ -12,8 +12,9 @@ const USER_ROUTES = {
   img: `${config.URL_BACK}/upload`,
   forgetPassword: `${config.URL_BACK}/user/forgotpassword`,
   recoveryPassword: `${config.URL_BACK}/user/passwordrecovery`,
-  ticket: `${config.URL_BACK}/tickets/`,
+  ticket: `${config.URL_BACK}/tickets`,
   payment: `${config.URL_BACK}/payment`,
+  getTicketsByTechnician: `${config.URL_BACK}/tickets/technician`
 };
 
 export { USER_ROUTES };
