@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Wallet, initMercadoPago } from "@mercadopago/sdk-react";
 import axios from "axios";
 import { USER_ROUTES } from "@/routes/routes";
+import Link from "next/link";
 
 initMercadoPago(process.env.NEXT_PUBLIC_MERCADOPAGO);
 
@@ -12,15 +13,6 @@ const AlertBar = () => {
   const [preferenceId, setPreferenceId] = useState(null);
   const [isReady, setIsReady] = useState(false);
   const user = useSelector((state) => state.auth.user);
-
-  const handleClick = async () => {
-    const { data } = await axios.post(`${USER_ROUTES.payment}`, {
-      username: user.username,
-      price: 10000,
-      quantity: 1,
-    });
-    setPreferenceId(data.id);
-  };
 
   const handleOnReady = () => {
     setIsReady(true);
@@ -61,12 +53,14 @@ const AlertBar = () => {
         Tu licencia de prueba vence el: {userPersist.trialEndDate}
       </p>
       <div className="">
-        <button
-          onClick={handleClick}
-          className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-gray-100 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
+        <Link
+          href="/Suscripcion"
+          style={{ textDecoration: "none", color: "inherit" }}
         >
-          Comprar licencia
-        </button>
+          <button className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-gray-100 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
+            Comprar licencia
+          </button>
+        </Link>
         {renderCheckoutButton(preferenceId)}
       </div>
     </div>
