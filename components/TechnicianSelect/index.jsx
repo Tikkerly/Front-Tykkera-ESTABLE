@@ -1,9 +1,12 @@
 export default function TechnicianSelect({ technicians, handleChange }) {
     return (
-        <div className='flex'>
-            <h2>Buscar tickets por técnico:</h2>
-            {technicians && <select onChange={handleChange}>
-                <option disabled selected>Seleccione al técnico...</option>
+        <div className='flex mb-4 w-5/6 bg-gray-200 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md justify-between'>
+            <div className="flex items-center ">
+                 <h2 className='flex justify-center font-black avant-garde-regular text-Az1 border-b border-dotted border-b-8 border-t-0'>Buscar tickets por técnico:</h2>
+            </div>
+           <div className="flex items-center">
+            {technicians && <select onChange={handleChange} className="font-black avant-garde-regular text-Az1 text-xl">
+                <option value="" disabled selected className="font-regular avant-garde-regular text-Az1">Seleccione al técnico...</option>
                 {technicians.map(technician => {
                     return (
                         <option
@@ -14,7 +17,9 @@ export default function TechnicianSelect({ technicians, handleChange }) {
                     )
                 })}
             </select>
-            }
+            }            
+           </div>
+
         </div>
     )
 }

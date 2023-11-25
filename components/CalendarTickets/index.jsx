@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function CalendarTickets({ events, handleEventClick }) {
     const plugins = [dayGridPlugin, timeGridPlugin, interactionPlugin];
@@ -12,6 +13,7 @@ export default function CalendarTickets({ events, handleEventClick }) {
         start: '',
         center: 'title',
         end: 'today prev,next',
+        
     };
     const height = '800px';
     const titleFormat = {
