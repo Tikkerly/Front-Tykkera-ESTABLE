@@ -72,75 +72,7 @@ const UsersViews = () => {
 
   return (
     <div className="flex flex-col items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md gap-4">
-      <div className="flex flex-col items-center bg-Be bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md w-full">
-        <h1 className="flex justify-center font-black avant-garde-regular text-Az1 border-dotted border-b-8 border-t-0 pb-2 w-full ">
-          COMPAÑÍAS
-        </h1>
 
-        <div className="overflow-x-auto w-full">
-          <table className="table-auto w-full mb-4">
-            <thead>
-              <tr className="bg-Az3 text-Az4 bg-opacity-70">
-                <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-                  Compañía
-                </th>
-                <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-                  NIT
-                </th>
-                <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-                  Email
-                </th>
-                <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-                  Teléfono
-                </th>
-                <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-                  Tipo de Persona
-                </th>
-                <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-                  Estado del Pago
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {userData.map &&
-                userData.users.map((user, index) => (
-                  <tr key={index}>
-                    <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {user.username}
-                    </td>
-                    <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {user.nit}
-                    </td>
-                    <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {user.email}
-                    </td>
-                    <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {user.phone}
-                    </td>
-                    <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {user.personType}
-                    </td>
-                    <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {user.isPaid ? "Contratado" : "No Contrató"}
-                    </td>
-                    <td className="py-2 px-4 font-regular avant-garde-regular ">
-                      <Link
-                        href="/user/edituser/:id"
-                        style={{ textDecoration: "none", color: "inherit" }}
-                      >
-                        <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
-                      </Link>
-                      <ClearIcon
-                        className="text-red-500 hover:text-red-700"
-                        onClick={() => handleUsersDelete(user._id)}
-                      />
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
       <div className="flex flex-col items-center bg-Be bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md w-full">
         <div className="flex flex-row-reverse justify-between w-full border-dotted border-b-8 border-t-0 mb-2">
           <div className="w-full"></div>
@@ -151,7 +83,7 @@ const UsersViews = () => {
           </div>
           <div className=" flex items-center w-full">
             <Link
-              href="/user/administrar-usuarios/agregar-agente-de-servicio"
+              href="/user/administrar-usuarios/agente-de-servicio"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
@@ -208,7 +140,7 @@ const UsersViews = () => {
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular ">
                       <Link
-                        href="/user/edituser/:id"
+                        href={`/user/administrar-usuarios/agente-de-servicio/${serviceAgent._id}`}
                         style={{ textDecoration: "none", color: "inherit" }}
                       >
                         <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
@@ -235,7 +167,7 @@ const UsersViews = () => {
 
           <div className=" flex items-center w-full">
             <Link
-              href="/user/administrar-usuarios/agregar-tecnico"
+              href="/user/administrar-usuarios/tecnico"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
@@ -292,7 +224,7 @@ const UsersViews = () => {
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular ">
                       <Link
-                        href="/user/edituser/:id"
+                        href={`/user/administrar-usuarios/tecnico/${technicians._id}`}
                         style={{ textDecoration: "none", color: "inherit" }}
                       >
                         <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
@@ -319,7 +251,7 @@ const UsersViews = () => {
 
           <div className=" flex items-center w-full">
             <Link
-              href="/user/administrar-usuarios/agregar-cliente"
+              href="/user/administrar-usuarios/cliente-final"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
@@ -376,7 +308,7 @@ const UsersViews = () => {
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular ">
                       <Link
-                        href="/user/edituser/:id"
+                        href={`/user/administrar-usuarios/cliente-final/${finalClients._id}`}
                         style={{ textDecoration: "none", color: "inherit" }}
                       >
                         <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
