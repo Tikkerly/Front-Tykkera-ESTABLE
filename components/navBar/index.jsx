@@ -54,38 +54,26 @@ const Navbar = () => {
         </div>
 
         {authPer ? (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "auto auto",
-              gap: "0.5rem",
-              alignItems: "center",
-            }}
-          >
-            <h4 className="mr-1 py-1 avant-garde-bold text-base text-Az5">
+          <div className="flex flex-row justify-center gap-4">
+            <h4 className=" avant-garde-bold text-base text-Az5 flex flex-row items-center justify-center mt-1 mb-1">
               {user.username}
             </h4>
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "auto auto",
-              gap: "0.5rem",
-              alignItems: "center",
-            }}>
+            <div className="flex flex-row gap-1">
               <Link
                 href="/user"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <div className=" text-Az2 transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer">
+                <div className=" text-Az2 transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer mt-1 mb-1">
                   <FontAwesomeIcon
                     icon={faUser}
                     style={{ fontSize: "1.5rem" }}
                   />
                 </div>
               </Link>
-              <span className="mx-1 avant-garde-bold text-base text-Az2">/</span>
+              <span className="mx-1 avant-garde-bold text-base text-Az2 mt-1 mb-1">/</span>
               <span
                 onClick={handleClick}
-                className="text-Az2 transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer"
+                className="text-Az2 transition duration-300 ease-in-out hover:text-Az4 hover:underline cursor-pointer mt-1 mb-1"
               >
                 <FontAwesomeIcon
                   icon={faSignOutAlt}
