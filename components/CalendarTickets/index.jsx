@@ -5,6 +5,8 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "../CalendarTickets/styles.css"
+
 
 export default function CalendarTickets({ events, handleEventClick }) {
     const plugins = [dayGridPlugin, timeGridPlugin, interactionPlugin];
@@ -15,7 +17,7 @@ export default function CalendarTickets({ events, handleEventClick }) {
         end: 'today prev,next',
         
     };
-    const height = '800px';
+    const height = '500px';
     const titleFormat = {
         month: 'long',
         day: 'numeric',
@@ -47,6 +49,9 @@ export default function CalendarTickets({ events, handleEventClick }) {
             eventClick={handleEventClick}
             eventMouseEnter={eventMouseEnter}
             eventMouseLeave={eventMouseLeave}
+            eventBackgroundColor='#15b5eb'
+            eventColor='#15b5eb'
+          
         />
     )
 }
