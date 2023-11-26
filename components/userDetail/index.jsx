@@ -6,6 +6,7 @@ import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 const styles =
   "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline";
@@ -45,28 +46,34 @@ const UserDetail = ({ token }) => {
     getUser();
   }, []);
 
-  const handleBanUser = () => {
-    setUserData({
-      status: false,
-    });
-
-    handleSaveChanges()
-  };
-
-  const handleSaveChanges = async () => {
+  const handleDelete = async (id) => {
     try {
-      await axios.put(`${USER_ROUTES.editUser}/${id}`, userData, {
+        const { data } = await axios.delete(`${USER_ROUTES.deleteUser}/${id}`, {
         headers: {
-          "x-token": token,
+          "x-token": Cookies.get("token"),
         },
       });
-
-      alert("Se han guardado los cambios");
-      router.push("/administrador");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      router.push("/administrador")
     } catch (error) {
-      console.error("Error editing user:", error);
+      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la eliminacion",
+        confirmButtonColor: "#00356f",
+        confirmButtonText: "Cerrar",
+        text: error.data
+      });
     }
   };
+
+
   return (
     <div className="grid gap-4 w-5/6">
       <div>
@@ -248,7 +255,7 @@ const UserDetail = ({ token }) => {
         <button
           className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
           type="submit"
-          onClick={handleBanUser}
+          onClick={() => handleDelete(userData._id)}
         >
           Desactivar Usuario
         </button>
