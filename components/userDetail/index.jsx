@@ -75,7 +75,7 @@ const UserDetail = ({ token }) => {
 
 
   return (
-    <div className="grid gap-4 w-5/6">
+    <div className="grid gap-4 w-5/6  bg-gray-100 bg-opacity-60 p-8  rounded-lg shadow-md mb-5 mt-5 ">
       <div>
         <Link
           href="/administrador"
@@ -255,7 +255,7 @@ const UserDetail = ({ token }) => {
         )}
       <div className="flex items-center justify-center">
         <button
-          className=" mb-5 avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
+          className="  avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
           type="submit"
           onClick={() => handleDelete(userData._id)}
         >
