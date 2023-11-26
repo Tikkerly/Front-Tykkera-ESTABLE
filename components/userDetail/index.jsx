@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { USER_ROUTES } from "@/routes/routes";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import Cookies from "js-cookie";
 
 const styles =
   "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline";
