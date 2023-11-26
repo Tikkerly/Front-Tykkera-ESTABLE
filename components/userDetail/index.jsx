@@ -214,8 +214,11 @@ const UserDetail = ({ token }) => {
             disabled
           />
         </div>
-        {userData.trialPeriod ? (
-          <div className={styles3}>
+        
+      </div>
+
+      {userData.trialPeriod ? (
+          <div className="grid grid-cols-2 gap-4">
             <div className={styles3}>
               <label className={styles2}>Comienzo del Periodo de Prueba</label>
               <input
@@ -250,10 +253,9 @@ const UserDetail = ({ token }) => {
         ) : (
           ""
         )}
-      </div>
       <div className="flex items-center justify-center">
         <button
-          className="avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
+          className=" mb-5 avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
           type="submit"
           onClick={() => handleDelete(userData._id)}
         >
