@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,6 +6,7 @@ import {
   faTicketAlt,
   faCalendarAlt,
   faUserPlus,
+  faFileSignature,
 } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -44,6 +44,11 @@ const SideBar = () => {
         </button>
       </Link>
 
+      <Link href="/user/reportes">
+        <button className="mt-4 text-white text-3xl ml-5 rounded-md items-center">
+          <FontAwesomeIcon icon={faFileSignature} className="mr-10" />
+        </button>
+      </Link>
 
   
 
