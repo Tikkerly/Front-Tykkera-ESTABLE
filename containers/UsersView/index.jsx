@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { finalClients, serviceAgents, technicians } from "@/redux/slices";
 import axios from "axios";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import ClearIcon from "@mui/icons-material/Clear";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import { USER_ROUTES } from "@/routes/routes";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -16,22 +17,35 @@ const UsersViews = () => {
   const [agents, setAgents] = useState([]);
 
   const token = Cookies.get("token");
-  const technicians = useSelector((state) => state.options.technicians);
-  const finalClients = useSelector((state) => state.options.finalClients);
-  const serviceAgents = useSelector((state) => state.options.serviceAgents);
 
-  useEffect(() => {
-    setTechs(technicians);
-    setFinal(finalClients);
-    setAgents(serviceAgents);
-  }, []);
+  const dispatch = useDispatch();
+
+  const servAgents = async () => {
+    const { data } = await axios(`${USER_ROUTES.init}/serviceagent`);
+    dispatch(serviceAgents(data));
+    setAgents(data);
+  };
+  const technis = async () => {
+    const { data } = await axios(`${USER_ROUTES.init}/technician`);
+    dispatch(technicians(data));
+    setTechs(data);
+  };
+  const finalCli = async () => {
+    const { data } = await axios(`${USER_ROUTES.init}/finalclient`);
+    dispatch(finalClients(data));
+    setFinal(data);
+  };
+
 
   const [userData, setUserData] = useState({
     total: 0,
     users: [],
   });
-
+  
   useEffect(() => {
+    servAgents();
+    technis();
+    finalCli();
     const fetchData = async () => {
       try {
         const response = await axios.get(`${USER_ROUTES.init}/user`, {
