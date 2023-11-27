@@ -10,11 +10,15 @@ import { USER_ROUTES } from "@/routes/routes";
 import { useDispatch, useSelector } from "react-redux";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const UsersViews = () => {
   const [techs, setTechs] = useState([]);
   const [final, setFinal] = useState([]);
   const [agents, setAgents] = useState([]);
+
+  const router = useRouter();
 
   const token = Cookies.get("token");
 
@@ -36,12 +40,11 @@ const UsersViews = () => {
     setFinal(data);
   };
 
-
   const [userData, setUserData] = useState({
     total: 0,
     users: [],
   });
-  
+
   useEffect(() => {
     servAgents();
     technis();
@@ -62,10 +65,11 @@ const UsersViews = () => {
     fetchData();
   }, []);
 
-  const handleUsersDelete = async (userId) => {
+  const handleAgentDelete = async (userId) => {
     try {
-      const response = await axios.delete(
-        `${USER_ROUTES.init}/user/deleteuser/${userId}`,
+      const response = await axios.post(
+        `${USER_ROUTES.init}/serviceagent/deleteserviceagent/${userId}`,
+        null,
         {
           headers: {
             "x-token": token,
@@ -78,7 +82,75 @@ const UsersViews = () => {
           users: prevUserData.users.filter((user) => user._id !== userId),
         };
       });
-      alert("Usuario eliminado");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Agente Baneado",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      router.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleTechDelete = async (userId) => {
+    try {
+      const response = await axios.post(
+        `${USER_ROUTES.init}/technician/deletetechnician/${userId}`,
+        null,
+        {
+          headers: {
+            "x-token": token,
+          },
+        }
+      );
+      setUserData((prevUserData) => {
+        return {
+          ...prevUserData,
+          users: prevUserData.users.filter((user) => user._id !== userId),
+        };
+      });
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Técnico Baneado",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      router.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleFinalDelete = async (userId) => {
+    try {
+      const response = await axios.post(
+        `${USER_ROUTES.init}/finalclient/deletefinalclient/${userId}`,
+        null,
+        {
+          headers: {
+            "x-token": token,
+          },
+        }
+      );
+      setUserData((prevUserData) => {
+        return {
+          ...prevUserData,
+          users: prevUserData.users.filter((user) => user._id !== userId),
+        };
+      });
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Cliente Baneado",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
@@ -86,7 +158,6 @@ const UsersViews = () => {
 
   return (
     <div className="flex flex-col items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md gap-4">
-
       <div className="flex flex-col items-center bg-Be bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md w-full">
         <div className="flex flex-row-reverse justify-between w-full border-dotted border-b-8 border-t-0 mb-2">
           <div className="w-full"></div>
@@ -101,11 +172,7 @@ const UsersViews = () => {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
-              <FontAwesomeIcon
-                icon={faPlus}
-                className="mr-2"
-                size="lg"
-              />
+                <FontAwesomeIcon icon={faPlus} className="mr-2" size="lg" />
                 Agregar
               </button>
             </Link>
@@ -150,7 +217,7 @@ const UsersViews = () => {
                       {serviceAgent.phone}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {serviceAgent.status ? "Activo" : "No Activo"}
+                      {serviceAgent.banned ? "No Activo" : "Activo"}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular ">
                       <Link
@@ -161,7 +228,7 @@ const UsersViews = () => {
                       </Link>
                       <ClearIcon
                         className="text-red-500 hover:text-red-700"
-                        onClick={() => handleTicketDelete(ticket.id)}
+                        onClick={() => handleAgentDelete(serviceAgent._id)}
                       />
                     </td>
                   </tr>
@@ -185,11 +252,7 @@ const UsersViews = () => {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
-              <FontAwesomeIcon
-                icon={faPlus}
-                className="mr-2"
-                size="lg"
-              />
+                <FontAwesomeIcon icon={faPlus} className="mr-2" size="lg" />
                 Agregar
               </button>
             </Link>
@@ -234,7 +297,7 @@ const UsersViews = () => {
                       {technicians.phone}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {technicians.status ? "Activo" : "No Activo"}
+                      {technicians.banned ? "No Activo" : "Activo"}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular ">
                       <Link
@@ -245,7 +308,7 @@ const UsersViews = () => {
                       </Link>
                       <ClearIcon
                         className="text-red-500 hover:text-red-700"
-                        onClick={() => handleTicketDelete(ticket.id)}
+                        onClick={() => handleTechDelete(technicians._id)}
                       />
                     </td>
                   </tr>
@@ -269,11 +332,7 @@ const UsersViews = () => {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
-              <FontAwesomeIcon
-                icon={faPlus}
-                className="mr-2"
-                size="lg"
-              />
+                <FontAwesomeIcon icon={faPlus} className="mr-2" size="lg" />
                 Agregar
               </button>
             </Link>
@@ -318,7 +377,7 @@ const UsersViews = () => {
                       {finalClients.phone}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {finalClients.status ? "Activo" : "No Activo"}
+                      {finalClients.banned ? "No Activo" : "Activo"}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular ">
                       <Link
@@ -329,7 +388,7 @@ const UsersViews = () => {
                       </Link>
                       <ClearIcon
                         className="text-red-500 hover:text-red-700"
-                        onClick={() => handleTicketDelete(ticket.id)}
+                        onClick={() => handleFinalDelete(finalClients._id)}
                       />
                     </td>
                   </tr>
