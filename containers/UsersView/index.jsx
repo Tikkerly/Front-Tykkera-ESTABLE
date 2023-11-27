@@ -17,6 +17,7 @@ const UsersViews = () => {
   const [techs, setTechs] = useState([]);
   const [final, setFinal] = useState([]);
   const [agents, setAgents] = useState([]);
+  const [state, setState] = useState(false);
 
   const router = useRouter();
 
@@ -63,7 +64,7 @@ const UsersViews = () => {
     };
 
     fetchData();
-  }, []);
+  }, [state]);
 
   const handleAgentDelete = async (userId) => {
     try {
@@ -90,7 +91,7 @@ const UsersViews = () => {
         timer: 1500,
       });
 
-      router.reload();
+      setState(!state);
     } catch (error) {
       console.log(error);
     }
@@ -120,7 +121,7 @@ const UsersViews = () => {
         timer: 1500,
       });
 
-      router.reload();
+      setState(!state);
     } catch (error) {
       console.log(error);
     }
@@ -150,7 +151,7 @@ const UsersViews = () => {
         timer: 1500,
       });
 
-      router.refresh();
+      setState(!state);
     } catch (error) {
       console.log(error);
     }
