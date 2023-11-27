@@ -1,25 +1,24 @@
 'use client';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { CalendarTickets, TechnicianSelect, TicketDetailCalendar } from '@/components';
 import { getInfoTicketCalendar, getTechnicianTicketsForCalendar } from '@/services';
 import ModalEventCalendar from '@/components/ModalEventCalendar/ModalEventCalendar';
 
 const UserTicketss = () => {
-  const [events, setEvents] = useState([
-    {
-      title: 'Hoy',
-      start: format(new Date(), 'yyyy-MM-dd'),
-      color: 'gray'
-    },
-  ])
+  const [events, setEvents] = useState([])
+  const [technicians, setTechnicians] = useState([]);
   const [showEventModal, setShowEventModal] = useState(false);
-  const technicians = useSelector(state => state.options.technicians.technicians)
+  const globalStateTechnicians = useSelector(state => state.options.technicians)
   const companyId = useSelector(state => state.auth.user._id)
   const handleChange = getTechnicianTicketsForCalendar(setEvents, companyId)
   const [infoTicket, setInfoTicket] = useState({})
-  const handleEventClick = getInfoTicketCalendar(setInfoTicket,setShowEventModal) 
+  const handleEventClick = getInfoTicketCalendar(setInfoTicket,setShowEventModal)
+  useEffect(()=>{
+    setTechnicians(globalStateTechnicians)
+    getTechnicianTicketsForCalendar(setEvents, companyId)() 
+  },[globalStateTechnicians])
 
   return (
     <div className='flex flex-col items-center justify-center'>

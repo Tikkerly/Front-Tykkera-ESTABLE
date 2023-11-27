@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Cookies from "js-cookie";
 import { USER_ROUTES } from '@/routes/routes';
 
 const eventColor = (status) => {
@@ -15,11 +16,25 @@ const eventColor = (status) => {
     }
 }
 
+const token = Cookies.get("token");
+
 const getTechnicianTicketsForCalendar = (setEvents, companyId) => {
     return async (event) => {
-        const _id = event.target.value;
-        const { data } = await axios.get(`${USER_ROUTES.getTicketsByTechnician}/${_id}/${companyId}`);
-        const tickets = data.tickets;
+        let _id = '';
+        if (!!event) _id = event.target.value;
+        let tickets = [];
+        if (_id === 'default' || !_id) {
+            const { data } = await axios.get(USER_ROUTES.getTicketsByCompany(companyId), {
+                headers: {
+                    "x-token": token,
+                },
+            })
+            tickets = data.tickets;
+        }
+        else {
+            const { data } = await axios.get(`${USER_ROUTES.getTicketsByTechnician}/${_id}/${companyId}`);
+            tickets = data.tickets
+        }
         const modelEvents = tickets.map(ticket => {
             return {
                 id: ticket._id,
@@ -30,7 +45,7 @@ const getTechnicianTicketsForCalendar = (setEvents, companyId) => {
                 textColor: 'white' // Puedes ajustar el color del texto de los eventos. También puedes crear una función arriba similar a eventColor.
             }
         })
-        setEvents(modelEvents)
+        return setEvents(modelEvents)
     }
 }
 

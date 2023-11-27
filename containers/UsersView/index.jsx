@@ -15,57 +15,51 @@ const UsersViews = () => {
   const [techs, setTechs] = useState([]);
   const [final, setFinal] = useState([]);
   const [agents, setAgents] = useState([]);
+  const { _id } = useSelector(state => state.auth.user)
 
   const token = Cookies.get("token");
 
   const dispatch = useDispatch();
 
   const servAgents = async () => {
-    const { data } = await axios(`${USER_ROUTES.init}/serviceagent`);
-    dispatch(serviceAgents(data));
-    setAgents(data);
+    const { data } = await axios.get(USER_ROUTES.getServiceAgentsById(_id), {
+      headers: {
+        "x-token": token,
+      },
+    });
+    dispatch(serviceAgents(data.serviceAgent));
+    setAgents(data.serviceAgent);
   };
   const technis = async () => {
-    const { data } = await axios(`${USER_ROUTES.init}/technician`);
-    dispatch(technicians(data));
-    setTechs(data);
+    const { data } = await axios.get(USER_ROUTES.getTechniciansById(_id), {
+      headers: {
+        "x-token": token,
+      },
+    });
+    dispatch(technicians(data.technicians));
+    setTechs(data.technicians);
   };
   const finalCli = async () => {
-    const { data } = await axios(`${USER_ROUTES.init}/finalclient`);
-    dispatch(finalClients(data));
-    setFinal(data);
+    const { data } = await axios.get(USER_ROUTES.getFinalClientsById(_id), {
+      headers: {
+        "x-token": token,
+      },
+    });
+    dispatch(finalClients(data.finalClients));
+    setFinal(data.finalClients);
   };
 
-
-  const [userData, setUserData] = useState({
-    total: 0,
-    users: [],
-  });
-  
   useEffect(() => {
     servAgents();
     technis();
     finalCli();
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${USER_ROUTES.init}/user`, {
-          headers: {
-            "x-token": token,
-          },
-        });
-        setUserData(response.data);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
-    fetchData();
   }, []);
 
   const handleUsersDelete = async (userId) => {
     try {
       const response = await axios.delete(
         `${USER_ROUTES.init}/user/deleteuser/${userId}`,
+        null,
         {
           headers: {
             "x-token": token,
@@ -101,11 +95,11 @@ const UsersViews = () => {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
-              <FontAwesomeIcon
-                icon={faPlus}
-                className="mr-2"
-                size="lg"
-              />
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  className="mr-2"
+                  size="lg"
+                />
                 Agregar
               </button>
             </Link>
@@ -134,8 +128,8 @@ const UsersViews = () => {
               </tr>
             </thead>
             <tbody>
-              {agents.serviceAgent &&
-                agents.serviceAgent.map((serviceAgent, index) => (
+              {agents &&
+                agents.map((serviceAgent, index) => (
                   <tr key={index}>
                     <td className="py-2 px-4 font-regular avant-garde-regular border">
                       {serviceAgent.username}
@@ -185,11 +179,11 @@ const UsersViews = () => {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
-              <FontAwesomeIcon
-                icon={faPlus}
-                className="mr-2"
-                size="lg"
-              />
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  className="mr-2"
+                  size="lg"
+                />
                 Agregar
               </button>
             </Link>
@@ -218,8 +212,8 @@ const UsersViews = () => {
               </tr>
             </thead>
             <tbody>
-              {techs.technicians &&
-                techs.technicians.map((technicians, index) => (
+              {techs &&
+                techs.map((technicians, index) => (
                   <tr key={index}>
                     <td className="py-2 px-4 font-regular avant-garde-regular border">
                       {technicians.username}
@@ -269,11 +263,11 @@ const UsersViews = () => {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
-              <FontAwesomeIcon
-                icon={faPlus}
-                className="mr-2"
-                size="lg"
-              />
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  className="mr-2"
+                  size="lg"
+                />
                 Agregar
               </button>
             </Link>
@@ -302,8 +296,8 @@ const UsersViews = () => {
               </tr>
             </thead>
             <tbody>
-              {final.finalClients &&
-                final.finalClients.map((finalClients, index) => (
+              {final &&
+                final.map((finalClients, index) => (
                   <tr key={index}>
                     <td className="py-2 px-4 font-regular avant-garde-regular border">
                       {finalClients.username}
