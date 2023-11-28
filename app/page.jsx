@@ -7,6 +7,7 @@ import {
   RegistrationForm,
 } from "@/components";
 import ContactButton from "@/components/ContactButton";
+import Footer from "@/components/Footer/Footer";
 import Providers from "@/redux/provider";
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
       <CarrouselServices />
       <ContactButton />
       <CarrouselQuestions />
+      <Footer/>
     </div>
   );
 };

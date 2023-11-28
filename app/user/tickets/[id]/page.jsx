@@ -4,7 +4,7 @@ import React from 'react'
 const Page = ({ params }) => {
   return (
     <div className='flex flex-col items-center justify-center'>
-        <TicketDetail token={params} />
+        <TicketDetail ticketId={params} />
     </div>
   )
 }

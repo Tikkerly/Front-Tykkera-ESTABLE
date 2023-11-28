@@ -22,11 +22,12 @@ const closureHandleSubmit = (
         Cookies.set("token", data.token);
         Cookies.set("uid", data.user._id);
       }
-      if (data.user.isPaid === false) {
-        router.push("/Suscripcion");
+      if (data.user.rol === "Admin") {
+        console.log(data.user.rol);
+        router.push("/administrador");
       } else {
-        if (data.user.rol === "Admin") {
-          router.push("/administrador");
+        if (data.user.isPaid === false) {
+          router.push("/Suscripcion");
         } else {
           router.push("/user");
         }

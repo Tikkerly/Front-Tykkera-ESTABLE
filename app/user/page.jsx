@@ -5,6 +5,7 @@ import Profile from "@/components/profile";
 import UserLayout from "./layout";
 import { AlertBar } from "@/components";
 import { useSelector } from "react-redux";
+import styles from './styles.module.css'
 
 const UserProfile = () => {
   const [user, setUser] = useState({});
@@ -15,7 +16,7 @@ const UserProfile = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.containerProfile}>
       {user.isPaid === false ? <AlertBar /> : null}
       <Profile />
     </div>
