@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Swal from "sweetalert2";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { USER_ROUTES } from "@/routes/routes";
@@ -68,9 +69,21 @@ const TicketDetail = ({ token }) => {
         }
       );
 
-      alert("Se han guardado los cambios");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: 'Se han guardado los cambios',
+        showConfirmButton: false,
+        timer: 2000,
+      });
     } catch (error) {
-      console.error("Error editing user:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la edición",
+        confirmButtonColor: '#00356f',
+        confirmButtonText: 'Cerrar',
+        text: 'Error al editar el ticket, intenta nuevamente',
+      });
     }
   };
 

@@ -81,8 +81,13 @@ const CreateTickect = () => {
         timer: 1500,
       });
     } catch (error) {
-      console.log(error)
-      alert("Error al procesar la solicitud:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la creación del ticket",
+        confirmButtonColor: '#00356f',
+        confirmButtonText: 'Cerrar',
+        text: 'Error al procesar la solicitud',
+      });
     }
   };
 
