@@ -1,12 +1,13 @@
 "use client";
 import { CreateServiceAgent } from "@/components";
+import styles from './styles.module.css'
 
 const ServiceAgentRegister = () => {
   return (
-  
-    <div className='flex flex-col items-center justify-center'>
-          <CreateServiceAgent />
-        </div>
+
+    <div className={styles.card}>
+      <CreateServiceAgent />
+    </div>
   );
 };
 

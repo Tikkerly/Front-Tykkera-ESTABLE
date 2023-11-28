@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
+import styles from './styles.module.css'
 
 const Navbar = () => {
   const user = useSelector((state) => state.auth.user);
@@ -38,7 +39,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className="p-4 text-gray flex flex-row items-center justify-between bg-gray-200 bg-opacity-80 fixed w-full top-0 h-20"
+        className={styles.container}
         style={{ zIndex: 1000 }}
       >
         <div>

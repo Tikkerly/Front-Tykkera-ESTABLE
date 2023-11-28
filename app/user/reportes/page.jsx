@@ -7,12 +7,13 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 import { USER_ROUTES } from "@/routes/routes";
 import axios from "axios";
+import { BarGraph } from "@/components";
 
 const ReportesPage = () => {
     const { technicians } = useSelector(state => state.options)
     const { _id } = useSelector(state => state.auth.user);
     const token = Cookies.get('token')
-    
+
     const [showDataTechnician, setShowDataTechnician] = useState({
         username: false,
         email: false,
@@ -179,7 +180,8 @@ const ReportesPage = () => {
     };
 
     return (
-        <div className="text-center">
+        <div className={styled.container}>
+            <BarGraph/>
             <div className="mb-20">
                 <h4>Técnicos</h4>
                 <div>
