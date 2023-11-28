@@ -73,7 +73,7 @@ const CarrouselServices = () => {
 
   return (
     <>
-      <div className={`min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8`}>
+      <div className={`flex items-center justify-center px-4 sm:px-6 lg:px-8`}>
         <div className={`grid carousel-container grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-1 ml-80 mr-80`}>
           {features.map((feature, index) => (
 
