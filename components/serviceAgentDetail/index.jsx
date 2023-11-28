@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Swal from "sweetalert2";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
@@ -64,9 +65,21 @@ const ServiceAgentDetail = ({ token }) => {
         }
       );
 
-      alert("Se han guardado los cambios");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Agente de servicio editado correctamente",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (error) {
-      console.error("Error editing service agent:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la edición",
+        confirmButtonColor: '#00356f',
+        confirmButtonText: 'Cerrar',
+        text: 'Error al editar el agente de servicio, intenta nuevamente',
+      });
     }
   };
 

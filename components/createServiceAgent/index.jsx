@@ -80,11 +80,22 @@ const CreateServiceAgent = () => {
           phone: "",
         });
       } else {
-        alert("Error al registrar el ticket");
+        Swal.fire({
+          icon: "error",
+          title: "Error durante la creación",
+          confirmButtonColor: '#00356f',
+          confirmButtonText: 'Cerrar',
+          text: 'No se pudo crear el agente, intenta nuevamente',
+        });
       }
     } catch (error) {
-      console.log(error);
-      alert("Error al procesar la solicitud:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la creación",
+        confirmButtonColor: '#00356f',
+        confirmButtonText: 'Cerrar',
+        text: 'No se pudo procesar la solicitud, intenta nuevamente',
+      });
     }
   };
 

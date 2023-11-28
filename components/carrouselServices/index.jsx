@@ -57,7 +57,7 @@ const CarrouselServices = () => {
 
     cardsRef.current.forEach((card, index) => {
       const cardPosition = card.offsetTop;
-      const offset = (scrollPosition - cardPosition + windowHeight) * 0.5;
+      const offset = (scrollPosition - cardPosition + windowHeight)/4;
       card.style.transform = `translateY(-${offset}px)`;
       card.style.opacity = 1 - offset / windowHeight; // Agrega esta línea para controlar la opacidad
     });
