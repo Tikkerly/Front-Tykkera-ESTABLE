@@ -68,8 +68,8 @@ const Suscripcion = () => {
   };
 
   return (
-    <div className={style.containerr}>
-      <div>
+    <div className={style.buttonsH}>
+      <div className={style.containerr}>
         <div className={style.columnn}>
           <div className={style.titlee}>
             <FontAwesomeIcon icon={faPaperPlane} className={style.icon} />
@@ -112,9 +112,11 @@ const Suscripcion = () => {
               </li>
             </ul>
           </div>
-          <button name="planA" onClick={handleClickPlan}>
+          <div className="px-8">
+          <button name="planA" onClick={handleClickPlan} className="w-full">
             Obtener
-          </button>
+          </button> 
+          </div>
         </div>
         <div className={style.columnn}>
           <div className={style.titlee}>
@@ -162,9 +164,12 @@ const Suscripcion = () => {
               </li>
             </ul>
           </div>
-          <button name="planB" onClick={handleClickPlan}>
+          <div className="px-8">
+          <button name="planB" onClick={handleClickPlan} className="w-full">
             Obtener
-          </button>
+          </button>            
+          </div>
+
         </div>
         <div className={style.columnn}>
           <div className={style.titlee}>
@@ -208,15 +213,19 @@ const Suscripcion = () => {
               </li>
             </ul>
           </div>
-          <button name="planC" onClick={handleClickPlan}>
+          <div className="px-8">
+          <button name="planC" onClick={handleClickPlan} className="w-full">
             Obtener
-          </button>
+          </button> 
+          </div>
         </div>
       </div>
-      {renderCheckoutButton(preferenceId)}
-      <Link href="/user" style={{ textDecoration: "none", color: "inherit" }}>
-        <SubmitButton text={"Omitir Proceso de pago"} />
-      </Link>
+      <div className="flex flex-col justify-center items-center">
+        {renderCheckoutButton(preferenceId)}
+        <Link href="/user" style={{ textDecoration: "none", color: "inherit" }} className=" mb-20">
+          <SubmitButton text={"Omitir Proceso de pago"} />
+        </Link>
+      </div>
     </div>
   );
 };
