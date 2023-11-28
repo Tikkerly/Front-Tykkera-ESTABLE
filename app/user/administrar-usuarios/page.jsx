@@ -1,12 +1,11 @@
 import React from 'react';
 import UsersViews from '@/containers/UsersView';
+import styles from './styles.module.css'
 
 
 const adminUsers = () => {
   return (
-    <div className='flex flex-col items-center justify-center'>
       <UsersViews />
-    </div>
   );
 };
 
