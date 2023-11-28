@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import { CalendarTickets, TechnicianSelect, TicketDetailCalendar } from '@/components';
 import { getInfoTicketCalendar, getTechnicianTicketsForCalendar } from '@/services';
 import ModalEventCalendar from '@/components/ModalEventCalendar/ModalEventCalendar';
+import styles from './styles.module.css'
 
 const UserTicketss = () => {
   const [events, setEvents] = useState([])
@@ -21,7 +22,7 @@ const UserTicketss = () => {
   },[globalStateTechnicians])
 
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div className={styles.container}>
       <TechnicianSelect technicians={technicians} handleChange={handleChange} />
       <div className='flex'>
         <CalendarTickets events={events} handleEventClick={handleEventClick} />

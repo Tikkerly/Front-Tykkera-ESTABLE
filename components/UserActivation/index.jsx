@@ -17,15 +17,16 @@ const UserActivation = ({ id }) => {
   }, []);
 
   return (
-    <div className="">
-      <h1 className="text-4xl mb-5">Usuario activado</h1>
-      <div className="mt-2 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100">
+    <div className="bg-gray-200 px-10 py-10 bg-opacity-70 rounded ">
+      <h1 className="text-4xl avant-garde-bold font-bold text-gray-100 mb-5 bg-Az1 rounded px-2 py-4 bg-opacity-70 border-dotted border-4 border-Az2">Usuario activado</h1>
+      <div className="mt-8 group relative w-full  flex justify-center ">
         <Link
           href="/ingresar"
-          style={{ textDecoration: "none", color: "inherit" }}
+          style={{ textDecoration: "none", color: "inherit", height: "100px" }}
+          className="w-full "
         >
           <button
-            className="avant-garde-bold font-bold bg-Az5 text-gray px-6 py-3 rounded-full transition duration-300 hover:shadow-md"
+            className="avant-garde-bold font-bold text-2xl bg-Az5 w-full py-4 text-gray-100 rounded-full  transition duration-300 hover:shadow-md"
             type="submit"
           >
             Continuar
