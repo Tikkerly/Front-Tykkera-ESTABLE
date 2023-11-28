@@ -5,6 +5,7 @@ const USER_ROUTES = {
   loginUser: `${config.URL_BACK}/auth/login`,
   loginGoogleUser: `${config.URL_BACK}/auth/google`,
   getUser: `${config.URL_BACK}/user`,
+  getAllUsers: `${config.URL_BACK}/user/getallusers`,
   registerUser: `${config.URL_BACK}/user/registeruser`,
   editUser: `${config.URL_BACK}/user/edituser`,
   deleteUser: `${config.URL_BACK}/user/deleteuser`,

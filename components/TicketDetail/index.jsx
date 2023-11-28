@@ -32,6 +32,7 @@ const TicketDetail = ({ token }) => {
     serviceClient_id: "",
     technician_id: "",
     internalConsecutive: "",
+    empresa: ""
   });
   const { id } = token;
   useEffect(() => {
