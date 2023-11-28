@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 const Footer = () => {
   const handleLinkClick = (url) => {
@@ -11,7 +10,7 @@ const Footer = () => {
           className="avant-garde-regular font-regular text-gray-100 mt-2 p-2 border-t-2 border-b-2 border-dashed  border-Az2"
           style={{ marginLeft: "250px", marginRight: "70px" }}
         >
-          Creado por:
+          Sobre nosotros
         </h1>
         <div
           className="grid grid-cols-3 gap-2 avant-garde-bold font-bold text-gray-100 gap-4 mt-4"
