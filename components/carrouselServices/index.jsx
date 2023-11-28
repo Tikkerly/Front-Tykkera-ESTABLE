@@ -57,7 +57,7 @@ const CarrouselServices = () => {
 
     cardsRef.current.forEach((card, index) => {
       const cardPosition = card.offsetTop;
-      const offset = (scrollPosition - cardPosition + windowHeight) * 0.5;
+      const offset = (scrollPosition - cardPosition + windowHeight)/4;
       card.style.transform = `translateY(-${offset}px)`;
       card.style.opacity = 1 - offset / windowHeight; // Agrega esta línea para controlar la opacidad
     });
@@ -73,7 +73,7 @@ const CarrouselServices = () => {
 
   return (
     <>
-      <div className={`min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8`}>
+      <div className={`min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 mt-10`}>
         <div className={`grid carousel-container grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-1 ml-80 mr-80`}>
           {features.map((feature, index) => (
 

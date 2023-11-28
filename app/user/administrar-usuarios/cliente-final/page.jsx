@@ -1,13 +1,14 @@
 "use client";
 import { CreateFinalClient } from "@/components";
+import styles from './styles.module.css'
 
 const ClientRegister = () => {
-  return(
-      <div className='flex flex-col items-center justify-center'>
-  <CreateFinalClient />
-</div>
-  
-  ) 
+  return (
+    <div className={styles.card}>
+      <CreateFinalClient />
+    </div>
+
+  )
 
 };
 

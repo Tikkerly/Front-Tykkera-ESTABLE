@@ -6,13 +6,15 @@ import Swal from "sweetalert2";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { USER_ROUTES } from "@/routes/routes";
+import Cookies from "js-cookie";
+import { useSelector } from "react-redux";
 
 const styles =
   "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline";
 const styles2 = "font-black avant-garde-regular text-Az1 text-lg";
 const styles3 = "flex flex-col";
 
-const TicketDetail = ({ token }) => {
+const TicketDetail = ({ticketId}) => {
   const [ticketData, setTicketData] = useState({
     _id: "",
     serviceType: "",
@@ -33,14 +35,13 @@ const TicketDetail = ({ token }) => {
     serviceClient_id: "",
     technician_id: "",
     internalConsecutive: "",
+    empresa: ""
   });
-  const { id } = token;
+  const token = Cookies.get('token')
   useEffect(() => {
     const getTickets = async () => {
       try {
-        const response = await axios.get(
-          `${USER_ROUTES.ticket}/${id}`
-        );
+        const response = await axios.get(`${USER_ROUTES.ticket}/${ticketId.id}`);
         setTicketData(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -60,7 +61,7 @@ const TicketDetail = ({ token }) => {
   const handleSaveChanges = async () => {
     try {
       await axios.put(
-        `${USER_ROUTES.ticket}/updateticket/${id}`,
+        `${USER_ROUTES.ticket}/updateticket/${ticketId.id}`,
         ticketData,
         {
           headers: {

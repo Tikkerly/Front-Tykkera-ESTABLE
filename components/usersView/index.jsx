@@ -1,5 +1,6 @@
 "use client";
 import ClearIcon from "@mui/icons-material/Clear";
+import CheckIcon from '@mui/icons-material/Check';
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -12,11 +13,12 @@ import Swal from "sweetalert2";
 // Modal
 const UsersView = () => {
   const [users, setUsers] = useState([]);
- console.log(users);
+  const [stop, setStop] = useState(false);
+
   useEffect(() => {
     async function getAllUsers() {
       try {
-        const { data } = await axios(USER_ROUTES.getUser, {
+        const { data } = await axios(USER_ROUTES.getAllUsers, {
           headers: {
             "x-token": Cookies.get("token"),
           },
@@ -25,16 +27,21 @@ const UsersView = () => {
       } catch (error) {}
     }
     getAllUsers();
-  }, []);
+  }, [stop]);
 
-
-  const handleDelete = async (id) => {
+  const handleBan = async (id, status) => {
     try {
-      const { data } = await axios.delete(`${USER_ROUTES.deleteUser}/${id}`, {
-        headers: {
-          "x-token": Cookies.get("token"),
+      const { data } = await axios.post(
+        `${USER_ROUTES.deleteUser}/${id}`,
+        {
+          status: !status,
         },
-      });
+        {
+          headers: {
+            "x-token": Cookies.get("token"),
+          },
+        }
+      );
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -42,18 +49,17 @@ const UsersView = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      setStop(!stop);
     } catch (error) {
       Swal.fire({
         icon: "error",
-        title: "Error durante la eliminacion",
+        title: "Error durante la operación",
         confirmButtonColor: "#00356f",
         confirmButtonText: "Cerrar",
-        text: error.response.data.errors[0].msg,
+        text: error.data,
       });
     }
   };
-
-  
 
   return (
     <div className="w-5/6 flex flex-col justify-center items-center bg-gray-100 bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md gap-4">
@@ -65,7 +71,7 @@ const UsersView = () => {
       <table className="table-auto w-full">
         <thead>
           <tr className="bg-Az3 text-Az4 bg-opacity-70">
-          <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
               Imagen
             </th>
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
@@ -102,15 +108,22 @@ const UsersView = () => {
               </td>
               <td className="py-2 px-4 font-regular avant-garde-regular ">
                 <Link
-                    href={`/administrador/${user._id}`}
-                    style={{ textDecoration: "none", color: "inherit" }}
-                  >
-                    <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
-                  </Link>
-                <ClearIcon
-                  className="text-red-500 hover:text-red-700"
-                  onClick={() => handleDelete(user._id)}
-                />
+                  href={`/administrador/${user._id}`}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
+                </Link>
+                {user.status ? (
+                  <ClearIcon
+                    className="text-red-500 hover:text-red-700"
+                    onClick={() => handleBan(user._id, user.status)}
+                  />
+                ) : (
+                  <CheckIcon
+                    className="text-green-500 hover:text-green-700"
+                    onClick={() => handleBan(user._id, user.status)}
+                  />
+                )}
               </td>
             </tr>
           ))}

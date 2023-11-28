@@ -1,49 +1,81 @@
-import Link from "next/link";
 
 const Footer = () => {
+  const handleLinkClick = (url) => {
+    window.open(url, "_blank");
+  };
   return (
-    <div className="w-full bg-Az1 mt-10">
-      <div className="flex justify-between items-center p-8">
-        <h1 className="avant-garde-bold font-bold text-gray-100 mt-2">
-          Creado por:
+    <div className="w-full bg-Az1 mt-10 bg-opacity-90">
+      <div className="flex justify-between items-center justify-around ">
+        <h1
+          className="avant-garde-regular font-regular text-gray-100 mt-2 p-2 border-t-2 border-b-2 border-dashed  border-Az2"
+          
+        >
+          Sobre nosotros
         </h1>
-        <div className="grid grid-cols-3 gap-2 avant-garde-bold font-bold text-gray-100 justify-center">
-          <Link
-            href="https://www.linkedin.com/in/pilar-baroni-3b4650281/"
-            style={{ textDecoration: "none", color: "inherit" }}
+        <div
+          className="grid grid-cols-3 gap-2 avant-garde-bold font-bold text-gray-100  mt-4"
+          style={{ justifyItems: "center" }}
+        >
+          <p
+            className="text-sm hover:text-Az2 cursor-pointer"
+            onClick={() =>
+              handleLinkClick(
+                "https://www.linkedin.com/in/pilarbaroni/"
+              )
+            }
           >
-            <h1 className="text-sm hover:text-Az2 hover:underline">Baroni, Pilar</h1>
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/pilar-baroni-3b4650281/"
-            style={{ textDecoration: "none", color: "inherit" }}
+            Baroni, Pilar
+          </p>
+          <p
+            className="text-sm hover:text-Az2 cursor-pointer"
+            onClick={() =>
+              handleLinkClick(
+                "https://www.linkedin.com/in/sebastian-gonzalez-conosciuto-2b4221281/"
+              )
+            }
           >
-            <h1 className="text-sm hover:text-Az2 hover:underline">Conoscuito, Sebastian</h1>
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/pilar-baroni-3b4650281/"
-            style={{ textDecoration: "none", color: "inherit" }}
+            Conosciuto, Sebastian
+          </p>
+          <p
+            className="text-sm hover:text-Az2 cursor-pointer"
+            onClick={() =>
+              handleLinkClick(
+                "https://www.linkedin.com/in/alejo-noel-escobar/"
+              )
+            }
           >
-            <h1 className="text-sm hover:text-Az2 hover:underline">Lopez, Joel</h1>
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/pilar-baroni-3b4650281/"
-            style={{ textDecoration: "none", color: "inherit" }}
+            Escobar, Alejo
+          </p>
+          <p
+            className="text-sm hover:text-Az2 cursor-pointer"
+            onClick={() =>
+              handleLinkClick(
+                "https://www.linkedin.com/in/pilar-baroni-3b4650281/"
+              )
+            }
           >
-            <h1 className="text-sm hover:text-Az2 hover:underline">Tamayo, Hugo</h1>
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/pilar-baroni-3b4650281/"
-            style={{ textDecoration: "none", color: "inherit" }}
+            Klainbard, Mauricio
+          </p>
+          <p
+            className="text-sm hover:text-Az2 cursor-pointer"
+            onClick={() =>
+              handleLinkClick(
+                "https://www.linkedin.com/in/pilar-baroni-3b4650281/"
+              )
+            }
           >
-            <h1 className="text-sm hover:text-Az2 hover:underline">Klainbar, Mauricio</h1>
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/pilar-baroni-3b4650281/"
-            style={{ textDecoration: "none", color: "inherit" }}
+            Lopez, Joel
+          </p>
+          <p
+            className="text-sm hover:text-Az2  cursor-pointer"
+            onClick={() =>
+              handleLinkClick(
+                "https://www.linkedin.com/in/hugo-tamayo/"
+              )
+            }
           >
-            <h1 className="text-sm hover:text-Az2 hover:underline">Escobar, Alejo</h1>
-          </Link>
+            Tamayo, Hugo
+          </p>
         </div>
       </div>
     </div>
