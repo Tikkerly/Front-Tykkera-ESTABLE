@@ -249,8 +249,8 @@ const CreateFinalClient = () => {
                   className={styles}
                 >
                   <option value="" disabled selected>Selecciona un Agente de Servicio</option>
-                  {agentes.serviceAgent &&
-                    agentes.serviceAgent.map((serviceClient) => (
+                  {agentes &&
+                    agentes.map((serviceClient) => (
                       <option key={serviceClient._id} value={serviceClient._id}>
                         {serviceClient.username}
                       </option>

@@ -319,7 +319,7 @@ const CreateTechnician = () => {
                   className={styles}
                 >
                   <option value="" disabled selected>Selecciona un Agente de Servicio</option>
-                  {serviceAgents.serviceAgent?.map((serviceClient) => (
+                  {serviceAgents.map((serviceClient) => (
                     <option key={serviceClient._id} value={serviceClient._id}>
                       {serviceClient.username}
                     </option>
