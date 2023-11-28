@@ -5,6 +5,7 @@ import { Wallet, initMercadoPago } from "@mercadopago/sdk-react";
 import axios from "axios";
 import { USER_ROUTES } from "@/routes/routes";
 import Link from "next/link";
+import styles from './styles.module.css'
 
 initMercadoPago(process.env.NEXT_PUBLIC_MERCADOPAGO);
 
@@ -46,7 +47,7 @@ const AlertBar = () => {
 
   return (
     <div
-      className={`flex  justify-between fixed top-20 w-full left-1/2 transform -translate-x-1/2 z-50 p-4 ${alertClasses[type]} ${textColor}`}
+      className={`${styles.container} ${alertClasses[type]} ${textColor}`}
       role="alert"
     >
       <p className="avant-garde-regular font-regular text-center">

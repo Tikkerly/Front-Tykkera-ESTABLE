@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Swal from "sweetalert2";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
@@ -66,9 +67,21 @@ const FinalClientDetail = ({ token }) => {
         }
       );
 
-      alert("Se han guardado los cambios");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: 'Cliente final editado con éxito',
+        showConfirmButton: false,
+        timer: 2000,
+      });
     } catch (error) {
-      console.error("Error editing final client:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la edición",
+        confirmButtonColor: '#00356f',
+        confirmButtonText: 'Cerrar',
+        text: 'Error al editar el cliente final, intenta nuevamente',
+      });
     }
   };
 
@@ -100,9 +113,7 @@ const FinalClientDetail = ({ token }) => {
             id="username"
             type="text"
             value={
-                finalClientData.username === null
-                ? ""
-                : finalClientData.username
+              finalClientData.username === null ? "" : finalClientData.username
             }
             placeholder="No definido"
             onChange={(e) => handleFieldChange("username", e.target.value)}
@@ -114,9 +125,7 @@ const FinalClientDetail = ({ token }) => {
             className={styles}
             id="email"
             type="text"
-            value={
-                finalClientData.email === null ? "" : finalClientData.email
-            }
+            value={finalClientData.email === null ? "" : finalClientData.email}
             placeholder="No definido"
             disabled
           />
@@ -128,7 +137,7 @@ const FinalClientDetail = ({ token }) => {
             id="documentType"
             type="text"
             value={
-                finalClientData.documentType === null
+              finalClientData.documentType === null
                 ? ""
                 : finalClientData.documentType
             }
@@ -143,9 +152,7 @@ const FinalClientDetail = ({ token }) => {
             id="document"
             type="number"
             value={
-              finalClientData.document === null
-                ? ""
-                : finalClientData.document
+              finalClientData.document === null ? "" : finalClientData.document
             }
             placeholder="No definido"
             disabled
@@ -157,9 +164,7 @@ const FinalClientDetail = ({ token }) => {
             className={styles}
             id="phone"
             type="number"
-            value={
-              finalClientData.phone === null ? "" : finalClientData.phone
-            }
+            value={finalClientData.phone === null ? "" : finalClientData.phone}
             onChange={(e) => handleFieldChange("phone", e.target.value)}
             placeholder="No definido"
           />

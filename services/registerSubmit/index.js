@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 
 const registerSubmit = (route, payload, router, disabled) => {
   return async (event) => {
-    console.log('a')
     event.preventDefault();
 
     disabled(true);
@@ -26,11 +25,11 @@ const registerSubmit = (route, payload, router, disabled) => {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: response.data.message,
-        showConfirmButton: false,
-        timer: 1500,
+        title: "Usuario No Activado, revisa el correo que te enviamos",
+        confirmButtonColor: "#00356f",
+        confirmButtonText: "Cerrar",
       });
-      router.push("/useractivator");
+      router.push("/ingresar")
     } catch (error) {
       disabled(false);
       console.log(error);

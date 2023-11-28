@@ -5,7 +5,6 @@ import Link from "next/link";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { USER_ROUTES } from "@/routes/routes";
-import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import Cookies from "js-cookie";
 
@@ -15,7 +14,7 @@ const styles2 = "font-black avant-garde-regular text-Az1 text-lg";
 const styles3 = "flex flex-col";
 
 const UserDetail = ({ token }) => {
-  const router = useRouter();
+  const [stop, setStop] = useState(false)
   const [userData, setUserData] = useState({
     img: "",
     _id: "",
@@ -45,15 +44,21 @@ const UserDetail = ({ token }) => {
       }
     };
     getUser();
-  }, []);
+  }, [stop]);
 
-  const handleDelete = async (id) => {
+  const handleBan = async (id) => {
     try {
-        const { data } = await axios.delete(`${USER_ROUTES.deleteUser}/${id}`, {
-        headers: {
-          "x-token": Cookies.get("token"),
+      const { data } = await axios.post(
+        `${USER_ROUTES.deleteUser}/${id}`,
+        {
+          status: !userData.status,
         },
-      });
+        {
+          headers: {
+            "x-token": Cookies.get("token"),
+          },
+        }
+      );
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -61,7 +66,7 @@ const UserDetail = ({ token }) => {
         showConfirmButton: false,
         timer: 1500,
       });
-      router.push("/administrador")
+      setStop(!stop)
     } catch (error) {
       console.log(error);
       Swal.fire({
@@ -69,11 +74,10 @@ const UserDetail = ({ token }) => {
         title: "Error durante la eliminacion",
         confirmButtonColor: "#00356f",
         confirmButtonText: "Cerrar",
-        text: error.data
+        text: error.data,
       });
     }
   };
-
 
   return (
     <div className="grid gap-4 w-5/6  bg-gray-100 bg-opacity-60 p-8  rounded-lg shadow-md mb-5 mt-5 ">
@@ -215,53 +219,60 @@ const UserDetail = ({ token }) => {
             disabled
           />
         </div>
-        
       </div>
 
       {userData.trialPeriod ? (
-          <div className="grid grid-cols-2 gap-4">
-            <div className={styles3}>
-              <label className={styles2}>Comienzo del Periodo de Prueba</label>
-              <input
-                className={styles}
-                id="trialStartDate"
-                type="date"
-                value={
-                  userData.trialStartDate === null
-                    ? ""
-                    : userData.trialStartDate
-                }
-                placeholder="No definido"
-                disabled
-              />
-            </div>
-            <div className={styles3}>
-              <label className={styles2}>
-                Finalizacion del Periodo de Prueba
-              </label>
-              <input
-                className={styles}
-                id="trialEndDate"
-                type="date"
-                value={
-                  userData.trialEndDate === null ? "" : userData.trialEndDate
-                }
-                placeholder="No definido"
-                disabled
-              />
-            </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className={styles3}>
+            <label className={styles2}>Comienzo del Periodo de Prueba</label>
+            <input
+              className={styles}
+              id="trialStartDate"
+              type="date"
+              value={
+                userData.trialStartDate === null ? "" : userData.trialStartDate
+              }
+              placeholder="No definido"
+              disabled
+            />
           </div>
-        ) : (
-          ""
-        )}
+          <div className={styles3}>
+            <label className={styles2}>
+              Finalizacion del Periodo de Prueba
+            </label>
+            <input
+              className={styles}
+              id="trialEndDate"
+              type="date"
+              value={
+                userData.trialEndDate === null ? "" : userData.trialEndDate
+              }
+              placeholder="No definido"
+              disabled
+            />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="flex items-center justify-center">
-        <button
-          className="  avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
-          type="submit"
-          onClick={() => handleDelete(userData._id)}
-        >
-          Desactivar Usuario
-        </button>
+        {userData.status ? (
+          <button
+            className="  avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
+            type="submit"
+            onClick={() => handleBan(userData._id)}
+          >
+            Bloquear Usuario
+          </button>
+        ) : (
+          <button
+            className="  avant-garde-bold font-bold text-gray px-6 py-2 rounded-full flex justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
+            type="submit"
+            onClick={() => handleBan(userData._id)}
+          >
+            Desbloquear Usuario
+          </button>
+        )}
       </div>
     </div>
   );

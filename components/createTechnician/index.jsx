@@ -87,11 +87,22 @@ const CreateTechnician = () => {
           serviceTypes: "",
         });
       } else {
-        alert("Error al registrar el técnico");
+        Swal.fire({
+          icon: "error",
+          title: "Error durante la creación",
+          confirmButtonColor: '#00356f',
+          confirmButtonText: 'Cerrar',
+          text: 'Error al crear el técnico, intenta nuevamente',
+        });
       }
     } catch (error) {
-      console.log(error);
-      alert("Error al procesar la solicitud:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la creación",
+        confirmButtonColor: '#00356f',
+        confirmButtonText: 'Cerrar',
+        text: 'Error al procesar la solicitud, intenta nuevamente',
+      });
     }
   };
 

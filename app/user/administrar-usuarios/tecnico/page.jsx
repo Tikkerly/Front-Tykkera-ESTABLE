@@ -1,9 +1,10 @@
 "use client";
 import { CreateTechnician } from "@/components";
+import styles from './styles.module.css'
 
 const TechnicianRegister = () => {
   return(
-    <div className='flex flex-col items-center justify-center'>
+    <div className={styles.card}>
         <CreateTechnician />
     </div>
  
