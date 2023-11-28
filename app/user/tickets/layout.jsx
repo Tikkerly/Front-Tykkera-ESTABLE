@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
+import styles from './styles.module.css'
 
 const TicketsLayout = ({ children }) => {
   const dispatch = useDispatch();
@@ -47,7 +48,7 @@ useEffect(() => {
   finalCli();
 }, []);
 
-return <div className="flex-1 p-4">{children}</div>;
+return <div className={styles.container}>{children}</div>;
 };
 
 export default TicketsLayout;
