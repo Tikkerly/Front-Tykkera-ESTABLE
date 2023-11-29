@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 import { USER_ROUTES } from "@/routes/routes";
 import axios from "axios";
-import { BarGraph } from "@/components";
+import { BarGraph, LineGraph } from "@/components";
 
 const ReportesPage = () => {
     const { technicians } = useSelector(state => state.options)
@@ -181,7 +181,9 @@ const ReportesPage = () => {
 
     return (
         <div className={styled.container}>
-            <BarGraph/>
+            <BarGraph route={USER_ROUTES.statusGraph(_id)} title={"Estado de tickets"}/>
+            <BarGraph route={USER_ROUTES.utilityMonthGraph(_id)} title={"Utilidad por mes"}/>
+            <LineGraph route={USER_ROUTES.accumulatedUtility(_id)} title={"Utilidad acumulada durante el año actual"}/>
             <div className="mb-20">
                 <h4>Técnicos</h4>
                 <div>
