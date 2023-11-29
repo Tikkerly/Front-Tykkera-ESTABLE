@@ -129,7 +129,7 @@ const TicketsView = () => {
             <th className="py-2 px-4 font-bold avant-garde-bold">Acciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className= " text-black ">
           {ticketsData.tickets?.map((tickets) => (
             <tr key={tickets.internalConsecutive}>
               <td className=" py-2 px-4 font-regular avant-garde-regular border">
