@@ -10,7 +10,7 @@ import HomeIcon from "@mui/icons-material/Home";
 export default function LoginPage() {
   return (
     <div className="h-screen w-screen flex">
-      <div className="lg:mx-62 lg:w-4/6  lg:flex lg:flex-col lg:items-center lg:justify-center lg:text-gray lg:gap-16 hidden">
+      <div className="lg:mx-62 lg:w-4/6  lg:flex lg:flex-col lg:items-center lg:justify-center lg:text-black lg:gap-16 hidden">
         <Image
           src={logo}
           style={{ width: "100%", maxWidth: "75%" }}
