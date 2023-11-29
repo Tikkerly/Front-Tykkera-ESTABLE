@@ -12,9 +12,15 @@
 .check {
   display: flex;
   gap: 10px;
+  font-family: 'Avant Garde Regular', sans-serif;
+  color: #00356f;
+  
 }
 
-.container {
+.containerr {
+  display: flex;
   text-align: center;
   overflow: auto;
+  flex-direction: column;
+  
 }

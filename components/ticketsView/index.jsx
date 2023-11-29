@@ -15,13 +15,13 @@ import Swal from "sweetalert2";
 const empresa = {
   empresa1: "empresa1",
   empresa2: "empresa2",
-  empresa3: "empresa3"
-}
+  empresa3: "empresa3",
+};
 
 const TicketsView = () => {
   const id = useSelector((state) => state.auth.user._id);
   const token = Cookies.get("token");
-  
+
   const [stop, setStop] = useState(false);
   const [ticketsData, setTicketsData] = useState([]);
   console.log(ticketsData);
@@ -49,7 +49,7 @@ const TicketsView = () => {
   const handleTicketDelete = async (ticketId, status) => {
     try {
       const response = await axios.post(
-        `${USER_ROUTES.init}/tickets/deleteticket/${ticketId}`, 
+        `${USER_ROUTES.init}/tickets/deleteticket/${ticketId}`,
         {
           status: !status,
         },
@@ -74,13 +74,13 @@ const TicketsView = () => {
         confirmButtonColor: "#00356f",
         confirmButtonText: "Cerrar",
         text: error.data,
-        timer: 2000
+        timer: 2000,
       });
     }
   };
 
   return (
-    <div className="grid gap-4 w-5/6 ">
+    <div className="grid  w-5/6 ">
       <div>
         <Link
           href="/user/tickets/crear-ticket"
@@ -99,13 +99,11 @@ const TicketsView = () => {
       <table className="table-auto w-full">
         <thead>
           <tr className="bg-Az3 text-Az4 bg-opacity-70">
-            <th>
-              Orden
-            </th>
+            <th>Orden</th>
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
               Empresa
             </th>
-            
+
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
               Agente de Servicio
             </th>
@@ -134,7 +132,7 @@ const TicketsView = () => {
         <tbody>
           {ticketsData.tickets?.map((tickets) => (
             <tr key={tickets.internalConsecutive}>
-              <td className="py-2 px-4 font-regular avant-garde-regular border">
+              <td className=" py-2 px-4 font-regular avant-garde-regular border">
                 {tickets.internalConsecutive}
               </td>
               <td className="py-2 px-4 font-regular avant-garde-regular border">
@@ -171,12 +169,16 @@ const TicketsView = () => {
                 {tickets.status ? (
                   <ClearIcon
                     className="text-red-500 hover:text-red-700"
-                    onClick={() => handleTicketDelete(tickets._id, tickets.status)}
+                    onClick={() =>
+                      handleTicketDelete(tickets._id, tickets.status)
+                    }
                   />
                 ) : (
                   <CheckIcon
                     className="text-green-500 hover:text-green-700"
-                    onClick={() => handleTicketDelete(tickets._id, tickets.status)}
+                    onClick={() =>
+                      handleTicketDelete(tickets._id, tickets.status)
+                    }
                   />
                 )}
               </td>

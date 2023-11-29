@@ -20,6 +20,9 @@ const USER_ROUTES = {
   getServiceAgentsById: (_id) => `${config.URL_BACK}/serviceagent/getbyid/${_id}`,
   getFinalClientsById: (_id) => `${config.URL_BACK}/finalclient/getbyid/${_id}`,
   getTicketsByCompany: (_id) => `${config.URL_BACK}/tickets/company/${_id}`,
+  statusGraph: (_id) => `${config.URL_BACK}/tickets/statusgraph/${_id}`,
+  utilityMonthGraph: (_id) => `${config.URL_BACK}/tickets/utilitymonthgraph/${_id}`,
+  accumulatedUtility: (_id) => `${config.URL_BACK}/tickets/accumulatedutility/${_id}`,
 };
 
 export { USER_ROUTES };

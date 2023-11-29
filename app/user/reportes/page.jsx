@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 import { USER_ROUTES } from "@/routes/routes";
 import axios from "axios";
-import { BarGraph } from "@/components";
+import { BarGraph, LineGraph } from "@/components";
 
 const ReportesPage = () => {
     const { technicians } = useSelector(state => state.options)
@@ -180,12 +180,17 @@ const ReportesPage = () => {
     };
 
     return (
-        <div className={styled.container}>
-            <BarGraph/>
+        <div className={styled.containerr}>
+            <div className="flex gap-20 mb-10 mt-10 ml-20">
+            <BarGraph route={USER_ROUTES.statusGraph(_id)} title={<h4 className="font-bold avant-garde-bold text-Az1 text-2xl border-b border-dotted border-b-8 border-t-0">Estado de tickets</h4>}/>
+            <BarGraph route={USER_ROUTES.utilityMonthGraph(_id)} title={<h4 className="font-bold avant-garde-bold text-Az1 text-2xl border-b border-dotted border-b-8 border-t-0">Utilidad por mes</h4>}/>
+            <LineGraph route={USER_ROUTES.accumulatedUtility(_id)} title={<h4 className="font-bold avant-garde-bold text-Az1 text-2xl border-b border-dotted border-b-8 border-t-0">Utilidad acumulada durante el año actual</h4>}/>             
+            </div>
+
             <div className="mb-20">
-                <h4>Técnicos</h4>
+                <h4 className="font-bold avant-garde-bold text-Az1 text-4xl">Técnicos</h4>
                 <div>
-                    <p>Seleccione los datos del técnico</p>
+                    <p className="font-regular avant-garde-regular text-Az4 underline text-lg">Seleccione los datos del técnico</p>
                     <div className={styled.checks} id="checks">
                         <div className={styled.check}>
                             <input
@@ -212,6 +217,7 @@ const ReportesPage = () => {
                                 type="checkbox"
                                 name="document"
                                 onChange={handleTechnician}
+        
                             />
                             <label htmlFor="">Documento</label>
                         </div>
@@ -246,7 +252,8 @@ const ReportesPage = () => {
                     </div>
                     <button
                         type="button"
-                        className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                         className="avant-garde-bold font-bold text-gray px-5 py-2.5 rounded-full  bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
+
                         onClick={techniciansReport}
                     >
                         Generate
@@ -255,9 +262,9 @@ const ReportesPage = () => {
             </div>
 
             <div className="mb-20">
-                <h4>Servicios</h4>
+                <h4 className="font-bold avant-garde-bold text-Az1 text-4xl">Servicios</h4>
                 <div>
-                    <p>Seleccione la información del servicio</p>
+                    <p className="font-regular avant-garde-regular text-Az4 underline text-lg">Seleccione la información del servicio</p>
                     <div className={styled.checks}>
                         <div className={styled.check}>
                             <input
@@ -379,7 +386,7 @@ const ReportesPage = () => {
                 </div>
                 <button
                     type="button"
-                    className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                    className="avant-garde-bold font-bold text-gray px-5 py-2.5 rounded-full  bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
                     onClick={servicesReport}
                 >
                     Generate
@@ -387,42 +394,42 @@ const ReportesPage = () => {
             </div>
 
             <div className="mb-20">
-                <h4 className="mb-3">Cliente con mas tickets solicitados (Cantidad)</h4>
+                <h4 className="font-bold avant-garde-bold mb-3 text-Az1 text-4xl">Cliente con mas tickets solicitados (Cantidad)</h4>
                 <button
                     type="button"
-                    className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                    className="avant-garde-bold font-bold text-gray px-5 py-2.5 rounded-full  bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
                     onClick={clientCountServiceReport}
                 >
                     Generate
                 </button>
             </div>
-            <div className="mb-20">
-                <h4 className="mb-3">Cliente con mas tickets solicitados (Ventas)</h4>
+            <div className=" mb-20">
+                <h4 className="mb-3 font-bold avant-garde-bold text-Az1 text-4xl">Cliente con mas tickets solicitados (Ventas)</h4>
                 <button
                     type="button"
-                    className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                    className="avant-garde-bold font-bold text-gray px-5 py-2.5 rounded-full  bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
                     onClick={clientAmountServiceReport}
                 >
                     Generate
                 </button>
             </div>
             <div className="mb-20">
-                <h4 className="mb-3">
+                <h4 className="mb-3 text-Az1 font-bold avant-garde-bold text-4xl ">
                     Agentes de servicios con mas tickets registrados
                 </h4>
                 <button
                     type="button"
-                    className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                    className="avant-garde-bold font-bold text-gray px-5 py-2.5 rounded-full  bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
                     onClick={servicesAgentReport}
                 >
                     Generate
                 </button>
             </div>
-            <div className="mb-20">
-                <h4 className="mb-3">Estado de tickets</h4>
+            <div className=" mb-20">
+                <h4 className="mb-3 font-bold avant-garde-bold text-Az1 text-4xl">Estado de tickets</h4>
                 <button
                     type="button"
-                    className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                    className="avant-garde-bold font-bold text-gray px-5 py-2.5 rounded-full  bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
                     onClick={ticketStatusReport}
                 >
                     Generate
