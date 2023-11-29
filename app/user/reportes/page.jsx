@@ -393,48 +393,7 @@ const ReportesPage = () => {
                 </button>
             </div>
 
-            <div className="mb-20">
-                <h4 className="font-bold avant-garde-bold mb-3 text-Az1 text-4xl">Cliente con mas tickets solicitados (Cantidad)</h4>
-                <button
-                    type="button"
-                    className="avant-garde-bold font-bold text-gray px-5 py-2.5 rounded-full  bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
-                    onClick={clientCountServiceReport}
-                >
-                    Generate
-                </button>
-            </div>
-            <div className=" mb-20">
-                <h4 className="mb-3 font-bold avant-garde-bold text-Az1 text-4xl">Cliente con mas tickets solicitados (Ventas)</h4>
-                <button
-                    type="button"
-                    className="avant-garde-bold font-bold text-gray px-5 py-2.5 rounded-full  bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
-                    onClick={clientAmountServiceReport}
-                >
-                    Generate
-                </button>
-            </div>
-            <div className="mb-20">
-                <h4 className="mb-3 text-Az1 font-bold avant-garde-bold text-4xl ">
-                    Agentes de servicios con mas tickets registrados
-                </h4>
-                <button
-                    type="button"
-                    className="avant-garde-bold font-bold text-gray px-5 py-2.5 rounded-full  bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
-                    onClick={servicesAgentReport}
-                >
-                    Generate
-                </button>
-            </div>
-            <div className=" mb-20">
-                <h4 className="mb-3 font-bold avant-garde-bold text-Az1 text-4xl">Estado de tickets</h4>
-                <button
-                    type="button"
-                    className="avant-garde-bold font-bold text-gray px-5 py-2.5 rounded-full  bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100"
-                    onClick={ticketStatusReport}
-                >
-                    Generate
-                </button>
-            </div>
+
         </div>
     );
 };
