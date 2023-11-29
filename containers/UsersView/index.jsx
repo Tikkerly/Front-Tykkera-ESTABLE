@@ -159,7 +159,7 @@ const UsersViews = () => {
 
   return (
     <div className={styles.container}>
-      <div className="flex flex-col items-center bg-Be bg-opacity-60 text-gray-900 rounded-lg shadow-md w-full">
+      <div className="flex flex-col items-center bg-Be bg-opacity-60 p-8 text-gray-900 rounded-lg shadow-md w-full">
         <div className="flex flex-row-reverse justify-between w-full border-dotted border-b-8 border-t-0 mb-2">
           <div className="w-full"></div>
           <div className="w-full">
