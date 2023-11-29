@@ -38,7 +38,7 @@ const SideBar = () => {
         </button>
       </Link>
 
-      <Link href="/user/calendar" className="hover:bg-Az2 hover:px-10 hover:rounded hover:bg-opacity-40" passHref>
+      <Link href="/user/calendar" className="hover:bg-Az2 hover:px-12 hover:rounded hover:bg-opacity-40" passHref>
       <p className={styles.hover} >Calendario</p>
         <button className=" mt-4  text-gray-100  text-3xl ml-5 rounded-md items-center">
           <FontAwesomeIcon icon={faCalendarAlt} className="mr-10" />
