@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
+import { USER_ROUTES } from "@/routes/routes";
 
 const styles =
   "font-regular avant-garde-regular w-full px-8 py-1.5 text-lg text-Az4 leading-tight bg-gray-200 border rounded focus:outline-none focus:shadow-outline";
@@ -27,6 +28,8 @@ const TechnicianDetail = ({ token }) => {
     serviceTypes: "",
   });
 
+  console.log(technicianData);
+
   const tokenValidate = Cookies.get("token");
   const { id } = token;
 
@@ -34,7 +37,7 @@ const TechnicianDetail = ({ token }) => {
     const getTechnician = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/v1/technician/${id}`,
+          `${USER_ROUTES.init}/technician/${id}`,
           {
             headers: {
               "x-token": tokenValidate,
@@ -69,7 +72,7 @@ const TechnicianDetail = ({ token }) => {
           },
         }
       );
-    
+
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -81,9 +84,9 @@ const TechnicianDetail = ({ token }) => {
       Swal.fire({
         icon: "error",
         title: "Error durante la edición",
-        confirmButtonColor: '#00356f',
-        confirmButtonText: 'Cerrar',
-        text: 'Error al editar el técnico',
+        confirmButtonColor: "#00356f",
+        confirmButtonText: "Cerrar",
+        text: "Error al editar el técnico",
       });
     }
   };
@@ -116,9 +119,7 @@ const TechnicianDetail = ({ token }) => {
             id="username"
             type="text"
             value={
-                technicianData.username === null
-                ? ""
-                : technicianData.username
+              technicianData.username === null ? "" : technicianData.username
             }
             placeholder="No definido"
             onChange={(e) => handleFieldChange("username", e.target.value)}
@@ -130,9 +131,7 @@ const TechnicianDetail = ({ token }) => {
             className={styles}
             id="email"
             type="text"
-            value={
-                technicianData.email === null ? "" : technicianData.email
-            }
+            value={technicianData.email === null ? "" : technicianData.email}
             placeholder="No definido"
             disabled
           />
@@ -144,7 +143,7 @@ const TechnicianDetail = ({ token }) => {
             id="documentType"
             type="text"
             value={
-                technicianData.documentType === null
+              technicianData.documentType === null
                 ? ""
                 : technicianData.documentType
             }
@@ -159,9 +158,7 @@ const TechnicianDetail = ({ token }) => {
             id="document"
             type="number"
             value={
-              technicianData.document === null
-                ? ""
-                : technicianData.document
+              technicianData.document === null ? "" : technicianData.document
             }
             placeholder="No definido"
             disabled
@@ -173,9 +170,7 @@ const TechnicianDetail = ({ token }) => {
             className={styles}
             id="phone"
             type="number"
-            value={
-              technicianData.phone === null ? "" : technicianData.phone
-            }
+            value={technicianData.phone === null ? "" : technicianData.phone}
             onChange={(e) => handleFieldChange("phone", e.target.value)}
             placeholder="No definido"
           />
@@ -199,10 +194,14 @@ const TechnicianDetail = ({ token }) => {
             className={styles}
             id="paymentMethods"
             value={
-                technicianData.paymentMethods === null ? "" : technicianData.paymentMethods
+              technicianData.paymentMethods === null
+                ? ""
+                : technicianData.paymentMethods
             }
             placeholder="No definido"
-            onChange={(e) => handleFieldChange("paymentMethods", e.target.value)}
+            onChange={(e) =>
+              handleFieldChange("paymentMethods", e.target.value)
+            }
           >
             <option value="Efectivo">Efectivo</option>
             <option value="Transferencia">Transferencia</option>
@@ -215,7 +214,9 @@ const TechnicianDetail = ({ token }) => {
             id="accountNumber"
             type="number"
             value={
-              technicianData.accountNumber === null ? "" : technicianData.accountNumber
+              technicianData.accountNumber === null
+                ? ""
+                : technicianData.accountNumber
             }
             onChange={(e) => handleFieldChange("accountNumber", e.target.value)}
             placeholder="No definido"

@@ -31,7 +31,7 @@ const FinalClientDetail = ({ token }) => {
     const getFinalClient = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/v1/finalclient/${id}`,
+          `${USER_ROUTES.init}/finalclient/${id}`,
           {
             headers: {
               "x-token": tokenValidate,
@@ -70,7 +70,7 @@ const FinalClientDetail = ({ token }) => {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: 'Cliente final editado con éxito',
+        title: "Cliente final editado con éxito",
         showConfirmButton: false,
         timer: 2000,
       });
@@ -78,9 +78,9 @@ const FinalClientDetail = ({ token }) => {
       Swal.fire({
         icon: "error",
         title: "Error durante la edición",
-        confirmButtonColor: '#00356f',
-        confirmButtonText: 'Cerrar',
-        text: 'Error al editar el cliente final, intenta nuevamente',
+        confirmButtonColor: "#00356f",
+        confirmButtonText: "Cerrar",
+        text: "Error al editar el cliente final, intenta nuevamente",
       });
     }
   };

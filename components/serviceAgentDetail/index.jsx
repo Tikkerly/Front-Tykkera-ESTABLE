@@ -29,7 +29,7 @@ const ServiceAgentDetail = ({ token }) => {
     const getServiceAgent = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/v1/serviceagent/${id}`,
+          `${USER_ROUTES.init}/serviceagent/${id}`,
           {
             headers: {
               "x-token": tokenValidate,
@@ -76,9 +76,9 @@ const ServiceAgentDetail = ({ token }) => {
       Swal.fire({
         icon: "error",
         title: "Error durante la edición",
-        confirmButtonColor: '#00356f',
-        confirmButtonText: 'Cerrar',
-        text: 'Error al editar el agente de servicio, intenta nuevamente',
+        confirmButtonColor: "#00356f",
+        confirmButtonText: "Cerrar",
+        text: "Error al editar el agente de servicio, intenta nuevamente",
       });
     }
   };
