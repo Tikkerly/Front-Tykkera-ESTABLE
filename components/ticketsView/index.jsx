@@ -4,17 +4,27 @@ import axios from "axios";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import ClearIcon from "@mui/icons-material/Clear";
+import CheckIcon from "@mui/icons-material/Check";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import { useSelector } from "react-redux";
 import { USER_ROUTES } from "@/routes/routes";
 import { faTicket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Swal from "sweetalert2";
+
+const empresa = {
+  empresa1: "empresa1",
+  empresa2: "empresa2",
+  empresa3: "empresa3"
+}
 
 const TicketsView = () => {
   const id = useSelector((state) => state.auth.user._id);
   const token = Cookies.get("token");
-
+  
+  const [stop, setStop] = useState(false);
   const [ticketsData, setTicketsData] = useState([]);
+  console.log(ticketsData);
 
   useEffect(() => {
     const getTickets = async () => {
@@ -34,27 +44,39 @@ const TicketsView = () => {
     };
 
     getTickets();
-  }, []);
+  }, [stop]);
 
-  const handleTicketDelete = async (ticketId) => {
+  const handleTicketDelete = async (ticketId, status) => {
     try {
-      const response = await axios.get(
-        `${USER_ROUTES.init}/tickets/deleteticket/${id}`,
+      const response = await axios.post(
+        `${USER_ROUTES.init}/tickets/deleteticket/${ticketId}`, 
+        {
+          status: !status,
+        },
         {
           headers: {
             "x-token": token,
           },
         }
       );
-      setTicketsData((prevTickets) => {
-        return {
-          ...prevTickets,
-          tickets: prevTickets.tickets.filter(
-            (ticket) => ticket._id !== ticketId
-          ),
-        };
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: response.data.message,
+        showConfirmButton: false,
+        timer: 2000,
       });
-    } catch (error) {}
+      setStop(!stop);
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la operación",
+        confirmButtonColor: "#00356f",
+        confirmButtonText: "Cerrar",
+        text: error.data,
+        timer: 2000
+      });
+    }
   };
 
   return (
@@ -77,9 +99,13 @@ const TicketsView = () => {
       <table className="table-auto w-full">
         <thead>
           <tr className="bg-Az3 text-Az4 bg-opacity-70">
-            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
-              Compañía
+            <th>
+              Orden
             </th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
+              Empresa
+            </th>
+            
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
               Agente de Servicio
             </th>
@@ -97,53 +123,65 @@ const TicketsView = () => {
             </th>
 
             <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
+              Proceso
+            </th>
+            <th className="py-2 px-4 font-bold avant-garde-bold border-l border-r">
               Estado
             </th>
-            <th className="py-2 px-4 font-bold avant-garde-bold">
-              Acciones
-            </th>
+            <th className="py-2 px-4 font-bold avant-garde-bold">Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {ticketsData.tickets
-            ?.filter((ticket) => ticket.status === true) // Filtrar por status true
-            .map((tickets) => (
-              <tr key={tickets.internalConsecutive}>
-                <td className="py-2 px-4 font-regular avant-garde-regular border">
-                  {tickets.company_id.username}
-                </td>
-                <td className="py-2 px-4 font-regular avant-garde-regular border">
-                  {tickets.serviceClient_id.username}
-                </td>
-                <td className="py-2 px-4 font-regular avant-garde-regular border">
-                  {tickets.technician_id.username}
-                </td>
-                <td className="py-2 px-4 font-regular avant-garde-regular border">
-                  {tickets.finalClient_id.username}
-                </td>
-                <td className="py-2 px-4 font-regular avant-garde-regular border">
-                  {tickets.serviceType}
-                </td>
-                <td className="py-2 px-4 font-regular avant-garde-regular border">
-                  {tickets.serviceDescription}
-                </td>
-                <td className="py-2 px-4 font-regular avant-garde-regular border">
-                  {tickets.ticketStatus}
-                </td>
-                <td className="py-2 px-4 font-regular avant-garde-regular ">
-                  <Link
-                    href={`/user/tickets/${tickets._id}`}
-                    style={{ textDecoration: "none", color: "inherit" }}
-                  >
-                    <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
-                  </Link>
+          {ticketsData.tickets?.map((tickets) => (
+            <tr key={tickets.internalConsecutive}>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">
+                {tickets.internalConsecutive}
+              </td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">
+                {tickets.empresa}
+              </td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">
+                {tickets.serviceClient_id.username}
+              </td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">
+                {tickets.technician_id.username}
+              </td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">
+                {tickets.finalClient_id.username}
+              </td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">
+                {tickets.serviceType}
+              </td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">
+                {tickets.serviceDescription}
+              </td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">
+                {tickets.ticketStatus}
+              </td>
+              <td className="py-2 px-4 font-regular avant-garde-regular border">
+                {tickets.status ? "Activo" : "Inactivo"}
+              </td>
+              <td className="py-2 px-4 font-regular avant-garde-regular ">
+                <Link
+                  href={`/user/tickets/${tickets._id}`}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
+                </Link>
+                {tickets.status ? (
                   <ClearIcon
                     className="text-red-500 hover:text-red-700"
-                    onClick={() => handleTicketDelete(tickets._id)}
+                    onClick={() => handleTicketDelete(tickets._id, tickets.status)}
                   />
-                </td>
-              </tr>
-            ))}
+                ) : (
+                  <CheckIcon
+                    className="text-green-500 hover:text-green-700"
+                    onClick={() => handleTicketDelete(tickets._id, tickets.status)}
+                  />
+                )}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

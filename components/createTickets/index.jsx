@@ -8,7 +8,7 @@ import { validation } from "@/utils";
 import { faPersonWalkingArrowLoopLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import axios from 'axios'
+import axios from "axios";
 
 const CreateTickect = () => {
   const styles =
@@ -17,7 +17,7 @@ const CreateTickect = () => {
   const styles3 = "flex flex-col";
 
   const token = Cookies.get("token");
-  const { _id } = useSelector(state => state.auth.user)
+  const { _id } = useSelector((state) => state.auth.user);
 
   const serviceAgents = useSelector((state) => state.options.serviceAgents);
   const technicians = useSelector((state) => state.options.technicians);
@@ -40,6 +40,7 @@ const CreateTickect = () => {
     others: 0,
     registerDate: "11/10/2010",
     ticketStatus: "Pendiente",
+    empresa: "",
   });
 
   useEffect(() => {
@@ -47,8 +48,6 @@ const CreateTickect = () => {
     setTec(technicians);
     setFc(finalClients);
   }, []);
-
-
 
   const [errors, setErrors] = useState({});
 
@@ -69,10 +68,10 @@ const CreateTickect = () => {
         formData,
         {
           headers: {
-            "x-token": token
-          }
+            "x-token": token,
+          },
         }
-      )
+      );
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -81,8 +80,14 @@ const CreateTickect = () => {
         timer: 1500,
       });
     } catch (error) {
-      console.log(error)
-      alert("Error al procesar la solicitud:", error);
+
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la creación del ticket",
+        confirmButtonColor: '#00356f',
+        confirmButtonText: 'Cerrar',
+        text: 'Error al procesar la solicitud',
+      });
     }
   };
 
@@ -280,9 +285,8 @@ const CreateTickect = () => {
               )}
             </div>
           </div>
-        </div>
-        <div className=" flex aling-center justify-center">
-          <div className="w-2/4 flex flex-col">
+
+          <div className={styles3}>
             <label className={styles2}>Otros costos:</label>
             <input
               type="number"
@@ -298,6 +302,18 @@ const CreateTickect = () => {
                 </p>
               )}
             </div>
+          </div>
+
+          <div className={styles3}>
+            <label className={styles2}>Empresa:</label>
+            <input
+              type="text"
+              name="empresa"
+              value={formData.empresa}
+              onChange={handleInputChange}
+              className={styles}
+            />
+            <div className="h-2"></div>
           </div>
         </div>
 

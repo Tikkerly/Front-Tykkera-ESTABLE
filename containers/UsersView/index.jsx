@@ -5,6 +5,7 @@ import axios from "axios";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import ClearIcon from "@mui/icons-material/Clear";
+import CheckIcon from "@mui/icons-material/Check";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import { USER_ROUTES } from "@/routes/routes";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +18,8 @@ const UsersViews = () => {
   const [techs, setTechs] = useState([]);
   const [final, setFinal] = useState([]);
   const [agents, setAgents] = useState([]);
-  const { _id } = useSelector(state => state.auth.user)
+  const { _id } = useSelector((state) => state.auth.user);
+  const [stop, setStop] = useState(false);
 
   const token = Cookies.get("token");
 
@@ -55,96 +57,103 @@ const UsersViews = () => {
     servAgents();
     technis();
     finalCli();
-  }, []);
+  }, [stop]);
 
-  const handleAgentDelete = async (userId) => {
+  const handleAgentDelete = async (userId, status) => {
     try {
-      const response = await axios.delete(
-        `${USER_ROUTES.init}/user/deleteuser/${userId}`,
-        null,
+      const response = await axios.post(
+        `${USER_ROUTES.init}/serviceAgent/deleteserviceagent/${userId}`,
+        {
+          status: !status,
+        },
         {
           headers: {
             "x-token": token,
           },
         }
       );
-      setUserData((prevUserData) => {
-        return {
-          ...prevUserData,
-          users: prevUserData.users.filter((user) => user._id !== userId),
-        };
-      });
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Agente Baneado",
+        title: response.data.message,
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2000,
       });
-
-      setState(!state);
+      setStop(!stop);
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la operación",
+        confirmButtonColor: "#00356f",
+        confirmButtonText: "Cerrar",
+        text: error.data,
+        timer: 2000,
+      });
     }
   };
-  const handleTechDelete = async (userId) => {
+
+  const handleTechDelete = async (userId, status) => {
     try {
       const response = await axios.post(
         `${USER_ROUTES.init}/technician/deletetechnician/${userId}`,
-        null,
+        {
+          status: !status,
+        },
         {
           headers: {
             "x-token": token,
           },
         }
       );
-      setUserData((prevUserData) => {
-        return {
-          ...prevUserData,
-          users: prevUserData.users.filter((user) => user._id !== userId),
-        };
-      });
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Técnico Baneado",
+        title: response.data.message,
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2000,
       });
-
-      setState(!state);
+      setStop(!stop);
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la operación",
+        confirmButtonColor: "#00356f",
+        confirmButtonText: "Cerrar",
+        text: error.data,
+        timer: 2000,
+      });
     }
   };
-  const handleFinalDelete = async (userId) => {
+  const handleFinalDelete = async (userId, status) => {
     try {
       const response = await axios.post(
         `${USER_ROUTES.init}/finalclient/deletefinalclient/${userId}`,
-        null,
+        {
+          status: !status,
+        },
         {
           headers: {
             "x-token": token,
           },
         }
       );
-      setUserData((prevUserData) => {
-        return {
-          ...prevUserData,
-          users: prevUserData.users.filter((user) => user._id !== userId),
-        };
-      });
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Cliente Baneado",
+        title: response.data.message,
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2000,
       });
-
-      setState(!state);
+      setStop(!stop);
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Error durante la operación",
+        confirmButtonColor: "#00356f",
+        confirmButtonText: "Cerrar",
+        text: error.data,
+        timer: 2000,
+      });
     }
   };
 
@@ -164,11 +173,7 @@ const UsersViews = () => {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
-                <FontAwesomeIcon
-                  icon={faPlus}
-                  className="mr-2"
-                  size="lg"
-                />
+                <FontAwesomeIcon icon={faPlus} className="mr-2" size="lg" />
                 Agregar
               </button>
             </Link>
@@ -213,7 +218,7 @@ const UsersViews = () => {
                       {serviceAgent.phone}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {serviceAgent.banned ? "No Activo" : "Activo"}
+                      {serviceAgent.status ? "Activo" : "No Activo"}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular ">
                       <Link
@@ -222,10 +227,27 @@ const UsersViews = () => {
                       >
                         <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
                       </Link>
-                      <ClearIcon
-                        className="text-red-500 hover:text-red-700"
-                        onClick={() => handleAgentDelete(serviceAgent._id)}
-                      />
+                      {serviceAgent.status ? (
+                        <ClearIcon
+                          className="text-red-500 hover:text-red-700"
+                          onClick={() =>
+                            handleAgentDelete(
+                              serviceAgent._id,
+                              serviceAgent.status
+                            )
+                          }
+                        />
+                      ) : (
+                        <CheckIcon
+                          className="text-green-500 hover:text-green-700"
+                          onClick={() =>
+                            handleAgentDelete(
+                              serviceAgent._id,
+                              serviceAgent.status
+                            )
+                          }
+                        />
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -248,11 +270,7 @@ const UsersViews = () => {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
-                <FontAwesomeIcon
-                  icon={faPlus}
-                  className="mr-2"
-                  size="lg"
-                />
+                <FontAwesomeIcon icon={faPlus} className="mr-2" size="lg" />
                 Agregar
               </button>
             </Link>
@@ -297,7 +315,7 @@ const UsersViews = () => {
                       {technicians.phone}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {technicians.banned ? "No Activo" : "Activo"}
+                      {technicians.status ? "Activo" : "No Activo"}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular ">
                       <Link
@@ -306,10 +324,27 @@ const UsersViews = () => {
                       >
                         <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
                       </Link>
-                      <ClearIcon
-                        className="text-red-500 hover:text-red-700"
-                        onClick={() => handleTechDelete(technicians._id)}
-                      />
+                      {technicians.status ? (
+                        <ClearIcon
+                          className="text-red-500 hover:text-red-700"
+                          onClick={() =>
+                            handleTechDelete(
+                              technicians._id,
+                              technicians.status
+                            )
+                          }
+                        />
+                      ) : (
+                        <CheckIcon
+                          className="text-green-500 hover:text-green-700"
+                          onClick={() =>
+                            handleTechDelete(
+                              technicians._id,
+                              technicians.status
+                            )
+                          }
+                        />
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -332,11 +367,7 @@ const UsersViews = () => {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <button className="flex avant-garde-bold font-bold text-gray px-6 py-2 rounded-full justify-center bg-Az3 shadow-xl bg-opacity-70 transition duration-300 hover:bg-opacity-100">
-                <FontAwesomeIcon
-                  icon={faPlus}
-                  className="mr-2"
-                  size="lg"
-                />
+                <FontAwesomeIcon icon={faPlus} className="mr-2" size="lg" />
                 Agregar
               </button>
             </Link>
@@ -381,7 +412,7 @@ const UsersViews = () => {
                       {finalClients.phone}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular border">
-                      {finalClients.banned ? "No Activo" : "Activo"}
+                      {finalClients.status ? "Activo" : "No Activo"}
                     </td>
                     <td className="py-2 px-4 font-regular avant-garde-regular ">
                       <Link
@@ -390,10 +421,27 @@ const UsersViews = () => {
                       >
                         <EditNoteIcon className="text-blue-500 hover:text-blue-700" />
                       </Link>
-                      <ClearIcon
-                        className="text-red-500 hover:text-red-700"
-                        onClick={() => handleFinalDelete(finalClients._id)}
-                      />
+                      {finalClients.status ? (
+                        <ClearIcon
+                          className="text-red-500 hover:text-red-700"
+                          onClick={() =>
+                            handleFinalDelete(
+                              finalClients._id,
+                              finalClients.status
+                            )
+                          }
+                        />
+                      ) : (
+                        <CheckIcon
+                          className="text-green-500 hover:text-green-700"
+                          onClick={() =>
+                            handleFinalDelete(
+                              finalClients._id,
+                              finalClients.status
+                            )
+                          }
+                        />
+                      )}
                     </td>
                   </tr>
                 ))}
