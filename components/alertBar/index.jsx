@@ -2,10 +2,8 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Wallet, initMercadoPago } from "@mercadopago/sdk-react";
-import axios from "axios";
-import { USER_ROUTES } from "@/routes/routes";
 import Link from "next/link";
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
 initMercadoPago(process.env.NEXT_PUBLIC_MERCADOPAGO);
 

@@ -5,14 +5,28 @@ import Profile from "@/components/profile";
 import UserLayout from "./layout";
 import { AlertBar } from "@/components";
 import { useSelector } from "react-redux";
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
+import axios from "axios";
+import { USER_ROUTES } from "@/routes/routes";
+import Cookies from "js-cookie";
 
 const UserProfile = () => {
-  const [user, setUser] = useState({});
   const oldUser = useSelector((state) => state.auth.user);
+  const [user, setUser] = useState(oldUser);
+  const token = Cookies.get("token");
+
+  const userCall = async () => {
+    const { data } = await axios.post(`${USER_ROUTES.init}/user/${user._id}`, {
+      headers: {
+        "x-token": token,
+      },
+    });
+    setUser(data);
+  };
 
   useEffect(() => {
     setUser(oldUser);
+    userCall();
   }, []);
 
   return (

@@ -6,49 +6,45 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
 const TicketsLayout = ({ children }) => {
   const dispatch = useDispatch();
-  const { _id } = useSelector(state => state.auth.user)
-  const token = Cookies.get("token")
+  const { _id } = useSelector((state) => state.auth.user);
+  const token = Cookies.get("token");
 
   const servAgents = async () => {
-    const { data } = await axios(USER_ROUTES.getServiceAgentsById(_id),
-      {
-        headers: {
-          "x-token": token
-        }
-      });
+    const { data } = await axios(USER_ROUTES.getServiceAgentsById(_id), {
+      headers: {
+        "x-token": token,
+      },
+    });
     dispatch(serviceAgents(data.serviceAgent));
   };
   const techs = async () => {
-    const { data } = await axios(USER_ROUTES.getTechniciansById(_id),
-      {
-        headers: {
-          "x-token": token
-        }
-      }
-    );
-  dispatch(technicians(data.technicians));
+    const { data } = await axios(USER_ROUTES.getTechniciansById(_id), {
+      headers: {
+        "x-token": token,
+      },
+    });
+    dispatch(technicians(data.technicians));
   };
-const finalCli = async () => {
-  const { data } = await axios(USER_ROUTES.getFinalClientsById(_id),
-  {
-    headers: {
-      "x-token": token
-    }
-  });
-  dispatch(finalClients(data.finalClients));
-};
+  const finalCli = async () => {
+    const { data } = await axios(USER_ROUTES.getFinalClientsById(_id), {
+      headers: {
+        "x-token": token,
+      },
+    });
+    dispatch(finalClients(data.finalClients));
+  };
 
-useEffect(() => {
-  servAgents();
-  techs();
-  finalCli();
-}, []);
+  useEffect(() => {
+    servAgents();
+    techs();
+    finalCli();
+  }, []);
 
-return <div className={styles.container}>{children}</div>;
+  return <div className={styles.container}>{children}</div>;
 };
 
 export default TicketsLayout;
